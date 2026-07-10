@@ -92,7 +92,7 @@
   /* ---- price chart ---- */
   .chart-scroll{overflow-x:auto}
   svg{max-width:100%}
-  #pricechart{display:block;width:100%;height:auto;min-width:640px}
+  #pricechart,#foxencl{display:block;width:100%;height:auto;min-width:640px}
   details{margin-top:8px}
   summary{cursor:pointer;font-size:.86rem;color:var(--accent);font-weight:600}
 </style>
@@ -116,6 +116,23 @@
     <p>For foxes, EFSA's most relevant welfare consequences include restriction of movement, the inability to forage or explore, sensorial under- and overstimulation and handling stress, with locomotory disorders such as bent legs in Arctic fox. Of these, restriction of movement and the inability to forage or explore cannot be prevented or substantially mitigated in the current cage system.</p>
     <cite>EFSA Panel on Animal Health and Welfare (2025). Welfare of American mink, red and Arctic foxes, raccoon dog and chinchilla kept for fur production (Scientific Opinion 9519). <em>EFSA Journal</em>, 23(7).</cite>
   </div>
+
+  <h2>Fox enclosure space: the fur cage against captive and zoo standards</h2>
+  <p class="sub">Minimum floor area allowed per fox under each standard, on a single linear scale. <strong>Captive and zoo rules give a fox 15 to 150 m&sup2; per animal (the fox-specific Swiss and German zoo minima are 15 to 20 m&sup2;; Austria's 150 m&sup2; is a generic canid figure), against 0.8 to 6 m&sup2; under the fur-farming standards: the reform standards close only a small part of that gap.</strong></p>
+
+  <div class="chart-scroll"><svg id="foxencl" role="img" aria-label="Horizontal bar chart of minimum floor area per fox for seven standards, ordered by area: captive and zoo standards of 15 to 150 square metres against fur-farming standards of 0.8 to 6 square metres."></svg></div>
+
+  <p class="caption">Green bars are floor area per animal; a hatched bar means the standard sets no enclosure-height figure ("h n/s"). The asterisk marks standards larger than the current cage, the direction EFSA points to (EFSA sets no numeric fox enclosure size and certifies none of these as adequate). Captive and zoo figures are per animal at the standard's stated capacity (a pair), a conservative reading: a single-housed fox would have up to about twice the area shown. The fox-farming comparison uses the Arctic (blue) fox, the main Finnish farmed type; the Swiss and German zoo red-fox minima are larger (50 and 20 m&sup2;). Austria groups foxes with wolves and jackals in one enclosure row, so its 150 m&sup2; is an upper bound, not fox-specific. The German fur statute sets both &ge;&nbsp;3 m&sup2; per animal and &ge;&nbsp;12 m&sup2; per enclosure; at a pair the enclosure minimum binds and gives 6 m&sup2; per animal, the figure shown here. (Table&nbsp;1 above prices that standard on its 3 m&sup2; per-animal rate at farm stocking density, a different basis from this per-fox-at-pair space figure.) Fox has no open-water requirement in any standard, so unlike the mink comparison every bar is land only. Sources: Austria 2. Tierhaltungsverordnung (2004); Switzerland TSchV Anhang 2 (2008); Germany S&auml;ugetiergutachten (BMEL, 2014); German fur statute TierErzHaVerbG (2017a); Ecorys EC survey (2025); Finnish draft decree (MMM, 2025a); current-cage practice (EFSA, 2025). AZA's published animal care manuals include no fox-specific enclosure standard (other zoo accreditation bodies were not checked).</p>
+
+  <details>
+    <summary>Show data table (enclosure space)</summary>
+    <p style="font-size:.85rem;font-weight:660;margin:10px 0 3px;color:var(--ink)">Table 5. Minimum floor area per fox, by standard</p>
+    <table>
+      <thead><tr><th>Standard</th><th>Area per fox (m&sup2;)</th><th>Height (m)</th><th>EFSA direction</th><th>Basis / note</th></tr></thead>
+      <tbody id="enctbody"></tbody>
+    </table>
+    <p class="caption">Per animal at the stated pair capacity. Verbatim source quotes held in the study provenance note.</p>
+  </details>
 
   <h2>How the compliance costs are calculated</h2>
 
@@ -225,6 +242,8 @@
 
   <h2>Sources</h2>
   <ol class="refs" id="refs">
+    <li>Austrian Government. (2004). <em>2. Tierhaltungsverordnung</em> (BGBl. II Nr. 486/2004), Anlage 1, point 7.10.6 (Hundeartige / Canidae) [minimum enclosure sizes for captive wild mammals]. <a href="https://www.ris.bka.gv.at/eli/bgbl/II/2004/486">https://www.ris.bka.gv.at/eli/bgbl/II/2004/486</a></li>
+    <li>BMEL (German Federal Ministry of Food and Agriculture). (2014). <em>Gutachten &uuml;ber Mindestanforderungen an die Haltung von S&auml;ugetieren</em> [Report on minimum requirements for keeping mammals], Ch. IV.21.5 (Canidae), pp. 184 to 187. <a href="https://www.bmleh.de/SharedDocs/Downloads/DE/_Tiere/Tierschutz/HaltungSaeugetiere.pdf">https://www.bmleh.de/SharedDocs/Downloads/DE/_Tiere/Tierschutz/HaltungSaeugetiere.pdf</a></li>
     <li>Bundesrepublik Deutschland. (2017a). <em>Anforderungen an die Haltung von Pelztieren</em> [Anlage to the Tiererzeugnisse-Handels-Verbotsgesetz (TierErzHaVerbG); German-English extract, fox and raccoon dog requirements]. Bundesministerium der Justiz. <a href="https://www.gesetze-im-internet.de/khfeverbg/anlage.html">https://www.gesetze-im-internet.de/khfeverbg/anlage.html</a></li>
     <li>Carpenter, G. (2025). <em>A full-cost account of the EU fur industry</em> [Report]. Eurogroup for Animals, Fur Free Alliance, FOUR PAWS International and Humane World for Animals. <a href="https://www.eurogroupforanimals.org/resources">https://www.eurogroupforanimals.org/resources</a></li>
     <li>Ecorys. (2025). <em>Study supporting the European Commission's assessment to follow up on the European Citizens' Initiative "Fur Free Europe": Survey of civil society organisations</em> [Survey questionnaire]. European Commission. Copy on file; survey background at <a href="https://food.ec.europa.eu/animals/animal-welfare/eci/eci-fur-free-europe_en">https://food.ec.europa.eu/animals/animal-welfare/eci/eci-fur-free-europe_en</a></li>
@@ -234,6 +253,7 @@
     <li>Hernesniemi, T. (2023). <em>Tuotantokustannus: kettu ja minkki</em> [Production cost: blue fox and mink] [Data set]. Keski-Pohjanmaan koulutusyhtym&auml; (KPEDU). <a href="https://www.kpedu.fi/docs/default-source/projektisivustot/tietolinkki/tuotantokustannus-kettu-ja-minkki_2023-06-12.xlsx">https://www.kpedu.fi/docs/default-source/projektisivustot/tietolinkki/tuotantokustannus-kettu-ja-minkki_2023-06-12.xlsx</a></li>
     <li>Luke (Natural Resources Institute Finland). (2025). <em>Cost assessment of the draft Government Decree on the Welfare of Fur Animals</em> (VN/14432/2025). <a href="https://mmm.fi/-/luonnos-uudeksi-turkiselainasetukseksi-lausunnolle">https://mmm.fi/-/luonnos-uudeksi-turkiselainasetukseksi-lausunnolle</a></li>
     <li>MMM (Finnish Ministry of Agriculture and Forestry). (2025a). <em>Draft Government Decree on the Welfare of Fur Animals</em> (VN/14432/2025). <a href="https://mmm.fi/-/luonnos-uudeksi-turkiselainasetukseksi-lausunnolle">https://mmm.fi/-/luonnos-uudeksi-turkiselainasetukseksi-lausunnolle</a></li>
+    <li>Swiss Government. (2008). <em>Tierschutzverordnung</em> (TSchV, SR 455.1), Anhang 2, Tabelle 1 (Gehege f&uuml;r S&auml;ugetiere) [Animal Welfare Ordinance, enclosure minimums for mammals]. <a href="https://www.fedlex.admin.ch/eli/cc/2008/416/de">https://www.fedlex.admin.ch/eli/cc/2008/416/de</a></li>
   </ol>
 
   <p class="caption">Compiled for the fur-standards study (EU fur phase-out and transition costs). The Finnish decree cost is measured from Luke (2025); the German and EFSA-level figures are the study's own model, calibrated on Finnish construction prices, with no species-specific external anchor for fox. Values verified against primary sources. Costs are benchmark estimates pending final review. Claude Code used for drafting.</p>
@@ -356,6 +376,83 @@
       c.textContent=v; tr.appendChild(c);
     });
     ptb.appendChild(tr);
+  });
+
+  // ---- ENCLOSURE-SPACE BAR CHART (fox fur cage vs captive/zoo standards) ----
+  // Land only (fox has no open-water requirement). Per-animal LAND m2 at the
+  // stated pair capacity (per-pair figure / 2, conservative; single-housed ~2x).
+  // Arctic/blue fox basis (the main Finnish farmed type); red-fox captive minima
+  // are larger and noted. Sources + verbatim quotes in the study provenance note
+  // 2026-07-10_fox_enclosure_figure/notes/fox_enclosure_sourcing_20260710.md.
+  var GM='var(--green-mid)';
+  var ENC=[
+    {name:"Austria: captive-wildlife ordinance",  ref:"Austrian Government, 2004", land:150, height:null, efsa:true,  note:"300 m²/pair; generic canid row (foxes grouped with wolves and jackals), an upper bound"},
+    {name:"Switzerland: captive fox (Arctic)",     ref:"Swiss Government, 2008",    land:20,  height:null, efsa:true,  note:"40 m²/pair outdoor + 8 m² indoor; red fox 50 m² (100 m²/pair)"},
+    {name:"Germany: zoo guidance (Arctic fox)",    ref:"BMEL, 2014",               land:15,  height:null, efsa:true,  note:"30 m²/pair; red fox 20 m² (40 m²/pair)"},
+    {name:"Germany: fur-farming statute",          ref:"Bundesrepublik Deutschland, 2017a", land:6, height:1.5, efsa:true, note:"≥ 3 m²/animal and ≥ 12 m²/enclosure; at a pair the 12 m² enclosure minimum binds, giving 6 m²/animal; height 1.5 m"},
+    {name:"Ecorys / EC proposed (S4/S5)",          ref:"Ecorys, 2025",             land:1.2, height:0.7, efsa:false, note:"same per-animal space as the Finnish decree; height 0.7 m Arctic (1.0 m red fox)"},
+    {name:"Finland: draft fur decree",             ref:"MMM, 2025a",               land:1.2, height:0.7, efsa:false, note:"adult female 1.2 m²; adult male 2.4 m²; height 0.7 m (unchanged)"},
+    {name:"Current cage (EU practice)",            ref:"EFSA, 2025",               land:0.8, height:0.7, efsa:false, note:"typical about 0.8 m²/adult, all-wire; the cost baseline"}
+  ];
+
+  var EW=960, EpadL=14, EpadR=150, ElabelH=20, EbarH=26, ErowGap=22, ErowH=ElabelH+EbarH+ErowGap;
+  var EaxisH=34, EtopPad=6;
+  var EplotL=EpadL, EplotR=EW-EpadR, EplotW=EplotR-EplotL;
+  var EXMAX=160;
+  var ex=function(v){return EplotL+(v/EXMAX)*EplotW;};
+  var ECH=EtopPad+ENC.length*ErowH+EaxisH;
+  var esvg=document.getElementById('foxencl');
+  esvg.setAttribute('viewBox','0 0 '+EW+' '+ECH);
+  esvg.setAttribute('preserveAspectRatio','xMinYMin meet');
+
+  var edefs=el('defs',{});
+  var ehatch=el('pattern',{id:'hatchFox',width:7,height:7,patternUnits:'userSpaceOnUse',patternTransform:'rotate(45)'});
+  ehatch.appendChild(el('rect',{width:7,height:7,fill:'var(--surface)'}));
+  ehatch.appendChild(el('rect',{width:3,height:7,fill:GM,opacity:0.85}));
+  edefs.appendChild(ehatch);
+  esvg.appendChild(edefs);
+
+  for(var eg=0; eg<=EXMAX; eg+=20){
+    esvg.appendChild(el('line',{x1:ex(eg),y1:EtopPad,x2:ex(eg),y2:EtopPad+ENC.length*ErowH,stroke:HAIR,'stroke-width':1}));
+    esvg.appendChild(el('text',{x:ex(eg),y:EtopPad+ENC.length*ErowH+16,'text-anchor':'middle','font-size':11,fill:INK3},eg));
+  }
+  esvg.appendChild(el('text',{x:EplotL,y:EtopPad+ENC.length*ErowH+31,'font-size':11,fill:INK3},'Floor area per adult fox (m²), single linear scale'));
+
+  function ebarTxt(xx,yy,size,weight,txt){
+    return el('text',{x:xx,y:yy,'font-size':size,'font-weight':weight,fill:INK,'dominant-baseline':'middle',
+      'paint-order':'stroke',stroke:'var(--surface)','stroke-width':3,'stroke-linejoin':'round'},txt);
+  }
+  var EMINSEG=54;
+  ENC.forEach(function(d,i){
+    var y0=EtopPad+i*ErowH, labY=y0+14, barY=y0+ElabelH, midY=barY+EbarH/2;
+    var lbl=el('text',{x:EplotL,y:labY,'font-size':13,fill:INK,'font-weight':600});
+    lbl.appendChild(el('tspan',{},d.name));
+    if(d.efsa) lbl.appendChild(el('tspan',{fill:ACCv,'font-weight':700},' ∗'));
+    lbl.appendChild(el('tspan',{fill:INK3,'font-weight':400,'font-size':12},'   ('+d.ref+')'));
+    esvg.appendChild(lbl);
+    var lw=ex(d.land)-EplotL;
+    var fill=(d.height==null)?'url(#hatchFox)':GM;
+    esvg.appendChild(el('rect',{x:EplotL,y:barY,width:Math.max(lw,2),height:EbarH,rx:4,fill:fill}));
+    var landTxt=d.land.toFixed(d.land<1?1:(d.land%1?1:0))+' m²';
+    var hTxt=(d.height==null)?'h n/s':'h '+d.height+' m';
+    if(lw>=EMINSEG){
+      esvg.appendChild(ebarTxt(EplotL+9,midY-6,12,700,landTxt));
+      esvg.appendChild(ebarTxt(EplotL+9,midY+9,10.5,500,hTxt));
+    } else {
+      esvg.appendChild(el('text',{x:ex(d.land)+8,y:midY,'font-size':11,fill:INK2,'dominant-baseline':'middle'},landTxt+' · '+hTxt));
+    }
+  });
+
+  var etb=document.getElementById('enctbody');
+  ENC.forEach(function(d){
+    var tr=document.createElement('tr');
+    function td(v,left){var c=document.createElement('td');if(left)c.style.textAlign='left';c.innerHTML=v;tr.appendChild(c);}
+    td(d.name+(d.efsa?' &lowast;':''),true);
+    td(d.land.toFixed(d.land<1?1:(d.land%1?1:0)));
+    td(d.height==null?'n/s':d.height);
+    td(d.efsa?'&lowast;':'');
+    td(d.note||'',true);
+    etb.appendChild(tr);
   });
 })();
 </script>
