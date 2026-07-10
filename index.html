@@ -69,7 +69,7 @@
     align-items:center;padding:14px 0;border-top:1px solid var(--hair)}
   .schem-row:first-of-type{border-top:1px solid var(--hair-2)}
   .cage-cell{overflow-x:auto}
-  .cage-cell svg{display:block;height:auto}
+  .cage-cell svg{display:block;height:auto;max-width:none}
   .info h3{margin:0 0 2px;font-size:1.02rem;font-weight:680}
   .info .role{color:var(--ink-3);font-size:.82rem;margin:0 0 8px;font-weight:500}
   .costs{font-size:.86rem;line-height:1.5}
@@ -166,7 +166,7 @@
     </div>
   </div>
 
-  <p class="astkey">Cages are drawn to a single shared scale, so the mink looks the same size in each: the current legal cage (bottom) is a sliver of the captive-standard enclosures, and that space gap is the point. Cost ranges are the study's engineering route (low) to added-area route (high), 2025 EUR, Finnish construction prices, per pelt of annual output. Costs shown only where a compliance calculation exists.</p>
+  <p class="astkey">Cages are drawn to a single shared scale, so the mink looks the same size in each: the current legal cage (bottom) is a sliver of the captive-standard enclosures, and that space gap is the point. Cost ranges are the study's engineering route (low) to added-area route (high), 2025 EUR, Finnish construction prices, per pelt of annual output. Costs shown only where a compliance calculation exists. Cost figures are own calculations (this study) built on Luke (2025) construction costs, with the German standard externally anchored to TG-International (2014); the current-system production cost and pelt price come from Carpenter (2025), in turn drawing on Hernesniemi (2023) and FIFUR (2025). Full references below.</p>
 
   <!-- ============ existing enclosure-space bar chart (kept) ============ -->
   <h2>Enclosure space and water pool per adult mink, by standard (full comparison)</h2>
@@ -239,10 +239,12 @@
     <li>EFSA Panel on Animal Health and Animal Welfare (AHAW). (2025). Welfare of American mink, red and Arctic foxes, raccoon dog and chinchilla kept for fur production. <em>EFSA Journal</em>, <em>23</em>(7), Article e9519. <a href="https://doi.org/10.2903/j.efsa.2025.9519">https://doi.org/10.2903/j.efsa.2025.9519</a></li>
     <li>Finnish Government (Valtioneuvosto). (2011). <em>Valtioneuvoston asetus turkisel&auml;inten suojelusta 1084/2011</em> [Government decree on the protection of fur animals]. Finlex. <a href="https://www.finlex.fi/fi/laki/alkup/2011/20111084">https://www.finlex.fi/fi/laki/alkup/2011/20111084</a></li>
     <li>Fur Europe. (2015). <em>WelFur: Welfare assessment protocol for mink</em> (2nd ed.). <a href="https://www.sustainablefur.com/wp-content/uploads/2018/11/Mink_protocol_final_web_edition_light.pdf">https://www.sustainablefur.com/wp-content/uploads/2018/11/Mink_protocol_final_web_edition_light.pdf</a></li>
+    <li>Hernesniemi, T. (2023). <em>Tuotantokustannus: kettu ja minkki</em> [Production cost: blue fox and mink] [Data set]. Keski-Pohjanmaan koulutusyhtym&auml; (KPEDU). <a href="https://www.kpedu.fi/docs/default-source/projektisivustot/tietolinkki/tuotantokustannus-kettu-ja-minkki_2023-06-12.xlsx">https://www.kpedu.fi/docs/default-source/projektisivustot/tietolinkki/tuotantokustannus-kettu-ja-minkki_2023-06-12.xlsx</a></li>
     <li>Luke (Natural Resources Institute Finland). (2025). <em>Cost assessment of the draft Government Decree on the Welfare of Fur Animals</em> (VN/14432/2025). <a href="https://mmm.fi/-/luonnos-uudeksi-turkiselainasetukseksi-lausunnolle">https://mmm.fi/-/luonnos-uudeksi-turkiselainasetukseksi-lausunnolle</a></li>
     <li>MMM (Finnish Ministry of Agriculture and Forestry). (2025a). <em>Draft Government Decree on the Welfare of Fur Animals</em> (VN/14432/2025). <a href="https://mmm.fi/-/luonnos-uudeksi-turkiselainasetukseksi-lausunnolle">https://mmm.fi/-/luonnos-uudeksi-turkiselainasetukseksi-lausunnolle</a></li>
     <li>Republik &Ouml;sterreich. (2004). <em>2. Tierhaltungsverordnung, BGBl. II Nr. 486/2004, Anlage 1</em>. Bundesgesetzblatt f&uuml;r die Republik &Ouml;sterreich (RIS). <a href="https://www.ris.bka.gv.at/eli/bgbl/ii/2004/486/ANL1/NOR40093162">https://www.ris.bka.gv.at/eli/bgbl/ii/2004/486/ANL1/NOR40093162</a></li>
     <li>Schweizerischer Bundesrat. (2008). <em>Tierschutzverordnung (TSchV), SR 455.1, Anhang 2</em>. Fedlex. <a href="https://www.fedlex.admin.ch/eli/cc/2008/416/de">https://www.fedlex.admin.ch/eli/cc/2008/416/de</a></li>
+    <li>TG-International (Treuhandgesellschaft f&uuml;r Beratung und Management mbH). (2014). <em>Sachverst&auml;ndigengutachten: Economic viability of a German mink farm under TierSchNutztV</em> [Expert report]. Schleswig-Holstein Higher Administrative Court (Oberverwaltungsgericht). Copy on file.</li>
   </ol>
 
   <p class="caption">Compiled for the fur-standards study (EU fur phase-out and transition costs). Standards are reference comparators; cost figures are the study's own model (Finnish construction prices, Luke calibration, TG-International external anchor for the German standard). Values verified against primary sources. Costs are benchmark estimates pending final review. Claude Code used for drafting.</p>
@@ -288,7 +290,7 @@
 
   // ---- SCHEMATIC ----------------------------------------------------------
   // area m2 per animal (footprint), height m, water m2 + depth m, cost strings
-  var S = 62;          // px per metre (shared linear scale)
+  var S = 44;          // px per metre (shared linear scale)
   var MINK_M = 0.45;   // drawn mink body length, metres (constant)
   var DEPF = 0.42;     // cavalier depth foreshortening
   var CA = Math.cos(Math.PI/6), SA = Math.sin(Math.PI/6);
@@ -302,12 +304,15 @@
       cost:{inv:'552 – 1,124', cap:'46 – 94', tot:'85 – 133', oc:'46 – 94'}},
     {name:'Ecorys 1', role:'EC survey, two-level cage (Scenarios 4 / 5)',
       area:0.27, harea:0.438, h:0.9, water:0, depth:null, twolevel:true, areaLabel:'4,380 cm² (two levels)',
+      fpW:0.9, fpD:0.3, dims:'base 90 × 30 cm · upper 56 × 30 cm',
       cost:{inv:'164 – 345', cap:'14 – 29', tot:'53 – 68', oc:'14 – 29'}},
     {name:'Ecorys 2', role:'EC survey, single-level cage',
       area:0.54, h:0.45, water:0, depth:null, twolevel:false, areaLabel:'5,400 cm²',
+      fpW:0.9, fpD:0.6, dims:'two 90 × 30 cm cages joined',
       cost:{inv:'235 – 469', cap:'20 – 39', tot:'59 – 78', oc:'20 – 39'}},
     {name:'Finland', role:'draft fur decree (VN/14432/2025)',
       area:0.36, h:0.45, water:0, depth:null, twolevel:false, areaLabel:'3,600 cm²',
+      dims:'min. 30 × 70 cm (width × length)',
       cost:{inv:'76', cap:'6', tot:'46', oc:'6'}},
     {name:'EU legal minimum / WelFur', role:'current standard and cost baseline',
       area:0.255, h:0.45, water:0, depth:null, twolevel:false, areaLabel:'2,550 cm²',
@@ -321,11 +326,13 @@
 
   // draw one cavalier-oblique cage into an svg group; returns svg element sized to fit
   function drawCage(d){
-    var side=Math.sqrt(d.area);           // footprint side, metres (square)
-    var w=side*S, dep=side*S*DEPF, ht=d.h*S;
+    var fpWm=d.fpW||Math.sqrt(d.area);     // footprint width, metres
+    var fpDm=d.fpD||Math.sqrt(d.area);     // footprint depth, metres
+    var w=fpWm*S, dep=fpDm*S*DEPF, ht=d.h*S;
     var dvx=dep*CA, dvy=-dep*SA;           // receding up-right
-    // bounding: x from 0..(w+dvx); y from -(ht - dvy? ) ... compute
-    var padX=42, padTop=16, padBot=26, rightReserve=150;
+    var aLab0 = d.areaLabel || fmtArea(d.harea||d.area);
+    var labelInside = (aLab0.length*5.7) <= w*0.95;
+    var padX=42, padTop=16, padBot=(d.dims?34:26), rightReserve=labelInside?24:(aLab0.length*5.7+24);
     // origin front-bottom-left placed so drawing fits
     var totW = w + dvx;                    // horizontal extent of box
     var totH = ht + (-dvy);                // vertical extent (dvy negative)
@@ -337,6 +344,7 @@
       poolW = ps + pdvx + 16;
     }
     var svgW = padX + totW + poolW + rightReserve;
+    if(d.dims) svgW = Math.max(svgW, padX + d.dims.length*5.0 + 12);
     var svgH = padTop + totH + padBot;
     var x0 = padX, y0 = padTop + ht + (dvy<0? -dvy:0); // front-bottom-left y (ground)
 
@@ -379,19 +387,25 @@
       g.appendChild(el('line',{x1:e[0][0],y1:e[0][1],x2:e[1][0],y2:e[1][1],stroke:INK3,'stroke-width':0.9,'stroke-opacity':0.55}));
     });
 
-    // area label: inside the floor if it fits, else to the right of the box
+    // area label: inside the floor if it fits, else to the right with a leader
+    // that ends on the FLOOR edge (so it reads as floor area, not the whole box)
     var fcx=(FBL[0]+BBR[0])/2, fcy=(FBL[1]+BBR[1])/2;
-    var aLab = d.areaLabel || fmtArea(d.harea||d.area);
-    var estW = aLab.length*5.7;
-    if(estW <= w*0.95){
-      g.appendChild(mkText(fcx,fcy+2,10.5,700,INK,'middle',aLab,true));
+    if(labelInside){
+      g.appendChild(mkText(fcx,fcy+2,10.5,700,INK,'middle',aLab0,true));
     } else {
-      var rx=x0+totW+(pool?poolW:0)+10, ry=y0-ht/2;
-      g.appendChild(el('line',{x1:x0+w+dvx/2,y1:y0-ht/2+dvy/2,x2:rx-4,y2:ry,stroke:INK3,'stroke-width':0.8,'stroke-opacity':0.5}));
-      g.appendChild(mkText(rx,ry,10.5,700,INK,'start',aLab,false));
+      var rx=x0+totW+(pool?poolW:0)+10, ry=y0-ht*0.35;
+      // leader from the back-right FLOOR corner (right edge of the floor) to the label
+      g.appendChild(el('line',{x1:BBR[0],y1:BBR[1],x2:rx-4,y2:ry,stroke:INK3,'stroke-width':0.8,'stroke-opacity':0.6}));
+      g.appendChild(el('circle',{cx:BBR[0],cy:BBR[1],r:1.6,fill:INK3}));
+      g.appendChild(mkText(rx,ry,10.5,700,INK,'start',aLab0,false));
     }
     // height label on left edge
     g.appendChild(mkText(x0-6,y0-ht/2,10,600,INK2,'end',d.h+' m',false));
+    // footprint dimensions below the mink (where the source specifies them);
+    // left-anchored to the box edge so long strings never clip off the left
+    if(d.dims){
+      g.appendChild(mkText(x0,y0+16,9,500,INK3,'start',d.dims,false));
+    }
 
     // pool
     if(pool){
