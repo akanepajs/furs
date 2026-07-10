@@ -210,6 +210,85 @@
     <cite>EFSA Panel on Animal Health and Welfare (2025). Welfare of American mink, red and Arctic foxes, raccoon dog and chinchilla kept for fur production (Scientific Opinion 9519). <em>EFSA Journal</em>, 23(7).</cite>
   </div>
 
+  <h2>How the compliance costs are calculated</h2>
+
+  <style>
+    .method p{max-width:74ch;font-size:.92rem;margin:0 0 12px}
+    .method p b{color:var(--ink)}
+    .calc{overflow-x:auto;margin:6px 0 4px}
+    .calc table{min-width:640px}
+    .calc td.lbl,.calc th.lbl{text-align:left}
+    .calc td.row{text-align:left;color:var(--ink-2)}
+    .calc td.rk{text-align:left;color:var(--ink-3);width:1.4em;font-variant-numeric:tabular-nums}
+    .calc td.shared{text-align:left;color:var(--ink-3)}
+    .calc tr.res td{font-weight:700;border-top:1px solid var(--hair-2)}
+    .calc td:not(.row):not(.lbl):not(.shared):not(.rk){font-variant-numeric:tabular-nums}
+    .method .flag{color:var(--ink);font-weight:600}
+  </style>
+
+  <div class="method">
+  <p>The cost of each standard is the <b>one-time capital</b> needed to rebuild the Finnish mink industry's cages to that standard, plus the <b>yearly cost of financing that capital</b>. Four cost bases feed it. The Finnish draft decree is the one standard costed directly, from the Natural Resources Institute Finland (Luke) construction-cost assessment. The larger Ecorys cages (from the European Commission's consultation survey) and the German statutory cage have no published construction-cost study, so they are priced with the same Luke per-metre rates extended to the extra cage area. The German figure is cross-checked against an independent 2014 expert valuation of a real German mink farm (TG-International). The swimming basin that the German standard requires has no published unit cost and is carried as a flagged assumption.</p>
+
+  <p><b>Finland: measured directly.</b> The draft decree enlarges the cage floor from 2,550 to 3,600 cm&sup2; per adult. Luke prices this as shade-house running metres: converting the whole existing stock (137,500 m at about EUR 378 per metre in 2025 prices) and building 45,000 m of new capacity (at about EUR 540 per metre). Spread over 1,000,000 pelts of annual output, this gives about <b>EUR 76</b> of one-time capital per pelt. This is the one directly-measured anchor; every other figure is calibrated so that the method below reproduces this Luke number exactly.</p>
+
+  <p><b>Ecorys: extrapolated from Luke.</b> The Commission's survey (processed by Ecorys) sets larger cages under its reform scenarios: a two-level cage of 4,380 cm&sup2; per animal, or a single-level 5,400 cm&sup2;. No one has costed these, so the extra floor area beyond the current cage is priced at the same Luke rates, with small added costs for a partly-solid floor and enrichment (and, for the two-level cage, its upper shelf as hardware, see the table note). The result is about <b>EUR 164 to 345</b> per pelt for the two-level cage and <b>EUR 235 to 469</b> for the single-level one, the range reflecting the two costing routes described below. There is no open water.</p>
+
+  <p><b>German: anchored to an independent valuation.</b> The German fur-farming statute requires 1 m&sup2; of floor per animal, roughly four times the current area, plus a solid floor, climbing structures and a swimming basin. Modelling that cage on Finnish construction prices gives about <b>EUR 552 to 1,124</b> per pelt. As an independent check, the 2014 expert report valued a real German mink farm at about EUR 777 per pelt of annual output in 2025 prices, or about EUR 614 for the cages alone. Both fall inside the modelled range, which is why German is treated as the empirically-anchored high standard rather than a pure extrapolation.</p>
+
+  <p><b>Swimming pool: an order-of-magnitude assumption.</b> No published price exists for a farm swimming basin meeting the German requirement (at least 1 m&sup2; of water per animal, kept from freezing). <span class="flag">It is included as an assumption of EUR 100 per pelt for the basin plus EUR 10 for climbing structures, not a measured cost</span>. The German cage's solid floor adds about EUR 20 more (modelled from its area), so its basin, floor and climbing adders total about EUR 130. This is the least certain part of the German figure. The Finnish and Ecorys standards require no water and carry no such cost.</p>
+
+  <h3 style="font-size:1rem;margin:22px 0 4px;font-weight:660">Fixed (one-time) capital per pelt</h3>
+  <p style="font-size:.86rem;color:var(--ink-2);margin:0 0 6px;max-width:74ch">Rows A to D are the same for every standard; row E differs by cage size; rows F and G are the two costing routes that bracket the answer. All figures in 2025 EUR, per pelt of annual output (roughly per animal place).</p>
+  <div class="calc">
+  <table>
+    <thead>
+      <tr><th class="rk"></th><th class="lbl">Item</th><th class="lbl">How it is computed</th><th>Finland<br>(draft decree)</th><th>Ecorys 1<br>(two-level)</th><th>Ecorys 2<br>(single-level)</th><th>German<br>(statute)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="rk">A</td><td class="row">Convert the existing shade houses</td><td class="lbl">137,500 m &times; EUR 377.8/m</td><td class="shared" colspan="4">&asymp; EUR 51.9 million (same for every standard)</td></tr>
+      <tr><td class="rk">B</td><td class="row">Cage area the converted stock provides</td><td class="lbl">137,500 m &times; 1.578 m&sup2;/m</td><td class="shared" colspan="4">&asymp; 217,000 m&sup2; (same for every standard)</td></tr>
+      <tr><td class="rk">C</td><td class="row">New-build cost per m&sup2; of cage area</td><td class="lbl">EUR 540/m &divide; 1.578 m&sup2;/m</td><td class="shared" colspan="4">&asymp; EUR 342/m&sup2; (same for every standard)</td></tr>
+      <tr><td class="rk">D</td><td class="row">Added-area cost per m&sup2; (proportional route)</td><td class="lbl">EUR 76.24 million &divide; 84,000 m&sup2; of extra cage area (decree area minus the current cage, over 1,000,000 pelts; not the 45,000 m of new build above)</td><td class="shared" colspan="4">&asymp; EUR 908/m&sup2; (same for every standard)</td></tr>
+      <tr><td class="rk">E</td><td class="row">Cage area required per pelt</td><td class="lbl">from each standard's cage size, blended over one juvenile, one quarter of a female place and one twentieth of a male place</td><td>0.29 m&sup2;</td><td>0.57 m&sup2; total<br>(floor 0.35) &dagger;</td><td>0.70 m&sup2;</td><td>1.30 m&sup2;</td></tr>
+      <tr><td class="rk">F</td><td class="row">Engineering route, low end</td><td class="lbl">(A + area still to be built &times; C) &divide; 1,000,000 pelts, plus welfare adders</td><td>76</td><td>164</td><td>235</td><td>552</td></tr>
+      <tr><td class="rk">G</td><td class="row">Proportional route, high end</td><td class="lbl">(E &minus; 0.204 m&sup2;) &times; D, plus welfare adders</td><td>76</td><td>345</td><td>469</td><td>1,124</td></tr>
+      <tr class="res"><td class="rk"></td><td class="row">One-time capital per pelt (EUR)</td><td class="lbl">route F to route G</td><td>76</td><td>164 &ndash; 345</td><td>235 &ndash; 469</td><td>552 &ndash; 1,124</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="caption">At the Finnish decree the two routes coincide at the Luke-costed EUR 76 (the calibration point); they diverge only for the larger cages. Welfare adders are added to both routes: about EUR 14 to 17 for the Ecorys cages (partly-solid floor and enrichment) and about EUR 130 for the German cage (swimming basin EUR 100, solid floor about EUR 20, climbing structures EUR 10). The current cage's capital is already sunk, so its increment is zero. Intermediate factors are rounded for display; the workbook holds full precision. &dagger; In the engineering route the two-level Ecorys cage is priced on its 0.35 m&sup2; ground floor, not the 0.57 m&sup2; total shown in row E, and its upper shelf (0.22 m&sup2;) is added as hardware at the cage-retrofit rate of about EUR 239/m&sup2;, giving about EUR 52 (a third of the EUR 164 low-end figure); plugging the 0.57 m&sup2; total into row F instead would overstate it.</p>
+
+  <h3 style="font-size:1rem;margin:22px 0 4px;font-weight:660">Annualised cost per pelt</h3>
+  <p style="font-size:.86rem;color:var(--ink-2);margin:0 0 6px;max-width:74ch">The one-time capital is spread over the cage's life as an equal yearly charge (a capital-recovery-factor annuity), then added to the yearly production cost to give the break-even pelt price.</p>
+  <div class="calc">
+  <table>
+    <tbody>
+      <tr><td class="rk">a</td><td class="row lbl">Real discount rate</td><td class="lbl" colspan="4">3% (European Commission, Better Regulation Toolbox, Tool #64)</td></tr>
+      <tr><td class="rk">b</td><td class="row lbl">Cage asset life</td><td class="lbl" colspan="4">15 years (TG-International extended-life basis; within Luke's 10 to 20-year range)</td></tr>
+      <tr><td class="rk">c</td><td class="row lbl">Capital-recovery factor</td><td class="lbl" colspan="4">3% &divide; (1 &minus; 1.03<sup>&minus;15</sup>) = 0.0838</td></tr>
+      <tr><td class="rk">d</td><td class="row lbl">Production cost per pelt</td><td class="lbl" colspan="4">about EUR 39 (Hernesniemi 2023, uprated; Carpenter 2025 reports EUR 36 for 2024)</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="calc" style="margin-top:10px">
+  <table>
+    <thead>
+      <tr><th class="lbl">Standard</th><th>One-time capital<br>(from the table above)</th><th>&times; 0.0838 =<br>annualised capital<br>(EUR/pelt/year)</th><th>+ EUR 39 production cost =<br>break-even pelt price<br>(EUR/pelt)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="lbl">Current cage (baseline)</td><td>0 (already sunk)</td><td>0</td><td>39</td></tr>
+      <tr><td class="lbl">Finland (draft decree)</td><td>76</td><td>6</td><td>46</td></tr>
+      <tr><td class="lbl">Ecorys 1 (two-level)</td><td>164 &ndash; 345</td><td>14 &ndash; 29</td><td>53 &ndash; 68</td></tr>
+      <tr><td class="lbl">Ecorys 2 (single-level)</td><td>235 &ndash; 469</td><td>20 &ndash; 39</td><td>59 &ndash; 78</td></tr>
+      <tr><td class="lbl">German (statute)</td><td>552 &ndash; 1,124</td><td>46 &ndash; 94</td><td>85 &ndash; 133</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="caption">The current pelt price is about EUR 25 (2023 auction year), below even the baseline production cost of about EUR 39: the cages already run at a loss, and every reform standard raises the break-even price further. Figures are rounded independently, so a row's columns may not add up to the euro (the workbook holds full precision); for Finland the EUR 76 capital annualises to EUR 6.4, giving the EUR 46 break-even.</p>
+
+  <p style="font-size:.84rem;color:var(--ink-2);margin:14px 0 0;max-width:74ch"><b>Key sources.</b> Cage construction costs: Luke (2025). Larger-cage specifications: the Ecorys survey (2025). German cost anchor: TG-International (2014). Discount rate: the European Commission's Better Regulation Toolbox (Tool #64). Production cost: Hernesniemi (2023). Pelt prices: FIFUR and Saga Furs. Full citations in the Sources list below.</p>
+  </div>
+
   <h2>Notes</h2>
   <div class="foot">
     <ol>
@@ -242,12 +321,14 @@
     <li>Council of Europe, Standing Committee of the European Convention for the Protection of Animals kept for Farming Purposes. (1999). <em>Recommendation concerning fur animals</em> (adopted 22 June 1999, under ETS No. 087). <a href="https://rm.coe.int/168007a4a4">https://rm.coe.int/168007a4a4</a></li>
     <li>Ecorys. (2025). <em>Study supporting the European Commission's assessment to follow up on the European Citizens' Initiative "Fur Free Europe": Survey of civil society organisations</em> [Survey questionnaire]. European Commission. Copy on file; survey background at <a href="https://food.ec.europa.eu/animals/animal-welfare/eci/eci-fur-free-europe_en">https://food.ec.europa.eu/animals/animal-welfare/eci/eci-fur-free-europe_en</a></li>
     <li>EFSA Panel on Animal Health and Welfare (AHAW). (2025). Welfare of American mink, red and Arctic foxes, raccoon dog and chinchilla kept for fur production. <em>EFSA Journal</em>, <em>23</em>(7), Article e9519. <a href="https://doi.org/10.2903/j.efsa.2025.9519">https://doi.org/10.2903/j.efsa.2025.9519</a></li>
+    <li>FIFUR (Finnish Fur Breeders' Association). (2025). <em>Statistics 2025</em>. <a href="https://fifur.fi/content/uploads/2025/09/FIFUR-Statistics-2025-EN.pdf">https://fifur.fi/content/uploads/2025/09/FIFUR-Statistics-2025-EN.pdf</a></li>
     <li>Finnish Government (Valtioneuvosto). (2011). <em>Valtioneuvoston asetus turkisel&auml;inten suojelusta 1084/2011</em> [Government decree on the protection of fur animals]. Finlex. <a href="https://www.finlex.fi/fi/laki/alkup/2011/20111084">https://www.finlex.fi/fi/laki/alkup/2011/20111084</a></li>
     <li>Fur Europe. (2015). <em>WelFur: Welfare assessment protocol for mink</em> (2nd ed.). <a href="https://www.sustainablefur.com/wp-content/uploads/2018/11/Mink_protocol_final_web_edition_light.pdf">https://www.sustainablefur.com/wp-content/uploads/2018/11/Mink_protocol_final_web_edition_light.pdf</a></li>
     <li>Hernesniemi, T. (2023). <em>Tuotantokustannus: kettu ja minkki</em> [Production cost: blue fox and mink] [Data set]. Keski-Pohjanmaan koulutusyhtym&auml; (KPEDU). <a href="https://www.kpedu.fi/docs/default-source/projektisivustot/tietolinkki/tuotantokustannus-kettu-ja-minkki_2023-06-12.xlsx">https://www.kpedu.fi/docs/default-source/projektisivustot/tietolinkki/tuotantokustannus-kettu-ja-minkki_2023-06-12.xlsx</a></li>
     <li>Luke (Natural Resources Institute Finland). (2025). <em>Cost assessment of the draft Government Decree on the Welfare of Fur Animals</em> (VN/14432/2025). <a href="https://mmm.fi/-/luonnos-uudeksi-turkiselainasetukseksi-lausunnolle">https://mmm.fi/-/luonnos-uudeksi-turkiselainasetukseksi-lausunnolle</a></li>
     <li>MMM (Finnish Ministry of Agriculture and Forestry). (2025a). <em>Draft Government Decree on the Welfare of Fur Animals</em> (VN/14432/2025). <a href="https://mmm.fi/-/luonnos-uudeksi-turkiselainasetukseksi-lausunnolle">https://mmm.fi/-/luonnos-uudeksi-turkiselainasetukseksi-lausunnolle</a></li>
     <li>Republik &Ouml;sterreich. (2004). <em>2. Tierhaltungsverordnung, BGBl. II Nr. 486/2004, Anlage 1</em>. Bundesgesetzblatt f&uuml;r die Republik &Ouml;sterreich (RIS). <a href="https://www.ris.bka.gv.at/eli/bgbl/ii/2004/486/ANL1/NOR40093162">https://www.ris.bka.gv.at/eli/bgbl/ii/2004/486/ANL1/NOR40093162</a></li>
+    <li>Saga Furs Oyj. (2025). <em>Auction reports, March to September 2025</em> [Stock-exchange releases]. <a href="https://www.sagafurs.com/corporate/news/saga-furs-march-2025-auction-reports-and-stock-exchange-releases/">March</a>; <a href="https://www.sagafurs.com/corporate/news/saga-furs-september-2025-auction-reports-and-stock-exchange-releases/">September</a></li>
     <li>Schweizerischer Bundesrat. (2008). <em>Tierschutzverordnung (TSchV), SR 455.1, Anhang 2</em>. Fedlex. <a href="https://www.fedlex.admin.ch/eli/cc/2008/416/de">https://www.fedlex.admin.ch/eli/cc/2008/416/de</a></li>
     <li>TG-International (Treuhandgesellschaft f&uuml;r Beratung und Management mbH). (2014). <em>Sachverst&auml;ndigengutachten: Economic viability of a German mink farm under TierSchNutztV</em> [Expert report]. Schleswig-Holstein Higher Administrative Court (Oberverwaltungsgericht). Copy on file.</li>
   </ol>
