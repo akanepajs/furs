@@ -299,7 +299,7 @@
 
   var SCHEM=[
     {name:'Austria', role:'captive-wildlife ordinance (fur farming banned 2005)',
-      area:10, h:2.5, water:5, depth:0.5, twolevel:false, sc:38, scaleTag:'enclosure at reduced scale',
+      area:10, h:2.5, water:5, depth:0.5, sc:40, scaleTag:'enclosure at reduced scale',
       cost:null, banned:true},
     {name:'Germany', role:'fur-farming statute (TierErzHaVerbG)',
       area:1.0, h:1.0, water:1.0, depth:0.3, enc:'≥3 m²/enclosure', twolevel:false,
@@ -310,8 +310,8 @@
       dims:'base 90 × 30 × 45 cm + upper 56 × 30 × 45 cm',
       cost:{inv:'164 – 345', cap:'14 – 29', tot:'53 – 68', oc:'14 – 29'}},
     {name:'Ecorys 2', role:'EC survey, single-level cage',
-      area:0.54, h:0.45, water:0, depth:null, twolevel:false, areaLabel:'5,400 cm²',
-      fpW:0.9, fpD:0.6, dims:'two 90 × 30 cm cages joined',
+      area:0.54, h:0.45, water:0, depth:null, areaLabel:'5,400 cm²',
+      fpW:0.9, fpD:0.6, seamDepth:true, dims:'two 90 × 30 cm cages joined (seam behind the mink)',
       cost:{inv:'235 – 469', cap:'20 – 39', tot:'59 – 78', oc:'20 – 39'}},
     {name:'Finland', role:'draft fur decree (VN/14432/2025)',
       area:0.36, h:0.45, water:0, depth:null, twolevel:false, areaLabel:'3,600 cm²',
@@ -337,8 +337,9 @@
     var w=maxWm*sc, dep=depMax*sc*DEPF, ht=totHm*sc;
     var dvx=dep*CA, dvy=-dep*SA;           // receding up-right
     var aLab0 = d.areaLabel || fmtArea(d.harea||d.area);
-    var labelInside = (aLab0.length*5.7) <= w*0.95;
-    var padX=42, padTop=16, padBot=((d.dims||d.scaleTag)?34:26), rightReserve=labelInside?24:(aLab0.length*5.7+24);
+    var aBelow = (aLab0.indexOf('level')>=0) ? aLab0 : (aLab0 + ' floor area');
+    var line2 = d.dims || d.scaleTag || '';
+    var padX=42, padTop=16, padBot=(line2?46:32), rightReserve=20;
     var totW = w + dvx;                    // horizontal extent
     var totH = ht + (-dvy);                // vertical extent
     // pool sits to the right of the cage on the same ground line
@@ -349,7 +350,7 @@
       poolW = ps + pdvx + 16;
     }
     var svgW = padX + totW + poolW + rightReserve;
-    if(d.dims) svgW = Math.max(svgW, padX + d.dims.length*5.0 + 12);
+    svgW = Math.max(svgW, padX + Math.max(aBelow.length, line2.length)*5.3 + 12);
     var svgH = padTop + totH + padBot;
     var x0 = padX, y0 = padTop + ht + (dvy<0? -dvy:0); // front-bottom-left y (ground)
 
@@ -369,9 +370,14 @@
       allEdges.push([fbl,fbr],[fbl,ftl],[fbr,ftr],[ftl,ftr],[fbl,bbl],[fbr,bbr],[ftl,btl],[ftr,btr],[bbl,bbr],[btl,btr],[bbl,btl],[bbr,btr]);
       by-=lh;
     });
-    // base-floor corners (widest level at ground) used for the area label + leader
+    // base-floor width (widest level at ground); used to centre the mink and the seam
     var bw0=levels[0].w*sc;
-    var FBL=[x0,y0], FBR=[x0+bw0,y0], BBR=[x0+bw0+dvx,y0+dvy];
+    // seam for "two cages joined" (single level): a line across the floor at mid-depth,
+    // drawn BEHIND the mink (which sits at the front) so it never splits the figure
+    if(d.seamDepth){
+      g.appendChild(el('line',{x1:x0+dvx/2,y1:y0+dvy/2,x2:x0+bw0+dvx/2,y2:y0+dvy/2,
+        stroke:INK3,'stroke-width':1,'stroke-opacity':0.5,'stroke-dasharray':'4 3'}));
+    }
 
     // mink on the base floor, centered, drawn to THIS cage's scale so the
     // mink-to-enclosure ratio is correct: constant across the five shared-scale
@@ -387,27 +393,12 @@
       g.appendChild(el('line',{x1:e[0][0],y1:e[0][1],x2:e[1][0],y2:e[1][1],stroke:INK3,'stroke-width':0.9,'stroke-opacity':0.55}));
     });
 
-    // area label: inside the floor if it fits, else to the right with a leader
-    // that ends on the FLOOR edge (so it reads as floor area, not the whole box)
-    var fcx=x0+w/2, fcy=y0-ht*0.55; // upper-middle of the front face, clear of the mink
-    if(labelInside){
-      g.appendChild(mkText(fcx,fcy,11,700,INK,'middle',aLab0,true));
-    } else {
-      var rx=x0+totW+(pool?poolW:0)+10, ry=y0-ht*0.35;
-      // leader from the back-right FLOOR corner (right edge of the floor) to the label
-      g.appendChild(el('line',{x1:BBR[0],y1:BBR[1],x2:rx-4,y2:ry,stroke:INK3,'stroke-width':0.8,'stroke-opacity':0.6}));
-      g.appendChild(el('circle',{cx:BBR[0],cy:BBR[1],r:1.6,fill:INK3}));
-      g.appendChild(mkText(rx,ry,11,700,INK,'start',aLab0,false));
-    }
-    // height label on left edge
+    // area BELOW the figure, so it reads as floor area (not the 3D volume);
+    // left-anchored to the box edge. Second line = footprint dims or scale tag.
+    g.appendChild(mkText(x0,y0+18,11,700,INK,'start',aBelow,false));
+    if(line2) g.appendChild(mkText(x0,y0+33,10,500,INK3,'start',line2,false));
+    // height label on the left edge (vertical dimension)
     g.appendChild(mkText(x0-6,y0-ht/2,10.5,600,INK2,'end',d.h+' m',false));
-    // footprint dimensions (or a reduced-scale tag) below the mink;
-    // left-anchored to the box edge so long strings never clip off the left
-    if(d.dims){
-      g.appendChild(mkText(x0,y0+16,10,500,INK3,'start',d.dims,false));
-    } else if(d.scaleTag){
-      g.appendChild(mkText(x0,y0+16,10,500,INK3,'start',d.scaleTag,false));
-    }
 
     // pool
     if(pool){
