@@ -312,7 +312,7 @@
       cost:{inv:'164 – 345', cap:'14 – 29', tot:'53 – 68', oc:'14 – 29'}},
     {name:'Ecorys 2', role:'EC survey, single-level cage',
       area:0.54, h:0.45, water:0, depth:null, areaLabel:'5,400 cm²',
-      fpW:0.9, fpD:0.6, seamDepth:true, dims:'two 90 × 30 cm cages joined (seam behind the mink)',
+      fpW:0.9, fpD:0.6, seamDepth:true, dims:'two 90 × 30 cm cages joined (dashed line marks the join)',
       cost:{inv:'235 – 469', cap:'20 – 39', tot:'59 – 78', oc:'20 – 39'}},
     {name:'Finland', role:'draft fur decree (VN/14432/2025)',
       area:0.36, h:0.45, water:0, depth:null, twolevel:false, areaLabel:'3,600 cm²',
@@ -374,11 +374,21 @@
     });
     // base-floor width (widest level at ground); used to centre the mink and the seam
     var bw0=levels[0].w*sc;
-    // seam for "two cages joined" (single level): a line across the floor at mid-depth,
-    // drawn BEHIND the mink (which sits at the front) so it never splits the figure
+    // seam for "two cages joined" (single level): the mid-depth cross-section where the
+    // two cages meet, traced across all four planes it cuts (floor, top, left and right
+    // walls). Drawn BEHIND the mink (which sits at the front) so it never splits the figure.
     if(d.seamDepth){
-      g.appendChild(el('line',{x1:x0+dvx/2,y1:y0+dvy/2,x2:x0+bw0+dvx/2,y2:y0+dvy/2,
-        stroke:INK3,'stroke-width':1,'stroke-opacity':0.5,'stroke-dasharray':'4 3'}));
+      var sx=dvx/2, sy=dvy/2;                        // half-depth offset (receding)
+      var seam=[
+        [[x0+sx,y0+sy],[x0+bw0+sx,y0+sy]],           // floor
+        [[x0+sx,y0+sy-ht],[x0+bw0+sx,y0+sy-ht]],     // top
+        [[x0+sx,y0+sy],[x0+sx,y0+sy-ht]],            // left wall
+        [[x0+bw0+sx,y0+sy],[x0+bw0+sx,y0+sy-ht]]     // right wall
+      ];
+      seam.forEach(function(s){
+        g.appendChild(el('line',{x1:s[0][0],y1:s[0][1],x2:s[1][0],y2:s[1][1],
+          stroke:INK3,'stroke-width':1,'stroke-opacity':0.5,'stroke-dasharray':'4 3'}));
+      });
     }
 
     // mink on the base floor, centered, drawn to THIS cage's scale so the
