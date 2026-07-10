@@ -10,7 +10,7 @@
     --surface-2:#f6f7f5;
     --ink:#1b1f1d;
     --ink-2:#4a524e;
-    --ink-3:#78807b;
+    --ink-3:#616a63;
     --hair:#e2e6e2;
     --hair-2:#cfd5d0;
     --shade-min:#d3d7d4;                 /* light gray = little height / depth */
@@ -39,7 +39,7 @@
       --neutral:#4b5551; --accent:#8bc7ec;
   }
   :root[data-theme="light"]{
-    --surface:#ffffff; --surface-2:#f6f7f5; --ink:#1b1f1d; --ink-2:#4a524e; --ink-3:#78807b;
+    --surface:#ffffff; --surface-2:#f6f7f5; --ink:#1b1f1d; --ink-2:#4a524e; --ink-3:#616a63;
     --hair:#e2e6e2; --hair-2:#cfd5d0;
     --shade-min:#d3d7d4; --green-mid:#4e9b73; --blue-mid:#3f8ec4;
     --brown:#6b4a2b; --red:#a11f1f; --neutral:#b9c2bc; --accent:#0c4a6e;
@@ -284,9 +284,14 @@
   }
   var mkg=document.getElementById('minkkeyg'); if(mkg) mkg.appendChild(minkInner('var(--brown)'));
 
-  var GRAY=css('--shade-min'), GM=css('--green-mid'), BM=css('--blue-mid'),
-      BROWN=css('--brown'), INK=css('--ink'), INK2=css('--ink-2'), INK3=css('--ink-3'),
-      HAIR=css('--hair'), HAIR2=css('--hair-2'), ACC=css('--accent');
+  var GRAY=css('--shade-min'), GM=css('--green-mid'), BM=css('--blue-mid');
+  // Colours used for TEXT and STROKES are referenced as live CSS variables, not the
+  // values resolved once at load. This keeps them tied to the active light/dark theme
+  // instead of baking in one theme's greys (which then read badly on the other
+  // background). Only the ramp/hatch fills below stay concrete, because they are
+  // computed height/depth gradients that CSS variables cannot express.
+  var BROWN='var(--brown)', INK='var(--ink)', INK2='var(--ink-2)', INK3='var(--ink-3)',
+      HAIR='var(--hair)', ACC='var(--accent)';
   // hex for ramp mixing (theme-independent stops resolved from CSS)
   function toHex(c){ // rgb() or hex -> hex
     if(c[0]==='#'){return c;}
@@ -355,10 +360,15 @@
     var pool=null, poolW=0;
     if(d.water>0){
       var ps=Math.sqrt(d.water)*sc, pdep=ps*DEPF, pdvx=pdep*CA, pdvy=-pdep*SA, pht=d.depth*sc;
-      pool={ps:ps,pdvx:pdvx,pdvy:pdvy,pht:pht};
-      poolW = ps + pdvx + 16 + 64;   // extra 64: depth label sits to the right of the pool
+      var floorW=aBelow.length*6.0;                            // cage floor-area label width
+      var pAreaTxt=fmtArea(d.water)+' pool water', pAreaW=pAreaTxt.length*5.6;
+      var pLabelDX=Math.max(w, floorW+8);                      // push pool label past the cage label
+      pool={ps:ps,pdvx:pdvx,pdvy:pdvy,pht:pht,labelDX:pLabelDX,areaTxt:pAreaTxt};
+      poolW = Math.max(ps+pdvx, (pLabelDX-w)+pAreaW) + 12;     // depth label now sits inside the pool
     }
-    var svgW = padX + totW + poolW + rightReserve;
+    // when there is a pool it is joined to the cage's front-right (starts at x0+w,
+    // the front width), so measure width from there rather than after the receding depth
+    var svgW = padX + (d.water>0 ? w + poolW : totW) + rightReserve;
     svgW = Math.max(svgW, padX + Math.max(aBelow.length, line2.length)*5.3 + 12);
     var svgH = padTop + totH + padBot;
     var x0 = padX, y0 = padTop + ht + (dvy<0? -dvy:0); // front-bottom-left y (ground)
@@ -426,9 +436,9 @@
                       : (totHm%1?totHm.toFixed(1):totHm)+' m';
     g.appendChild(mkText(x0-6,y0-ht/2,10.5,600,INK2,'end',hLab,false));
 
-    // pool
+    // pool: joined to the cage's front-right corner (no gap), to save width
     if(pool){
-      var px0=x0+totW+16, py0=y0;
+      var px0=x0+w, py0=y0;
       var pFBL=[px0,py0], pFBR=[px0+pool.ps,py0], pFTL=[px0,py0-pool.pht], pFTR=[px0+pool.ps,py0-pool.pht];
       var pBBL=[px0+pool.pdvx,py0+pool.pdvy], pBBR=[px0+pool.ps+pool.pdvx,py0+pool.pdvy],
           pBTL=[px0+pool.pdvx,py0-pool.pht+pool.pdvy], pBTR=[px0+pool.ps+pool.pdvx,py0-pool.pht+pool.pdvy];
@@ -441,10 +451,14 @@
         fill:dfill,'fill-opacity':0.22,stroke:dfill,'stroke-width':1}));
       g.appendChild(el('polygon',{points:[P.apply(0,pFBR),P.apply(0,pBBR),P.apply(0,pBTR),P.apply(0,pFTR)].join(' '),
         fill:dfill,'fill-opacity':0.28,stroke:dfill,'stroke-width':1}));
-      // pool area BELOW the pool (mirrors the cage floor-area label), left-anchored on the same ground line
-      g.appendChild(mkText(px0,y0+18,11,700,INK,'start',fmtArea(d.water)+' pool water',false));
-      // depth BESIDE the pool (mirrors the cage height label), to the right of the box
-      g.appendChild(mkText(px0+pool.ps+pool.pdvx+6,py0-pool.pht/2,10.5,600,INK2,'start',d.depth+' m deep',false));
+      // pool area BELOW the pool (mirrors the cage floor-area label), placed clear of the cage label
+      g.appendChild(mkText(x0+pool.labelDX,y0+18,11,700,INK,'start',pool.areaTxt,false));
+      // depth INSIDE the pool, against the left edge where it joins the cage; a
+      // surface-coloured halo keeps it legible over the blue water in both themes
+      g.appendChild(el('text',{x:px0+5,y:py0-pool.pht/2,'font-size':10.5,'font-weight':600,
+        fill:'var(--ink-2)','text-anchor':'start','dominant-baseline':'middle',
+        'paint-order':'stroke',stroke:'var(--surface)','stroke-width':2.6,'stroke-linejoin':'round'},
+        d.depth+' m deep'));
     }
     return {svg:g,w:svgW,h:svgH};
   }
