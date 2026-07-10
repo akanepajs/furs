@@ -305,8 +305,9 @@
       area:1.0, h:1.0, water:1.0, depth:0.3, enc:'≥3 m²/enclosure', twolevel:false,
       cost:{inv:'552 – 1,124', cap:'46 – 94', tot:'85 – 133', oc:'46 – 94'}},
     {name:'Ecorys 1', role:'EC survey, two-level cage (Scenarios 4 / 5)',
-      area:0.27, harea:0.438, h:0.9, water:0, depth:null, twolevel:true, areaLabel:'4,380 cm² (two levels)',
-      fpW:0.9, fpD:0.3, dims:'base 90 × 30 cm · upper 56 × 30 cm',
+      area:0.27, harea:0.438, h:0.9, water:0, depth:null, areaLabel:'4,380 cm² (two levels)',
+      levels:[{w:0.9,d:0.3,h:0.45},{w:0.56,d:0.3,h:0.45}],
+      dims:'base 90 × 30 × 45 cm + upper 56 × 30 × 45 cm',
       cost:{inv:'164 – 345', cap:'14 – 29', tot:'53 – 68', oc:'14 – 29'}},
     {name:'Ecorys 2', role:'EC survey, single-level cage',
       area:0.54, h:0.45, water:0, depth:null, twolevel:false, areaLabel:'5,400 cm²',
@@ -329,16 +330,17 @@
   // draw one cavalier-oblique cage into an svg group; returns svg element sized to fit
   function drawCage(d){
     var sc=d.sc||S;                        // this cage's scale (Austria uses its own)
-    var fpWm=d.fpW||Math.sqrt(d.area);     // footprint width, metres
-    var fpDm=d.fpD||Math.sqrt(d.area);     // footprint depth, metres
-    var w=fpWm*sc, dep=fpDm*sc*DEPF, ht=d.h*sc;
+    // levels: stacked boxes (metres). Default = one box from footprint + height.
+    var levels=d.levels||[{w:(d.fpW||Math.sqrt(d.area)),d:(d.fpD||Math.sqrt(d.area)),h:d.h}];
+    var maxWm=0, depMax=0, totHm=0;
+    levels.forEach(function(l){ if(l.w>maxWm)maxWm=l.w; if(l.d>depMax)depMax=l.d; totHm+=l.h; });
+    var w=maxWm*sc, dep=depMax*sc*DEPF, ht=totHm*sc;
     var dvx=dep*CA, dvy=-dep*SA;           // receding up-right
     var aLab0 = d.areaLabel || fmtArea(d.harea||d.area);
     var labelInside = (aLab0.length*5.7) <= w*0.95;
     var padX=42, padTop=16, padBot=((d.dims||d.scaleTag)?34:26), rightReserve=labelInside?24:(aLab0.length*5.7+24);
-    // origin front-bottom-left placed so drawing fits
-    var totW = w + dvx;                    // horizontal extent of box
-    var totH = ht + (-dvy);                // vertical extent (dvy negative)
+    var totW = w + dvx;                    // horizontal extent
+    var totH = ht + (-dvy);                // vertical extent
     // pool sits to the right of the cage on the same ground line
     var pool=null, poolW=0;
     if(d.water>0){
@@ -352,41 +354,34 @@
     var x0 = padX, y0 = padTop + ht + (dvy<0? -dvy:0); // front-bottom-left y (ground)
 
     var g=el('svg',{width:svgW,height:svgH,viewBox:'0 0 '+svgW+' '+svgH,role:'img'});
-
-    // ----- cage box (cavalier) -----
-    var hfill = ramp(d.h,H_DOM,GRAYh,GMh);
     function P(x,y){return x+','+y;}
-    var FBL=[x0,y0], FBR=[x0+w,y0], FTL=[x0,y0-ht], FTR=[x0+w,y0-ht];
-    var BBL=[x0+dvx,y0+dvy], BBR=[x0+w+dvx,y0+dvy], BTL=[x0+dvx,y0-ht+dvy], BTR=[x0+w+dvx,y0-ht+dvy];
 
-    // floor (faint fill, shows area)
-    g.appendChild(el('polygon',{points:[P.apply(0,FBL),P.apply(0,FBR),P.apply(0,BBR),P.apply(0,BBL)].join(' '),
-      fill:hfill,'fill-opacity':0.38,stroke:hfill,'stroke-width':1}));
-    // top
-    g.appendChild(el('polygon',{points:[P.apply(0,FTL),P.apply(0,FTR),P.apply(0,BTR),P.apply(0,BTL)].join(' '),
-      fill:hfill,'fill-opacity':0.16,stroke:hfill,'stroke-width':1}));
-    // right side
-    g.appendChild(el('polygon',{points:[P.apply(0,FBR),P.apply(0,BBR),P.apply(0,BTR),P.apply(0,FTR)].join(' '),
-      fill:hfill,'fill-opacity':0.26,stroke:hfill,'stroke-width':1}));
-    // two-level shelf line
-    if(d.twolevel){
-      var sy=y0-ht/2;
-      g.appendChild(el('line',{x1:x0,y1:sy,x2:x0+w,y2:sy,stroke:hfill,'stroke-width':1,'stroke-dasharray':'3 3'}));
-      g.appendChild(el('line',{x1:x0+w,y1:sy,x2:x0+w+dvx,y2:sy+dvy,stroke:hfill,'stroke-width':1,'stroke-dasharray':'3 3'}));
-    }
-    // mink on floor, standing on front-bottom edge, centered.
-    // CONSTANT size everywhere: uses the shared scale S, never this cage's sc.
+    // ----- cage box(es), stacked from the ground up (cavalier) -----
+    var allEdges=[], by=y0;
+    levels.forEach(function(l){
+      var lw=l.w*sc, ld=l.d*sc*DEPF, lh=l.h*sc, ldvx=ld*CA, ldvy=-ld*SA;
+      var hf=ramp(l.h,H_DOM,GRAYh,GMh);
+      var fbl=[x0,by],fbr=[x0+lw,by],ftl=[x0,by-lh],ftr=[x0+lw,by-lh];
+      var bbl=[x0+ldvx,by+ldvy],bbr=[x0+lw+ldvx,by+ldvy],btl=[x0+ldvx,by-lh+ldvy],btr=[x0+lw+ldvx,by-lh+ldvy];
+      g.appendChild(el('polygon',{points:[P.apply(0,fbl),P.apply(0,fbr),P.apply(0,bbr),P.apply(0,bbl)].join(' '),fill:hf,'fill-opacity':0.38,stroke:hf,'stroke-width':1}));
+      g.appendChild(el('polygon',{points:[P.apply(0,ftl),P.apply(0,ftr),P.apply(0,btr),P.apply(0,btl)].join(' '),fill:hf,'fill-opacity':0.16,stroke:hf,'stroke-width':1}));
+      g.appendChild(el('polygon',{points:[P.apply(0,fbr),P.apply(0,bbr),P.apply(0,btr),P.apply(0,ftr)].join(' '),fill:hf,'fill-opacity':0.26,stroke:hf,'stroke-width':1}));
+      allEdges.push([fbl,fbr],[fbl,ftl],[fbr,ftr],[ftl,ftr],[fbl,bbl],[fbr,bbr],[ftl,btl],[ftr,btr],[bbl,bbr],[btl,btr],[bbl,btl],[bbr,btr]);
+      by-=lh;
+    });
+    // base-floor corners (widest level at ground) used for the area label + leader
+    var bw0=levels[0].w*sc;
+    var FBL=[x0,y0], FBR=[x0+bw0,y0], BBR=[x0+bw0+dvx,y0+dvy];
+
+    // mink on the base floor, centered, CONSTANT size (shared scale S, not sc)
     var ml=MINK_M*S;
-    var mx=x0 + (w-ml)/2, my=y0 - 1;
+    var mx=x0 + (bw0-ml)/2, my=y0 - 1;
     var gm=el('g',{transform:'translate('+mx+','+(my-ml*0.31)+') scale('+(ml/MINK_LEN)+','+(ml/MINK_LEN)+')'});
     gm.appendChild(el('path',{d:MINK,fill:BROWN}));
     g.appendChild(gm);
 
-    // front + vertical edges (thin, over everything)
-    var edges=[[FBL,FBR],[FBL,FTL],[FBR,FTR],[FTL,FTR],
-               [FBL,BBL],[FBR,BBR],[FTL,BTL],[FTR,BTR],
-               [BBL,BBR],[BTL,BTR],[BBL,BTL],[BBR,BTR]];
-    edges.forEach(function(e){
+    // cage edges over everything
+    allEdges.forEach(function(e){
       g.appendChild(el('line',{x1:e[0][0],y1:e[0][1],x2:e[1][0],y2:e[1][1],stroke:INK3,'stroke-width':0.9,'stroke-opacity':0.55}));
     });
 
