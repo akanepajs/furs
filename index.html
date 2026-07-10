@@ -119,6 +119,11 @@
   details{margin-top:8px}
   summary{cursor:pointer;font-size:.86rem;color:var(--accent);font-weight:600}
   .caption{font-size:.78rem;color:var(--ink-3);margin:10px 0 0}
+  .nav{display:flex;gap:4px;margin:0 0 22px;border-bottom:1px solid var(--hair)}
+  .nav a{padding:8px 16px;font-size:.98rem;font-weight:640;text-decoration:none;color:var(--ink-3);
+    border-bottom:2px solid transparent;margin-bottom:-1px}
+  .nav a:hover{color:var(--ink)}
+  .nav a.active{color:var(--ink);border-bottom-color:var(--accent)}
   @media (max-width:640px){
     .schem-row{grid-template-columns:1fr;gap:10px}
   }
@@ -126,6 +131,11 @@
 </head>
 <body>
 <div class="wrap">
+
+  <nav class="nav" aria-label="Species">
+    <a href="./" class="active" aria-current="page">Mink</a>
+    <a href="fox.html">Fox</a>
+  </nav>
 
   <h1>Mink fur farming: enclosure space and the cost of raising the standard</h1>
   <p class="sub">A rough schematic of what a single mink is allowed under each fur-farming standard (green&nbsp;=&nbsp;floor area, blue&nbsp;=&nbsp;open-water pool), with the one-time and per-pelt cost of moving the Finnish industry to that standard. <strong>Every reform standard that has been costed lands well above the pelt price of about EUR&nbsp;25: the current cages already run at a loss, and each step up in space adds cost, not revenue.</strong></p>
