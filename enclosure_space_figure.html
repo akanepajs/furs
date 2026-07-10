@@ -162,11 +162,11 @@
     </div>
     <div>
       <h4>Occupant</h4>
-      <div class="swatchrow"><svg class="minkkey" viewBox="0 0 122 40"><path id="minkkeyp" fill="var(--brown)" d=""></path></svg><span>one adult mink, drawn at a constant size in every cage (see note on length)</span></div>
+      <div class="swatchrow"><svg class="minkkey" viewBox="0 0 122 40"><path id="minkkeyp" fill="var(--brown)" d=""></path></svg><span>one adult mink, drawn to scale in every cage (see note on length)</span></div>
     </div>
   </div>
 
-  <p class="astkey">The five fur-farming cages share one scale and the mink is drawn at a constant size, so the current legal cage (bottom) reads as a cramped fit while the German statute is roomier; Austria's much larger enclosure is drawn at a reduced scale to fit the page (it is even larger relative to the mink than shown). An adult farm mink is about 41 to 49 cm in body length, excluding the tail (EFSA, 2025, citing Villumsen et&nbsp;al., 2019). Cost ranges are the study's engineering route (low) to added-area route (high), 2025 EUR, Finnish construction prices, per pelt of annual output. Costs shown only where a compliance calculation exists. Cost figures are own calculations (this study) built on Luke (2025) construction costs, with the German standard externally anchored to TG-International (2014); the current-system production cost and pelt price come from Carpenter (2025), in turn drawing on Hernesniemi (2023) and FIFUR (2025). Full references below.</p>
+  <p class="astkey">The five fur-farming cages share one scale, so the mink is the same size across them: the current legal cage (bottom) reads as a cramped fit while the German statute is roomier. Austria's much larger enclosure is drawn at a reduced scale to fit the page, and its mink is scaled down to match, so the mink-to-enclosure ratio stays correct. An adult farm mink is about 41 to 49 cm in body length, excluding the tail (EFSA, 2025, citing Villumsen et&nbsp;al., 2019). Cost ranges are the study's engineering route (low) to added-area route (high), 2025 EUR, Finnish construction prices, per pelt of annual output. Costs shown only where a compliance calculation exists. Cost figures are own calculations (this study) built on Luke (2025) construction costs, with the German standard externally anchored to TG-International (2014); the current-system production cost and pelt price come from Carpenter (2025), in turn drawing on Hernesniemi (2023) and FIFUR (2025). Full references below.</p>
 
   <!-- ============ existing enclosure-space bar chart (kept) ============ -->
   <h2>Enclosure space and water pool per adult mink, by standard (full comparison)</h2>
@@ -373,8 +373,10 @@
     var bw0=levels[0].w*sc;
     var FBL=[x0,y0], FBR=[x0+bw0,y0], BBR=[x0+bw0+dvx,y0+dvy];
 
-    // mink on the base floor, centered, CONSTANT size (shared scale S, not sc)
-    var ml=MINK_M*S;
+    // mink on the base floor, centered, drawn to THIS cage's scale so the
+    // mink-to-enclosure ratio is correct: constant across the five shared-scale
+    // fur-farm cages, and scaled down in Austria (which uses a reduced scale).
+    var ml=MINK_M*sc;
     var mx=x0 + (bw0-ml)/2, my=y0 - 1;
     var gm=el('g',{transform:'translate('+mx+','+(my-ml*0.31)+') scale('+(ml/MINK_LEN)+','+(ml/MINK_LEN)+')'});
     gm.appendChild(el('path',{d:MINK,fill:BROWN}));
