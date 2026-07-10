@@ -97,6 +97,9 @@
   #chart{display:block;width:100%;height:auto;min-width:640px}
   .astkey{font-size:.82rem;color:var(--ink-2);margin:2px 0 22px;padding-left:2px}
   .astkey b{color:var(--ink)}
+  .ast{color:var(--accent);font-weight:700}
+  .efsanote{font-size:.86rem;color:var(--ink-2);margin:0 0 22px;padding:2px 2px 0}
+  .efsanote .ast{margin-right:2px}
   .quote{border-left:3px solid var(--accent);background:var(--surface-2);
     padding:14px 18px;border-radius:0 10px 10px 0;margin:26px 0 8px;font-size:.94rem}
   .quote p{margin:0 0 8px}
@@ -133,13 +136,15 @@
       <path d="M8 8 L32 32 M32 8 L8 32" stroke="var(--red)" stroke-width="7" stroke-linecap="round"/>
     </svg>
     <div class="body">
-      <h4>Fur farming already banned or being phased out across the EU</h4>
+      <h4>Fur farming already banned or being phased out across the EU<sup class="ast">*</sup></h4>
       <p><span class="tag">Full national ban in force:</span> Austria, Belgium, Bulgaria (mink), Croatia, Czechia, France, Ireland, Italy, Luxembourg, Malta, Netherlands, Slovakia, Slovenia.</p>
       <p><span class="tag">Phase-out under way:</span> Estonia (2026), Latvia (2028), Lithuania (2027), Poland (2033), Romania (2027).</p>
       <p><span class="tag">De facto via welfare standards:</span> Germany (last farm closed 2019).</p>
       <p class="src">Sources: Fur Free Alliance, fur-ban tracker; Eurogroup for Animals (2025). Finland and Greece remain the two largest EU producers with no ban.</p>
     </div>
   </div>
+
+  <p class="efsanote"><span class="ast">*</span>Direction consistent with the EFSA recommendation: much more space and open-water access.</p>
 
   <!-- ============ schematic figure ============ -->
   <div id="schematic"></div>
@@ -301,9 +306,9 @@
   var SCHEM=[
     {name:'Austria', role:'captive-wildlife ordinance (fur farming banned 2005)',
       area:10, h:2.5, water:5, depth:0.5, sc:40, scaleTag:'enclosure at reduced scale',
-      cost:null, banned:true},
+      cost:null, banned:true, ast:true},
     {name:'Germany', role:'fur-farming statute (TierErzHaVerbG)',
-      area:1.0, h:1.0, water:1.0, depth:0.3, enc:'≥3 m²/enclosure', twolevel:false,
+      area:1.0, h:1.0, water:1.0, depth:0.3, enc:'≥3 m²/enclosure', twolevel:false, ast:true,
       cost:{inv:'552 – 1,124', cap:'46 – 94', tot:'85 – 133', oc:'46 – 94'}},
     {name:'Ecorys 1', role:'EC survey, two-level cage (Scenarios 4 / 5)',
       area:0.27, harea:0.438, h:0.9, water:0, depth:null, areaLabel:'4,380 cm² (two levels)',
@@ -450,7 +455,7 @@
     var cage=document.createElement('div'); cage.className='cage-cell';
     var drawn=drawCage(d); cage.appendChild(drawn.svg);
     var info=document.createElement('div'); info.className='info';
-    var html='<h3>'+d.name+'</h3><p class="role">'+d.role+(d.enc?' &middot; '+d.enc:'')+'</p>';
+    var html='<h3>'+d.name+(d.ast?'<sup class="ast">*</sup>':'')+'</h3><p class="role">'+d.role+(d.enc?' &middot; '+d.enc:'')+'</p>';
     html+='<div class="costs">';
     if(d.banned){
       html+='<div class="cline"><span class="k none">Not costed: fur farming banned; enclosure shown for scale</span></div>';
