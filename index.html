@@ -398,9 +398,15 @@
       });
     }
 
+    // cage edges (drawn before the mink so the silhouette paints on top of them)
+    allEdges.forEach(function(e){
+      g.appendChild(el('line',{x1:e[0][0],y1:e[0][1],x2:e[1][0],y2:e[1][1],stroke:INK3,'stroke-width':0.9,'stroke-opacity':0.55}));
+    });
+
     // mink on the base floor, centered, drawn to THIS cage's scale so the
     // mink-to-enclosure ratio is correct (nose-to-tail length = MINK_M metres);
-    // scaled down in Austria, which uses a reduced cage scale.
+    // scaled down in Austria, which uses a reduced cage scale. Drawn LAST of the
+    // cage elements so it sits over the wireframe lines.
     var ml=MINK_M*sc;                 // drawn nose-to-tail length, px
     var k=ml/MINK_VB_W;               // scale the silhouette viewBox to ml wide
     var mh=MINK_VB_H*k;               // drawn height, px
@@ -408,11 +414,6 @@
     var gm=el('g',{transform:'translate('+mx+','+(y0-mh)+') scale('+k+')'});
     gm.appendChild(minkInner(BROWN));
     g.appendChild(gm);
-
-    // cage edges over everything
-    allEdges.forEach(function(e){
-      g.appendChild(el('line',{x1:e[0][0],y1:e[0][1],x2:e[1][0],y2:e[1][1],stroke:INK3,'stroke-width':0.9,'stroke-opacity':0.55}));
-    });
 
     // area BELOW the figure, so it reads as floor area (not the 3D volume);
     // left-anchored to the box edge. Second line = footprint dims or scale tag.
