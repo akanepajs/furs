@@ -162,11 +162,11 @@
     </div>
     <div>
       <h4>Occupant</h4>
-      <div class="swatchrow"><svg class="minkkey" viewBox="0 0 122 40"><path id="minkkeyp" fill="var(--brown)" d=""></path></svg><span>one adult mink, drawn to scale in every cage (see note on length)</span></div>
+      <div class="swatchrow"><svg class="minkkey" viewBox="0 0 122 40"><path id="minkkeyp" fill="var(--brown)" d=""></path></svg><span>one adult mink, about 45&nbsp;cm body length, drawn to scale in every cage (see note)</span></div>
     </div>
   </div>
 
-  <p class="astkey">The five fur-farming cages share one scale, so the mink is the same size across them: the current legal cage (bottom) reads as a cramped fit while the German statute is roomier. Austria's much larger enclosure is drawn at a reduced scale to fit the page, and its mink is scaled down to match, so the mink-to-enclosure ratio stays correct. An adult farm mink is about 41 to 49 cm in body length, excluding the tail (EFSA, 2025, citing Villumsen et&nbsp;al., 2019). Cost ranges are the study's engineering route (low) to added-area route (high), 2025 EUR, Finnish construction prices, per pelt of annual output. Costs shown only where a compliance calculation exists. Cost figures are own calculations (this study) built on Luke (2025) construction costs, with the German standard externally anchored to TG-International (2014); the current-system production cost and pelt price come from Carpenter (2025), in turn drawing on Hernesniemi (2023) and FIFUR (2025). Full references below.</p>
+  <p class="astkey">The five fur-farming cages share one scale, so the mink is the same size across them: the current legal cage (bottom) reads as a cramped fit while the German statute is roomier. Austria's much larger enclosure is drawn at a reduced scale to fit the page, and its mink is scaled down to match, so the mink-to-enclosure ratio stays correct. The mink is drawn to a body length of about 45&nbsp;cm, the midpoint of the 41 to 49&nbsp;cm range EFSA gives for an adult farm mink (body length excluding the tail; EFSA, 2025, citing Villumsen et&nbsp;al., 2019), and is drawn to the same scale as each cage. Cost ranges are the study's engineering route (low) to added-area route (high), 2025 EUR, Finnish construction prices, per pelt of annual output. Costs shown only where a compliance calculation exists. Cost figures are own calculations (this study) built on Luke (2025) construction costs, with the German standard externally anchored to TG-International (2014); the current-system production cost and pelt price come from Carpenter (2025), in turn drawing on Hernesniemi (2023) and FIFUR (2025). Full references below.</p>
 
   <!-- ============ existing enclosure-space bar chart (kept) ============ -->
   <h2>Enclosure space and water pool per adult mink, by standard (full comparison)</h2>
@@ -213,7 +213,7 @@
       <li><b>Germany, fur-farming statute.</b> Floor &ge;1 m&sup2; per animal (and &ge;3 m&sup2; per enclosure), plus an additive swimming basin &ge;1 m&sup2; at &ge;0.3 m depth, height &ge;1 m. The floor area shown (1 m&sup2; per animal) is the per-animal minimum the cost model uses; the bar chart below reads the same statute at a two-animal enclosure occupancy (1.5 m&sup2; per mink). The only binding EU open-water requirement for farmed mink.</li>
       <li><b>Ecorys 1 and 2 (EC survey, Scenarios 4 and 5).</b> Two-level cage of 4,380 cm&sup2; per animal (base 90&times;30 cm plus an upper 56&times;30 cm shelf, 45 cm per level); or a single-level alternative of 5,400 cm&sup2; per animal. No open water.</li>
       <li><b>Finland, draft fur decree.</b> 3,600 cm&sup2; per adult, height &ge;45 cm, no water (the explanatory memorandum declines swimming water, citing disease risk).</li>
-      <li><b>EU legal minimum / WelFur (current).</b> 2,550 cm&sup2; per adult (Council of Europe 1999 baseline; Finnish decree 1084/2011), cage height 45 cm, no water. This is the current standard and the cost baseline. WelFur's best score equals the legal cage and adds only scored, substitutable enrichment.</li>
+      <li><b>EU legal minimum / WelFur (current).</b> 2,550 cm&sup2; per adult, minimum cage 30 cm wide &times; 70 cm long (excluding the nest box), height 45 cm, no water (Finnish decree 1084/2011, following the Council of Europe 1999 baseline). The current cage shares the draft decree's 30 &times; 70 cm minimum footprint and 45 cm height; the reform raises only the floor area, from 2,550 to 3,600 cm&sup2;. This is the current standard and the cost baseline. WelFur's best score equals the legal cage and adds only scored, substitutable enrichment.</li>
       <li><b>Occupancy basis (bar chart).</b> Fur-farm, Ecorys and German-guidance figures are stated per animal; the AZA, Swiss, Austrian and German-statute enclosure minima are stated per enclosure or per pair and shown per mink at the standard's stated capacity (two animals), a conservative reading. A singly-housed mink would have up to about twice the land and water shown for those rows.</li>
       <li>Bar length is true to area on a single linear scale, so the fur-farm and proposed cages appear as thin slivers: that gap is the finding, not a rendering artefact. Green shade encodes required height, blue shade water depth, from light gray (least) to medium colour (most); a hatched fill marks a dimension the source does not specify.</li>
     </ol>
@@ -293,7 +293,8 @@
   // ---- SCHEMATIC ----------------------------------------------------------
   // area m2 per animal (footprint), height m, water m2 + depth m, cost strings
   var S = 68;          // px per metre: shared scale for the five fur-farm cages
-  var MINK_M = 0.5;    // drawn mink length (nose to tail), metres; CONSTANT everywhere
+  var MINK_M = 0.45;   // drawn mink body length (nose to rump), metres = 45 cm,
+                       // the midpoint of EFSA's 41-49 cm range (excl. tail); to scale in every cage
   var DEPF = 0.42;     // cavalier depth foreshortening
   var CA = Math.cos(Math.PI/6), SA = Math.sin(Math.PI/6);
 
@@ -315,11 +316,11 @@
       cost:{inv:'235 – 469', cap:'20 – 39', tot:'59 – 78', oc:'20 – 39'}},
     {name:'Finland', role:'draft fur decree (VN/14432/2025)',
       area:0.36, h:0.45, water:0, depth:null, twolevel:false, areaLabel:'3,600 cm²',
-      dims:'min. 30 × 70 cm (width × length)',
+      dims:'30 × 70 cm',
       cost:{inv:'76', cap:'6', tot:'46', oc:'6'}},
     {name:'EU legal minimum / WelFur', role:'current standard and cost baseline',
       area:0.255, h:0.45, water:0, depth:null, twolevel:false, areaLabel:'2,550 cm²',
-      baseline:true, cost:'base'}
+      dims:'30 × 70 cm', baseline:true, cost:'base'}
   ];
 
   function fmtArea(a){ // m2 -> label
@@ -397,8 +398,12 @@
     // left-anchored to the box edge. Second line = footprint dims or scale tag.
     g.appendChild(mkText(x0,y0+18,11,700,INK,'start',aBelow,false));
     if(line2) g.appendChild(mkText(x0,y0+33,10,500,INK3,'start',line2,false));
-    // height label on the left edge (vertical dimension)
-    g.appendChild(mkText(x0-6,y0-ht/2,10.5,600,INK2,'end',d.h+' m',false));
+    // height label on the left edge (vertical dimension); unit matches the area
+    // unit for this cage (cm where the floor area reads in cm2, m where it reads in m2)
+    var cmRegime=(d.harea||d.area)<1;
+    var hLab=cmRegime ? Math.round(totHm*100)+' cm'
+                      : (totHm%1?totHm.toFixed(1):totHm)+' m';
+    g.appendChild(mkText(x0-6,y0-ht/2,10.5,600,INK2,'end',hLab,false));
 
     // pool
     if(pool){
