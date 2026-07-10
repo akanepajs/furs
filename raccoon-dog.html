@@ -1,0 +1,632 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Raccoon dog fur farming: the cost of raising the standard</title>
+<style>
+  :root{
+    --surface:#ffffff;
+    --surface-2:#f6f7f5;
+    --ink:#1b1f1d;
+    --ink-2:#4a524e;
+    --ink-3:#616a63;
+    --hair:#e2e6e2;
+    --hair-2:#cfd5d0;
+    --green-mid:#4e9b73;
+    --shade-min:#d3d7d4;
+    --brown:#6b4a2b;
+    --red:#a11f1f;
+    --accent:#0c4a6e;
+    --max:1000px;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --surface:#14171a; --surface-2:#1c2024; --ink:#e9ece9; --ink-2:#b3bab5; --ink-3:#8b938d;
+      --hair:#2b3138; --hair-2:#3a424a;
+      --shade-min:#454d49; --brown:#b98a5c;
+      --green-mid:#5aa87f; --red:#e06a6a; --accent:#8bc7ec;
+    }
+  }
+  :root[data-theme="dark"]{
+      --surface:#14171a; --surface-2:#1c2024; --ink:#e9ece9; --ink-2:#b3bab5; --ink-3:#8b938d;
+      --hair:#2b3138; --hair-2:#3a424a;
+      --shade-min:#454d49; --brown:#b98a5c;
+      --green-mid:#5aa87f; --red:#e06a6a; --accent:#8bc7ec;
+  }
+  :root[data-theme="light"]{
+    --surface:#ffffff; --surface-2:#f6f7f5; --ink:#1b1f1d; --ink-2:#4a524e; --ink-3:#616a63;
+    --hair:#e2e6e2; --hair-2:#cfd5d0;
+    --shade-min:#d3d7d4; --brown:#6b4a2b;
+    --green-mid:#4e9b73; --red:#a11f1f; --accent:#0c4a6e;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--surface);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.5;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:var(--max);margin:0 auto;padding:24px 20px 56px}
+  h1{font-size:1.42rem;line-height:1.25;margin:0 0 8px;font-weight:700;letter-spacing:-.01em}
+  h2{font-size:1.08rem;margin:38px 0 10px;font-weight:660}
+  .sub{font-size:.98rem;color:var(--ink-2);margin:0 0 16px;max-width:72ch}
+  .sub strong{color:var(--ink)}
+
+  /* ---- species nav (Mink | Fox | Raccoon dog) ---- */
+  .nav{display:flex;gap:4px;margin:0 0 22px;border-bottom:1px solid var(--hair)}
+  .nav a{padding:8px 16px;font-size:.98rem;font-weight:640;text-decoration:none;color:var(--ink-3);
+    border-bottom:2px solid transparent;margin-bottom:-1px}
+  .nav a:hover{color:var(--ink)}
+  .nav a.active{color:var(--ink);border-bottom-color:var(--accent)}
+
+  /* ---- callouts ---- */
+  .callout{background:var(--surface-2);border:1px solid var(--hair);border-left:3px solid var(--accent);
+    border-radius:0 10px 10px 0;padding:12px 16px;margin:16px 0;font-size:.9rem}
+  .callout h4{margin:0 0 4px;font-size:.95rem;font-weight:680;color:var(--ink)}
+  .callout p{margin:0;color:var(--ink-2)}
+
+  .quote{border-left:3px solid var(--accent);background:var(--surface-2);
+    padding:14px 18px;border-radius:0 10px 10px 0;margin:24px 0 8px;font-size:.94rem}
+  .quote p{margin:0 0 8px}
+  .quote p:last-child{margin:0}
+  .quote cite{display:block;font-style:normal;color:var(--ink-3);font-size:.82rem;margin-top:8px}
+
+  .foot{font-size:.8rem;color:var(--ink-2)}
+  .foot ol{margin:6px 0 0;padding-left:1.3em}
+  .foot li{margin:0 0 5px}
+  table{border-collapse:collapse;width:100%;font-size:.82rem;margin-top:8px}
+  th,td{border-bottom:1px solid var(--hair);padding:6px 9px;text-align:right}
+  th:first-child,td:first-child{text-align:left}
+  thead th{color:var(--ink-3);font-weight:620;border-bottom:1px solid var(--hair-2)}
+  .refs{font-size:.82rem;color:var(--ink-2)}
+  .refs li{margin:0 0 8px;line-height:1.45}
+  .refs a{color:var(--accent);word-break:break-word}
+  .refs em{font-style:italic}
+  .caption{font-size:.78rem;color:var(--ink-3);margin:10px 0 0}
+
+  .method p{max-width:74ch;font-size:.92rem;margin:0 0 12px}
+  .method p b{color:var(--ink)}
+  .method .flag{color:var(--ink);font-weight:600}
+  .calc{overflow-x:auto;margin:6px 0 4px}
+  .calc table{min-width:600px}
+  .calc td.lbl,.calc th.lbl{text-align:left}
+  .calc td.row{text-align:left;color:var(--ink-2)}
+  .calc td.rk{text-align:left;color:var(--ink-3);width:1.4em;font-variant-numeric:tabular-nums}
+  .calc td.shared{text-align:left;color:var(--ink-3)}
+  .calc tr.res td{font-weight:700;border-top:1px solid var(--hair-2)}
+  .calc td:not(.row):not(.lbl):not(.shared):not(.rk){font-variant-numeric:tabular-nums}
+
+  /* ---- cage schematic (visual 3) ---- */
+  .schem-row{display:grid;grid-template-columns:minmax(260px,1fr) 1.15fr;gap:8px 24px;
+    align-items:center;padding:14px 0;border-top:1px solid var(--hair)}
+  .schem-row:first-of-type{border-top:1px solid var(--hair-2)}
+  .cage-cell{overflow-x:auto}
+  .cage-cell svg{display:block;height:auto;max-width:none}
+  .info h3{margin:0 0 2px;font-size:1.02rem;font-weight:680}
+  .info .role{color:var(--ink-3);font-size:.82rem;margin:0 0 8px;font-weight:500}
+  .costs{font-size:.86rem;line-height:1.5}
+  .costs .cline{display:flex;justify-content:space-between;gap:12px;border-bottom:1px dotted var(--hair);padding:2px 0}
+  .costs .cline .k{color:var(--ink-2)}
+  .costs .cline .v{color:var(--ink);font-weight:640;text-align:right;font-variant-numeric:tabular-nums}
+  .costs .oc{color:var(--ink-3);font-weight:500}
+  .costs .none{color:var(--ink-3);font-style:normal}
+  .costs .base{color:var(--accent);font-weight:640}
+  .legend{display:flex;flex-wrap:wrap;gap:18px 26px;align-items:flex-start;
+    padding:14px 16px;background:var(--surface-2);border:1px solid var(--hair);
+    border-radius:10px;margin:20px 0 8px;font-size:.82rem}
+  .legend h4{margin:0 0 6px;font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;color:var(--ink-3);font-weight:640}
+  .swatchrow{display:flex;align-items:center;gap:8px}
+  .seg{width:16px;height:16px;border-radius:4px;flex:none;border:1px solid var(--hair-2)}
+  .ramp{height:12px;width:150px;border-radius:6px;border:1px solid var(--hair-2)}
+  .ramp-g{background:linear-gradient(90deg,var(--shade-min),var(--green-mid))}
+  .ramplabels{display:flex;justify-content:space-between;width:150px;font-size:.7rem;color:var(--ink-3);margin-top:3px}
+  .rdkey{width:42px;height:20px;flex:none}
+  .astkey{font-size:.82rem;color:var(--ink-2);margin:8px 0 22px;padding-left:2px}
+  .astkey b{color:var(--ink)}
+  .ast{color:var(--accent);font-weight:700}
+
+  /* ---- price chart ---- */
+  .chart-scroll{overflow-x:auto}
+  svg{max-width:100%}
+  #pricechart,#rdencl{display:block;width:100%;height:auto;min-width:640px}
+  details{margin-top:8px}
+  summary{cursor:pointer;font-size:.86rem;color:var(--accent);font-weight:600}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <nav class="nav" aria-label="Species">
+    <a href="./">Mink</a>
+    <a href="fox.html">Fox</a>
+    <a href="raccoon-dog.html" class="active" aria-current="page">Raccoon dog</a>
+  </nav>
+
+  <h1>Raccoon dog fur farming: the cost of raising the welfare standard</h1>
+  <p class="sub">What it would cost to move Finland's raccoon dog farms from the current cage to each proposed welfare standard, per pelt of annual output. <strong>Raccoon dog farming loses money before any reform: the pelt price of about EUR&nbsp;47 covers only about half the production cost of about EUR&nbsp;97. Every standard that has been costed adds capital cost on top, not revenue.</strong></p>
+
+  <p class="sub" style="font-size:.9rem">Fur farming is banned or being phased out across most of the EU; Finland is the only significant remaining raccoon dog (Finnraccoon) producer. The method below mirrors the mink and fox pages: the Finnish draft decree is the one standard costed directly from construction data, and the larger German and EFSA-level standards are extrapolated from the same Finnish cost calibration. Raccoon dog is the least-studied of the four species: EFSA calls its welfare evidence base "extremely limited".</p>
+
+  <div class="quote">
+    <p>&ldquo;The majority of the welfare consequences (WCs) listed cannot be prevented or substantially mitigated within the current husbandry systems.&rdquo;</p>
+    <p>&ldquo;&hellip; substantial mitigation would require enclosures that provide sufficient three-dimensional space to incorporate structures and resources that enhance environmental complexity, to allow the quantitative and qualitative expression of fundamental behaviours (e.g. sustained locomotory activity, exploration, foraging and vigilance).&rdquo;</p>
+    <p>For raccoon dog, EFSA describes the evidence base as extremely limited. Its most relevant welfare consequences are restriction of movement, the inability to forage or explore, sensorial under- and overstimulation, isolation stress and locomotory disorders including lameness. Of these, restriction of movement, the inability to forage or explore and isolation stress in single-housed breeders cannot be prevented or substantially mitigated in the current cage system.</p>
+    <cite>EFSA Panel on Animal Health and Welfare (2025). Welfare of American mink, red and Arctic foxes, raccoon dog and chinchilla kept for fur production (Scientific Opinion 9519). <em>EFSA Journal</em>, 23(7).</cite>
+  </div>
+
+  <h2>What a single raccoon dog is allowed, and what each standard costs</h2>
+  <p class="sub">A schematic of the floor area one raccoon dog is allowed under each fur-farming standard, drawn to one shared scale (green&nbsp;=&nbsp;floor area), with the one-time and per-pelt cost of moving Finland's raccoon dog industry to that standard. <strong>Every reform standard that has been costed lands well above the pelt price of about EUR&nbsp;47: raccoon dog farming already runs at a loss of about half its production cost, and each step up in space adds cost, not revenue.</strong></p>
+
+  <div id="schematic"></div>
+
+  <div class="legend">
+    <div>
+      <h4>Cage / enclosure</h4>
+      <div class="swatchrow"><span class="seg" style="background:var(--green-mid);opacity:.5"></span><span>Floor area (transparent green)</span></div>
+    </div>
+    <div>
+      <h4>Green shade = required height</h4>
+      <div class="ramp ramp-g"></div>
+      <div class="ramplabels"><span>0.7 m (gray)</span><span>1.5 m</span></div>
+    </div>
+    <div>
+      <h4>Occupant</h4>
+      <div class="swatchrow"><svg class="rdkey" viewBox="0 0 419.9 211.3" preserveAspectRatio="xMidYMid meet"><g id="rdkeyg" fill="var(--brown)"></g></svg><span>one adult raccoon dog, about 0.8&nbsp;m nose to tail, drawn to scale in each cage (see note)</span></div>
+    </div>
+  </div>
+
+  <p class="astkey"><span class="ast">*</span>&nbsp;marks the captive enclosure and the German statute, which set far more space than the current cage or the Finnish reform decree, the direction EFSA points to; EFSA sets no numeric raccoon dog enclosure size and certifies none of these as adequate. The current cage (bottom) is only about as wide as an adult raccoon dog's body without its tail (EFSA, 2025), while the German statute gives roughly eight times the floor area. The three fur-farming cages are drawn to one shared scale, so the raccoon dog is the same size across them; Switzerland's captive enclosure is drawn as a floor only, because its source sets a floor area but no enclosure height, and at a reduced scale to fit, with its raccoon dog scaled to match. The raccoon dog is drawn to about 0.8&nbsp;m from nose to tail, a representative figure within the range an adult reaches: about 50 to 80&nbsp;cm in body length plus a tail of about 15 to 25&nbsp;cm (EFSA, 2025). Raccoon dog silhouette by T. Michael Keesey (PhyloPic, public domain). Cost ranges are the study's engineering route (low) to proportional route (high), in 2025 EUR at Finnish construction prices, per pelt of annual output. Germany's cost prices the statute's 3&nbsp;m&sup2; per-animal floor at farm stocking density, a lower bound on the 6&nbsp;m&sup2; per-animal enclosure minimum drawn here (see the cost section below). The German figure has no external cost anchor. Ecorys sets the same raccoon dog space as the Finnish decree, so it is not drawn separately. Full references below.</p>
+
+  <h2>Raccoon dog enclosure space: the fur cage against captive and zoo standards</h2>
+  <p class="sub">Minimum floor area allowed per raccoon dog under each standard, on a single linear scale. <strong>Captive and zoo rules give a raccoon dog 15 to 150 m&sup2; per animal (the raccoon-dog-specific Swiss and German zoo minima are 15 to 20 m&sup2;; Austria's 150 m&sup2; is a generic canid figure), against 0.8 to 6 m&sup2; under the fur-farming standards: the reform standards close only a small part of that gap.</strong></p>
+
+  <div class="chart-scroll"><svg id="rdencl" role="img" aria-label="Horizontal bar chart of minimum floor area per raccoon dog for seven standards, ordered by area: captive and zoo standards of 15 to 150 square metres against fur-farming standards of 0.8 to 6 square metres."></svg></div>
+
+  <p class="caption">Green bars are floor area per animal; a hatched bar means the standard sets no enclosure-height figure ("h n/s"). The asterisk marks standards that set substantially more space than the current cage or the Finnish and Ecorys reform decrees, the direction EFSA points to (EFSA sets no numeric raccoon dog enclosure size and certifies none of these as adequate). Captive and zoo figures are per animal at the standard's stated capacity (a pair), a conservative reading: a single-housed raccoon dog would have up to about twice the area shown. The Swiss captive minimum groups the raccoon dog with mid-size foxes (TSchV row 67); the German zoo minimum is the Marderhund-specific figure (BMEL, 2014). Austria groups the raccoon dog with foxes, wolves and jackals in one Canidae enclosure row, so its 150 m&sup2; is an upper bound, not raccoon-dog-specific. The German fur statute sets both &ge;&nbsp;3 m&sup2; per animal and &ge;&nbsp;12 m&sup2; per enclosure; at a pair the enclosure minimum binds and gives 6 m&sup2; per animal, the figure shown here. (Table&nbsp;1 above prices that standard on its 3 m&sup2; per-animal rate at farm stocking density, a different basis from this per-raccoon-dog-at-pair space figure.) Raccoon dog has no open-water requirement in any standard, so unlike the mink comparison every bar is land only. Sources: Austria 2. Tierhaltungsverordnung (2004); Switzerland TSchV Anhang 2 (2008); Germany S&auml;ugetiergutachten (BMEL, 2014); German fur statute TierErzHaVerbG (2017a); Ecorys EC survey (2025); Finnish draft decree (MMM, 2025a); current-cage practice (EFSA, 2025). AZA's published animal care manuals include no raccoon-dog-specific enclosure standard (its Large Canid manual scopes to canids over 10&nbsp;kg; other accreditation bodies were not checked).</p>
+
+  <details>
+    <summary>Show data table (enclosure space)</summary>
+    <p style="font-size:.85rem;font-weight:660;margin:10px 0 3px;color:var(--ink)">Table 5. Minimum floor area per raccoon dog, by standard</p>
+    <table>
+      <thead><tr><th>Standard</th><th>Area per raccoon dog (m&sup2;)</th><th>Height (m)</th><th>EFSA direction</th><th>Basis / note</th></tr></thead>
+      <tbody id="enctbody"></tbody>
+    </table>
+    <p class="caption">Per animal at the stated pair capacity. Verbatim source quotes held in the study provenance note.</p>
+  </details>
+
+  <h2>How the compliance costs are calculated</h2>
+
+  <div class="method">
+  <p>The cost of each standard is the <b>one-time capital</b> needed to rebuild Finland's raccoon dog cages to that standard, plus the <b>yearly cost of financing that capital</b>. The Finnish draft decree is the one standard costed directly, from the Natural Resources Institute Finland (Luke) construction-cost assessment. The larger Ecorys cages (from the European Commission's consultation survey) and the German statutory cage have no published raccoon dog construction-cost study, so they are priced with the same Luke per-metre rates extended to the extra cage area.</p>
+
+  <p><b>Finland: measured directly.</b> The draft decree raises the cage floor to 1.2 m&sup2; for an adult female and 1.2 to 2.4 m&sup2; for a male (the larger figure outside the mid-winter months), and adds a resting shelf, a nest box and a winter nest. Luke prices this as shade-house running metres: converting the whole existing stock (51,000 m at about EUR 272 per metre in 2025 prices) and building 21,500 m of new capacity (at about EUR 453 per metre). This is spread over Finland's raccoon dog sector <b>standard annual output of about 100,000 pelts</b> (the normal full-capacity figure Luke uses, for the whole national industry, not a single model farm). That gives about <b>EUR 236</b> of one-time capital per pelt, about three times the mink figure of about EUR 76. Raccoon dog carries about 3.0 shade-house metres per breeding female against mink's 0.55. The per-pelt capital multiple is about three, below that space ratio, because raccoon dog has more pelts per breeding female (a litter of about six) and a lower per-metre shade-house cost than mink. This is the one directly-measured anchor; every other figure is calibrated so the method below reproduces this Luke number exactly.</p>
+
+  <p><b>Ecorys: the same space as the decree.</b> The Commission's survey (processed by Ecorys) sets the same per-animal raccoon dog space as the Finnish decree, so the Ecorys figure is the decree capital plus a small structure adder for a digging box, platform and hide, about <b>EUR 246</b> per pelt. The survey's total-space floor of at least 1.6 m&sup2; per enclosure and its cage-height rule of about 70 cm are not separately priced by the area-based model, so this is a lower bound on those axes.</p>
+
+  <p><b>German: extrapolated, no external anchor.</b> The German fur-farming statute requires 3 m&sup2; of floor per animal (and at least 12 m&sup2; per enclosure), a height of 1.5 m, a digging substrate, a platform and a nest box. Modelling that cage on Finnish construction prices gives about <b>EUR 1,015 to 2,101</b> per pelt, the range reflecting the two costing routes described below.</p>
+
+  <div class="callout">
+    <h4>Two features of the raccoon dog figures that differ from mink</h4>
+    <p><b>No external cost anchor.</b> The mink German figure is cross-checked against an independent 2014 valuation of a real German mink farm. No such study exists for raccoon dog: Germany has no raccoon dog fur industry to value, and the German regulator declined to quantify the cost. Raccoon dog is also the least-studied of the four species, with an evidence base EFSA calls extremely limited. The raccoon dog German and EFSA-level figures therefore come entirely from the Finnish cost calibration extended to a larger cage. They are order-of-magnitude estimates and a lower bound (the 12 m&sup2;-per-enclosure minimum and the 1.5 m height are not priced by the area model).</p>
+    <p style="margin-top:8px"><b>No swimming basin.</b> Raccoon dog welfare needs are movement, foraging and digging, not open water, so the German raccoon dog cage has no pool. The added features priced here are a digging substrate, a platform and a nest box, carried as small one-time assumptions (about EUR 10 to 15 per pelt), not a costed swimming basin.</p>
+  </div>
+
+  <p><b>EFSA-level: a lower bound.</b> EFSA sets no numeric enclosure size for raccoon dog, so an EFSA-level standard is not given a single figure here. It would cost <b>at least</b> the German figure and is open-ended above it. This matches the study report, which presents the EFSA-level standard as a lower bound rather than a point estimate.</p>
+
+  <h3 style="font-size:1rem;margin:22px 0 4px;font-weight:660">Fixed (one-time) capital per pelt</h3>
+  <p style="font-size:.86rem;color:var(--ink-2);margin:0 0 6px;max-width:74ch">Rows A to D are shared inputs; rows E to H differ by standard; rows I and J are the two costing routes (engineering and proportional) that bracket the answer. All figures in 2025 EUR, per pelt of the standard annual output defined above (about 100,000 pelts).</p>
+  <p style="font-size:.85rem;font-weight:660;margin:12px 0 3px;color:var(--ink)">Table 1. Fixed (one-time) capital per pelt, by standard (raccoon dog)</p>
+  <div class="calc">
+  <table>
+    <thead>
+      <tr><th class="rk"></th><th class="lbl">Item</th><th class="lbl">How it is computed</th><th>Finland<br>(draft decree)</th><th>Ecorys<br>(EC survey)</th><th>German<br>(statute)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="rk">A</td><td class="row">Convert the existing shade houses</td><td class="lbl">51,000 m &times; EUR 272.2/m</td><td class="shared" colspan="3">&asymp; EUR 13.9 million (same for every standard)</td></tr>
+      <tr><td class="rk">B</td><td class="row">Cage area the converted stock provides</td><td class="lbl">51,000 m &times; 1.497 m&sup2;/m</td><td class="shared" colspan="3">&asymp; 76,400 m&sup2; (same for every standard)</td></tr>
+      <tr><td class="rk">C</td><td class="row">New-build cost per m&sup2; of cage area</td><td class="lbl">EUR 452.5/m &divide; 1.497 m&sup2;/m</td><td class="shared" colspan="3">&asymp; EUR 302/m&sup2; (same for every standard)</td></tr>
+      <tr><td class="rk">D</td><td class="row">Added-area cost per m&sup2; (proportional route)</td><td class="lbl">EUR 23.6 million (the Finnish decree's total capital) &divide; 32,240 m&sup2; (the area it adds: 1.0856 &minus; 0.7632 m&sup2; per pelt &times; 100,000 pelts)</td><td class="shared" colspan="3">&asymp; EUR 732/m&sup2; (same for every standard)</td></tr>
+      <tr><td class="rk">E</td><td class="row">Cage area required per pelt</td><td class="lbl">each standard's cage size, blended per pelt over one weaned juvenile, about a sixth of a female place and a thirtieth of a male place &Dagger;</td><td>1.09 m&sup2;</td><td>1.09 m&sup2;</td><td>3.61 m&sup2;</td></tr>
+      <tr><td class="rk">F</td><td class="row">Current cage already provides, per pelt</td><td class="lbl">the current legal cage on the same blended basis &Dagger;; its capital is already sunk, so only area above this is charged</td><td class="shared" colspan="3">0.76 m&sup2; (same for every standard; the baseline the proportional route subtracts)</td></tr>
+      <tr><td class="rk">G</td><td class="row">New cage area still to build</td><td class="lbl">required area (E &times; 100,000) minus what the converted stock already provides (row B, about 76,400 m&sup2;)</td><td>32,000 m&sup2;</td><td>32,000 m&sup2;</td><td>285,000 m&sup2;</td></tr>
+      <tr><td class="rk">H</td><td class="row">Added features, EUR/pelt (both routes)</td><td class="lbl">digging substrate, platform and nest-box fit-out (assumption, no published unit cost)</td><td>0</td><td>10</td><td>15</td></tr>
+      <tr><td class="rk">I</td><td class="row">Engineering route, low end</td><td class="lbl">(A + G &times; C) &divide; 100,000 pelts, plus H</td><td>236</td><td>246</td><td>1,015</td></tr>
+      <tr><td class="rk">J</td><td class="row">Proportional route, high end</td><td class="lbl">(E &minus; F) &times; D, plus H</td><td>236</td><td>246</td><td>2,101</td></tr>
+      <tr class="res"><td class="rk"></td><td class="row">One-time capital per pelt (EUR)</td><td class="lbl">engineering route to proportional route</td><td>236</td><td>246</td><td>1,015 &ndash; 2,101</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="caption">For raccoon dog, the Ecorys standard sets the same per-animal space as the Finnish decree, so its two routes coincide at about EUR 246 (the decree's EUR 236 plus the EUR 10 structure adder); the routes diverge only for the larger German cage. Row H (added features) is added to both routes: about EUR 10 for the Ecorys structure package and EUR 15 for the German digging substrate, platform and nest box, each an order-of-magnitude assumption with no published unit cost. The current cage's capital is already sunk (row F), so only area above it is charged. Rows D and G use different area bases on purpose: row D charges the decree's full area increment over the current cage, while the engineering route (row G) builds only what converting the existing stock cannot already deliver; both reproduce the EUR 236 anchor by design. Intermediate factors are rounded for display; the workbook holds full precision. &Dagger; The per-pelt area is blended across the herd: Finland's raccoon dog sector runs about 17,000 breeding females to produce about 100,000 pelts (litter about six), so one pelt maps to one weaned juvenile plus about 0.17 of a female place and 0.034 of a male place. The decree areas (female 1.2 m&sup2;, male 2.4 m&sup2;, juvenile 0.8 m&sup2;) blend to about 1.09 m&sup2; per pelt; the current legal cage blends to about 0.76 m&sup2;.</p>
+
+  <h3 style="font-size:1rem;margin:22px 0 4px;font-weight:660">Annualised cost per pelt</h3>
+  <p style="font-size:.86rem;color:var(--ink-2);margin:0 0 6px;max-width:74ch">The one-time capital is spread over the cage's life as an equal yearly charge (a capital-recovery-factor annuity), then added to the yearly production cost to give the break-even pelt price.</p>
+  <p style="font-size:.85rem;font-weight:660;margin:12px 0 3px;color:var(--ink)">Table 2. Annualisation parameters (all standards)</p>
+  <div class="calc">
+  <table>
+    <tbody>
+      <tr><td class="rk">a</td><td class="row lbl">Real discount rate</td><td class="lbl" colspan="3">3% (European Commission, Better Regulation Toolbox, Tool #64)</td></tr>
+      <tr><td class="rk">b</td><td class="row lbl">Cage asset life</td><td class="lbl" colspan="3">15 years (within Luke's 10 to 20-year range)</td></tr>
+      <tr><td class="rk">c</td><td class="row lbl">Capital-recovery factor</td><td class="lbl" colspan="3">3% &divide; (1 &minus; 1.03<sup>&minus;15</sup>) = 0.0838</td></tr>
+      <tr><td class="rk">d</td><td class="row lbl">Production cost per pelt</td><td class="lbl" colspan="3">about EUR 97 (Carpenter 2025, raccoon dog operating cost, uprated; an operating-cost basis that excludes some full-economic costs, so a mild lower bound)</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p style="font-size:.85rem;font-weight:660;margin:14px 0 3px;color:var(--ink)">Table 3. Break-even pelt price by standard (raccoon dog)</p>
+  <div class="calc" style="margin-top:10px">
+  <table>
+    <thead>
+      <tr><th class="lbl">Standard</th><th>One-time capital<br>(from the table above)</th><th>&times; 0.0838 =<br>annualised capital<br>(EUR/pelt/year)</th><th>+ EUR 97 production cost =<br>break-even pelt price<br>(EUR/pelt)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="lbl">Current cage (baseline)</td><td>0 (already sunk)</td><td>0</td><td>97</td></tr>
+      <tr><td class="lbl">Finland (draft decree)</td><td>236</td><td>20</td><td>116</td></tr>
+      <tr><td class="lbl">Ecorys (EC survey)</td><td>246</td><td>21</td><td>117</td></tr>
+      <tr><td class="lbl">German (statute)</td><td>1,015 &ndash; 2,101</td><td>85 &ndash; 176</td><td>182 &ndash; 273</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="caption">The current raccoon dog pelt price is about EUR 47 (2025 prices; Carpenter, 2025), below even the baseline production cost of about EUR 97: raccoon dog farming already runs at a loss, and every reform standard raises the break-even price further. Placed against the 24-year Finnish raccoon dog (Finnraccoon) auction price history (FIFUR, 2025), the roughly EUR 116 Finnish-decree break-even is at about the 73rd percentile of the real-price distribution. A compliant raccoon dog farm would have cleared it in 7 of the 24 years, all of them 2015 or earlier, and in none of the nine seasons since. Figures are rounded independently, so a row's columns may not add up to the euro (the workbook holds full precision). On Finland's actual 2024 output of about 24,000 pelts, far below the standard-capacity denominator, every per-pelt capital figure would be about 4.2 times higher (for example the German figure about EUR 4,227): raccoon dog output has collapsed furthest, so it is the most denominator-sensitive of the species.</p>
+
+  <p style="font-size:.84rem;color:var(--ink-2);margin:14px 0 0;max-width:74ch"><b>Key sources.</b> Cage construction costs: Luke (2025). Larger-cage specifications: the Ecorys survey (2025) and the German fur-farming statute (Bundesrepublik Deutschland, 2017a). Discount rate: the European Commission's Better Regulation Toolbox (Tool #64). Production cost and pelt price: Carpenter (2025); the price-history percentile uses the FIFUR (2025) auction series. Full citations in the Sources list below.</p>
+  </div>
+
+  <h2>Raccoon dog pelt price versus compliance break-even thresholds, 2001 to 2024 (real 2025 prices)</h2>
+  <p class="sub">The 24-year Finnish raccoon dog (Finnraccoon) auction price record, in 2025 prices, against the break-even thresholds from Table&nbsp;3. <strong>The price cleared the Finnish draft decree's EUR&nbsp;116 break-even in 7 of the 24 years, all of them 2015 or earlier and none in the nine seasons since; it reached the German statute's EUR&nbsp;182 to 273 band in two years (2013 and 2014) and never rose above it.</strong></p>
+
+  <div class="chart-scroll"><svg id="pricechart" role="img" aria-label="Line chart of the real Finnish raccoon dog pelt price, 2001 to 2024, against the break-even thresholds of each standard; the price reaches the German band of 182 to 273 euros in 2013 and 2014 and clears the Finland break-even in 7 of 24 years, all 2015 or earlier."></svg></div>
+
+  <p class="caption">Source: FIFUR (2025) auction price series (Finnraccoon annual base averages, nominal EUR), uprated to 2025 prices with Finnish inflation, as held in the study workbook. Break-even prices as in Table&nbsp;3: production cost about EUR&nbsp;97 (current cages, no new capital), Finland draft decree EUR&nbsp;116, Ecorys cages EUR&nbsp;117 (essentially on the Finland line, since the Ecorys standard sets the same raccoon dog space as the decree), German statute EUR&nbsp;182 to 273. Raccoon dog has no external cost anchor (unlike mink's TG-International line) and no EFSA-level numeric enclosure size, so an EFSA-level break-even is at least the German band and open-ended above it. The Finnraccoon series is volatile (a real range of about EUR&nbsp;44 to 208): the roughly EUR&nbsp;116 Finnish break-even is at about the 73rd percentile of the real-price record, and every clearing year is 2015 or earlier. The current price of about EUR&nbsp;47 is Carpenter's 2024 figure, near the bottom of the record.</p>
+
+  <details>
+    <summary>Show data table (price series)</summary>
+    <p style="font-size:.85rem;font-weight:660;margin:10px 0 3px;color:var(--ink)">Table 4. Raccoon dog (Finnraccoon) pelt price, 2001 to 2024</p>
+    <table>
+      <thead><tr><th>Year</th><th>Nominal EUR/pelt</th><th>Real 2025 EUR/pelt</th></tr></thead>
+      <tbody id="pricetbody"></tbody>
+    </table>
+    <p class="caption">Finnraccoon auction annual base averages (FIFUR, 2025, pp.&nbsp;28 to 29); real values uprated to 2025 prices with Finnish inflation (HICP).</p>
+  </details>
+
+  <h2>Notes</h2>
+  <div class="foot">
+    <ol>
+      <li><b>What the cost figures are.</b> One-time capital and the derived per-pelt cost of raising Finland's raccoon dog industry from the current legal cage to each standard, in 2025 EUR at Finnish construction prices, per pelt of standard annual output. Ranges are two costing routes: the engineering route (convert existing shade-house stock, new-build the extra area at Luke's unit rates) at the low end, and the added-area-proportional route at the high end. The break-even pelt price adds the production cost of about EUR 97 to the annualised capital; the current pelt price is about EUR 47.</li>
+      <li><b>Raccoon dog already loses money.</b> The pelt price covers only about half the production cost. EU raccoon dog farming lost about EUR 1.4 million in 2024, almost all of it in Finland (EU output about 28,800 pelts, of which Finland about 24,000; Carpenter, 2025). The reform standards raise the cost of an activity that is already loss-making.</li>
+      <li><b>Finland, draft fur decree.</b> Adult female 1.2 m&sup2;, adult male 1.2 m&sup2; in the mid-winter months (1 February to 31 March) and 2.4 m&sup2; for the rest of the year, weaned juvenile 0.8 m&sup2;, height at least 70 cm, with a resting shelf, chewing material and straw or hay, a whelping nest box and a winter nest for the species' light winter sleep; weaning at least eight weeks (MMM, 2025a).</li>
+      <li><b>Ecorys (EC survey, Scenarios 4 and 5).</b> The same per-animal space as the Finnish decree for raccoon dog, with a total-space floor of at least 1.6 m&sup2; per enclosure for grouped animals and a cage-height rule of about 70 cm. These floor and height rules are not separately priced by the area model, so the Ecorys figure is a lower bound.</li>
+      <li><b>Germany, fur-farming statute (TierErzHaVerbG).</b> At least 3 m&sup2; of floor per animal and at least 12 m&sup2; per enclosure, height at least 1.5 m, plus a digging substrate (at least 2 m&sup2;, perforation at most 10%), a platform and a nest box. No swimming basin. The 12 m&sup2;-per-enclosure minimum is not modelled, so the German figure is a lower bound.</li>
+      <li><b>No external anchor for raccoon dog.</b> Unlike mink, the German and EFSA-level raccoon dog figures have no independent cost study to check against (Germany has no raccoon dog fur industry, and the German regulator declined to quantify the cost). They come entirely from the Finnish cost calibration extended to a larger cage, and are order of magnitude only. Raccoon dog is also the least-studied of the four species, with an evidence base EFSA calls extremely limited.</li>
+    </ol>
+  </div>
+
+  <h2>Sources</h2>
+  <ol class="refs" id="refs">
+    <li>Austrian Government. (2004). <em>2. Tierhaltungsverordnung</em> (BGBl. II Nr. 486/2004), Anlage 1, point 7.10.6 (Hundeartige / Canidae) [minimum enclosure sizes for captive wild mammals]. <a href="https://www.ris.bka.gv.at/eli/bgbl/II/2004/486">https://www.ris.bka.gv.at/eli/bgbl/II/2004/486</a></li>
+    <li>BMEL (German Federal Ministry of Food and Agriculture). (2014). <em>Gutachten &uuml;ber Mindestanforderungen an die Haltung von S&auml;ugetieren</em> [Report on minimum requirements for keeping mammals], Ch. IV.21.5 (Canidae), pp. 184 to 187. <a href="https://www.bmleh.de/SharedDocs/Downloads/DE/_Tiere/Tierschutz/HaltungSaeugetiere.pdf">https://www.bmleh.de/SharedDocs/Downloads/DE/_Tiere/Tierschutz/HaltungSaeugetiere.pdf</a></li>
+    <li>Bundesrepublik Deutschland. (2017a). <em>Anforderungen an die Haltung von Pelztieren</em> [Anlage to the Tiererzeugnisse-Handels-Verbotsgesetz (TierErzHaVerbG); German-English extract, fox and raccoon dog requirements]. Bundesministerium der Justiz. <a href="https://www.gesetze-im-internet.de/khfeverbg/anlage.html">https://www.gesetze-im-internet.de/khfeverbg/anlage.html</a></li>
+    <li>Carpenter, G. (2025). <em>A full-cost account of the EU fur industry</em> [Report]. Eurogroup for Animals, Fur Free Alliance, FOUR PAWS International and Humane World for Animals. <a href="https://www.eurogroupforanimals.org/resources">https://www.eurogroupforanimals.org/resources</a></li>
+    <li>Ecorys. (2025). <em>Study supporting the European Commission's assessment to follow up on the European Citizens' Initiative "Fur Free Europe": Survey of civil society organisations</em> [Survey questionnaire]. European Commission. Copy on file; survey background at <a href="https://food.ec.europa.eu/animals/animal-welfare/eci/eci-fur-free-europe_en">https://food.ec.europa.eu/animals/animal-welfare/eci/eci-fur-free-europe_en</a></li>
+    <li>EFSA Panel on Animal Health and Welfare (AHAW). (2025). Welfare of American mink, red and Arctic foxes, raccoon dog and chinchilla kept for fur production. <em>EFSA Journal</em>, <em>23</em>(7), Article e9519. <a href="https://doi.org/10.2903/j.efsa.2025.9519">https://doi.org/10.2903/j.efsa.2025.9519</a></li>
+    <li>European Commission. (2025). <em>'Better regulation' toolbox, Tool #64: Discount factors</em> (December 2025 edition). <a href="https://commission.europa.eu/document/download/9c8d2189-8abd-4f29-84e9-abc843cc68e0_en?filename=BR+toolbox+-+December+2025.pdf">https://commission.europa.eu/document/download/9c8d2189-8abd-4f29-84e9-abc843cc68e0_en</a></li>
+    <li>FIFUR (Finnish Fur Breeders' Association). (2025). <em>Statistics 2025</em>. <a href="https://fifur.fi/content/uploads/2025/09/FIFUR-Statistics-2025-EN.pdf">https://fifur.fi/content/uploads/2025/09/FIFUR-Statistics-2025-EN.pdf</a></li>
+    <li>Luke (Natural Resources Institute Finland). (2025). <em>Cost assessment of the draft Government Decree on the Welfare of Fur Animals</em> (VN/14432/2025). <a href="https://mmm.fi/-/luonnos-uudeksi-turkiselainasetukseksi-lausunnolle">https://mmm.fi/-/luonnos-uudeksi-turkiselainasetukseksi-lausunnolle</a></li>
+    <li>MMM (Finnish Ministry of Agriculture and Forestry). (2025a). <em>Draft Government Decree on the Welfare of Fur Animals</em> (VN/14432/2025). <a href="https://mmm.fi/-/luonnos-uudeksi-turkiselainasetukseksi-lausunnolle">https://mmm.fi/-/luonnos-uudeksi-turkiselainasetukseksi-lausunnolle</a></li>
+    <li>Swiss Government. (2008). <em>Tierschutzverordnung</em> (TSchV, SR 455.1), Anhang 2, Tabelle 1 (Gehege f&uuml;r S&auml;ugetiere) [Animal Welfare Ordinance, enclosure minimums for mammals]. <a href="https://www.fedlex.admin.ch/eli/cc/2008/416/de">https://www.fedlex.admin.ch/eli/cc/2008/416/de</a></li>
+  </ol>
+
+  <p class="caption">Compiled for the fur-standards study (EU fur phase-out and transition costs). The Finnish decree cost is measured from Luke (2025); the German and EFSA-level figures are the study's own model, calibrated on Finnish construction prices, with no species-specific external anchor for raccoon dog. Values verified against primary sources. Costs are benchmark estimates pending final review. Claude Code used for drafting.</p>
+</div>
+
+<script>
+(function(){
+  var NS='http://www.w3.org/2000/svg';
+  function el(n,at,txt){var e=document.createElementNS(NS,n);for(var k in at)e.setAttribute(k,at[k]);if(txt!=null)e.textContent=txt;return e;}
+  var INK='var(--ink)', INK2='var(--ink-2)', INK3='var(--ink-3)',
+      HAIR='var(--hair)', ACCv='var(--accent)', REDv='var(--red)';
+
+  // ===================== CAGE SCHEMATIC (visual 3) =====================
+  // Cavalier-oblique drawings of what one raccoon dog is allowed under each
+  // standard, to one shared scale (Switzerland's captive pen at a reduced scale).
+  // Mirrors the mink and fox pages. Raccoon dog has no open-water requirement,
+  // so there is no pool.
+  function css(v){return getComputedStyle(document.documentElement).getPropertyValue(v).trim();}
+  function hx2(h){h=h.replace('#','');if(h.length===3)h=h.split('').map(function(c){return c+c;}).join('');return [parseInt(h.slice(0,2),16),parseInt(h.slice(2,4),16),parseInt(h.slice(4,6),16)];}
+  function toHex(c){if(c[0]==='#')return c;var m=c.match(/\d+/g).map(Number);return '#'+m.map(function(v){return ('0'+v.toString(16)).slice(-2);}).join('');}
+  function lerp(a,b,t){return a+(b-a)*t;}
+  function mix(c1,c2,t){var a=hx2(c1),b=hx2(c2);return 'rgb('+Math.round(lerp(a[0],b[0],t))+','+Math.round(lerp(a[1],b[1],t))+','+Math.round(lerp(a[2],b[2],t))+')';}
+  function ramp(val,dom,minc,maxc){if(val==null)return null;var t=Math.max(0,Math.min(1,(val-dom[0])/(dom[1]-dom[0])));return mix(minc,maxc,t);}
+  function mkText(x,y,size,weight,fill,anchor,txt){return el('text',{x:x,y:y,'font-size':size,'font-weight':weight,fill:fill,'text-anchor':anchor,'dominant-baseline':'middle'},txt);}
+
+  // Raccoon dog silhouette (side profile, nose to the right). Source: T. Michael
+  // Keesey, PhyloPic, public domain. viewBox 419.9x211.3, bbox already at the
+  // origin, so no crop translate is needed (RD_BX, RD_BY = 0).
+  var RD_D='m 419.9,95.2 c -6.1,6.5 -14.3,9.4 -23.8,10 -7.2,0.4 -14,2.1 -19,8.6 -5.5,7 -13.1,7.5 -20,1.7 -3,-2.6 -5.3,-2.2 -7.7,0 -6.8,6 -13.8,11.9 -20.3,18.3 -5.4,5.3 -11.2,9.7 -18.5,12.1 -1.4,0.5 -3.3,2.2 -3.4,3.4 -0.1,1.4 1.2,3.4 2.5,4.3 4.6,3.5 9.9,6.2 14.2,10 3.9,3.4 6.9,7.9 10.1,12 3.8,4.9 7.3,10 10.9,15.1 0.9,1.3 1.7,2.8 2.3,4.3 1.3,3.5 1.9,7.3 3.6,10.7 1.6,3.2 0.4,3.7 -2.4,4.8 -4.3,1.6 -7.6,0.5 -11.1,-1.9 -2.1,-1.4 -4.8,-1.9 -6.9,-3.2 -1.3,-0.8 -2.8,-2.1 -3.1,-3.5 -4.3,-17 -16.6,-25.5 -32.2,-30.6 -1.3,-0.4 -2.5,-0.8 -3.8,-1.2 -1.2,-0.4 -2.5,-0.8 -5.2,-1.7 1,6 1.3,11.5 3.1,16.3 0.7,1.8 5.2,3.3 7.9,3.1 7.5,-0.4 12,1.6 14.9,8.1 -1.1,0.8 -3.1,1.5 -3.2,2.4 -0.7,5.3 -5.2,4.7 -8.5,5.8 -0.8,0.2 -1.8,-0.1 -2.5,0.2 -7.8,4.4 -13.4,-1.2 -18.7,-5 -3.3,-2.4 -4.3,-7.7 -7.2,-11 -6.2,-7.1 -6.6,-16.5 -10,-24.6 -1.9,-4.5 -4,-5.2 -8.6,-4.9 -15.9,0.8 -31.9,1.7 -47.3,-4 -4.5,-1.7 -8.8,-3.8 -13.2,-5.9 -2.8,-1.3 -9.6,0.7 -11.4,3.9 -1.9,3.4 0.8,5.3 3.1,7.4 4,3.5 7.7,7.3 11.5,11 3.7,3.6 8.1,4.3 13.2,4.5 5.6,0.2 11.3,1.8 16.7,3.4 2.7,0.8 2.6,6.5 1,8.9 -4.9,7.5 -12.5,5.3 -19.5,5.9 -12,1 -18.9,-6.4 -26.2,-14.2 -6.3,-6.7 -13.6,-12.6 -20.5,-18.7 -1.8,-1.6 -4.5,-2.6 -5.8,-4.5 -1.1,-1.7 -1.1,-4.4 -1,-6.7 0.1,-1.7 1,-3.4 2,-6.2 -4.3,2.2 -7.4,3.5 -10.2,5.4 -6.4,4.6 -13.6,3.9 -20.2,1.9 -10.8,-3.4 -21.3,-7.9 -31.8,-12.2 -3.9,-1.6 -6.8,-1.1 -7.7,2.9 -1.2,5.3 -2.4,10.8 -2.3,16.2 0.1,3.1 2,7.2 4.5,8.9 6.3,4.3 9.6,9.2 7.2,16.8 -3.3,0.8 -6.7,1.6 -10.1,2.4 -0.6,0.2 -1.4,0.7 -1.9,0.5 -4.2,-2 -9,-3.3 -12.2,-6.3 -2.3,-2.1 -3,-6.6 -3.2,-10 -0.5,-7.2 -0.1,-14.4 -0.1,-22.9 -2.1,1.7 -3.4,2.8 -4.7,3.7 -6.7,5 -13.7,9.7 -20.2,15 -3.9,3.2 -4.7,7.9 -4.3,12.9 0.2,1.9 0.3,5.3 -0.5,5.6 -1.9,0.8 -4.5,0.6 -6.6,-0.1 C 20.8,180.8 13.2,173.7 8,163.6 6.1,159.8 3.3,156.4 1.2,152.6 0.4,151.1 0,149.2 0,147.5 -0.3,132.2 3.4,117.4 11.1,104.6 18.7,92 27.3,78.9 40.8,72 c 8.5,-4.4 18.5,-6.9 28,-7.7 6.1,-0.5 8.9,-3.3 11.9,-7 C 87.4,48.7 92.9,39 100.5,31.4 120.2,11.6 144,-0.2 172.3,0 c 11.2,0.1 22,3.9 32.5,8.5 16,7 29.9,17.1 43.8,27.5 1.7,1.3 4.2,1.8 6.4,2 3.5,0.3 7,-0.2 10.5,-0.1 9.9,0 19.9,0.5 29.8,0 7.9,-0.4 15.8,-1.7 23.6,-2.9 6.4,-1 13.3,-0.8 18.2,-6.4 0.4,-0.4 1.3,-0.8 1.8,-0.6 8.6,2.8 15.7,-2.7 23.4,-4.4 6.7,-1.7 12.7,-0.6 18.6,2.4 2.7,1.3 5.3,2.7 8,4 2.7,1.3 5.3,2.1 8.4,0.3 3.6,-2 7.1,0.3 8.5,2.9 2.9,5.1 5.7,10.6 3.5,16.9 -2.5,7.1 0.8,13.8 2.2,20.4 1.7,8.1 5.3,15.9 8.4,24.7 z';
+  var RD_BX=0, RD_BY=0, RD_VB_W=419.9, RD_VB_H=211.3;
+  function rdInner(fill){
+    var inner=el('g',{transform:'translate('+(-RD_BX)+','+(-RD_BY)+')',fill:fill});
+    inner.appendChild(el('path',{d:RD_D}));
+    return inner;
+  }
+  var fkg=document.getElementById('rdkeyg'); if(fkg) fkg.appendChild(rdInner('var(--brown)'));
+
+  var SGRAYh=toHex(css('--shade-min')), SGMh=toHex(css('--green-mid'));
+  var BROWN='var(--brown)', S_HDOM=[0.7,1.5];
+  var S_S=68, RD_M=0.8, S_DEPF=0.42, S_CA=Math.cos(Math.PI/6), S_SA=Math.sin(Math.PI/6);
+
+  var SCHEM=[
+    {name:'Switzerland', role:'captive raccoon-dog enclosure (fur farming banned)',
+     area:20, h:null, sc:60, floorOnly:true, areaLabel:'20 m²', line2:'floor only (open pen)',
+     banned:true, ast:true},
+    {name:'Germany', role:'fur-farming statute (TierErzHaVerbG)', enc:'≥ 3 m²/animal, ≥ 12 m²/enclosure',
+     area:6, h:1.5, areaLabel:'6 m²', line2:'per-enclosure minimum at a pair; height 1.5 m', ast:true,
+     cost:{inv:'1,015 &ndash; 2,101', cap:'85 &ndash; 176', tot:'182 &ndash; 273'}},
+    {name:'Finland', role:'draft fur decree (VN/14432/2025)',
+     area:1.2, h:0.7, areaLabel:'1.2 m²', line2:'adult female place; the male is 1.2 to 2.4 m²',
+     cost:{inv:'236', cap:'20', tot:'116'}},
+    {name:'Current cage', role:'current EU practice and cost baseline',
+     area:0.8, h:0.7, areaLabel:'0.8 m²', line2:'typical about 0.8 m²/adult, all-wire',
+     baseline:true}
+  ];
+
+  function drawCage(d){
+    var sc=d.sc||S_S;
+    var aBelow=(d.areaLabel)+' floor area', line2=d.line2||'';
+    var padX=42, padTop=16, padBot=(line2?46:32), rightReserve=20;
+    var minW=padX+Math.max(aBelow.length,line2.length)*5.3+12;
+
+    if(d.floorOnly){
+      var fw=Math.sqrt(d.area)*sc, fdep=Math.sqrt(d.area)*sc*S_DEPF;
+      var fdvx=fdep*S_CA, fdvy=-fdep*S_SA;
+      var totW=fw+fdvx, totH=(-fdvy);
+      var svgW=Math.max(padX+totW+rightReserve, minW), svgH=padTop+totH+padBot+8;
+      var x0=padX, y0=padTop+(-fdvy)+8;
+      var g=el('svg',{width:svgW,height:svgH,viewBox:'0 0 '+svgW+' '+svgH,role:'img','aria-label':d.name+' enclosure, '+d.areaLabel+' floor area, open pen'});
+      var fbl=[x0,y0],fbr=[x0+fw,y0],bbr=[x0+fw+fdvx,y0+fdvy],bbl=[x0+fdvx,y0+fdvy];
+      g.appendChild(el('polygon',{points:fbl+' '+fbr+' '+bbr+' '+bbl,fill:SGMh,'fill-opacity':0.30,stroke:SGMh,'stroke-width':1}));
+      [[fbl,fbr],[fbr,bbr],[bbr,bbl],[bbl,fbl]].forEach(function(e){g.appendChild(el('line',{x1:e[0][0],y1:e[0][1],x2:e[1][0],y2:e[1][1],stroke:INK3,'stroke-width':0.9,'stroke-opacity':0.55}));});
+      var flx=RD_M*sc, k=flx/RD_VB_W, fh=RD_VB_H*k, fx=x0+(fw-flx)/2+fdvx*0.3, fy=y0+fdvy*0.3;
+      var gm=el('g',{transform:'translate('+fx+','+(fy-fh)+') scale('+k+')'});
+      gm.appendChild(rdInner(BROWN)); g.appendChild(gm);
+      g.appendChild(mkText(x0,y0+18,11,700,INK,'start',aBelow));
+      if(line2) g.appendChild(mkText(x0,y0+33,10,500,INK3,'start',line2));
+      return {svg:g,w:svgW,h:svgH};
+    }
+
+    var wm=Math.sqrt(d.area), dm=Math.sqrt(d.area), hm=d.h;
+    var w=wm*sc, dep=dm*sc*S_DEPF, ht=hm*sc, dvx=dep*S_CA, dvy=-dep*S_SA;
+    var totW=w+dvx, totH=ht+(-dvy);
+    var svgW=Math.max(padX+totW+rightReserve, minW), svgH=padTop+totH+padBot;
+    var x0=padX, y0=padTop+ht+(-dvy);
+    var g=el('svg',{width:svgW,height:svgH,viewBox:'0 0 '+svgW+' '+svgH,role:'img','aria-label':d.name+' enclosure, '+d.areaLabel+' floor area, height '+d.h+' m'});
+    var hf=ramp(d.h,S_HDOM,SGRAYh,SGMh);
+    var fbl=[x0,y0],fbr=[x0+w,y0],ftl=[x0,y0-ht],ftr=[x0+w,y0-ht];
+    var bbl=[x0+dvx,y0+dvy],bbr=[x0+w+dvx,y0+dvy],btl=[x0+dvx,y0-ht+dvy],btr=[x0+w+dvx,y0-ht+dvy];
+    g.appendChild(el('polygon',{points:fbl+' '+fbr+' '+bbr+' '+bbl,fill:hf,'fill-opacity':0.38,stroke:hf,'stroke-width':1}));
+    g.appendChild(el('polygon',{points:ftl+' '+ftr+' '+btr+' '+btl,fill:hf,'fill-opacity':0.16,stroke:hf,'stroke-width':1}));
+    g.appendChild(el('polygon',{points:fbr+' '+bbr+' '+btr+' '+ftr,fill:hf,'fill-opacity':0.26,stroke:hf,'stroke-width':1}));
+    [[fbl,fbr],[fbl,ftl],[fbr,ftr],[ftl,ftr],[fbl,bbl],[fbr,bbr],[ftl,btl],[ftr,btr],[bbl,bbr],[btl,btr],[bbl,btl],[bbr,btr]].forEach(function(e){
+      g.appendChild(el('line',{x1:e[0][0],y1:e[0][1],x2:e[1][0],y2:e[1][1],stroke:INK3,'stroke-width':0.9,'stroke-opacity':0.55}));});
+    var flx=RD_M*sc, k=flx/RD_VB_W, fh=RD_VB_H*k, fx=x0+(w-flx)/2;
+    var gm=el('g',{transform:'translate('+fx+','+(y0-fh)+') scale('+k+')'});
+    gm.appendChild(rdInner(BROWN)); g.appendChild(gm);
+    g.appendChild(mkText(x0,y0+18,11,700,INK,'start',aBelow));
+    if(line2) g.appendChild(mkText(x0,y0+33,10,500,INK3,'start',line2));
+    var hLab=(hm%1?hm.toFixed(1):hm)+' m';
+    g.appendChild(mkText(x0-6,y0-ht/2,10.5,600,INK2,'end',hLab));
+    return {svg:g,w:svgW,h:svgH};
+  }
+
+  var schemHost=document.getElementById('schematic');
+  SCHEM.forEach(function(d){
+    var row=document.createElement('div'); row.className='schem-row';
+    var cage=document.createElement('div'); cage.className='cage-cell';
+    cage.appendChild(drawCage(d).svg);
+    var info=document.createElement('div'); info.className='info';
+    var html='<h3>'+d.name+(d.ast?'<sup class="ast">*</sup>':'')+'</h3><p class="role">'+d.role+(d.enc?' &middot; '+d.enc:'')+'</p><div class="costs">';
+    if(d.banned){
+      html+='<div class="cline"><span class="k none">Not costed: fur farming banned; enclosure shown for scale</span></div>';
+    } else if(d.baseline){
+      html+='<div class="cline"><span class="k">One-time capital per pelt</span><span class="v base">baseline (existing)</span></div>';
+      html+='<div class="cline"><span class="k">Capital cost per pelt</span><span class="v base">0</span></div>';
+      html+='<div class="cline"><span class="k">Break-even pelt price</span><span class="v base">&asymp; EUR 97</span></div>';
+      html+='<div class="cline"><span class="k oc">Pelt price (2025)</span><span class="v oc">&asymp; EUR 47</span></div>';
+    } else {
+      var c=d.cost;
+      html+='<div class="cline"><span class="k">One-time capital per pelt</span><span class="v">EUR '+c.inv+'</span></div>';
+      html+='<div class="cline"><span class="k">Capital cost per pelt</span><span class="v">EUR '+c.cap+' /yr</span></div>';
+      html+='<div class="cline"><span class="k">Break-even pelt price</span><span class="v">EUR '+c.tot+'</span></div>';
+    }
+    html+='</div>'; info.innerHTML=html;
+    row.appendChild(cage); row.appendChild(info); schemHost.appendChild(row);
+  });
+
+
+  // ---- PRICE CHART (raccoon dog pelt price vs compliance break-even thresholds) ----
+  // Series: study workbook, sheet "Price sensitivity Raccoon dog" (FIFUR
+  // Statistics 2025 pp.28-29, Finnraccoon auction base average, nominal EUR;
+  // real = 2025 EUR via Finland HICP), source 0.1-EUR precision. Break-evens are
+  // workbook full precision behind the rounded Table 3 figures: production cost
+  // 96.59, Finland decree 116.37, Ecorys 117.21 (on the Finland line), German
+  // 181.58 to 272.62. Raccoon dog has no external anchor and no EFSA-level size.
+  var PY=[2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,
+          2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024];
+  var PNOM=[75.7,114.9,108.7,65.4,56.7,99.4,72.2,38.8,33.3,59.2,81.3,82.8,
+            159.9,170.4,110.5,78.6,90.8,82.7,62.6,53.6,43.6,40.8,45.9,46.1];
+  var PREAL=[117.335,174.648,163.05,98.1,83.916,146.118,103.968,53.932,45.621,
+             79.328,105.69,104.328,196.677,207.888,134.81,95.892,109.868,98.413,
+             73.868,62.712,50.14,43.656,47.277,47.022];
+  var BE={prod:96.594, fin:116.3729, eco:117.2105, gerLo:181.5826, gerHi:272.6212};
+
+  var PW=960, PL=46, PR=14, PT=16, PB=54, PH_PLOT=380, PHT=PT+PH_PLOT+PB;
+  var YMAXP=310;
+  var px=function(yr){return PL+(yr-2001)/(2024-2001)*(PW-PL-PR);};
+  var pyv=function(v){return PT+PH_PLOT*(1-v/YMAXP);};
+  var psvg=document.getElementById('pricechart');
+  psvg.setAttribute('viewBox','0 0 '+PW+' '+PHT);
+  psvg.setAttribute('preserveAspectRatio','xMinYMin meet');
+  var plotR=PW-PR;
+
+  // gridlines + y labels (horizontal only, house style)
+  for(var gv=0; gv<=300; gv+=50){
+    psvg.appendChild(el('line',{x1:PL,y1:pyv(gv),x2:plotR,y2:pyv(gv),stroke:HAIR,'stroke-width':1}));
+    psvg.appendChild(el('text',{x:PL-7,y:pyv(gv),'text-anchor':'end','dominant-baseline':'middle','font-size':11,fill:INK3},gv));
+  }
+  // x ticks every 3 years
+  for(var yr=2001; yr<=2024; yr+=3){
+    psvg.appendChild(el('text',{x:px(yr),y:PT+PH_PLOT+17,'text-anchor':'middle','font-size':11,fill:INK3},yr));
+  }
+  psvg.appendChild(el('text',{x:PL,y:PT+PH_PLOT+36,'font-size':11,fill:INK3},'Real 2025 EUR per pelt, Finnraccoon auction average (FIFUR, 2025)'));
+
+  // German break-even band (drawn behind the series)
+  function band(lo,hi,fill){
+    psvg.appendChild(el('rect',{x:PL,y:pyv(hi),width:plotR-PL,height:pyv(lo)-pyv(hi),fill:fill,'fill-opacity':0.12}));
+    psvg.appendChild(el('line',{x1:PL,y1:pyv(lo),x2:plotR,y2:pyv(lo),stroke:fill,'stroke-width':1,'stroke-opacity':0.55}));
+    psvg.appendChild(el('line',{x1:PL,y1:pyv(hi),x2:plotR,y2:pyv(hi),stroke:fill,'stroke-width':1,'stroke-opacity':0.55}));
+  }
+  band(BE.gerLo,BE.gerHi,REDv);
+  // reference lines (production cost, Finland break-even; Ecorys coincides with Finland)
+  function refline(v,col){
+    psvg.appendChild(el('line',{x1:PL,y1:pyv(v),x2:plotR,y2:pyv(v),stroke:col,'stroke-width':1.4,'stroke-dasharray':'6 4'}));
+  }
+  refline(BE.prod,INK2);
+  refline(BE.fin,ACCv);
+
+  // price series
+  var pd='';
+  PY.forEach(function(yr,i){ pd+=(i?'L':'M')+px(yr).toFixed(1)+' '+pyv(PREAL[i]).toFixed(1)+' '; });
+  psvg.appendChild(el('path',{d:pd,fill:'none',stroke:INK,'stroke-width':2,'stroke-linejoin':'round'}));
+  PY.forEach(function(yr,i){
+    psvg.appendChild(el('circle',{cx:px(yr),cy:pyv(PREAL[i]),r:2.6,fill:INK}));
+  });
+
+  // direct labels (drawn last, surface halo so bands/lines never strike them)
+  function plabel(xx,yy,txt,col,size,weight,anchor){
+    psvg.appendChild(el('text',{x:xx,y:yy,'font-size':size||11.5,'font-weight':weight||640,fill:col,
+      'text-anchor':anchor||'end','dominant-baseline':'middle',
+      'paint-order':'stroke',stroke:'var(--surface)','stroke-width':3.2,'stroke-linejoin':'round'},txt));
+  }
+  plabel(plotR-6,pyv(BE.prod)+12,'Production cost: 97',INK2);
+  plabel(plotR-6,pyv(BE.fin)-9,'Finland draft decree: 116 (Ecorys 117 coincides)',ACCv);
+  plabel(plotR-6,pyv(BE.gerHi)+13,'German statute: 182 to 273',INK);
+  plabel(plotR-6,pyv(295),'EFSA-level: at least the German band, open-ended above',INK2,11,600);
+
+  // hover layer: nearest-year crosshair + tooltip
+  var hovg=el('g',{'pointer-events':'none',display:'none'});
+  var hline=el('line',{y1:PT,y2:PT+PH_PLOT,stroke:INK3,'stroke-width':1,'stroke-dasharray':'3 3'});
+  var hdot=el('circle',{r:4.6,fill:'none',stroke:INK,'stroke-width':2});
+  var hbox=el('rect',{width:200,height:42,rx:6,fill:'var(--surface)',stroke:'var(--hair-2)','stroke-width':1});
+  var ht1=el('text',{'font-size':12,'font-weight':700,fill:INK});
+  var ht2=el('text',{'font-size':11,fill:INK2});
+  hovg.appendChild(hline); hovg.appendChild(hdot); hovg.appendChild(hbox);
+  hovg.appendChild(ht1); hovg.appendChild(ht2);
+  psvg.appendChild(hovg);
+  var hitr=el('rect',{x:PL,y:PT,width:plotR-PL,height:PH_PLOT,fill:'transparent'});
+  psvg.appendChild(hitr);
+  hitr.addEventListener('pointermove',function(e){
+    var r=psvg.getBoundingClientRect();
+    var vx=(e.clientX-r.left)/r.width*PW;
+    var i=Math.round((vx-PL)/(plotR-PL)*23);
+    i=Math.max(0,Math.min(23,i));
+    var cx=px(PY[i]), cy=pyv(PREAL[i]);
+    hline.setAttribute('x1',cx); hline.setAttribute('x2',cx);
+    hdot.setAttribute('cx',cx); hdot.setAttribute('cy',cy);
+    var bx=cx+12; if(bx+200>plotR) bx=cx-12-200;
+    var byy=Math.max(PT+4,Math.min(cy-21,PT+PH_PLOT-46));
+    hbox.setAttribute('x',bx); hbox.setAttribute('y',byy);
+    ht1.setAttribute('x',bx+10); ht1.setAttribute('y',byy+17); ht1.textContent=PY[i];
+    ht2.setAttribute('x',bx+10); ht2.setAttribute('y',byy+33);
+    ht2.textContent='EUR '+PREAL[i].toFixed(2)+' real 2025 (nominal '+PNOM[i]+')';
+    hovg.setAttribute('display','');
+  });
+  hitr.addEventListener('pointerleave',function(){ hovg.setAttribute('display','none'); });
+
+  // data table
+  var ptb=document.getElementById('pricetbody');
+  PY.forEach(function(yr,i){
+    var tr=document.createElement('tr');
+    [yr,PNOM[i],PREAL[i].toFixed(2)].forEach(function(v,ci){
+      var c=document.createElement('td');
+      if(ci===0)c.style.textAlign='left';
+      c.textContent=v; tr.appendChild(c);
+    });
+    ptb.appendChild(tr);
+  });
+
+  // ---- ENCLOSURE-SPACE BAR CHART (raccoon dog fur cage vs captive/zoo standards) ----
+  // Land only (raccoon dog has no open-water requirement). Per-animal LAND m2 at
+  // the stated pair capacity (per-pair figure / 2, conservative; single-housed ~2x).
+  // Nyctereutes basis: Switzerland row 67 groups Marderhund with mid-size foxes,
+  // Austria's Canidae row groups Nyctereutes, BMEL gives the Marderhund figure.
+  // Sources + verbatim quotes in the fox study provenance note (same standards).
+  var GM='var(--green-mid)';
+  var ENC=[
+    {name:"Austria: captive-wildlife ordinance",  ref:"Austrian Government, 2004", land:150, height:null, efsa:true,  note:"300 m²/pair; generic Canidae row (raccoon dogs grouped with foxes, wolves and jackals), an upper bound"},
+    {name:"Switzerland: captive raccoon dog",      ref:"Swiss Government, 2008",    land:20,  height:null, efsa:true,  note:"40 m²/pair outdoor + 8 m² indoor; grouped with mid-size foxes (TSchV row 67)"},
+    {name:"Germany: zoo guidance (Marderhund)",    ref:"BMEL, 2014",               land:15,  height:null, efsa:true,  note:"30 m²/pair (Nyctereutes procyonoides)"},
+    {name:"Germany: fur-farming statute",          ref:"Bundesrepublik Deutschland, 2017a", land:6, height:1.5, efsa:true, note:"≥ 3 m²/animal and ≥ 12 m²/enclosure; at a pair the 12 m² enclosure minimum binds, giving 6 m²/animal; height 1.5 m"},
+    {name:"Ecorys / EC proposed (S4/S5)",          ref:"Ecorys, 2025",             land:1.2, height:0.7, efsa:false, note:"same per-animal space as the Finnish decree; height about 0.7 m"},
+    {name:"Finland: draft fur decree",             ref:"MMM, 2025a",               land:1.2, height:0.7, efsa:false, note:"adult female 1.2 m²; adult male 1.2 to 2.4 m² by season; height 0.7 m"},
+    {name:"Current cage (EU practice)",            ref:"EFSA, 2025",               land:0.8, height:0.7, efsa:false, note:"typical about 0.8 m²/adult, all-wire; the cost baseline"}
+  ];
+
+  var EW=960, EpadL=14, EpadR=150, ElabelH=20, EbarH=26, ErowGap=22, ErowH=ElabelH+EbarH+ErowGap;
+  var EaxisH=34, EtopPad=6;
+  var EplotL=EpadL, EplotR=EW-EpadR, EplotW=EplotR-EplotL;
+  var EXMAX=160;
+  var ex=function(v){return EplotL+(v/EXMAX)*EplotW;};
+  var ECH=EtopPad+ENC.length*ErowH+EaxisH;
+  var esvg=document.getElementById('rdencl');
+  esvg.setAttribute('viewBox','0 0 '+EW+' '+ECH);
+  esvg.setAttribute('preserveAspectRatio','xMinYMin meet');
+
+  var edefs=el('defs',{});
+  var ehatch=el('pattern',{id:'hatchRD',width:7,height:7,patternUnits:'userSpaceOnUse',patternTransform:'rotate(45)'});
+  ehatch.appendChild(el('rect',{width:7,height:7,fill:'var(--surface)'}));
+  ehatch.appendChild(el('rect',{width:3,height:7,fill:GM,opacity:0.85}));
+  edefs.appendChild(ehatch);
+  esvg.appendChild(edefs);
+
+  for(var eg=0; eg<=EXMAX; eg+=20){
+    esvg.appendChild(el('line',{x1:ex(eg),y1:EtopPad,x2:ex(eg),y2:EtopPad+ENC.length*ErowH,stroke:HAIR,'stroke-width':1}));
+    esvg.appendChild(el('text',{x:ex(eg),y:EtopPad+ENC.length*ErowH+16,'text-anchor':'middle','font-size':11,fill:INK3},eg));
+  }
+  esvg.appendChild(el('text',{x:EplotL,y:EtopPad+ENC.length*ErowH+31,'font-size':11,fill:INK3},'Floor area per adult raccoon dog (m²), single linear scale'));
+
+  function ebarTxt(xx,yy,size,weight,txt){
+    return el('text',{x:xx,y:yy,'font-size':size,'font-weight':weight,fill:INK,'dominant-baseline':'middle',
+      'paint-order':'stroke',stroke:'var(--surface)','stroke-width':3,'stroke-linejoin':'round'},txt);
+  }
+  var EMINSEG=54;
+  ENC.forEach(function(d,i){
+    var y0=EtopPad+i*ErowH, labY=y0+14, barY=y0+ElabelH, midY=barY+EbarH/2;
+    var lbl=el('text',{x:EplotL,y:labY,'font-size':13,fill:INK,'font-weight':600});
+    lbl.appendChild(el('tspan',{},d.name));
+    if(d.efsa) lbl.appendChild(el('tspan',{fill:ACCv,'font-weight':700},' ∗'));
+    lbl.appendChild(el('tspan',{fill:INK3,'font-weight':400,'font-size':12},'   ('+d.ref+')'));
+    esvg.appendChild(lbl);
+    var lw=ex(d.land)-EplotL;
+    var fill=(d.height==null)?'url(#hatchRD)':GM;
+    esvg.appendChild(el('rect',{x:EplotL,y:barY,width:Math.max(lw,2),height:EbarH,rx:4,fill:fill}));
+    var landTxt=d.land.toFixed(d.land<1?1:(d.land%1?1:0))+' m²';
+    var hTxt=(d.height==null)?'h n/s':'h '+d.height+' m';
+    if(lw>=EMINSEG){
+      esvg.appendChild(ebarTxt(EplotL+9,midY-6,12,700,landTxt));
+      esvg.appendChild(ebarTxt(EplotL+9,midY+9,10.5,500,hTxt));
+    } else {
+      esvg.appendChild(el('text',{x:ex(d.land)+8,y:midY,'font-size':11,fill:INK2,'dominant-baseline':'middle'},landTxt+' · '+hTxt));
+    }
+  });
+
+  var etb=document.getElementById('enctbody');
+  ENC.forEach(function(d){
+    var tr=document.createElement('tr');
+    function td(v,left){var c=document.createElement('td');if(left)c.style.textAlign='left';c.innerHTML=v;tr.appendChild(c);}
+    td(d.name+(d.efsa?' &lowast;':''),true);
+    td(d.land.toFixed(d.land<1?1:(d.land%1?1:0)));
+    td(d.height==null?'n/s':d.height);
+    td(d.efsa?'&lowast;':'');
+    td(d.note||'',true);
+    etb.appendChild(tr);
+  });
+})();
+</script>
+</body>
+</html>
