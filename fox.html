@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fox fur farming: the cost of raising the standard</title>
+<style>
+  :root{
+    --surface:#ffffff;
+    --surface-2:#f6f7f5;
+    --ink:#1b1f1d;
+    --ink-2:#4a524e;
+    --ink-3:#616a63;
+    --hair:#e2e6e2;
+    --hair-2:#cfd5d0;
+    --green-mid:#4e9b73;
+    --red:#a11f1f;
+    --accent:#0c4a6e;
+    --max:1000px;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --surface:#14171a; --surface-2:#1c2024; --ink:#e9ece9; --ink-2:#b3bab5; --ink-3:#8b938d;
+      --hair:#2b3138; --hair-2:#3a424a;
+      --green-mid:#5aa87f; --red:#e06a6a; --accent:#8bc7ec;
+    }
+  }
+  :root[data-theme="dark"]{
+      --surface:#14171a; --surface-2:#1c2024; --ink:#e9ece9; --ink-2:#b3bab5; --ink-3:#8b938d;
+      --hair:#2b3138; --hair-2:#3a424a;
+      --green-mid:#5aa87f; --red:#e06a6a; --accent:#8bc7ec;
+  }
+  :root[data-theme="light"]{
+    --surface:#ffffff; --surface-2:#f6f7f5; --ink:#1b1f1d; --ink-2:#4a524e; --ink-3:#616a63;
+    --hair:#e2e6e2; --hair-2:#cfd5d0;
+    --green-mid:#4e9b73; --red:#a11f1f; --accent:#0c4a6e;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--surface);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.5;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:var(--max);margin:0 auto;padding:24px 20px 56px}
+  h1{font-size:1.42rem;line-height:1.25;margin:0 0 8px;font-weight:700;letter-spacing:-.01em}
+  h2{font-size:1.08rem;margin:38px 0 10px;font-weight:660}
+  .sub{font-size:.98rem;color:var(--ink-2);margin:0 0 16px;max-width:72ch}
+  .sub strong{color:var(--ink)}
+
+  /* ---- species nav (Mink | Fox) ---- */
+  .nav{display:flex;gap:4px;margin:0 0 22px;border-bottom:1px solid var(--hair)}
+  .nav a{padding:8px 16px;font-size:.98rem;font-weight:640;text-decoration:none;color:var(--ink-3);
+    border-bottom:2px solid transparent;margin-bottom:-1px}
+  .nav a:hover{color:var(--ink)}
+  .nav a.active{color:var(--ink);border-bottom-color:var(--accent)}
+
+  /* ---- callouts ---- */
+  .callout{background:var(--surface-2);border:1px solid var(--hair);border-left:3px solid var(--accent);
+    border-radius:0 10px 10px 0;padding:12px 16px;margin:16px 0;font-size:.9rem}
+  .callout h4{margin:0 0 4px;font-size:.95rem;font-weight:680;color:var(--ink)}
+  .callout p{margin:0;color:var(--ink-2)}
+
+  .quote{border-left:3px solid var(--accent);background:var(--surface-2);
+    padding:14px 18px;border-radius:0 10px 10px 0;margin:24px 0 8px;font-size:.94rem}
+  .quote p{margin:0 0 8px}
+  .quote p:last-child{margin:0}
+  .quote cite{display:block;font-style:normal;color:var(--ink-3);font-size:.82rem;margin-top:8px}
+
+  .foot{font-size:.8rem;color:var(--ink-2)}
+  .foot ol{margin:6px 0 0;padding-left:1.3em}
+  .foot li{margin:0 0 5px}
+  table{border-collapse:collapse;width:100%;font-size:.82rem;margin-top:8px}
+  th,td{border-bottom:1px solid var(--hair);padding:6px 9px;text-align:right}
+  th:first-child,td:first-child{text-align:left}
+  thead th{color:var(--ink-3);font-weight:620;border-bottom:1px solid var(--hair-2)}
+  .refs{font-size:.82rem;color:var(--ink-2)}
+  .refs li{margin:0 0 8px;line-height:1.45}
+  .refs a{color:var(--accent);word-break:break-word}
+  .refs em{font-style:italic}
+  .caption{font-size:.78rem;color:var(--ink-3);margin:10px 0 0}
+
+  .method p{max-width:74ch;font-size:.92rem;margin:0 0 12px}
+  .method p b{color:var(--ink)}
+  .method .flag{color:var(--ink);font-weight:600}
+  .calc{overflow-x:auto;margin:6px 0 4px}
+  .calc table{min-width:600px}
+  .calc td.lbl,.calc th.lbl{text-align:left}
+  .calc td.row{text-align:left;color:var(--ink-2)}
+  .calc td.rk{text-align:left;color:var(--ink-3);width:1.4em;font-variant-numeric:tabular-nums}
+  .calc td.shared{text-align:left;color:var(--ink-3)}
+  .calc tr.res td{font-weight:700;border-top:1px solid var(--hair-2)}
+  .calc td:not(.row):not(.lbl):not(.shared):not(.rk){font-variant-numeric:tabular-nums}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <nav class="nav" aria-label="Species">
+    <a href="./">Mink</a>
+    <a href="fox.html" class="active" aria-current="page">Fox</a>
+  </nav>
+
+  <h1>Fox fur farming: the cost of raising the welfare standard</h1>
+  <p class="sub">What it would cost to move Finland's fox farms from the current cage to each proposed welfare standard, per pelt of annual output. <strong>Fox farming loses money before any reform: the pelt price of about EUR&nbsp;48 covers only about half the production cost of about EUR&nbsp;94. Every standard that has been costed adds capital cost on top, not revenue.</strong></p>
+
+  <p class="sub" style="font-size:.9rem">Fur farming is banned or being phased out across most of the EU; Finland is the largest remaining fox producer. The method below mirrors the mink page: the Finnish draft decree is the one standard costed directly from construction data, and the larger German and EFSA-level standards are extrapolated from the same Finnish cost calibration.</p>
+
+  <div class="quote">
+    <p>&ldquo;The majority of the welfare consequences (WCs) listed cannot be prevented or substantially mitigated within the current husbandry systems.&rdquo;</p>
+    <p>&ldquo;&hellip; substantial mitigation would require enclosures that provide sufficient three-dimensional space to incorporate structures and resources that enhance environmental complexity, to allow the quantitative and qualitative expression of fundamental behaviours (e.g. sustained locomotory activity, exploration, foraging and vigilance).&rdquo;</p>
+    <p>For foxes, EFSA's most relevant welfare consequences include restriction of movement, the inability to forage or explore, sensorial under- and overstimulation and handling stress, with locomotory disorders such as bent legs in Arctic fox. Of these, restriction of movement and the inability to forage or explore cannot be prevented or substantially mitigated in the current cage system.</p>
+    <cite>EFSA Panel on Animal Health and Welfare (2025). Welfare of American mink, red and Arctic foxes, raccoon dog and chinchilla kept for fur production (Scientific Opinion 9519). <em>EFSA Journal</em>, 23(7).</cite>
+  </div>
+
+  <h2>How the compliance costs are calculated</h2>
+
+  <div class="method">
+  <p>The cost of each standard is the <b>one-time capital</b> needed to rebuild Finland's fox cages to that standard, plus the <b>yearly cost of financing that capital</b>. The Finnish draft decree is the one standard costed directly, from the Natural Resources Institute Finland (Luke) construction-cost assessment. The larger Ecorys cages (from the European Commission's consultation survey) and the German statutory cage have no published fox construction-cost study, so they are priced with the same Luke per-metre rates extended to the extra cage area.</p>
+
+  <p><b>Finland: measured directly.</b> The draft decree raises the cage floor to 1.2 m&sup2; for an adult female and 2.4 m&sup2; for a male, and adds resting shelves and a walled retreat. Luke prices this as shade-house running metres: converting the whole existing stock (560,000 m at about EUR 272 per metre in 2025 prices) and building 224,000 m of new capacity (at about EUR 453 per metre). This is spread over Finland's fox sector <b>standard annual output of about 1,000,000 pelts</b> (the normal full-capacity figure Luke uses, for the whole national industry, not a single model farm). That gives about <b>EUR 254</b> of one-time capital per pelt, more than three times the mink figure of about EUR 76. Fox carries about 2.5 shade-house metres per breeding female against mink's 0.55. The per-pelt capital multiple is about three, below that space ratio, because fox has more pelts per breeding female and a lower per-metre shade-house cost than mink. This is the one directly-measured anchor; every other figure is calibrated so the method below reproduces this Luke number exactly.</p>
+
+  <p><b>Ecorys: the same space as the decree.</b> The Commission's survey (processed by Ecorys) sets the same per-animal fox space as the Finnish decree, so the Ecorys figure is the decree capital plus a small structure adder for a digging box, platform and hide, about <b>EUR 264</b> per pelt. The survey's total-space floor of at least 1.6 m&sup2; per enclosure and its cage-height rules (1 m for red fox, 70 cm for Arctic fox) are not separately priced by the area-based model, so this is a lower bound on those axes.</p>
+
+  <p><b>German: extrapolated, no external anchor.</b> The German fur-farming statute requires 3 m&sup2; of floor per animal (and at least 12 m&sup2; per enclosure), a height of 1.5 m, a digging substrate, a platform and a raised two-chamber den. Modelling that cage on Finnish construction prices gives about <b>EUR 1,061 to 2,114</b> per pelt, the range reflecting the two costing routes described below.</p>
+
+  <div class="callout">
+    <h4>Two features of the fox figures that differ from mink</h4>
+    <p><b>No external cost anchor.</b> The mink German figure is cross-checked against an independent 2014 valuation of a real German mink farm. No such study exists for fox: Germany's last fox farm closed in 2005, and the German regulator declined to quantify the cost. The fox German and EFSA-level figures therefore come entirely from the Finnish cost calibration extended to a larger cage. They are order-of-magnitude estimates and a lower bound (the 12 m&sup2;-per-enclosure minimum and the 1.5 m height are not priced by the area model).</p>
+    <p style="margin-top:8px"><b>No swimming basin.</b> Fox welfare needs are movement, foraging and digging, not open water, so the German fox cage has no pool. The added features priced here are a digging substrate, a platform and a raised den, carried as small one-time assumptions (about EUR 10 to 15 per pelt), not a costed swimming basin.</p>
+  </div>
+
+  <p><b>EFSA-level: a lower bound.</b> EFSA sets no numeric enclosure size for fox, so an EFSA-level standard is not given a single figure here. It would cost <b>at least</b> the German figure and is open-ended above it. This matches the study report, which presents the EFSA-level standard as a lower bound rather than a point estimate.</p>
+
+  <h3 style="font-size:1rem;margin:22px 0 4px;font-weight:660">Fixed (one-time) capital per pelt</h3>
+  <p style="font-size:.86rem;color:var(--ink-2);margin:0 0 6px;max-width:74ch">Rows A to D are shared inputs; rows E to H differ by standard; rows I and J are the two costing routes (engineering and proportional) that bracket the answer. All figures in 2025 EUR, per pelt of the standard annual output defined above (about 1,000,000 pelts).</p>
+  <p style="font-size:.85rem;font-weight:660;margin:12px 0 3px;color:var(--ink)">Table 1. Fixed (one-time) capital per pelt, by standard (fox)</p>
+  <div class="calc">
+  <table>
+    <thead>
+      <tr><th class="rk"></th><th class="lbl">Item</th><th class="lbl">How it is computed</th><th>Finland<br>(draft decree)</th><th>Ecorys<br>(EC survey)</th><th>German<br>(statute)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="rk">A</td><td class="row">Convert the existing shade houses</td><td class="lbl">560,000 m &times; EUR 272.2/m</td><td class="shared" colspan="3">&asymp; EUR 152.4 million (same for every standard)</td></tr>
+      <tr><td class="rk">B</td><td class="row">Cage area the converted stock provides</td><td class="lbl">560,000 m &times; 1.503 m&sup2;/m</td><td class="shared" colspan="3">&asymp; 841,000 m&sup2; (same for every standard)</td></tr>
+      <tr><td class="rk">C</td><td class="row">New-build cost per m&sup2; of cage area</td><td class="lbl">EUR 452.5/m &divide; 1.503 m&sup2;/m</td><td class="shared" colspan="3">&asymp; EUR 301/m&sup2; (same for every standard)</td></tr>
+      <tr><td class="rk">D</td><td class="row">Added-area cost per m&sup2; (proportional route)</td><td class="lbl">EUR 253.8 million (the Finnish decree's total capital) &divide; 362,000 m&sup2; (the area it adds: 1.178 &minus; 0.816 m&sup2; per pelt &times; 1,000,000 pelts)</td><td class="shared" colspan="3">&asymp; EUR 701/m&sup2; (same for every standard)</td></tr>
+      <tr><td class="rk">E</td><td class="row">Cage area required per pelt</td><td class="lbl">each standard's cage size, blended per pelt over one weaned juvenile, about a fifth of a female place and a twenty-fifth of a male place &Dagger;</td><td>1.18 m&sup2;</td><td>1.18 m&sup2;</td><td>3.81 m&sup2;</td></tr>
+      <tr><td class="rk">F</td><td class="row">Current cage already provides, per pelt</td><td class="lbl">the current legal cage on the same blended basis &Dagger;; its capital is already sunk, so only area above this is charged</td><td class="shared" colspan="3">0.82 m&sup2; (same for every standard; the baseline the proportional route subtracts)</td></tr>
+      <tr><td class="rk">G</td><td class="row">New cage area still to build</td><td class="lbl">required area (E &times; 1,000,000) minus what the converted stock already provides (row B, about 841,000 m&sup2;)</td><td>337,000 m&sup2;</td><td>337,000 m&sup2;</td><td>2,969,000 m&sup2;</td></tr>
+      <tr><td class="rk">H</td><td class="row">Added features, EUR/pelt (both routes)</td><td class="lbl">digging substrate, platform and den fit-out (assumption, no published unit cost)</td><td>0</td><td>10</td><td>15</td></tr>
+      <tr><td class="rk">I</td><td class="row">Engineering route, low end</td><td class="lbl">(A + G &times; C) &divide; 1,000,000 pelts, plus H</td><td>254</td><td>264</td><td>1,061</td></tr>
+      <tr><td class="rk">J</td><td class="row">Proportional route, high end</td><td class="lbl">(E &minus; F) &times; D, plus H</td><td>254</td><td>264</td><td>2,114</td></tr>
+      <tr class="res"><td class="rk"></td><td class="row">One-time capital per pelt (EUR)</td><td class="lbl">engineering route to proportional route</td><td>254</td><td>264</td><td>1,061 &ndash; 2,114</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="caption">For fox, the Ecorys standard sets the same per-animal space as the Finnish decree, so its two routes coincide at about EUR 264 (the decree's EUR 254 plus the EUR 10 structure adder); the routes diverge only for the larger German cage. Row H (added features) is added to both routes: about EUR 10 for the Ecorys structure package and EUR 15 for the German digging substrate and den, each an order-of-magnitude assumption with no published unit cost. The current cage's capital is already sunk (row F), so only area above it is charged. Rows D and G use different area bases on purpose: row D charges the decree's full area increment over the current cage, while the engineering route (row G) builds only what converting the existing stock cannot already deliver; both reproduce the EUR 254 anchor by design. Intermediate factors are rounded for display; the workbook holds full precision. &Dagger; The per-pelt area is blended across the herd: Finland's fox sector runs about 225,000 breeding females to produce about 1,000,000 pelts (litter about 4.5), so one pelt maps to one weaned juvenile plus about 0.225 of a female place and 0.045 of a male place. The decree areas (female 1.2 m&sup2;, male 2.4 m&sup2;, juvenile 0.8 m&sup2;) blend to about 1.18 m&sup2; per pelt; the current legal cage blends to about 0.82 m&sup2;.</p>
+
+  <h3 style="font-size:1rem;margin:22px 0 4px;font-weight:660">Annualised cost per pelt</h3>
+  <p style="font-size:.86rem;color:var(--ink-2);margin:0 0 6px;max-width:74ch">The one-time capital is spread over the cage's life as an equal yearly charge (a capital-recovery-factor annuity), then added to the yearly production cost to give the break-even pelt price.</p>
+  <p style="font-size:.85rem;font-weight:660;margin:12px 0 3px;color:var(--ink)">Table 2. Annualisation parameters (all standards)</p>
+  <div class="calc">
+  <table>
+    <tbody>
+      <tr><td class="rk">a</td><td class="row lbl">Real discount rate</td><td class="lbl" colspan="3">3% (European Commission, Better Regulation Toolbox, Tool #64)</td></tr>
+      <tr><td class="rk">b</td><td class="row lbl">Cage asset life</td><td class="lbl" colspan="3">15 years (within Luke's 10 to 20-year range)</td></tr>
+      <tr><td class="rk">c</td><td class="row lbl">Capital-recovery factor</td><td class="lbl" colspan="3">3% &divide; (1 &minus; 1.03<sup>&minus;15</sup>) = 0.0838</td></tr>
+      <tr><td class="rk">d</td><td class="row lbl">Production cost per pelt</td><td class="lbl" colspan="3">about EUR 94 (Hernesniemi 2023, blue-fox full economic cost, uprated; from a single modelled farm, so a mild upper bound)</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p style="font-size:.85rem;font-weight:660;margin:14px 0 3px;color:var(--ink)">Table 3. Break-even pelt price by standard (fox)</p>
+  <div class="calc" style="margin-top:10px">
+  <table>
+    <thead>
+      <tr><th class="lbl">Standard</th><th>One-time capital<br>(from the table above)</th><th>&times; 0.0838 =<br>annualised capital<br>(EUR/pelt/year)</th><th>+ EUR 94 production cost =<br>break-even pelt price<br>(EUR/pelt)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="lbl">Current cage (baseline)</td><td>0 (already sunk)</td><td>0</td><td>94</td></tr>
+      <tr><td class="lbl">Finland (draft decree)</td><td>254</td><td>21</td><td>115</td></tr>
+      <tr><td class="lbl">Ecorys (EC survey)</td><td>264</td><td>22</td><td>116</td></tr>
+      <tr><td class="lbl">German (statute)</td><td>1,061 &ndash; 2,114</td><td>89 &ndash; 177</td><td>183 &ndash; 271</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="caption">The current fox pelt price is about EUR 48 (2025 prices; a blend of 80% blue and 20% silver fox), below even the baseline production cost of about EUR 94: fox farming already runs at a loss, and every reform standard raises the break-even price further. Placed against the 24-year Finnish blue-fox auction price history (FIFUR, 2025), the roughly EUR 115 Finnish-decree break-even is at about the 68th percentile of the real-price distribution. A compliant fox farm would have cleared it in 8 of the 24 years, all of them 2015 or earlier, and in none of the nine seasons since. Figures are rounded independently, so a row's columns may not add up to the euro (the workbook holds full precision). On Finland's actual 2024 output of about 303,000 pelts, well below the standard-capacity denominator, every per-pelt capital figure would be about 3.3 times higher (for example the German figure about EUR 3,503).</p>
+
+  <p style="font-size:.84rem;color:var(--ink-2);margin:14px 0 0;max-width:74ch"><b>Key sources.</b> Cage construction costs: Luke (2025). Larger-cage specifications: the Ecorys survey (2025) and the German fur-farming statute (Bundesrepublik Deutschland, 2017a). Discount rate: the European Commission's Better Regulation Toolbox (Tool #64). Production cost and pelt price: Hernesniemi (2023) and Carpenter (2025); the price-history percentile uses the FIFUR (2025) auction series. Full citations in the Sources list below.</p>
+  </div>
+
+  <h2>Notes</h2>
+  <div class="foot">
+    <ol>
+      <li><b>What the cost figures are.</b> One-time capital and the derived per-pelt cost of raising Finland's fox industry from the current legal cage to each standard, in 2025 EUR at Finnish construction prices, per pelt of standard annual output. Ranges are two costing routes: the engineering route (convert existing shade-house stock, new-build the extra area at Luke's unit rates) at the low end, and the added-area-proportional route at the high end. The break-even pelt price adds the production cost of about EUR 94 to the annualised capital; the current pelt price is about EUR 48.</li>
+      <li><b>Fox already loses money.</b> The pelt price covers only about half the production cost. EU fox farming lost about EUR 12 million in 2024, almost all of it in Finland, where output has fallen from about 700,000 pelts in 2022 to about 303,000 in 2024 (Carpenter, 2025). The reform standards raise the cost of an activity that is already loss-making.</li>
+      <li><b>Finland, draft fur decree.</b> Adult female 1.2 m&sup2;, male 2.4 m&sup2;, weaned juvenile 0.8 m&sup2;, with resting shelves, chewing material and a whelping nest box; a walled retreat is required from 2031, and the space rules phase in by 2041 (MMM, 2025a).</li>
+      <li><b>Ecorys (EC survey, Scenarios 4 and 5).</b> The same per-animal space as the Finnish decree for fox, with a total-space floor of at least 1.6 m&sup2; per enclosure for grouped animals and cage-height rules of 1 m for red fox and 70 cm for Arctic fox. These floor and height rules are not separately priced by the area model, so the Ecorys figure is a lower bound.</li>
+      <li><b>Germany, fur-farming statute (TierErzHaVerbG).</b> At least 3 m&sup2; of floor per animal and at least 12 m&sup2; per enclosure, height at least 1.5 m, plus a digging substrate (at least 2 m&sup2;, perforation at most 10%), a platform and a raised two-chamber den. No swimming basin. The 12 m&sup2;-per-enclosure minimum is not modelled, so the German figure is a lower bound.</li>
+      <li><b>No external anchor for fox.</b> Unlike mink, the German and EFSA-level fox figures have no independent cost study to check against (Germany's last fox farm closed in 2005; the German regulator declined to quantify the cost). They come entirely from the Finnish cost calibration extended to a larger cage, and are order of magnitude only.</li>
+      <li><b>Enclosure comparison to captive and zoo standards.</b> The mink page carries a bar chart comparing the fur-farm cage with captive-animal and zoo standards. The equivalent fox comparison needs its own sourcing and is not included here yet.</li>
+    </ol>
+  </div>
+
+  <h2>Sources</h2>
+  <ol class="refs" id="refs">
+    <li>Bundesrepublik Deutschland. (2017a). <em>Anforderungen an die Haltung von Pelztieren</em> [Anlage to the Tiererzeugnisse-Handels-Verbotsgesetz (TierErzHaVerbG); German-English extract, fox and raccoon dog requirements]. Bundesministerium der Justiz. <a href="https://www.gesetze-im-internet.de/khfeverbg/anlage.html">https://www.gesetze-im-internet.de/khfeverbg/anlage.html</a></li>
+    <li>Carpenter, G. (2025). <em>A full-cost account of the EU fur industry</em> [Report]. Eurogroup for Animals, Fur Free Alliance, FOUR PAWS International and Humane World for Animals. <a href="https://www.eurogroupforanimals.org/resources">https://www.eurogroupforanimals.org/resources</a></li>
+    <li>Ecorys. (2025). <em>Study supporting the European Commission's assessment to follow up on the European Citizens' Initiative "Fur Free Europe": Survey of civil society organisations</em> [Survey questionnaire]. European Commission. Copy on file; survey background at <a href="https://food.ec.europa.eu/animals/animal-welfare/eci/eci-fur-free-europe_en">https://food.ec.europa.eu/animals/animal-welfare/eci/eci-fur-free-europe_en</a></li>
+    <li>EFSA Panel on Animal Health and Welfare (AHAW). (2025). Welfare of American mink, red and Arctic foxes, raccoon dog and chinchilla kept for fur production. <em>EFSA Journal</em>, <em>23</em>(7), Article e9519. <a href="https://doi.org/10.2903/j.efsa.2025.9519">https://doi.org/10.2903/j.efsa.2025.9519</a></li>
+    <li>European Commission. (2025). <em>'Better regulation' toolbox, Tool #64: Discount factors</em> (December 2025 edition). <a href="https://commission.europa.eu/document/download/9c8d2189-8abd-4f29-84e9-abc843cc68e0_en?filename=BR+toolbox+-+December+2025.pdf">https://commission.europa.eu/document/download/9c8d2189-8abd-4f29-84e9-abc843cc68e0_en</a></li>
+    <li>FIFUR (Finnish Fur Breeders' Association). (2025). <em>Statistics 2025</em>. <a href="https://fifur.fi/content/uploads/2025/09/FIFUR-Statistics-2025-EN.pdf">https://fifur.fi/content/uploads/2025/09/FIFUR-Statistics-2025-EN.pdf</a></li>
+    <li>Hernesniemi, T. (2023). <em>Tuotantokustannus: kettu ja minkki</em> [Production cost: blue fox and mink] [Data set]. Keski-Pohjanmaan koulutusyhtym&auml; (KPEDU). <a href="https://www.kpedu.fi/docs/default-source/projektisivustot/tietolinkki/tuotantokustannus-kettu-ja-minkki_2023-06-12.xlsx">https://www.kpedu.fi/docs/default-source/projektisivustot/tietolinkki/tuotantokustannus-kettu-ja-minkki_2023-06-12.xlsx</a></li>
+    <li>Luke (Natural Resources Institute Finland). (2025). <em>Cost assessment of the draft Government Decree on the Welfare of Fur Animals</em> (VN/14432/2025). <a href="https://mmm.fi/-/luonnos-uudeksi-turkiselainasetukseksi-lausunnolle">https://mmm.fi/-/luonnos-uudeksi-turkiselainasetukseksi-lausunnolle</a></li>
+    <li>MMM (Finnish Ministry of Agriculture and Forestry). (2025a). <em>Draft Government Decree on the Welfare of Fur Animals</em> (VN/14432/2025). <a href="https://mmm.fi/-/luonnos-uudeksi-turkiselainasetukseksi-lausunnolle">https://mmm.fi/-/luonnos-uudeksi-turkiselainasetukseksi-lausunnolle</a></li>
+  </ol>
+
+  <p class="caption">Compiled for the fur-standards study (EU fur phase-out and transition costs). The Finnish decree cost is measured from Luke (2025); the German and EFSA-level figures are the study's own model, calibrated on Finnish construction prices, with no species-specific external anchor for fox. Values verified against primary sources. Costs are benchmark estimates pending final review. Claude Code used for drafting.</p>
+</div>
+</body>
+</html>
