@@ -162,11 +162,11 @@
     </div>
     <div>
       <h4>Occupant</h4>
-      <div class="swatchrow"><svg class="minkkey" viewBox="0 0 100 44"><path id="minkkeyp" fill="var(--brown)" d=""></path></svg><span>one adult mink, drawn to the same scale in every cage</span></div>
+      <div class="swatchrow"><svg class="minkkey" viewBox="0 0 122 40"><path id="minkkeyp" fill="var(--brown)" d=""></path></svg><span>one adult mink, drawn at a constant size in every cage (see note on length)</span></div>
     </div>
   </div>
 
-  <p class="astkey">Cages are drawn to a single shared scale, so the mink looks the same size in each: the current legal cage (bottom) is a sliver of the captive-standard enclosures, and that space gap is the point. Cost ranges are the study's engineering route (low) to added-area route (high), 2025 EUR, Finnish construction prices, per pelt of annual output. Costs shown only where a compliance calculation exists. Cost figures are own calculations (this study) built on Luke (2025) construction costs, with the German standard externally anchored to TG-International (2014); the current-system production cost and pelt price come from Carpenter (2025), in turn drawing on Hernesniemi (2023) and FIFUR (2025). Full references below.</p>
+  <p class="astkey">The five fur-farming cages share one scale and the mink is drawn at a constant size, so the current legal cage (bottom) reads as a cramped fit while the German statute is roomier; Austria's much larger enclosure is drawn at a reduced scale to fit the page (it is even larger relative to the mink than shown). An adult farm mink is about 41 to 49 cm in body length, excluding the tail (EFSA, 2025, citing Villumsen et&nbsp;al., 2019). Cost ranges are the study's engineering route (low) to added-area route (high), 2025 EUR, Finnish construction prices, per pelt of annual output. Costs shown only where a compliance calculation exists. Cost figures are own calculations (this study) built on Luke (2025) construction costs, with the German standard externally anchored to TG-International (2014); the current-system production cost and pelt price come from Carpenter (2025), in turn drawing on Hernesniemi (2023) and FIFUR (2025). Full references below.</p>
 
   <!-- ============ existing enclosure-space bar chart (kept) ============ -->
   <h2>Enclosure space and water pool per adult mink, by standard (full comparison)</h2>
@@ -267,12 +267,14 @@
   function inkOn(fill){return lum(fill)<0.5 ? '#ffffff' : '#12241a';}
   function el(n,at,txt){var e=document.createElementNS(NS,n);for(var k in at)e.setAttribute(k,at[k]);if(txt!=null)e.textContent=txt;return e;}
 
-  // mink silhouette path (side profile, local box ~100x44, nose at left)
-  var MINK='M6,33 C2,31 3,27 7,26 C10,25 12,23 16,22 C20,20 22,21 24,22 '
-         +'C40,13 62,12 80,17 C86,15 91,17 94,14 C98,11 99,15 96,18 C93,21 89,21 85,22 '
-         +'C83,26 82,31 79,31 C76,31 76,27 76,24 C68,25 60,25 53,25 '
-         +'C52,29 51,33 48,33 C45,33 45,29 45,26 C40,27 33,27 27,26 '
-         +'C26,30 25,34 22,34 C19,34 19,30 19,27 C14,29 9,31 6,33 Z';
+  // mink silhouette path (side profile, local box ~122x38, nose at left)
+  var MINK='M8,30 C3,29 3,23 9,22 C12,21 15,20 19,19 C20,15 25,14 26,19 '
+         +'C34,16 46,15 58,15 C72,15 84,17 93,21 C97,19 103,19 106,17 '
+         +'C114,12 122,11 120,17 C119,21 113,23 106,24 C100,25 95,25 90,25 '
+         +'C89,31 88,37 85,37 C82,37 82,31 83,26 C75,27 65,27 57,26 '
+         +'C56,32 55,37 52,37 C49,37 49,31 50,26 C42,27 34,27 28,26 '
+         +'C27,32 26,37 23,37 C20,37 20,31 21,26 C16,27 11,28 8,30 Z';
+  var MINK_LEN=122; // local path width used for scaling
   var mk=document.getElementById('minkkeyp'); if(mk) mk.setAttribute('d',MINK);
 
   var GRAY=css('--shade-min'), GM=css('--green-mid'), BM=css('--blue-mid'),
@@ -290,14 +292,14 @@
 
   // ---- SCHEMATIC ----------------------------------------------------------
   // area m2 per animal (footprint), height m, water m2 + depth m, cost strings
-  var S = 44;          // px per metre (shared linear scale)
-  var MINK_M = 0.45;   // drawn mink body length, metres (constant)
+  var S = 68;          // px per metre: shared scale for the five fur-farm cages
+  var MINK_M = 0.5;    // drawn mink length (nose to tail), metres; CONSTANT everywhere
   var DEPF = 0.42;     // cavalier depth foreshortening
   var CA = Math.cos(Math.PI/6), SA = Math.sin(Math.PI/6);
 
   var SCHEM=[
     {name:'Austria', role:'captive-wildlife ordinance (fur farming banned 2005)',
-      area:10, h:2.5, water:5, depth:0.5, twolevel:false,
+      area:10, h:2.5, water:5, depth:0.5, twolevel:false, sc:38, scaleTag:'enclosure at reduced scale',
       cost:null, banned:true},
     {name:'Germany', role:'fur-farming statute (TierErzHaVerbG)',
       area:1.0, h:1.0, water:1.0, depth:0.3, enc:'≥3 m²/enclosure', twolevel:false,
@@ -326,20 +328,21 @@
 
   // draw one cavalier-oblique cage into an svg group; returns svg element sized to fit
   function drawCage(d){
+    var sc=d.sc||S;                        // this cage's scale (Austria uses its own)
     var fpWm=d.fpW||Math.sqrt(d.area);     // footprint width, metres
     var fpDm=d.fpD||Math.sqrt(d.area);     // footprint depth, metres
-    var w=fpWm*S, dep=fpDm*S*DEPF, ht=d.h*S;
+    var w=fpWm*sc, dep=fpDm*sc*DEPF, ht=d.h*sc;
     var dvx=dep*CA, dvy=-dep*SA;           // receding up-right
     var aLab0 = d.areaLabel || fmtArea(d.harea||d.area);
     var labelInside = (aLab0.length*5.7) <= w*0.95;
-    var padX=42, padTop=16, padBot=(d.dims?34:26), rightReserve=labelInside?24:(aLab0.length*5.7+24);
+    var padX=42, padTop=16, padBot=((d.dims||d.scaleTag)?34:26), rightReserve=labelInside?24:(aLab0.length*5.7+24);
     // origin front-bottom-left placed so drawing fits
     var totW = w + dvx;                    // horizontal extent of box
     var totH = ht + (-dvy);                // vertical extent (dvy negative)
     // pool sits to the right of the cage on the same ground line
     var pool=null, poolW=0;
     if(d.water>0){
-      var ps=Math.sqrt(d.water)*S, pdep=ps*DEPF, pdvx=pdep*CA, pdvy=-pdep*SA, pht=d.depth*S;
+      var ps=Math.sqrt(d.water)*sc, pdep=ps*DEPF, pdvx=pdep*CA, pdvy=-pdep*SA, pht=d.depth*sc;
       pool={ps:ps,pdvx:pdvx,pdvy:pdvy,pht:pht};
       poolW = ps + pdvx + 16;
     }
@@ -371,11 +374,11 @@
       g.appendChild(el('line',{x1:x0,y1:sy,x2:x0+w,y2:sy,stroke:hfill,'stroke-width':1,'stroke-dasharray':'3 3'}));
       g.appendChild(el('line',{x1:x0+w,y1:sy,x2:x0+w+dvx,y2:sy+dvy,stroke:hfill,'stroke-width':1,'stroke-dasharray':'3 3'}));
     }
-    // front face wireframe (drawn over mink? draw mink then front edges)
-    // mink on floor, standing on front-bottom edge, centered
-    var ml=MINK_M*S, mh=ml*0.44;
-    var mx=x0 + (w-ml)/2, my=y0 - 2;
-    var gm=el('g',{transform:'translate('+mx+','+(my)+') scale('+(ml/100)+','+(ml/100)+')'});
+    // mink on floor, standing on front-bottom edge, centered.
+    // CONSTANT size everywhere: uses the shared scale S, never this cage's sc.
+    var ml=MINK_M*S;
+    var mx=x0 + (w-ml)/2, my=y0 - 1;
+    var gm=el('g',{transform:'translate('+mx+','+(my-ml*0.31)+') scale('+(ml/MINK_LEN)+','+(ml/MINK_LEN)+')'});
     gm.appendChild(el('path',{d:MINK,fill:BROWN}));
     g.appendChild(gm);
 
@@ -389,22 +392,24 @@
 
     // area label: inside the floor if it fits, else to the right with a leader
     // that ends on the FLOOR edge (so it reads as floor area, not the whole box)
-    var fcx=(FBL[0]+BBR[0])/2, fcy=(FBL[1]+BBR[1])/2;
+    var fcx=x0+w/2, fcy=y0-ht*0.55; // upper-middle of the front face, clear of the mink
     if(labelInside){
-      g.appendChild(mkText(fcx,fcy+2,10.5,700,INK,'middle',aLab0,true));
+      g.appendChild(mkText(fcx,fcy,11,700,INK,'middle',aLab0,true));
     } else {
       var rx=x0+totW+(pool?poolW:0)+10, ry=y0-ht*0.35;
       // leader from the back-right FLOOR corner (right edge of the floor) to the label
       g.appendChild(el('line',{x1:BBR[0],y1:BBR[1],x2:rx-4,y2:ry,stroke:INK3,'stroke-width':0.8,'stroke-opacity':0.6}));
       g.appendChild(el('circle',{cx:BBR[0],cy:BBR[1],r:1.6,fill:INK3}));
-      g.appendChild(mkText(rx,ry,10.5,700,INK,'start',aLab0,false));
+      g.appendChild(mkText(rx,ry,11,700,INK,'start',aLab0,false));
     }
     // height label on left edge
-    g.appendChild(mkText(x0-6,y0-ht/2,10,600,INK2,'end',d.h+' m',false));
-    // footprint dimensions below the mink (where the source specifies them);
+    g.appendChild(mkText(x0-6,y0-ht/2,10.5,600,INK2,'end',d.h+' m',false));
+    // footprint dimensions (or a reduced-scale tag) below the mink;
     // left-anchored to the box edge so long strings never clip off the left
     if(d.dims){
-      g.appendChild(mkText(x0,y0+16,9,500,INK3,'start',d.dims,false));
+      g.appendChild(mkText(x0,y0+16,10,500,INK3,'start',d.dims,false));
+    } else if(d.scaleTag){
+      g.appendChild(mkText(x0,y0+16,10,500,INK3,'start',d.scaleTag,false));
     }
 
     // pool
@@ -422,8 +427,8 @@
         fill:dfill,'fill-opacity':0.22,stroke:dfill,'stroke-width':1}));
       g.appendChild(el('polygon',{points:[P.apply(0,pFBR),P.apply(0,pBBR),P.apply(0,pBTR),P.apply(0,pFTR)].join(' '),
         fill:dfill,'fill-opacity':0.28,stroke:dfill,'stroke-width':1}));
-      g.appendChild(mkText((pFTL[0]+pBTR[0])/2,(pFTL[1]+pBTR[1])/2+1,9.5,700,INK,'middle','pool '+fmtArea(d.water),true));
-      g.appendChild(mkText((pFBL[0]+pFBR[0])/2,py0+12,9,500,INK3,'middle',d.depth+' m deep',false));
+      g.appendChild(mkText((pFTL[0]+pBTR[0])/2,(pFTL[1]+pBTR[1])/2+1,10.5,700,INK,'middle','pool '+fmtArea(d.water),true));
+      g.appendChild(mkText((pFBL[0]+pFBR[0])/2,py0+13,10.5,600,INK2,'middle',d.depth+' m deep',false));
     }
     return {svg:g,w:svgW,h:svgH};
   }
