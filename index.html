@@ -349,7 +349,7 @@
     if(d.water>0){
       var ps=Math.sqrt(d.water)*sc, pdep=ps*DEPF, pdvx=pdep*CA, pdvy=-pdep*SA, pht=d.depth*sc;
       pool={ps:ps,pdvx:pdvx,pdvy:pdvy,pht:pht};
-      poolW = ps + pdvx + 16;
+      poolW = ps + pdvx + 16 + 64;   // extra 64: depth label sits to the right of the pool
     }
     var svgW = padX + totW + poolW + rightReserve;
     svgW = Math.max(svgW, padX + Math.max(aBelow.length, line2.length)*5.3 + 12);
@@ -421,8 +421,10 @@
         fill:dfill,'fill-opacity':0.22,stroke:dfill,'stroke-width':1}));
       g.appendChild(el('polygon',{points:[P.apply(0,pFBR),P.apply(0,pBBR),P.apply(0,pBTR),P.apply(0,pFTR)].join(' '),
         fill:dfill,'fill-opacity':0.28,stroke:dfill,'stroke-width':1}));
-      g.appendChild(mkText((pFTL[0]+pBTR[0])/2,(pFTL[1]+pBTR[1])/2+1,10.5,700,INK,'middle','pool '+fmtArea(d.water),true));
-      g.appendChild(mkText((pFBL[0]+pFBR[0])/2,py0+13,10.5,600,INK2,'middle',d.depth+' m deep',false));
+      // pool area BELOW the pool (mirrors the cage floor-area label), left-anchored on the same ground line
+      g.appendChild(mkText(px0,y0+18,11,700,INK,'start',fmtArea(d.water)+' pool water',false));
+      // depth BESIDE the pool (mirrors the cage height label), to the right of the box
+      g.appendChild(mkText(px0+pool.ps+pool.pdvx+6,py0-pool.pht/2,10.5,600,INK2,'start',d.depth+' m deep',false));
     }
     return {svg:g,w:svgW,h:svgH};
   }
