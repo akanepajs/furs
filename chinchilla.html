@@ -1,0 +1,533 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chinchilla fur farming: the cost of raising the welfare standard</title>
+<style>
+  :root{
+    --surface:#ffffff;
+    --surface-2:#f6f7f5;
+    --ink:#1b1f1d;
+    --ink-2:#4a524e;
+    --ink-3:#616a63;
+    --hair:#e2e6e2;
+    --hair-2:#cfd5d0;
+    --green-mid:#4e9b73;
+    --shade-min:#d3d7d4;
+    --brown:#6b4a2b;
+    --red:#a11f1f;
+    --amber:#b26a00;
+    --accent:#0c4a6e;
+    --max:1000px;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --surface:#14171a; --surface-2:#1c2024; --ink:#e9ece9; --ink-2:#b3bab5; --ink-3:#8b938d;
+      --hair:#2b3138; --hair-2:#3a424a;
+      --shade-min:#454d49; --brown:#b98a5c;
+      --green-mid:#5aa87f; --red:#e06a6a; --amber:#e0a24e; --accent:#8bc7ec;
+    }
+  }
+  :root[data-theme="dark"]{
+      --surface:#14171a; --surface-2:#1c2024; --ink:#e9ece9; --ink-2:#b3bab5; --ink-3:#8b938d;
+      --hair:#2b3138; --hair-2:#3a424a;
+      --shade-min:#454d49; --brown:#b98a5c;
+      --green-mid:#5aa87f; --red:#e06a6a; --amber:#e0a24e; --accent:#8bc7ec;
+  }
+  :root[data-theme="light"]{
+    --surface:#ffffff; --surface-2:#f6f7f5; --ink:#1b1f1d; --ink-2:#4a524e; --ink-3:#616a63;
+    --hair:#e2e6e2; --hair-2:#cfd5d0;
+    --shade-min:#d3d7d4; --brown:#6b4a2b;
+    --green-mid:#4e9b73; --red:#a11f1f; --amber:#b26a00; --accent:#0c4a6e;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--surface);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.5;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:var(--max);margin:0 auto;padding:24px 20px 56px}
+  h1{font-size:1.42rem;line-height:1.25;margin:0 0 8px;font-weight:700;letter-spacing:-.01em}
+  h2{font-size:1.08rem;margin:38px 0 10px;font-weight:660}
+  .sub{font-size:.98rem;color:var(--ink-2);margin:0 0 16px;max-width:72ch}
+  .sub strong{color:var(--ink)}
+
+  /* ---- species nav ---- */
+  .nav{display:flex;gap:4px;margin:0 0 22px;border-bottom:1px solid var(--hair);flex-wrap:wrap}
+  .nav a{padding:8px 16px;font-size:.98rem;font-weight:640;text-decoration:none;color:var(--ink-3);
+    border-bottom:2px solid transparent;margin-bottom:-1px}
+  .nav a:hover{color:var(--ink)}
+  .nav a.active{color:var(--ink);border-bottom-color:var(--accent)}
+
+  /* ---- callouts ---- */
+  .callout{background:var(--surface-2);border:1px solid var(--hair);border-left:3px solid var(--accent);
+    border-radius:0 10px 10px 0;padding:12px 16px;margin:16px 0;font-size:.9rem}
+  .callout.warn{border-left-color:var(--amber)}
+  .callout h4{margin:0 0 4px;font-size:.95rem;font-weight:680;color:var(--ink)}
+  .callout p{margin:0;color:var(--ink-2)}
+  .callout p+p{margin-top:8px}
+
+  .quote{border-left:3px solid var(--accent);background:var(--surface-2);
+    padding:14px 18px;border-radius:0 10px 10px 0;margin:24px 0 8px;font-size:.94rem}
+  .quote p{margin:0 0 8px}
+  .quote p:last-child{margin:0}
+  .quote cite{display:block;font-style:normal;color:var(--ink-3);font-size:.82rem;margin-top:8px}
+
+  .foot{font-size:.8rem;color:var(--ink-2)}
+  .foot ol{margin:6px 0 0;padding-left:1.3em}
+  .foot li{margin:0 0 5px}
+  table{border-collapse:collapse;width:100%;font-size:.82rem;margin-top:8px}
+  th,td{border-bottom:1px solid var(--hair);padding:6px 9px;text-align:right}
+  th:first-child,td:first-child{text-align:left}
+  thead th{color:var(--ink-3);font-weight:620;border-bottom:1px solid var(--hair-2)}
+  .refs{font-size:.82rem;color:var(--ink-2)}
+  .refs li{margin:0 0 8px;line-height:1.45}
+  .refs a{color:var(--accent);word-break:break-word}
+  .refs em{font-style:italic}
+  .caption{font-size:.78rem;color:var(--ink-3);margin:10px 0 0}
+
+  .method p{max-width:74ch;font-size:.92rem;margin:0 0 12px}
+  .method p b{color:var(--ink)}
+  .calc{overflow-x:auto;margin:6px 0 4px}
+  .calc table{min-width:560px}
+  .calc td.lbl,.calc th.lbl{text-align:left}
+  .calc td.row{text-align:left;color:var(--ink-2)}
+  .calc td.rk{text-align:left;color:var(--ink-3);width:1.4em;font-variant-numeric:tabular-nums}
+  .calc td.shared{text-align:left;color:var(--ink-3)}
+  .calc tr.res td{font-weight:700;border-top:1px solid var(--hair-2)}
+  .calc td:not(.row):not(.lbl):not(.shared):not(.rk){font-variant-numeric:tabular-nums}
+
+  /* ---- cage schematic ---- */
+  .schem-row{display:grid;grid-template-columns:minmax(220px,1fr) 1.15fr;gap:8px 24px;
+    align-items:center;padding:14px 0;border-top:1px solid var(--hair)}
+  .schem-row:first-of-type{border-top:1px solid var(--hair-2)}
+  .cage-cell{overflow-x:auto}
+  .cage-cell svg{display:block;height:auto;max-width:none}
+  .info h3{margin:0 0 2px;font-size:1.02rem;font-weight:680}
+  .info .role{color:var(--ink-3);font-size:.82rem;margin:0 0 8px;font-weight:500}
+  .costs{font-size:.86rem;line-height:1.5}
+  .costs .cline{display:flex;justify-content:space-between;gap:12px;border-bottom:1px dotted var(--hair);padding:2px 0}
+  .costs .cline .k{color:var(--ink-2)}
+  .costs .cline .v{color:var(--ink);font-weight:640;text-align:right;font-variant-numeric:tabular-nums}
+  .costs .oc{color:var(--ink-3);font-weight:500}
+  .costs .none{color:var(--ink-3);font-style:normal}
+  .costs .base{color:var(--accent);font-weight:640}
+  .costs .profit{color:var(--green-mid);font-weight:640}
+  .legend{display:flex;flex-wrap:wrap;gap:18px 26px;align-items:flex-start;
+    padding:14px 16px;background:var(--surface-2);border:1px solid var(--hair);
+    border-radius:10px;margin:20px 0 8px;font-size:.82rem}
+  .legend h4{margin:0 0 6px;font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;color:var(--ink-3);font-weight:640}
+  .swatchrow{display:flex;align-items:center;gap:8px}
+  .seg{width:16px;height:16px;border-radius:4px;flex:none;border:1px solid var(--hair-2)}
+  .ramp{height:12px;width:150px;border-radius:6px;border:1px solid var(--hair-2)}
+  .ramp-g{background:linear-gradient(90deg,var(--shade-min),var(--green-mid))}
+  .ramplabels{display:flex;justify-content:space-between;width:150px;font-size:.7rem;color:var(--ink-3);margin-top:3px}
+  .chkey{width:40px;height:28px;flex:none}
+  .astkey{font-size:.82rem;color:var(--ink-2);margin:8px 0 22px;padding-left:2px}
+  .astkey b{color:var(--ink)}
+  .ast{color:var(--accent);font-weight:700}
+
+  /* ---- charts ---- */
+  .chart-scroll{overflow-x:auto}
+  svg{max-width:100%}
+  #chencl,#threshold{display:block;width:100%;height:auto;min-width:600px}
+  details{margin-top:8px}
+  summary{cursor:pointer;font-size:.86rem;color:var(--accent);font-weight:600}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <nav class="nav" aria-label="Species">
+    <a href="./">Mink</a>
+    <a href="fox.html">Fox</a>
+    <a href="raccoon-dog.html">Raccoon dog</a>
+    <a href="chinchilla.html" class="active" aria-current="page">Chinchilla</a>
+  </nav>
+
+  <h1>Chinchilla fur farming: the cost of raising the welfare standard</h1>
+  <p class="sub">What it would cost to move chinchilla fur farms from the current cage to each proposed welfare standard, per pelt of annual output. <strong>Chinchilla is the one fur species that still makes money: a pelt price of about EUR&nbsp;53 covers a production cost of about EUR&nbsp;25. Raising the standard adds an order-of-magnitude capital cost, but under the modest reform cages costed here it does not by itself turn the activity loss-making; only much larger, EFSA-level enclosures would erase the margin.</strong></p>
+
+  <div class="callout warn">
+    <h4>Read every chinchilla figure as an order of magnitude</h4>
+    <p>Chinchilla is <b>not in the Finnish draft decree and is not farmed in Finland</b>, so there is no Finnish construction-cost study to calibrate against and no Finland column. Its costs are built by analogy: the mink new-build cage rate (about EUR 342 per square metre) applied to the extra floor area above current practice. Three unsourced assumptions drive every number: current practice of about 0.10 m&sup2; per animal (the subtraction baseline); about 1.5 animals per pelt; and the mink build rate applied to a much smaller animal, which likely <b>overstates</b> a chinchilla cage's cost. The pelt price (about EUR 53) is an EU auction figure carried forward from 2022, and the production cost (about EUR 25) is the operating cost of a single Polish farm on 2011-2012 data, both via Carpenter (2025); neither is a Finnish or EU-wide chinchilla cost study. Treat the whole page as a rough order of magnitude, among the heaviest caveats of any species in this study.</p>
+  </div>
+
+  <div class="quote">
+    <p>&ldquo;The majority of the welfare consequences (WCs) listed cannot be prevented or substantially mitigated within the current husbandry systems.&rdquo;</p>
+    <p>&ldquo;&hellip; substantial mitigation would require enclosures that provide sufficient three-dimensional space to incorporate structures and resources that enhance environmental complexity, to allow the quantitative and qualitative expression of fundamental behaviours (e.g. sustained locomotory activity, exploration, foraging and vigilance).&rdquo;</p>
+    <p>For chinchillas, EFSA identifies six most relevant welfare consequences: restriction of movement, predation stress, the inability to perform exploratory or foraging behaviour, sensorial under- and overstimulation, the inability to perform comfort behaviour and resting problems. It finds that restriction of movement and the inability to perform exploratory or foraging behaviour cannot be prevented in the current cage, and reports no scientific information on how large an increase in floor area would substantially mitigate the restriction of movement. Providing a quartz-free sand bath can prevent the one comfort behaviour the cage can readily deliver, sand-bathing.</p>
+    <cite>EFSA Panel on Animal Health and Welfare (2025). Welfare of American mink, red and Arctic foxes, raccoon dog and chinchilla kept for fur production (Scientific Opinion 9519). <em>EFSA Journal</em>, 23(7).</cite>
+  </div>
+
+  <h2>What a single chinchilla is allowed, and what each standard costs</h2>
+  <p class="sub">A schematic of the floor area one chinchilla is allowed under the current cage and each costed reform standard, drawn to one shared scale (green&nbsp;=&nbsp;floor area, shade&nbsp;=&nbsp;required height), with the one-time and per-pelt cost of moving a chinchilla farm to that standard. <strong>The animal is drawn to scale in every cage: in the current cage it has barely more floor than its own footprint, which is why EFSA finds restriction of movement cannot be prevented there.</strong></p>
+
+  <div id="schematic"></div>
+
+  <div class="legend">
+    <div>
+      <h4>Cage / enclosure</h4>
+      <div class="swatchrow"><span class="seg" style="background:var(--green-mid);opacity:.5"></span><span>Floor area (transparent green)</span></div>
+    </div>
+    <div>
+      <h4>Green shade = required height</h4>
+      <div class="ramp ramp-g"></div>
+      <div class="ramplabels"><span>0.5 m (gray)</span><span>1.5 m</span></div>
+    </div>
+    <div>
+      <h4>Occupant</h4>
+      <div class="swatchrow"><svg class="chkey" viewBox="0 0 3458 2470" preserveAspectRatio="xMidYMid meet" aria-hidden="true"><g id="chkeyg" fill="var(--brown)"></g></svg><span>one adult chinchilla, drawn to scale in each cage (see note)</span></div>
+    </div>
+  </div>
+
+  <p class="astkey"><span class="ast">*</span>&nbsp;marks the German fur-farming statute, which sets more floor, height and a solid floor and sand bath than the current cage, the direction EFSA points to; EFSA sets no numeric chinchilla enclosure size and certifies none of these as adequate. The three cages are drawn to one shared scale, so the chinchilla is the same size across them. Only the German statute sets a cage height (1&nbsp;m); the Ecorys and current-practice cages have no stated height and are drawn at an assumed 0.5&nbsp;m (marked "~" here and shown as unspecified in the enclosure chart below). The chinchilla is drawn to about 0.30&nbsp;m nose to tail: EFSA (2025) gives a farmed-chinchilla body length of 23 to 50&nbsp;cm, and the bushy tail adds more. Chinchilla silhouette by Margot Michaud (PhyloPic, public domain). Cost figures are the study's analogue model in 2025 EUR, per pelt of annual output; there is no engineering-versus-proportional range because there is no Finnish cage stock to convert. Ecorys and the German statute state their floor per animal; the current-practice figure is an assumption. Full references below.</p>
+
+  <h2>Chinchilla enclosure space: the fur cage against pet-keeping and captive standards</h2>
+  <p class="sub">Minimum floor area allowed per chinchilla under each standard, on a single linear scale. <strong>Even pet-keeping law asks for more room than the fur cage: Switzerland and Austria require about 0.25 to 0.5 m&sup2; per animal for a pet chinchilla, against an assumed 0.10 m&sup2; on the farm. Keeping chinchillas as a wild species (Austria) requires about 4 m&sup2; per animal, roughly forty times the farm cage.</strong></p>
+
+  <div class="chart-scroll"><svg id="chencl" role="img" aria-label="Horizontal bar chart of minimum floor area per chinchilla for seven standards, ordered largest first: Austria's wild-species rule at 4 square metres, shown off the 1 square metre scale, then pet-keeping and fur-reform standards of 0.25 to 0.5 square metres, down to an assumed 0.10 square metres on the fur farm."></svg></div>
+
+  <p class="caption">Green bars are floor area per animal; a hatched bar means the standard sets no enclosure-height figure. The asterisk marks standards that set substantially more space and structural complexity than the current cage, the direction EFSA points to (EFSA sets no numeric chinchilla enclosure size and certifies none of these as adequate). Captive and pet figures are per animal at the standard's stated pair or group capacity, a conservative reading. Chinchillas are legally kept as pets, so the Swiss and Austrian pet-keeping minima are genuine per-animal floors, not zoo figures. Austria's 4 m&sup2; is its "kept as a wild species" rule (8 m&sup2; per pair, indoor plus outdoor, 2 m height), an upper bound. The German zoo-husbandry guidance (BMEL, 2014) sets the same 0.5 m&sup2; floor as the German fur statute but with 1.5 m height and climbing structures. The German fur statute also requires a sand bath, a 50% solid floor and group housing that the bar cannot show. Most of these standards require a sand bath (the fur statute, the German zoo guidance and the Austrian and Swiss pet-keeping rules); Austria's wild-species enclosure requires climbing structures and gnawing wood instead, and the current fur cage is the pre-reform baseline. No standard requires open water. Sources: Austria 2. Tierhaltungsverordnung (2004); Switzerland TSchV Anhang 2 (2008); Germany S&auml;ugetiergutachten (BMEL, 2014); German fur statute TierErzHaVerbG (2017a); Ecorys EC survey (2025); current-cage practice (assumption).</p>
+
+  <details>
+    <summary>Show data table (enclosure space)</summary>
+    <p style="font-size:.85rem;font-weight:660;margin:10px 0 3px;color:var(--ink)">Table 4. Minimum floor area per chinchilla, by standard</p>
+    <table>
+      <thead><tr><th>Standard</th><th>Area per animal (m&sup2;)</th><th>Height (m)</th><th>EFSA direction</th><th>Basis / note</th></tr></thead>
+      <tbody id="enctbody"></tbody>
+    </table>
+    <p class="caption">Per animal at the stated pair or group capacity. Verbatim source figures held in the study provenance note.</p>
+  </details>
+
+  <h2>How the compliance costs are calculated</h2>
+
+  <div class="method">
+  <p>Chinchilla has <b>no Finnish construction-cost study and is not in the Finnish decree</b>, so unlike the other species there is no directly-measured anchor and no engineering-versus-proportional range. The cost of each standard is built by analogy: the <b>one-time capital</b> is the extra cage floor a standard requires, above current practice, priced at the mink all-in new-build rate of about EUR 342 per square metre, plus the yearly cost of financing that capital. Because a chinchilla enclosure is a lighter structure than a mink shade-house cage, using the mink rate likely overstates the cost, so the figures are a conservative (high) order of magnitude.</p>
+
+  <p><b>Ecorys: the EC survey cage.</b> The Commission's survey (processed by Ecorys) sets a 65&nbsp;&times;&nbsp;40&nbsp;cm cage (about 0.26 m&sup2;) with juveniles paired. Above the 0.15 m&sup2; per-pelt current-practice baseline (0.10 m&sup2; per animal over about 1.5 animals per pelt) this adds only a little floor, so the one-time capital is about <b>EUR 43</b> per pelt and the break-even pelt price is about EUR 29, still well below the EUR 53 price.</p>
+
+  <p><b>German: the fur-farming statute.</b> The German statute requires at least 0.5 m&sup2; of floor per adult (0.3 m&sup2; per weaned juvenile) and at least 1 m&sup2; per enclosure, a height of 1 m, a floor solid over at least half its area, a platform and a quartz-free sand bath per animal, and group housing. Pricing that extra floor and the solid-floor insert gives about <b>EUR 153</b> per pelt of one-time capital and a break-even of about EUR 38, still below the price.</p>
+
+  <p><b>EFSA-level: illustrative only.</b> EFSA sets no numeric chinchilla enclosure size, so there is no EFSA-level figure to cost. To show the order of magnitude, the table below carries three <b>illustrative</b> enclosures at two, three and five times the German floor area; these are not a reported EFSA-level standard. The margin narrows to roughly zero at about twice the German floor (break-even about EUR 53, level with the price) and turns clearly negative from about three times (break-even about EUR 69).</p>
+
+  <h3 style="font-size:1rem;margin:22px 0 4px;font-weight:660">Fixed (one-time) capital per pelt</h3>
+  <p style="font-size:.86rem;color:var(--ink-2);margin:0 0 6px;max-width:74ch">All figures in 2025 EUR, per pelt of annual output. There is a single costing route (extra floor &times; the analogue build rate), not the engineering-versus-proportional range used for the Finnish-anchored species.</p>
+  <p style="font-size:.85rem;font-weight:660;margin:12px 0 3px;color:var(--ink)">Table 1. Fixed (one-time) capital per pelt, by standard (chinchilla)</p>
+  <div class="calc">
+  <table>
+    <thead>
+      <tr><th class="rk"></th><th class="lbl">Item</th><th class="lbl">How it is computed</th><th>Ecorys<br>(EC survey)</th><th>German<br>(statute)</th><th>EFSA-level<br>(illustrative)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="rk">A</td><td class="row">Analogue build rate</td><td class="lbl">mink all-in new-build rate (no chinchilla construction data)</td><td class="shared" colspan="3">&asymp; EUR 342/m&sup2; (same for every standard; likely an overstatement)</td></tr>
+      <tr><td class="rk">B</td><td class="row">Current practice, floor per pelt</td><td class="lbl">0.10 m&sup2;/animal &times; 1.5 animals/pelt (assumption; the subtraction baseline)</td><td class="shared" colspan="3">0.15 m&sup2; (same for every standard)</td></tr>
+      <tr><td class="rk">C</td><td class="row">Floor area required per pelt</td><td class="lbl">the standard's floor per animal, blended over about 1.5 animals per pelt</td><td>0.26 m&sup2;</td><td>0.55 m&sup2;</td><td>1.65 m&sup2;</td></tr>
+      <tr><td class="rk">D</td><td class="row">New floor to build per pelt</td><td class="lbl">required floor (C) minus current practice (B)</td><td>0.11 m&sup2;</td><td>0.40 m&sup2;</td><td>1.50 m&sup2;</td></tr>
+      <tr><td class="rk">E</td><td class="row">Added features, EUR/pelt</td><td class="lbl">sand bath and boxes; the German cage also a 50% solid floor</td><td>5</td><td>16</td><td>5</td></tr>
+      <tr class="res"><td class="rk">F</td><td class="row">One-time capital per pelt (EUR)</td><td class="lbl">D &times; EUR 342 + E</td><td>43</td><td>153</td><td>518</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="caption">The EFSA-level column is the three-times-German illustrative enclosure; the full illustrative band is about EUR 330 (twice German) to EUR 895 (five times German). Column C blends the standard's per-animal floor over about 1.5 animals per pelt (one weaned juvenile plus about half an adult place); Ecorys states a per-cage 65&nbsp;&times;&nbsp;40&nbsp;cm allowance with juveniles paired, the same per-cage-versus-per-animal reading the mink page carries. Row E is an order-of-magnitude assumption: for the German cage the 50% solid floor is priced at EUR 30 per square metre over the adult footprint (about 0.75 m&sup2; per pelt), about EUR 11, plus about EUR 5 for the sand bath and boxes; the Ecorys and EFSA-level columns carry only the EUR 5 sand-bath-and-boxes figure, so the added-features cost does not scale with the illustrative EFSA-level area (a small downward bias against the otherwise conservative framing). Intermediate factors are rounded for display.</p>
+
+  <h3 style="font-size:1rem;margin:22px 0 4px;font-weight:660">Annualised cost per pelt</h3>
+  <p style="font-size:.86rem;color:var(--ink-2);margin:0 0 6px;max-width:74ch">The one-time capital is spread over the cage's life as an equal yearly charge (a capital-recovery-factor annuity), then added to the yearly production cost to give the break-even pelt price.</p>
+  <p style="font-size:.85rem;font-weight:660;margin:12px 0 3px;color:var(--ink)">Table 2. Annualisation parameters (all standards)</p>
+  <div class="calc">
+  <table>
+    <tbody>
+      <tr><td class="rk">a</td><td class="row lbl">Real discount rate</td><td class="lbl" colspan="3">3% (European Commission, Better Regulation Toolbox, Tool #64)</td></tr>
+      <tr><td class="rk">b</td><td class="row lbl">Cage asset life</td><td class="lbl" colspan="3">15 years</td></tr>
+      <tr><td class="rk">c</td><td class="row lbl">Capital-recovery factor</td><td class="lbl" colspan="3">3% &divide; (1 &minus; 1.03<sup>&minus;15</sup>) = 0.0838</td></tr>
+      <tr><td class="rk">d</td><td class="row lbl">Production cost per pelt</td><td class="lbl" colspan="3">about EUR 25 (Carpenter, 2025; operating cost from a single Polish farm, 2011-2012 data)</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p style="font-size:.85rem;font-weight:660;margin:14px 0 3px;color:var(--ink)">Table 3. Break-even pelt price by standard (chinchilla)</p>
+  <div class="calc" style="margin-top:10px">
+  <table>
+    <thead>
+      <tr><th class="lbl">Standard</th><th>One-time capital<br>(from the table above)</th><th>&times; 0.0838 =<br>annualised capital<br>(EUR/pelt/year)</th><th>+ EUR 25 production cost =<br>break-even pelt price<br>(EUR/pelt)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="lbl">Current cage (baseline)</td><td>0 (already sunk)</td><td>0</td><td>25</td></tr>
+      <tr><td class="lbl">Ecorys (EC survey)</td><td>43</td><td>4</td><td>29</td></tr>
+      <tr><td class="lbl">German (statute)</td><td>153</td><td>13</td><td>38</td></tr>
+      <tr><td class="lbl">EFSA-level, 2&times; German (illustrative)</td><td>330</td><td>28</td><td>53</td></tr>
+      <tr><td class="lbl">EFSA-level, 3&times; German (illustrative)</td><td>518</td><td>43</td><td>69</td></tr>
+      <tr><td class="lbl">EFSA-level, 5&times; German (illustrative)</td><td>895</td><td>75</td><td>100</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="caption">The current chinchilla pelt price is about EUR 53 and the production cost about EUR 25, so the pelt price exceeds the production cost before any reform, the only farmed fur species in this study for which it does. The Ecorys and German break-evens (about EUR 29 and 38) stay below the price, so those reforms leave a positive margin; the illustrative EFSA-level break-even reaches the price at about twice the German floor (about EUR 53) and exceeds it from about three times (about EUR 69). The EFSA-level rows are illustrative multiples of the German area, not a reported EFSA standard. Figures are rounded independently, so a row's columns may not add up to the euro. Production cost and price are Carpenter's (2025) figures, the cost on 2011-2012 Polish data and the price carried forward from a 2022 EU auction, not uprated, so the margin is indicative.</p>
+
+  <p style="font-size:.84rem;color:var(--ink-2);margin:14px 0 0;max-width:74ch"><b>Key sources.</b> Cage build rate: the mink calibration from Luke (2025), applied by analogy. Larger-cage specifications: the Ecorys survey (2025) and the German fur-farming statute (Bundesrepublik Deutschland, 2017a). Discount rate: the European Commission's Better Regulation Toolbox (Tool #64). Production cost and pelt price: Carpenter (2025). Full citations in the Sources list below.</p>
+  </div>
+
+  <h2>Chinchilla is the one profitable fur species: price against the reform break-evens</h2>
+  <p class="sub">The chinchilla pelt price and current production cost against the break-even pelt price each standard would require. <strong>There is no price-history chart for chinchilla, because no annual auction price series is published for it. The single price (about EUR 53) sits above the current cost and above the Ecorys and German break-evens, and only the illustrative EFSA-level enclosures lift the break-even past it.</strong></p>
+
+  <div class="chart-scroll"><svg id="threshold" role="img" aria-label="Horizontal bar chart of the break-even pelt price for six chinchilla standards against the current pelt price of about 53 euros: the current cage, Ecorys and German break-evens (25, 29 and 38 euros) fall below the price, while the illustrative EFSA-level enclosures at three and five times the German floor (69 and 100 euros) rise above it."></svg></div>
+
+  <p class="caption">Each bar is the break-even pelt price a standard would require (production cost plus the annualised cost of the extra cage), coloured by how much space the standard adds: green for the most stringent (illustrative EFSA-level), amber for the German statute, red for the Ecorys cage, grey for the current baseline. The solid line is the current pelt price of about EUR 53; the dotted line is the current production cost of about EUR 25. Bars ending left of the price line leave a positive margin; the 2x-German illustrative bar sits essentially on the price line (break-even about EUR 53), and the two tallest illustrative bars cross it. The EFSA-level bars are illustrative multiples of the German floor area, not a reported EFSA standard. Price and cost are Carpenter's (2025) figures, the cost on 2011-2012 Polish data and the price carried forward from a 2022 EU auction.</p>
+
+  <h2>Notes</h2>
+  <div class="foot">
+    <ol>
+      <li><b>What the cost figures are.</b> One-time capital and the derived per-pelt cost of raising a chinchilla farm from the current cage to each standard, in 2025 EUR, per pelt of annual output. There is a single costing route (extra floor area above current practice, priced at the mink new-build rate), because chinchilla has no Finnish cage stock to convert. The break-even pelt price adds the production cost of about EUR 25 to the annualised capital; the current pelt price is about EUR 53.</li>
+      <li><b>Chinchilla still makes money.</b> Unlike mink, fox and raccoon dog, the chinchilla pelt price covers the production cost, so the activity is profitable before any reform. On Carpenter's (2025) account, EU chinchilla farming earned a positive aggregate profit of about EUR 3.8 million in 2024, the only one of the four species estimated as profitable, while mink, fox and raccoon dog ran at a loss. The reform standards add cost, but the Ecorys and German cages leave the price above break-even; only illustrative EFSA-level enclosures would erase the margin. Chinchilla is not farmed in Finland and is not covered by the Finnish draft decree.</li>
+      <li><b>Three bare assumptions.</b> Every chinchilla capital figure depends on three unsourced assumptions with no chinchilla-specific source: current practice of about 0.10 m&sup2; per animal (an error here scales every figure), about 1.5 animals per pelt, and the mink per-square-metre build rate applied to a smaller animal, which likely overstates the cost. The figures are an order of magnitude only, among the heaviest caveats of any species in this study.</li>
+      <li><b>Ecorys (EC survey, Scenarios 4 and 5).</b> A 65&nbsp;&times;&nbsp;40&nbsp;cm cage (about 0.26 m&sup2;) at all production stages, with juveniles housed in pairs. The area is stated per cage with juveniles paired, so it is read here as about 0.13 m&sup2; per juvenile and 0.26 m&sup2; per adult, the same per-cage-versus-per-animal treatment as the mink page.</li>
+      <li><b>Germany, fur-farming statute (TierErzHaVerbG).</b> At least 0.5 m&sup2; of floor per adult and 0.3 m&sup2; per weaned juvenile, at least 1 m&sup2; per enclosure, height at least 1 m, a floor solid over at least half its area, at least one platform per animal, a quartz-free sand bath of at least 250 cm&sup2; per animal, additional boxes, and group housing. German zoo-husbandry guidance (BMEL, 2014) sets the same 0.5 m&sup2; floor for the true chinchilla but with 1.5 m height and climbing structures.</li>
+      <li><b>EFSA-level is illustrative.</b> EFSA sets no numeric chinchilla enclosure size, and reports no scientific information on how large an increase in floor area would substantially mitigate the restriction of movement. The EFSA-level rows in the tables are illustrative enclosures at two, three and five times the German floor area, shown only to give the order of magnitude; they are not a reported EFSA-level standard.</li>
+      <li><b>Production cost and price.</b> About EUR 25 production cost and about EUR 53 pelt price, both from Carpenter (2025), the cost from a single Polish farm's 2011-2012 data and the price carried forward from a 2022 EU auction, not uprated to 2025, so the margin is indicative rather than a current-year figure.</li>
+    </ol>
+  </div>
+
+  <h2>Sources</h2>
+  <ol class="refs" id="refs">
+    <li>Austrian Government. (2004). <em>2. Tierhaltungsverordnung</em> (BGBl. II Nr. 486/2004), Anlage 1, points 3.2 (Chinchillas) and 7.5.8 (Chinchillaartige als Wildarten) [minimum keeping and enclosure sizes]. <a href="https://www.ris.bka.gv.at/eli/bgbl/II/2004/486">https://www.ris.bka.gv.at/eli/bgbl/II/2004/486</a></li>
+    <li>BMEL (German Federal Ministry of Food and Agriculture). (2014). <em>Gutachten &uuml;ber Mindestanforderungen an die Haltung von S&auml;ugetieren</em> [Report on minimum requirements for keeping mammals], Ch. 15.10 (Chinchillidae), p. 149. <a href="https://www.bmleh.de/SharedDocs/Downloads/DE/_Tiere/Tierschutz/HaltungSaeugetiere.pdf">https://www.bmleh.de/SharedDocs/Downloads/DE/_Tiere/Tierschutz/HaltungSaeugetiere.pdf</a></li>
+    <li>Bundesrepublik Deutschland. (2017a). <em>Anforderungen an die Haltung von Pelztieren</em> [Anlage to the Tiererzeugnisse-Handels-Verbotsgesetz (TierErzHaVerbG); German-English extract, chinchilla requirements]. Bundesministerium der Justiz. <a href="https://www.gesetze-im-internet.de/khfeverbg/anlage.html">https://www.gesetze-im-internet.de/khfeverbg/anlage.html</a></li>
+    <li>Carpenter, G. (2025). <em>A full-cost account of the EU fur industry</em> [Report]. Eurogroup for Animals, Fur Free Alliance, FOUR PAWS International and Humane World for Animals. <a href="https://www.eurogroupforanimals.org/resources">https://www.eurogroupforanimals.org/resources</a></li>
+    <li>Ecorys. (2025). <em>Study supporting the European Commission's assessment to follow up on the European Citizens' Initiative "Fur Free Europe": Survey of civil society organisations</em> [Survey questionnaire]. European Commission. Copy on file; survey background at <a href="https://food.ec.europa.eu/animals/animal-welfare/eci/eci-fur-free-europe_en">https://food.ec.europa.eu/animals/animal-welfare/eci/eci-fur-free-europe_en</a></li>
+    <li>EFSA Panel on Animal Health and Welfare (AHAW). (2025). Welfare of American mink, red and Arctic foxes, raccoon dog and chinchilla kept for fur production. <em>EFSA Journal</em>, <em>23</em>(7), Article e9519. <a href="https://doi.org/10.2903/j.efsa.2025.9519">https://doi.org/10.2903/j.efsa.2025.9519</a></li>
+    <li>European Commission. (2025). <em>'Better regulation' toolbox, Tool #64: Discount factors</em> (December 2025 edition). <a href="https://commission.europa.eu/document/download/9c8d2189-8abd-4f29-84e9-abc843cc68e0_en?filename=BR+toolbox+-+December+2025.pdf">https://commission.europa.eu/document/download/9c8d2189-8abd-4f29-84e9-abc843cc68e0_en</a></li>
+    <li>Luke (Natural Resources Institute Finland). (2025). <em>Cost assessment of the draft Government Decree on the Welfare of Fur Animals</em> (VN/14432/2025). <a href="https://mmm.fi/-/luonnos-uudeksi-turkiselainasetukseksi-lausunnolle">https://mmm.fi/-/luonnos-uudeksi-turkiselainasetukseksi-lausunnolle</a></li>
+    <li>Swiss Government. (2008). <em>Tierschutzverordnung</em> (TSchV, SR 455.1), Anhang 2, Tabelle 1 (Gehege f&uuml;r S&auml;ugetiere), row 46 (Chinchilla) [Animal Welfare Ordinance, enclosure minimums for mammals]. <a href="https://www.fedlex.admin.ch/eli/cc/2008/416/de">https://www.fedlex.admin.ch/eli/cc/2008/416/de</a></li>
+  </ol>
+
+  <p class="caption">Compiled for the fur-standards study (EU fur phase-out and transition costs). Chinchilla is not in the Finnish decree; its costs are the study's own analogue model, calibrated on the mink cage rate, with no chinchilla-specific external anchor, and are an order of magnitude only. Values verified against primary sources. Costs are benchmark estimates pending final review. Claude Code used for drafting.</p>
+</div>
+
+<script>
+(function(){
+  var NS='http://www.w3.org/2000/svg';
+  function el(n,at,txt){var e=document.createElementNS(NS,n);for(var k in at)e.setAttribute(k,at[k]);if(txt!=null)e.textContent=txt;return e;}
+  var INK='var(--ink)', INK2='var(--ink-2)', INK3='var(--ink-3)',
+      HAIR='var(--hair)', ACCv='var(--accent)', REDv='var(--red)', AMBv='var(--amber)', GMv='var(--green-mid)';
+
+  // ===================== CAGE SCHEMATIC =====================
+  function css(v){return getComputedStyle(document.documentElement).getPropertyValue(v).trim();}
+  function hx2(h){h=h.replace('#','');if(h.length===3)h=h.split('').map(function(c){return c+c;}).join('');return [parseInt(h.slice(0,2),16),parseInt(h.slice(2,4),16),parseInt(h.slice(4,6),16)];}
+  function toHex(c){if(c[0]==='#')return c;var m=c.match(/\d+/g).map(Number);return '#'+m.map(function(v){return ('0'+v.toString(16)).slice(-2);}).join('');}
+  function lerp(a,b,t){return a+(b-a)*t;}
+  function mix(c1,c2,t){var a=hx2(c1),b=hx2(c2);return 'rgb('+Math.round(lerp(a[0],b[0],t))+','+Math.round(lerp(a[1],b[1],t))+','+Math.round(lerp(a[2],b[2],t))+')';}
+  function ramp(val,dom,minc,maxc){if(val==null)return null;var t=Math.max(0,Math.min(1,(val-dom[0])/(dom[1]-dom[0])));return mix(minc,maxc,t);}
+  function mkText(x,y,size,weight,fill,anchor,txt){return el('text',{x:x,y:y,'font-size':size,'font-weight':weight,fill:fill,'text-anchor':anchor,'dominant-baseline':'middle'},txt);}
+
+  // Chinchilla silhouette (Chinchilla chinchilla). Source: Margot Michaud,
+  // PhyloPic, public domain (CC0). potrace output: rendered inside a group with
+  // the standard translate/scale transform, in a 3458 x 2470 viewBox that the
+  // ink fills. Facing right, bushy tail to the lower left.
+  var CH_D='M22205 24656 c-76 -38 -121 -73 -290 -224 -212 -190 -255 -234 -403 -408 -160 -191 -273 -371 -310 -494 -49 -160 -63 -471 -51 -1135 9 -518 22 -816 39 -861 15 -38 64 -331 120 -719 28 -192 56 -370 61 -394 13 -58 105 -255 236 -505 186 -354 215 -396 386 -574 84 -86 165 -173 180 -193 50 -67 29 -131 -85 -260 -41 -46 -94 -113 -118 -149 -105 -156 -112 -162 -505 -390 -154 -90 -298 -175 -320 -190 -22 -15 -114 -103 -205 -195 -91 -92 -183 -177 -205 -190 -71 -42 -276 -125 -391 -159 -161 -47 -184 -64 -326 -234 -67 -81 -182 -208 -255 -282 -122 -126 -145 -143 -319 -255 -235 -150 -360 -243 -477 -354 -51 -48 -176 -160 -279 -249 -171 -148 -600 -571 -728 -717 -29 -33 -82 -105 -118 -160 -35 -55 -160 -228 -277 -385 -117 -157 -295 -411 -395 -565 -100 -154 -242 -368 -314 -475 -222 -328 -469 -708 -544 -837 -85 -146 -146 -238 -348 -525 -258 -365 -319 -464 -359 -588 -10 -30 -67 -170 -128 -310 -162 -378 -224 -541 -367 -963 -71 -210 -154 -454 -184 -542 -33 -93 -81 -268 -116 -417 -33 -141 -73 -303 -88 -360 -16 -57 -32 -139 -36 -183 -19 -224 59 -1123 185 -2120 108 -862 151 -1013 498 -1752 102 -218 131 -302 175 -501 43 -192 45 -212 13 -212 -31 0 -92 39 -320 204 -403 293 -475 359 -637 586 -234 329 -510 676 -556 700 -44 24 -57 -3 -64 -130 l-5 -110 -130 101 c-372 290 -434 332 -760 522 -121 70 -254 153 -295 183 -89 66 -297 181 -765 424 -472 244 -1479 745 -1536 764 -102 33 -780 157 -1094 200 -375 51 -476 68 -865 146 -217 44 -444 90 -505 104 -60 13 -111 23 -112 22 -1 -1 36 -66 83 -145 47 -78 84 -144 82 -146 -2 -2 -140 45 -308 105 l-305 108 -12 -26 c-11 -26 -10 -28 25 -45 l37 -18 -60 6 c-33 4 -190 28 -350 55 -505 85 -691 111 -1240 170 -502 53 -540 59 -1015 155 -701 142 -1197 253 -1315 294 -73 26 -80 26 -105 1 -16 -16 -20 -33 -20 -87 l0 -68 -387 192 c-214 106 -391 193 -394 193 -4 0 -14 -11 -23 -24 -15 -24 -14 -26 44 -96 33 -39 60 -73 60 -75 0 -3 -33 16 -74 41 -146 88 -753 375 -1006 476 -41 16 -154 69 -250 117 -178 89 -237 108 -271 90 -28 -15 -24 -67 9 -120 45 -69 171 -207 254 -279 42 -36 75 -66 73 -68 -2 -2 -217 62 -478 142 -261 80 -478 146 -481 146 -3 0 51 -76 119 -170 69 -93 125 -171 125 -173 0 -2 -24 2 -54 11 -68 19 -120 10 -143 -24 -24 -37 -12 -174 32 -363 19 -85 33 -157 30 -160 -8 -7 -192 69 -390 160 l-170 79 -17 -22 c-19 -26 -32 -6 116 -182 50 -59 103 -125 118 -149 25 -37 88 -217 133 -379 11 -41 21 -59 36 -63 15 -5 36 -39 69 -109 26 -55 51 -111 55 -124 6 -21 4 -21 -44 10 -45 27 -54 30 -77 19 -24 -11 -26 -16 -21 -57 6 -56 85 -218 211 -429 52 -88 94 -161 92 -162 -2 -2 -19 4 -39 12 -57 24 -103 20 -124 -11 -14 -23 -15 -32 -5 -73 20 -74 113 -252 238 -456 65 -105 155 -260 202 -345 46 -85 108 -189 138 -230 77 -107 233 -287 391 -450 75 -77 134 -142 132 -144 -2 -2 -55 -16 -117 -31 -98 -24 -113 -30 -118 -51 -3 -13 1 -32 9 -45 22 -31 162 -147 331 -274 80 -60 144 -111 142 -113 -2 -2 -41 2 -87 8 -128 16 -319 28 -366 23 -82 -9 -86 -63 -8 -105 101 -55 474 -169 1040 -318 725 -191 918 -249 1245 -375 250 -97 619 -251 800 -334 147 -68 163 -78 320 -207 487 -399 758 -568 1018 -635 230 -59 1144 -188 1927 -273 453 -49 564 -55 1377 -66 816 -11 1225 -23 1388 -40 52 -6 307 -21 565 -35 845 -45 976 -56 1730 -150 894 -112 1372 -163 1680 -180 1684 -92 2437 -143 2665 -181 134 -23 173 -40 301 -136 304 -227 421 -289 759 -402 366 -122 425 -131 840 -131 220 0 402 6 565 18 216 17 249 22 329 50 104 36 179 39 272 12 32 -9 194 -86 359 -170 165 -84 332 -164 371 -178 83 -30 236 -63 489 -107 171 -30 183 -33 235 -70 313 -223 350 -243 585 -310 338 -97 529 -125 1305 -190 709 -59 857 -77 998 -120 135 -42 703 -139 907 -155 78 -7 83 -5 185 36 171 69 218 65 356 -28 55 -37 101 -60 140 -69 83 -19 221 -17 349 7 243 44 304 38 482 -52 136 -69 211 -85 353 -75 118 7 185 36 231 101 l31 43 281 5 c169 2 296 9 316 15 39 13 108 76 152 139 19 27 35 70 45 118 9 43 25 93 36 111 16 27 19 46 16 84 -4 41 -14 60 -62 118 -31 38 -107 119 -170 179 -131 128 -289 232 -551 363 -154 78 -167 82 -330 116 -184 39 -143 37 -635 33 -253 -1 -696 44 -1280 132 -381 57 -585 93 -755 134 -96 23 -218 43 -340 55 -104 11 -214 25 -244 30 -30 6 -57 10 -60 11 -3 0 102 25 234 55 132 29 280 65 330 80 169 50 233 62 411 78 216 20 335 38 474 72 154 38 274 79 338 117 109 63 154 77 305 92 139 14 212 30 447 96 l115 32 345 2 c339 1 347 1 465 29 326 75 364 80 600 81 308 0 343 -11 630 -193 180 -115 216 -127 333 -112 45 6 113 21 150 33 63 21 85 22 362 22 284 0 297 1 360 23 93 34 123 60 149 130 12 33 33 71 48 84 89 79 86 75 80 133 -7 67 -45 141 -133 257 -214 286 -338 352 -869 457 -171 34 -273 45 -645 66 -275 16 -812 73 -826 88 -1 1 150 71 336 155 l339 154 183 136 c571 423 582 430 1068 640 627 271 795 346 1030 463 351 175 571 312 689 430 169 168 770 1112 956 1502 195 408 233 602 222 1146 -3 170 -12 342 -22 424 l-17 137 32 276 c33 295 39 333 130 814 100 526 140 710 367 1710 118 524 112 462 77 790 -16 143 -15 189 5 284 29 134 -74 627 -355 1706 -152 579 -214 799 -291 1019 -41 119 -103 299 -138 401 -103 305 -140 386 -327 717 -63 111 -123 228 -133 259 -17 54 -17 64 -2 168 9 61 30 180 48 265 l33 153 110 51 c171 78 353 174 443 233 94 61 109 78 399 471 434 587 934 1289 992 1393 41 73 124 265 234 540 247 615 352 911 368 1029 5 42 21 155 36 251 29 197 28 291 -5 442 -40 175 -132 408 -285 723 -109 222 -179 306 -389 464 l-55 42 -129 11 c-237 19 -408 3 -553 -51 -198 -74 -1195 -684 -1414 -865 -80 -66 -322 -280 -691 -610 -165 -148 -309 -277 -321 -287 -20 -18 -24 -16 -265 137 -134 86 -260 163 -279 172 -67 28 -420 152 -507 178 -49 14 -155 36 -238 50 -185 31 -271 56 -495 146 -96 39 -299 112 -450 163 -151 51 -367 126 -480 168 -347 128 -577 186 -684 172 -105 -13 -219 -46 -316 -90 -115 -53 -244 -88 -388 -106 -80 -9 -151 -10 -334 0 -305 15 -448 35 -575 77 -119 40 -287 81 -461 115 l-122 23 -108 -33 c-135 -41 -196 -69 -250 -114 -45 -38 -330 -237 -394 -276 l-36 -22 -253 423 c-396 665 -961 1572 -1105 1773 -300 420 -379 513 -499 589 -112 71 -150 73 -270 12z';
+  var CH_VB_W=3458, CH_VB_H=2470;
+  function chinchillaInner(fill){
+    var wrap=el('g',{fill:fill});
+    var inner=el('g',{transform:'translate(0,2470) scale(0.1,-0.1)'});
+    inner.appendChild(el('path',{d:CH_D}));
+    wrap.appendChild(inner);
+    return wrap;
+  }
+  var ckg=document.getElementById('chkeyg'); if(ckg) ckg.appendChild(chinchillaInner('var(--brown)'));
+
+  var SGRAYh=toHex(css('--shade-min')), SGMh=toHex(css('--green-mid'));
+  var BROWN='var(--brown)', S_HDOM=[0.5,1.5];
+  var S_S=150, CH_M=0.30, S_DEPF=0.42, S_CA=Math.cos(Math.PI/6), S_SA=Math.sin(Math.PI/6);
+
+  var SCHEM=[
+    {name:'Germany', role:'fur-farming statute (TierErzHaVerbG)', enc:'&ge; 0.5 m&sup2;/animal, &ge; 1 m&sup2;/enclosure',
+     area:0.5, h:1.0, areaLabel:'0.5 m²', line2:'per adult; height 1 m; sand bath, 50% solid floor', ast:true,
+     cost:{inv:'153', cap:'13', tot:'38'}},
+    {name:'Ecorys', role:'EC survey proposed cage (Scenarios 4 / 5)',
+     area:0.26, h:0.5, hAssumed:true, areaLabel:'0.26 m²', line2:'65 &times; 40 cm cage; juveniles paired',
+     cost:{inv:'43', cap:'4', tot:'29'}},
+    {name:'Current cage', role:'current practice and cost baseline',
+     area:0.10, h:0.5, hAssumed:true, areaLabel:'0.10 m²', line2:'assumption; about 0.10 m&sup2;/animal',
+     baseline:true}
+  ];
+
+  function drawCage(d){
+    var sc=d.sc||S_S;
+    var aBelow=(d.areaLabel)+' floor area', line2=d.line2||'';
+    var padX=42, padTop=16, padBot=(line2?46:32), rightReserve=20;
+    var minW=padX+Math.max(14,line2.replace(/&[a-z]+;/g,'x').length)*5.3+12;
+
+    var wm=Math.sqrt(d.area), dm=Math.sqrt(d.area), hm=d.h;
+    var w=wm*sc, dep=dm*sc*S_DEPF, ht=hm*sc, dvx=dep*S_CA, dvy=-dep*S_SA;
+    var totW=w+dvx, totH=ht+(-dvy);
+    var svgW=Math.max(padX+totW+rightReserve, minW), svgH=padTop+totH+padBot;
+    var x0=padX, y0=padTop+ht+(-dvy);
+    var g=el('svg',{width:svgW,height:svgH,viewBox:'0 0 '+svgW+' '+svgH,role:'img','aria-label':d.name+' cage, '+d.areaLabel+' floor area, height '+(d.hAssumed?'assumed ':'')+d.h+' m'});
+    var hf=ramp(d.h,S_HDOM,SGRAYh,SGMh);
+    var fbl=[x0,y0],fbr=[x0+w,y0],ftl=[x0,y0-ht],ftr=[x0+w,y0-ht];
+    var bbl=[x0+dvx,y0+dvy],bbr=[x0+w+dvx,y0+dvy],btl=[x0+dvx,y0-ht+dvy],btr=[x0+w+dvx,y0-ht+dvy];
+    g.appendChild(el('polygon',{points:fbl+' '+fbr+' '+bbr+' '+bbl,fill:hf,'fill-opacity':0.38,stroke:hf,'stroke-width':1}));
+    g.appendChild(el('polygon',{points:ftl+' '+ftr+' '+btr+' '+btl,fill:hf,'fill-opacity':0.16,stroke:hf,'stroke-width':1}));
+    g.appendChild(el('polygon',{points:fbr+' '+bbr+' '+btr+' '+ftr,fill:hf,'fill-opacity':0.26,stroke:hf,'stroke-width':1}));
+    [[fbl,fbr],[fbl,ftl],[fbr,ftr],[ftl,ftr],[fbl,bbl],[fbr,bbr],[ftl,btl],[ftr,btr],[bbl,bbr],[btl,btr],[bbl,btl],[bbr,btr]].forEach(function(e){
+      g.appendChild(el('line',{x1:e[0][0],y1:e[0][1],x2:e[1][0],y2:e[1][1],stroke:INK3,'stroke-width':0.9,'stroke-opacity':0.55}));});
+    var clx=CH_M*sc, k=clx/CH_VB_W, ch=CH_VB_H*k, fx=x0+(w-clx)/2;
+    var gm=el('g',{transform:'translate('+fx+','+(y0-ch)+') scale('+k+')'});
+    gm.appendChild(chinchillaInner(BROWN)); g.appendChild(gm);
+    g.appendChild(mkText(x0,y0+18,11,700,INK,'start',aBelow));
+    if(line2) { var t2=el('text',{x:x0,y:y0+33,'font-size':10,'font-weight':500,fill:INK3,'text-anchor':'start','dominant-baseline':'middle'}); t2.innerHTML=line2; g.appendChild(t2); }
+    var hLab=(d.hAssumed?'~':'')+(hm%1?hm.toFixed(1):hm)+' m';
+    g.appendChild(mkText(x0-6,y0-ht/2,10.5,600,INK2,'end',hLab));
+    return {svg:g,w:svgW,h:svgH};
+  }
+
+  var schemHost=document.getElementById('schematic');
+  SCHEM.forEach(function(d){
+    var row=document.createElement('div'); row.className='schem-row';
+    var cage=document.createElement('div'); cage.className='cage-cell';
+    cage.appendChild(drawCage(d).svg);
+    var info=document.createElement('div'); info.className='info';
+    var html='<h3>'+d.name+(d.ast?'<sup class="ast">*</sup>':'')+'</h3><p class="role">'+d.role+(d.enc?' &middot; '+d.enc:'')+'</p><div class="costs">';
+    if(d.baseline){
+      html+='<div class="cline"><span class="k">One-time capital per pelt</span><span class="v base">baseline (existing)</span></div>';
+      html+='<div class="cline"><span class="k">Break-even pelt price</span><span class="v base">&asymp; EUR 25</span></div>';
+      html+='<div class="cline"><span class="k">Pelt price</span><span class="v profit">&asymp; EUR 53 (profitable)</span></div>';
+    } else {
+      var c=d.cost;
+      html+='<div class="cline"><span class="k">One-time capital per pelt</span><span class="v">EUR '+c.inv+'</span></div>';
+      html+='<div class="cline"><span class="k">Capital cost per pelt</span><span class="v">EUR '+c.cap+' /yr</span></div>';
+      html+='<div class="cline"><span class="k">Break-even pelt price</span><span class="v">EUR '+c.tot+'</span></div>';
+      html+='<div class="cline"><span class="k oc">Pelt price</span><span class="v profit">&asymp; EUR 53 (still profitable)</span></div>';
+    }
+    html+='</div>'; info.innerHTML=html;
+    row.appendChild(cage); row.appendChild(info); schemHost.appendChild(row);
+  });
+
+  // ---- ENCLOSURE-SPACE BAR CHART (chinchilla fur cage vs pet/captive standards) ----
+  // Land only (chinchilla has a sand bath, not open water). Per-animal floor at the
+  // stated pair/group capacity. Sources + verbatim figures in the study provenance note.
+  var GM='var(--green-mid)';
+  var ENC=[
+    {name:"Austria: kept as a wild species",       ref:"Austrian Government, 2004", land:4.0,  height:2.0, efsa:true,  note:"8 m²/pair, indoor + outdoor, height 2 m; an upper bound"},
+    {name:"Germany: fur-farming statute",          ref:"Bundesrepublik Deutschland, 2017a", land:0.5, height:1.0, efsa:true, note:"≥ 0.5 m²/adult (0.3 juvenile), ≥ 1 m²/enclosure; sand bath; 50% solid floor; group"},
+    {name:"Germany: zoo-husbandry guidance",       ref:"BMEL, 2014",               land:0.5,  height:1.5, efsa:true,  note:"1 m²/pair for the true chinchilla; height 1.5 m; climbing structures, sand bath"},
+    {name:"Austria: pet-keeping minimum",          ref:"Austrian Government, 2004", land:0.48, height:1.0, efsa:false, note:"120 × 80 cm cage = 0.96 m²/pair; kept in pairs; sand bath"},
+    {name:"Ecorys / EC proposed (S4/S5)",          ref:"Ecorys, 2025",             land:0.26, height:null, efsa:false, note:"65 × 40 cm cage; juveniles paired; the reform standard costed here"},
+    {name:"Switzerland: pet-keeping minimum",      ref:"Swiss Government, 2008",    land:0.25, height:null, efsa:false, note:"0.5 m²/pair floor + 0.75 m³ indoor volume (no cage height stated); sand bath; group of ≥ 2"},
+    {name:"Current cage (assumption)",             ref:"study assumption",         land:0.10, height:null, efsa:false, note:"about 0.10 m²/animal; the cost baseline"}
+  ];
+
+  var EW=960, EpadL=14, EpadR=150, ElabelH=20, EbarH=24, ErowGap=20, ErowH=ElabelH+EbarH+ErowGap;
+  var EaxisH=34, EtopPad=6;
+  var EplotL=EpadL, EplotR=EW-EpadR, EplotW=EplotR-EplotL;
+  var EXMAX=1.0;
+  var ex=function(v){return EplotL+(v/EXMAX)*EplotW;};
+  var ECH=EtopPad+ENC.length*ErowH+EaxisH;
+  var esvg=document.getElementById('chencl');
+  esvg.setAttribute('viewBox','0 0 '+EW+' '+ECH);
+  esvg.setAttribute('preserveAspectRatio','xMinYMin meet');
+
+  var edefs=el('defs',{});
+  var ehatch=el('pattern',{id:'hatchCh',width:7,height:7,patternUnits:'userSpaceOnUse',patternTransform:'rotate(45)'});
+  ehatch.appendChild(el('rect',{width:7,height:7,fill:'var(--surface)'}));
+  ehatch.appendChild(el('rect',{width:3,height:7,fill:GM,opacity:0.85}));
+  edefs.appendChild(ehatch);
+  esvg.appendChild(edefs);
+
+  for(var eg=0; eg<=EXMAX+0.001; eg+=0.2){
+    esvg.appendChild(el('line',{x1:ex(eg),y1:EtopPad,x2:ex(eg),y2:EtopPad+ENC.length*ErowH,stroke:HAIR,'stroke-width':1}));
+    esvg.appendChild(el('text',{x:ex(eg),y:EtopPad+ENC.length*ErowH+16,'text-anchor':'middle','font-size':11,fill:INK3},eg.toFixed(1)));
+  }
+  esvg.appendChild(el('text',{x:EplotL,y:EtopPad+ENC.length*ErowH+31,'font-size':11,fill:INK3},'Floor area per adult chinchilla (m²); Austria wild-species is off this 1 m² scale'));
+
+  function ebarTxt(xx,yy,size,weight,txt){
+    return el('text',{x:xx,y:yy,'font-size':size,'font-weight':weight,fill:INK,'dominant-baseline':'middle',
+      'paint-order':'stroke',stroke:'var(--surface)','stroke-width':3,'stroke-linejoin':'round'},txt);
+  }
+  var EMINSEG=64;
+  ENC.forEach(function(d,i){
+    var y0=EtopPad+i*ErowH, labY=y0+14, barY=y0+ElabelH, midY=barY+EbarH/2;
+    var lbl=el('text',{x:EplotL,y:labY,'font-size':13,fill:INK,'font-weight':600});
+    lbl.appendChild(el('tspan',{},d.name));
+    if(d.efsa) lbl.appendChild(el('tspan',{fill:ACCv,'font-weight':700},' ∗'));
+    lbl.appendChild(el('tspan',{fill:INK3,'font-weight':400,'font-size':12},'   ('+d.ref+')'));
+    esvg.appendChild(lbl);
+    var capped=d.land>EXMAX;
+    var lw=capped?(EplotW-2):(ex(d.land)-EplotL);
+    var fill=(d.height==null)?'url(#hatchCh)':GM;
+    esvg.appendChild(el('rect',{x:EplotL,y:barY,width:Math.max(lw,2),height:EbarH,rx:4,fill:fill}));
+    if(capped){
+      var zx=EplotL+lw-16;
+      esvg.appendChild(el('path',{d:'M'+zx+' '+(barY+2)+' l9 '+(EbarH/2-2)+' l-9 '+(EbarH/2-2),fill:'none',stroke:'var(--surface)','stroke-width':2.5,'stroke-linejoin':'round'}));
+    }
+    var landTxt=d.land.toFixed(2)+' m²'+(capped?' (off the 1 m² scale)':'');
+    var hTxt=(d.height==null)?'h n/s':'h '+d.height+' m';
+    if(capped||lw>=EMINSEG){
+      esvg.appendChild(ebarTxt(EplotL+9,midY-6,12,700,landTxt));
+      esvg.appendChild(ebarTxt(EplotL+9,midY+9,10.5,500,hTxt));
+    } else {
+      esvg.appendChild(el('text',{x:ex(d.land)+8,y:midY,'font-size':11,fill:INK2,'dominant-baseline':'middle'},landTxt+' · '+hTxt));
+    }
+  });
+
+  var etb=document.getElementById('enctbody');
+  ENC.forEach(function(d){
+    var tr=document.createElement('tr');
+    function td(v,left){var c=document.createElement('td');if(left)c.style.textAlign='left';c.innerHTML=v;tr.appendChild(c);}
+    td(d.name+(d.efsa?' &lowast;':''),true);
+    td(d.land.toFixed(2));
+    td(d.height==null?'n/s':d.height);
+    td(d.efsa?'&lowast;':'');
+    td(d.note||'',true);
+    etb.appendChild(tr);
+  });
+
+  // ---- THRESHOLD FIGURE (break-even by standard vs the pelt price) ----
+  // Not a price-history chart: chinchilla has no published annual auction series.
+  // Break-evens are workbook full precision behind the rounded figures: current
+  // 25.30, Ecorys 28.87, German 38.12, EFSA 2x/3x/5x German = 52.94/68.71/100.23.
+  var PRICE=53, PRODCOST=25.3;
+  var TH=[
+    {name:'EFSA-level, 5× German (illustrative)', be:100.23, col:GMv},
+    {name:'EFSA-level, 3× German (illustrative)', be:68.71,  col:GMv},
+    {name:'EFSA-level, 2× German (illustrative)', be:52.94,  col:GMv},
+    {name:'German statute',                         be:38.12,  col:AMBv},
+    {name:'Ecorys (EC survey)',                     be:28.87,  col:REDv},
+    {name:'Current cage (baseline)',                be:25.30,  col:INK3}
+  ];
+  var TW=960, TpadL=14, TpadR=132, TlabelH=19, TbarH=22, TrowGap=18, TrowH=TlabelH+TbarH+TrowGap;
+  var TaxisH=34, TtopPad=8;
+  var TplotL=TpadL, TplotR=TW-TpadR, TplotW=TplotR-TplotL;
+  var TXMAX=110;
+  var tx=function(v){return TplotL+(v/TXMAX)*TplotW;};
+  var TCH=TtopPad+TH.length*TrowH+TaxisH;
+  var tsvg=document.getElementById('threshold');
+  tsvg.setAttribute('viewBox','0 0 '+TW+' '+TCH);
+  tsvg.setAttribute('preserveAspectRatio','xMinYMin meet');
+
+  // profitable zone shading (left of the price line)
+  tsvg.appendChild(el('rect',{x:TplotL,y:TtopPad,width:tx(PRICE)-TplotL,height:TH.length*TrowH,fill:INK3,'fill-opacity':0.05}));
+  for(var tg=0; tg<=TXMAX; tg+=20){
+    tsvg.appendChild(el('line',{x1:tx(tg),y1:TtopPad,x2:tx(tg),y2:TtopPad+TH.length*TrowH,stroke:HAIR,'stroke-width':1}));
+    tsvg.appendChild(el('text',{x:tx(tg),y:TtopPad+TH.length*TrowH+16,'text-anchor':'middle','font-size':11,fill:INK3},tg));
+  }
+  tsvg.appendChild(el('text',{x:TplotL,y:TtopPad+TH.length*TrowH+31,'font-size':11,fill:INK3},'Break-even pelt price (EUR/pelt), single linear scale'));
+
+  function tbarTxt(xx,yy,size,weight,fill,anchor,txt){
+    return el('text',{x:xx,y:yy,'font-size':size,'font-weight':weight,fill:fill,'text-anchor':anchor||'start','dominant-baseline':'middle',
+      'paint-order':'stroke',stroke:'var(--surface)','stroke-width':3,'stroke-linejoin':'round'},txt);
+  }
+  TH.forEach(function(d,i){
+    var y0=TtopPad+i*TrowH, labY=y0+13, barY=y0+TlabelH, midY=barY+TbarH/2;
+    var lbl=el('text',{x:TplotL,y:labY,'font-size':12.5,fill:INK,'font-weight':600},d.name);
+    tsvg.appendChild(lbl);
+    var lw=tx(d.be)-TplotL;
+    tsvg.appendChild(el('rect',{x:TplotL,y:barY,width:Math.max(lw,2),height:TbarH,rx:4,fill:d.col,'fill-opacity':0.85}));
+    tsvg.appendChild(tbarTxt(tx(d.be)+8,midY,12,700,INK,'start','EUR '+Math.round(d.be)));
+  });
+
+  // price line (solid) + production-cost line (dotted)
+  var plotBot=TtopPad+TH.length*TrowH;
+  tsvg.appendChild(el('line',{x1:tx(PRICE),y1:TtopPad-2,x2:tx(PRICE),y2:plotBot,stroke:INK,'stroke-width':2}));
+  tsvg.appendChild(tbarTxt(tx(PRICE),TtopPad-2,11.5,700,INK,'middle','Pelt price EUR 53'));
+  tsvg.appendChild(el('line',{x1:tx(PRODCOST),y1:TtopPad+6,x2:tx(PRODCOST),y2:plotBot,stroke:INK3,'stroke-width':1.4,'stroke-dasharray':'4 3'}));
+})();
+</script>
+</body>
+</html>

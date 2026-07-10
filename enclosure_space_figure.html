@@ -18,6 +18,7 @@
     --blue-mid:#3f8ec4;                  /* medium blue  = max depth  */
     --brown:#6b4a2b;                     /* mink silhouette */
     --red:#a11f1f;
+    --amber:#b26a00;
     --neutral:#b9c2bc;
     --accent:#0c4a6e;
     --max:1000px;
@@ -27,7 +28,7 @@
       --surface:#14171a; --surface-2:#1c2024; --ink:#e9ece9; --ink-2:#b3bab5; --ink-3:#8b938d;
       --hair:#2b3138; --hair-2:#3a424a;
       --shade-min:#454d49; --green-mid:#5aa87f; --blue-mid:#4f9bcf;
-      --brown:#b98a5c; --red:#e06a6a;
+      --brown:#b98a5c; --red:#e06a6a; --amber:#e0a24e;
       --neutral:#4b5551; --accent:#8bc7ec;
     }
   }
@@ -35,14 +36,14 @@
       --surface:#14171a; --surface-2:#1c2024; --ink:#e9ece9; --ink-2:#b3bab5; --ink-3:#8b938d;
       --hair:#2b3138; --hair-2:#3a424a;
       --shade-min:#454d49; --green-mid:#5aa87f; --blue-mid:#4f9bcf;
-      --brown:#b98a5c; --red:#e06a6a;
+      --brown:#b98a5c; --red:#e06a6a; --amber:#e0a24e;
       --neutral:#4b5551; --accent:#8bc7ec;
   }
   :root[data-theme="light"]{
     --surface:#ffffff; --surface-2:#f6f7f5; --ink:#1b1f1d; --ink-2:#4a524e; --ink-3:#616a63;
     --hair:#e2e6e2; --hair-2:#cfd5d0;
     --shade-min:#d3d7d4; --green-mid:#4e9b73; --blue-mid:#3f8ec4;
-    --brown:#6b4a2b; --red:#a11f1f; --neutral:#b9c2bc; --accent:#0c4a6e;
+    --brown:#6b4a2b; --red:#a11f1f; --amber:#b26a00; --neutral:#b9c2bc; --accent:#0c4a6e;
   }
   *{box-sizing:border-box}
   html,body{margin:0;padding:0;background:var(--surface);color:var(--ink);
@@ -119,7 +120,7 @@
   details{margin-top:8px}
   summary{cursor:pointer;font-size:.86rem;color:var(--accent);font-weight:600}
   .caption{font-size:.78rem;color:var(--ink-3);margin:10px 0 0}
-  .nav{display:flex;gap:4px;margin:0 0 22px;border-bottom:1px solid var(--hair)}
+  .nav{display:flex;gap:4px;margin:0 0 22px;border-bottom:1px solid var(--hair);flex-wrap:wrap}
   .nav a{padding:8px 16px;font-size:.98rem;font-weight:640;text-decoration:none;color:var(--ink-3);
     border-bottom:2px solid transparent;margin-bottom:-1px}
   .nav a:hover{color:var(--ink)}
@@ -135,6 +136,8 @@
   <nav class="nav" aria-label="Species">
     <a href="./" class="active" aria-current="page">Mink</a>
     <a href="fox.html">Fox</a>
+    <a href="raccoon-dog.html">Raccoon dog</a>
+    <a href="chinchilla.html">Chinchilla</a>
   </nav>
 
   <h1>Mink fur farming: enclosure space and the cost of raising the standard</h1>
@@ -748,21 +751,21 @@
   psvg.appendChild(el('text',{x:PL,y:PT+PH_PLOT+36,'font-size':11,fill:INK3},'Real 2025 EUR per pelt, Saga Furs auction average (FIFUR, 2025)'));
 
   // break-even bands (drawn behind the series)
-  var GMv='var(--green-mid)', REDv='var(--red)', ACCv='var(--accent)';
+  var GMv='var(--green-mid)', REDv='var(--red)', ACCv='var(--accent)', AMBv='var(--amber)';
   function band(lo,hi,fill){
     psvg.appendChild(el('rect',{x:PL,y:pyv(hi),width:plotR-PL,height:pyv(lo)-pyv(hi),fill:fill,'fill-opacity':0.12}));
     psvg.appendChild(el('line',{x1:PL,y1:pyv(lo),x2:plotR,y2:pyv(lo),stroke:fill,'stroke-width':1,'stroke-opacity':0.55}));
     psvg.appendChild(el('line',{x1:PL,y1:pyv(hi),x2:plotR,y2:pyv(hi),stroke:fill,'stroke-width':1,'stroke-opacity':0.55}));
   }
-  band(BE.ecoLo,BE.ecoHi,GMv);
-  band(BE.gerLo,BE.gerHi,REDv);
+  band(BE.ecoLo,BE.ecoHi,AMBv);   // Ecorys = amber (mid)
+  band(BE.gerLo,BE.gerHi,GMv);   // German statute = green (most stringent / top)
   // reference lines
   function refline(v,col){
     psvg.appendChild(el('line',{x1:PL,y1:pyv(v),x2:plotR,y2:pyv(v),stroke:col,'stroke-width':1.4,'stroke-dasharray':'6 4'}));
   }
   refline(BE.prod,INK2);
-  refline(BE.fin,ACCv);
-  refline(BE.tg,REDv);
+  refline(BE.fin,REDv);
+  refline(BE.tg,GMv);
 
   // price series
   var pd='';
@@ -779,10 +782,10 @@
       'paint-order':'stroke',stroke:'var(--surface)','stroke-width':3.2,'stroke-linejoin':'round'},txt));
   }
   plabel(plotR-6,pyv(BE.prod)+12,'Production cost: 39',INK2);
-  plabel(plotR-6,pyv((BE.prod+BE.fin)/2),'Finland draft decree: 46',ACCv);
-  plabel(plotR-6,pyv((BE.ecoLo+BE.ecoHi)/2),'Ecorys cages: 53 to 78',INK);
-  plabel(plotR-6,pyv(BE.gerHi)+13,'German statute: 85 to 133',INK);
-  plabel(plotR-6,pyv(BE.tg)-9,'German external anchor (TG-International, 2014): 104',REDv,11,600);
+  plabel(plotR-6,pyv((BE.prod+BE.fin)/2),'Finland draft decree: 46',REDv);
+  plabel(plotR-6,pyv((BE.ecoLo+BE.ecoHi)/2),'Ecorys cages: 53 to 78',AMBv);
+  plabel(plotR-6,pyv(BE.gerHi)+13,'German statute: 85 to 133',GMv);
+  plabel(plotR-6,pyv(BE.tg)-9,'German external anchor (TG-International, 2014): 104',GMv,11,600);
   plabel(plotR-6,pyv(142),'EFSA-level: at least the German band, open-ended above',INK2,11,600);
 
   // hover layer: nearest-year crosshair + tooltip
