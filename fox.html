@@ -88,6 +88,13 @@
   .calc td.shared{text-align:left;color:var(--ink-3)}
   .calc tr.res td{font-weight:700;border-top:1px solid var(--hair-2)}
   .calc td:not(.row):not(.lbl):not(.shared):not(.rk){font-variant-numeric:tabular-nums}
+
+  /* ---- price chart ---- */
+  .chart-scroll{overflow-x:auto}
+  svg{max-width:100%}
+  #pricechart{display:block;width:100%;height:auto;min-width:640px}
+  details{margin-top:8px}
+  summary{cursor:pointer;font-size:.86rem;color:var(--accent);font-weight:600}
 </style>
 </head>
 <body>
@@ -186,6 +193,23 @@
   <p style="font-size:.84rem;color:var(--ink-2);margin:14px 0 0;max-width:74ch"><b>Key sources.</b> Cage construction costs: Luke (2025). Larger-cage specifications: the Ecorys survey (2025) and the German fur-farming statute (Bundesrepublik Deutschland, 2017a). Discount rate: the European Commission's Better Regulation Toolbox (Tool #64). Production cost and pelt price: Hernesniemi (2023) and Carpenter (2025); the price-history percentile uses the FIFUR (2025) auction series. Full citations in the Sources list below.</p>
   </div>
 
+  <h2>Fox pelt price versus compliance break-even thresholds, 2001 to 2024 (real 2025 prices)</h2>
+  <p class="sub">The 24-year Finnish blue-fox auction price record, in 2025 prices, against the break-even thresholds from Table&nbsp;3. <strong>The price cleared the Finnish draft decree's EUR&nbsp;115 break-even in 8 of the 24 years, all of them 2015 or earlier and none in the nine seasons since; it reached the German statute's EUR&nbsp;183 to 271 band in only one year (2013) and never rose above it.</strong></p>
+
+  <div class="chart-scroll"><svg id="pricechart" role="img" aria-label="Line chart of the real Finnish blue-fox pelt price, 2001 to 2024, against the break-even thresholds of each standard; the price reaches the German band of 183 to 271 euros only in 2013 and clears the Finland break-even in 8 of 24 years, all 2015 or earlier."></svg></div>
+
+  <p class="caption">Source: FIFUR (2025) auction price series (Saga Furs blue-fox annual base averages, nominal EUR), uprated to 2025 prices with Finnish inflation, as held in the study workbook. Break-even prices as in Table&nbsp;3: production cost about EUR&nbsp;94 (current cages, no new capital), Finland draft decree EUR&nbsp;115, Ecorys cages EUR&nbsp;116 (essentially on the Finland line, since the Ecorys standard sets the same fox space as the decree), German statute EUR&nbsp;183 to 271. Fox has no external cost anchor (unlike mink's TG-International line) and no EFSA-level numeric enclosure size, so an EFSA-level break-even is at least the German band and open-ended above it. The blue-fox series is far more volatile than mink's (a real range of about EUR&nbsp;48 to 232, against mink's EUR&nbsp;19 to 81): the roughly EUR&nbsp;115 Finnish break-even is at about the 68th percentile of the real-price record, and every clearing year is 2015 or earlier. The series is blue fox only, about 80% of Finnish fox output; the current price of about EUR&nbsp;48 is Carpenter's 80/20 blue-and-silver blend, near the bottom of the record.</p>
+
+  <details>
+    <summary>Show data table (price series)</summary>
+    <p style="font-size:.85rem;font-weight:660;margin:10px 0 3px;color:var(--ink)">Table 4. Fox (blue fox) pelt price, 2001 to 2024</p>
+    <table>
+      <thead><tr><th>Year</th><th>Nominal EUR/pelt</th><th>Real 2025 EUR/pelt</th></tr></thead>
+      <tbody id="pricetbody"></tbody>
+    </table>
+    <p class="caption">Saga Furs blue-fox auction annual base averages (FIFUR, 2025, pp.&nbsp;28 to 29); real values uprated to 2025 prices with Finnish inflation (HICP).</p>
+  </details>
+
   <h2>Notes</h2>
   <div class="foot">
     <ol>
@@ -214,5 +238,126 @@
 
   <p class="caption">Compiled for the fur-standards study (EU fur phase-out and transition costs). The Finnish decree cost is measured from Luke (2025); the German and EFSA-level figures are the study's own model, calibrated on Finnish construction prices, with no species-specific external anchor for fox. Values verified against primary sources. Costs are benchmark estimates pending final review. Claude Code used for drafting.</p>
 </div>
+
+<script>
+(function(){
+  var NS='http://www.w3.org/2000/svg';
+  function el(n,at,txt){var e=document.createElementNS(NS,n);for(var k in at)e.setAttribute(k,at[k]);if(txt!=null)e.textContent=txt;return e;}
+  var INK='var(--ink)', INK2='var(--ink-2)', INK3='var(--ink-3)',
+      HAIR='var(--hair)', ACCv='var(--accent)', REDv='var(--red)';
+
+  // ---- PRICE CHART (fox pelt price vs compliance break-even thresholds) ----
+  // Series: study workbook, sheet "Price sensitivity Fox" rows 5-28 (FIFUR
+  // Statistics 2025 pp.28-29, Saga Furs blue-fox auction base average, nominal
+  // EUR; real = 2025 EUR via Finland HICP). Unlike the mink series, fox values
+  // carry the source's printed 0.1-EUR precision. Break-evens are workbook full
+  // precision behind the rounded Table 3 figures: production cost 93.68,
+  // Finland decree 114.94, Ecorys 115.78 (on the Finland line), German 182.59
+  // to 270.77. Fox has no external anchor and no EFSA-level numeric size.
+  var PY=[2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,
+          2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024];
+  var PNOM=[100.4,90.7,47.9,57.6,46.9,57.3,42.9,44.6,45.9,91.5,122.5,137.6,
+            189,117,123.1,54.6,78.7,59.8,64,56.8,59.2,53.8,46.8,49.5];
+  var PREAL=[155.62,137.864,71.85,86.4,69.412,84.231,61.776,61.994,62.883,
+             122.61,159.25,173.376,232.47,142.74,150.182,66.612,95.227,71.162,
+             75.52,66.456,68.08,57.566,48.204,50.49];
+  var BE={prod:93.6785, fin:114.9387, eco:115.7763, gerLo:182.5922, gerHi:270.7718};
+
+  var PW=960, PL=46, PR=14, PT=16, PB=54, PH_PLOT=380, PHT=PT+PH_PLOT+PB;
+  var YMAXP=310;
+  var px=function(yr){return PL+(yr-2001)/(2024-2001)*(PW-PL-PR);};
+  var pyv=function(v){return PT+PH_PLOT*(1-v/YMAXP);};
+  var psvg=document.getElementById('pricechart');
+  psvg.setAttribute('viewBox','0 0 '+PW+' '+PHT);
+  psvg.setAttribute('preserveAspectRatio','xMinYMin meet');
+  var plotR=PW-PR;
+
+  // gridlines + y labels (horizontal only, house style)
+  for(var gv=0; gv<=300; gv+=50){
+    psvg.appendChild(el('line',{x1:PL,y1:pyv(gv),x2:plotR,y2:pyv(gv),stroke:HAIR,'stroke-width':1}));
+    psvg.appendChild(el('text',{x:PL-7,y:pyv(gv),'text-anchor':'end','dominant-baseline':'middle','font-size':11,fill:INK3},gv));
+  }
+  // x ticks every 3 years
+  for(var yr=2001; yr<=2024; yr+=3){
+    psvg.appendChild(el('text',{x:px(yr),y:PT+PH_PLOT+17,'text-anchor':'middle','font-size':11,fill:INK3},yr));
+  }
+  psvg.appendChild(el('text',{x:PL,y:PT+PH_PLOT+36,'font-size':11,fill:INK3},'Real 2025 EUR per pelt, Saga Furs blue-fox auction average (FIFUR, 2025)'));
+
+  // German break-even band (drawn behind the series)
+  function band(lo,hi,fill){
+    psvg.appendChild(el('rect',{x:PL,y:pyv(hi),width:plotR-PL,height:pyv(lo)-pyv(hi),fill:fill,'fill-opacity':0.12}));
+    psvg.appendChild(el('line',{x1:PL,y1:pyv(lo),x2:plotR,y2:pyv(lo),stroke:fill,'stroke-width':1,'stroke-opacity':0.55}));
+    psvg.appendChild(el('line',{x1:PL,y1:pyv(hi),x2:plotR,y2:pyv(hi),stroke:fill,'stroke-width':1,'stroke-opacity':0.55}));
+  }
+  band(BE.gerLo,BE.gerHi,REDv);
+  // reference lines (production cost, Finland break-even; Ecorys coincides with Finland)
+  function refline(v,col){
+    psvg.appendChild(el('line',{x1:PL,y1:pyv(v),x2:plotR,y2:pyv(v),stroke:col,'stroke-width':1.4,'stroke-dasharray':'6 4'}));
+  }
+  refline(BE.prod,INK2);
+  refline(BE.fin,ACCv);
+
+  // price series
+  var pd='';
+  PY.forEach(function(yr,i){ pd+=(i?'L':'M')+px(yr).toFixed(1)+' '+pyv(PREAL[i]).toFixed(1)+' '; });
+  psvg.appendChild(el('path',{d:pd,fill:'none',stroke:INK,'stroke-width':2,'stroke-linejoin':'round'}));
+  PY.forEach(function(yr,i){
+    psvg.appendChild(el('circle',{cx:px(yr),cy:pyv(PREAL[i]),r:2.6,fill:INK}));
+  });
+
+  // direct labels (drawn last, surface halo so bands/lines never strike them)
+  function plabel(xx,yy,txt,col,size,weight,anchor){
+    psvg.appendChild(el('text',{x:xx,y:yy,'font-size':size||11.5,'font-weight':weight||640,fill:col,
+      'text-anchor':anchor||'end','dominant-baseline':'middle',
+      'paint-order':'stroke',stroke:'var(--surface)','stroke-width':3.2,'stroke-linejoin':'round'},txt));
+  }
+  plabel(plotR-6,pyv(BE.prod)+12,'Production cost: 94',INK2);
+  plabel(plotR-6,pyv(BE.fin)-9,'Finland draft decree: 115 (Ecorys 116 coincides)',ACCv);
+  plabel(plotR-6,pyv(BE.gerHi)+13,'German statute: 183 to 271',INK);
+  plabel(plotR-6,pyv(295),'EFSA-level: at least the German band, open-ended above',INK2,11,600);
+
+  // hover layer: nearest-year crosshair + tooltip
+  var hovg=el('g',{'pointer-events':'none',display:'none'});
+  var hline=el('line',{y1:PT,y2:PT+PH_PLOT,stroke:INK3,'stroke-width':1,'stroke-dasharray':'3 3'});
+  var hdot=el('circle',{r:4.6,fill:'none',stroke:INK,'stroke-width':2});
+  var hbox=el('rect',{width:200,height:42,rx:6,fill:'var(--surface)',stroke:'var(--hair-2)','stroke-width':1});
+  var ht1=el('text',{'font-size':12,'font-weight':700,fill:INK});
+  var ht2=el('text',{'font-size':11,fill:INK2});
+  hovg.appendChild(hline); hovg.appendChild(hdot); hovg.appendChild(hbox);
+  hovg.appendChild(ht1); hovg.appendChild(ht2);
+  psvg.appendChild(hovg);
+  var hitr=el('rect',{x:PL,y:PT,width:plotR-PL,height:PH_PLOT,fill:'transparent'});
+  psvg.appendChild(hitr);
+  hitr.addEventListener('pointermove',function(e){
+    var r=psvg.getBoundingClientRect();
+    var vx=(e.clientX-r.left)/r.width*PW;
+    var i=Math.round((vx-PL)/(plotR-PL)*23);
+    i=Math.max(0,Math.min(23,i));
+    var cx=px(PY[i]), cy=pyv(PREAL[i]);
+    hline.setAttribute('x1',cx); hline.setAttribute('x2',cx);
+    hdot.setAttribute('cx',cx); hdot.setAttribute('cy',cy);
+    var bx=cx+12; if(bx+200>plotR) bx=cx-12-200;
+    var byy=Math.max(PT+4,Math.min(cy-21,PT+PH_PLOT-46));
+    hbox.setAttribute('x',bx); hbox.setAttribute('y',byy);
+    ht1.setAttribute('x',bx+10); ht1.setAttribute('y',byy+17); ht1.textContent=PY[i];
+    ht2.setAttribute('x',bx+10); ht2.setAttribute('y',byy+33);
+    ht2.textContent='EUR '+PREAL[i].toFixed(2)+' real 2025 (nominal '+PNOM[i]+')';
+    hovg.setAttribute('display','');
+  });
+  hitr.addEventListener('pointerleave',function(){ hovg.setAttribute('display','none'); });
+
+  // data table
+  var ptb=document.getElementById('pricetbody');
+  PY.forEach(function(yr,i){
+    var tr=document.createElement('tr');
+    [yr,PNOM[i],PREAL[i].toFixed(2)].forEach(function(v,ci){
+      var c=document.createElement('td');
+      if(ci===0)c.style.textAlign='left';
+      c.textContent=v; tr.appendChild(c);
+    });
+    ptb.appendChild(tr);
+  });
+})();
+</script>
 </body>
 </html>
