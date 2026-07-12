@@ -57,6 +57,8 @@
     border-bottom:2px solid transparent;margin-bottom:-1px}
   .nav a:hover{color:var(--ink)}
   .nav a.active{color:var(--ink);border-bottom-color:var(--accent)}
+  .nav span.disabled{padding:8px 16px;font-size:.98rem;font-weight:640;color:var(--ink-3);
+    opacity:.4;cursor:not-allowed;border-bottom:2px solid transparent;margin-bottom:-1px;user-select:none}
 
   /* ---- callouts ---- */
   .callout{background:var(--surface-2);border:1px solid var(--hair);border-left:3px solid var(--accent);
@@ -137,9 +139,9 @@
 
   <nav class="nav" aria-label="Species">
     <a href="./">Mink</a>
-    <a href="fox.html" class="active" aria-current="page">Fox</a>
-    <a href="raccoon-dog.html">Raccoon dog</a>
-    <a href="chinchilla.html">Chinchilla</a>
+    <span class="disabled" aria-disabled="true" title="Under review, not yet published">Fox</span>
+    <span class="disabled" aria-disabled="true" title="Under review, not yet published">Raccoon dog</span>
+    <span class="disabled" aria-disabled="true" title="Under review, not yet published">Chinchilla</span>
   </nav>
 
   <h1>Fox fur farming: the cost of raising the welfare standard</h1>
