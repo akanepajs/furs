@@ -435,20 +435,20 @@
       cost:null, banned:true, ast:true},
     {name:'Germany', role:'fur-farming statute (TierErzHaVerbG)',
       area:1.0, h:1.0, water:1.0, depth:0.3, enc:'≥3 m²/enclosure', twolevel:false, ast:true,
-      cost:{inv:'552 – 1,124', cap:'46 – 94', tot:'85 – 133', oc:'46 – 94'}},
+      cost:{inv:'552 – 1,124', cap:'46 – 94', tot:'85 – 133'}},
     {name:'Ecorys 1', role:'EC survey, two-level cage (Scenarios 4 / 5)',
       area:0.27, harea:0.438, h:0.9, water:0, depth:null, areaLabel:'4,380 cm² (two levels)',
       levels:[{w:0.9,d:0.3,h:0.45},{w:0.56,d:0.3,h:0.45}],
       dims:'base 90 × 30 × 45 cm + upper 56 × 30 × 45 cm',
-      cost:{inv:'164 – 345', cap:'14 – 29', tot:'53 – 68', oc:'14 – 29'}},
+      cost:{inv:'164 – 345', cap:'14 – 29', tot:'53 – 68'}},
     {name:'Ecorys 2', role:'EC survey, single-level cage',
       area:0.54, h:0.45, water:0, depth:null, areaLabel:'5,400 cm²',
       fpW:0.9, fpD:0.6, seamDepth:true, dims:'two 90 × 30 cm cages joined (dashed line marks the join)',
-      cost:{inv:'235 – 469', cap:'20 – 39', tot:'59 – 78', oc:'20 – 39'}},
+      cost:{inv:'235 – 469', cap:'20 – 39', tot:'59 – 78'}},
     {name:'Finland', role:'draft fur decree (VN/14432/2025)',
       area:0.36, h:0.45, water:0, depth:null, twolevel:false, areaLabel:'3,600 cm²',
       fpW:0.70, fpD:0.5143, dims:'length ≥ 70 cm, width ≥ 30 cm; shown as 51 × 70 cm',
-      cost:{inv:'76', cap:'6', tot:'46', oc:'6'}},
+      cost:{inv:'76', cap:'6', tot:'46'}},
     {name:'EU legal minimum / WelFur', role:'current standard and cost baseline',
       area:0.255, h:0.45, water:0, depth:null, twolevel:false, areaLabel:'2,550 cm²',
       fpW:0.70, fpD:0.3643, dims:'length ≥ 70 cm, width ≥ 30 cm; shown as 36 × 70 cm',
@@ -607,7 +607,6 @@
       html+='<div class="cline"><span class="k">Initial investment per mink</span><span class="v">EUR '+c.inv+'</span></div>';
       html+='<div class="cline"><span class="k">Capital cost per pelt</span><span class="v">EUR '+c.cap+' /yr</span></div>';
       html+='<div class="cline"><span class="k">Total cost per pelt</span><span class="v">EUR '+c.tot+'</span></div>';
-      html+='<div class="cline"><span class="k oc">Total, over current EU min / WelFur</span><span class="v oc">+EUR '+c.oc+' /pelt</span></div>';
     }
     html+='</div>';
     info.innerHTML=html;
