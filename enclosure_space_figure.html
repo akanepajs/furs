@@ -445,20 +445,20 @@
     {name:'Germany', role:'fur-farming statute (TierErzHaVerbG)',
       area:1.0, h:1.0, water:1.0, depth:0.3, enc:'≥3 m² floor area per enclosure', twolevel:false, ast:true, enclosure:true,
       areaLabel:'≥1 m²', areaSub:'per mink', waterSub:'per enclosure',
-      cost:{inv:'at least EUR 422', cap:'at least EUR 35', tot:'at least EUR 75'}},
+      cost:{inv:'at least EUR 422', cap:'at least EUR 35 per year', tot:'at least EUR 75'}},
     {name:'Ecorys 1', role:'EC survey, two-level cage',
       area:0.27, harea:0.438, h:0.9, water:0, depth:null, areaLabel:'4,380 cm² (two levels)',
       levels:[{w:0.9,d:0.3,h:0.45},{w:0.56,d:0.3,h:0.45}],
       dims:'base 90 × 30 × 45 cm + upper 56 × 30 × 45 cm',
-      cost:{inv:'at least EUR 150', cap:'at least EUR 13', tot:'at least EUR 52'}},
+      cost:{inv:'at least EUR 150', cap:'at least EUR 13 per year', tot:'at least EUR 52'}},
     {name:'Ecorys 2', role:'EC survey, single-level cage',
       area:0.54, h:0.45, water:0, depth:null, areaLabel:'5,400 cm²',
       fpW:0.9, fpD:0.6, seamDepth:true, dims:'two 90 × 30 cm cages joined (dashed line marks the join)',
-      cost:{inv:'at least EUR 218', cap:'at least EUR 18', tot:'at least EUR 57'}},
+      cost:{inv:'at least EUR 218', cap:'at least EUR 18 per year', tot:'at least EUR 57'}},
     {name:'Finland', role:'draft fur decree (VN/14432/2025)',
       area:0.36, h:0.45, water:0, depth:null, twolevel:false, areaLabel:'3,600 cm²',
       fpW:1.20, fpD:0.30, dims:'width ≥ 30 cm, length ≥ 70 cm; shown as 30 × 120 cm',
-      cost:{inv:'EUR 76', cap:'EUR 6', tot:'EUR 46'}},
+      cost:{inv:'EUR 76', cap:'EUR 6 per year', tot:'EUR 46'}},
     {name:'Sweden', role:'fur-farming cage law (SJVFS 2019:16)',
       area:0.255, harea:0.345, h:0.9, water:0, depth:null, areaLabel:'3,450 cm² (two levels)',
       levels:[{w:0.85,d:0.30,h:0.45},{w:0.30,d:0.30,h:0.45}],
@@ -627,14 +627,14 @@
       html+='<div class="cline"><span class="k none">'+d.comparator+'</span></div>';
     } else if(d.baseline){
       html+='<div class="cline"><span class="k">Initial investment per mink (one-time)</span><span class="v base">baseline (existing)</span></div>';
-      html+='<div class="cline"><span class="k">Additional capital cost per pelt</span><span class="v base">0</span></div>';
+      html+='<div class="cline"><span class="k">Additional capital cost per pelt, annualized (15 y, 3%)</span><span class="v base">EUR 0 per year</span></div>';
       html+='<div class="cline"><span class="k">Current production cost per pelt</span><span class="v base">EUR 39</span></div>';
       html+='<div class="cline"><span class="k">Total cost per pelt</span><span class="v base">EUR 39</span></div>';
       html+='<div class="cline"><span class="k oc">Pelt price (2024 average)</span><span class="v oc">EUR 29</span></div>';
     } else {
       var c=d.cost;
       html+='<div class="cline"><span class="k">Initial investment per mink (one-time)</span><span class="v">'+c.inv+'</span></div>';
-      html+='<div class="cline"><span class="k">Additional capital cost per pelt</span><span class="v">'+c.cap+'</span></div>';
+      html+='<div class="cline"><span class="k">Additional capital cost per pelt, annualized (15 y, 3%)</span><span class="v">'+c.cap+'</span></div>';
       html+='<div class="cline"><span class="k">Current production cost per pelt</span><span class="v">EUR 39</span></div>';
       html+='<div class="cline"><span class="k">Total cost per pelt with the new standards</span><span class="v">'+c.tot+'</span></div>';
     }
