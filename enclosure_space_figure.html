@@ -331,7 +331,7 @@
   <h2>Notes</h2>
   <div class="foot">
     <ol>
-      <li><b>What the cost figures on each cage mean.</b> 'Initial investment per mink' is the one-time capital to rebuild the <em>Finnish</em> mink industry from the current legal cage to that standard; 'Capital cost per pelt' is that capital annualised over 15 years at a 3% real discount rate; 'Total cost per pelt' adds the production cost. All in 2025 EUR at Finnish construction prices, per pelt of standard annual output, and derived in the section above. The current legal cage is the cost baseline, so its increment is zero.</li>
+      <li><b>What the cost figures on each cage mean.</b> 'Initial investment per mink' is a <em>one-time</em> outlay: the capital to rebuild the <em>Finnish</em> mink industry from the current legal cage to that standard. The three 'per pelt' lines below it are <em>annual</em> unit costs. 'Additional capital cost per pelt' is that one-time investment spread over the cage's 15-year life as an equal yearly charge (a capital-recovery annuity at a 3% real discount rate); 'Current production cost per pelt' is the yearly cost of producing a pelt (feed, labour and the rest, about EUR 39), unchanged by the standard; and 'Total cost per pelt with the new standards' is the two added together, that is, the break-even pelt price at that standard. All in 2025 EUR at Finnish construction prices, per pelt of standard annual output, and derived in the section above. The current legal cage is the cost baseline, so its additional capital is zero and its total is the production cost alone. Figures are rounded to whole euros, so the additional capital and production cost may differ from the total shown by about one euro.</li>
       <li><b>How row E's per-pelt areas are computed (the 0.8 and 1.3 coefficients).</b> Each pelt of annual output carries three shares of cage space: the pelted juvenile's own place, a quarter of a female place, and a twentieth of a male place. The quarter comes from Luke's herd structure, where 250,000 breeding females produce the standard 1,000,000 pelts at four pelts per female per year, so each pelt carries a quarter of a female place. The twentieth is that quarter divided by five, on the assumption of one breeding male per five females (Luke's totals include males without giving a count). No time or day weighting is involved; the shares are herd composition. The juvenile term is where the standards differ. The Finnish rules state cage sizes per adult and house weaned juveniles in pairs, so a juvenile's allowance is half a cage, and the three shares (a half, a quarter and a twentieth) give a coefficient of <b>0.8</b>: the current 2,550 cm&sup2; cage then gives 2,040 cm&sup2; (0.204 m&sup2;) per pelt, and the 3,600 cm&sup2; decree cage 0.288 m&sup2;. The Ecorys survey and the German statute state their allowances per animal, each juvenile with its own unit, so the juvenile term is a full allowance and the shares give <b>1.3</b>: the two-level 4,380 cm&sup2; cage then gives 5,694 cm&sup2; (0.57 m&sup2;) per pelt, the single-level 5,400 cm&sup2; gives 7,020 cm&sup2; (0.70 m&sup2;), and the German 1 m&sup2; per animal gives 1.30 m&sup2;.</li>
       <li><b>Austria.</b> 20 m&sup2; per adult pair (10 m&sup2; per mink: 5 m&sup2; floor plus 5 m&sup2; water), 50% of the area as water at &ge;0.5 m depth, height 2.5 m; binding captive-wildlife ordinance. Like the German statute, this is an area-per-animal enclosure specification rather than a fixed cage (both drawn with a dashed outline); but here the water is half the area, so it scales with the number of animals, unlike Germany's fixed 1 m&sup2; basin. Fur farming is separately banned in Austria (2005), so no compliance cost is calculated; the enclosure is shown for scale.</li>
       <li><b>Germany, fur-farming statute.</b> Floor &ge;1 m&sup2; per animal (and &ge;3 m&sup2; per enclosure), plus an additive swimming basin &ge;1 m&sup2; at &ge;0.3 m depth, height &ge;1 m. The statute is an area-per-animal specification, not a fixed cage: the floor scales with the number of animals (1 m&sup2; each, above the 3 m&sup2; enclosure minimum), but the basin is a single per-enclosure minimum of 1 m&sup2; total, whatever the number of mink, so its per-animal share falls as the enclosure is stocked. Both the schematic and the bar chart read the statute per mink as 1 m&sup2; floor plus the full 1 m&sup2; basin: the floor is the per-animal minimum, and the basin is shown at its per-enclosure total.</li>
@@ -445,20 +445,20 @@
     {name:'Germany', role:'fur-farming statute (TierErzHaVerbG)',
       area:1.0, h:1.0, water:1.0, depth:0.3, enc:'≥3 m² floor area per enclosure', twolevel:false, ast:true, enclosure:true,
       areaLabel:'≥1 m²', areaSub:'per mink', waterSub:'per enclosure',
-      cost:{inv:'at least EUR 422', cap:'at least EUR 35/yr', tot:'at least EUR 75'}},
+      cost:{inv:'at least EUR 422', cap:'at least EUR 35', tot:'at least EUR 75'}},
     {name:'Ecorys 1', role:'EC survey, two-level cage',
       area:0.27, harea:0.438, h:0.9, water:0, depth:null, areaLabel:'4,380 cm² (two levels)',
       levels:[{w:0.9,d:0.3,h:0.45},{w:0.56,d:0.3,h:0.45}],
       dims:'base 90 × 30 × 45 cm + upper 56 × 30 × 45 cm',
-      cost:{inv:'at least EUR 150', cap:'at least EUR 13/yr', tot:'at least EUR 52'}},
+      cost:{inv:'at least EUR 150', cap:'at least EUR 13', tot:'at least EUR 52'}},
     {name:'Ecorys 2', role:'EC survey, single-level cage',
       area:0.54, h:0.45, water:0, depth:null, areaLabel:'5,400 cm²',
       fpW:0.9, fpD:0.6, seamDepth:true, dims:'two 90 × 30 cm cages joined (dashed line marks the join)',
-      cost:{inv:'at least EUR 218', cap:'at least EUR 18/yr', tot:'at least EUR 57'}},
+      cost:{inv:'at least EUR 218', cap:'at least EUR 18', tot:'at least EUR 57'}},
     {name:'Finland', role:'draft fur decree (VN/14432/2025)',
       area:0.36, h:0.45, water:0, depth:null, twolevel:false, areaLabel:'3,600 cm²',
       fpW:1.20, fpD:0.30, dims:'width ≥ 30 cm, length ≥ 70 cm; shown as 30 × 120 cm',
-      cost:{inv:'EUR 76', cap:'EUR 6/yr', tot:'EUR 46'}},
+      cost:{inv:'EUR 76', cap:'EUR 6', tot:'EUR 46'}},
     {name:'Sweden', role:'fur-farming cage law (SJVFS 2019:16)',
       area:0.255, harea:0.345, h:0.9, water:0, depth:null, areaLabel:'3,450 cm² (two levels)',
       levels:[{w:0.85,d:0.30,h:0.45},{w:0.30,d:0.30,h:0.45}],
@@ -626,15 +626,17 @@
     } else if(d.comparator){
       html+='<div class="cline"><span class="k none">'+d.comparator+'</span></div>';
     } else if(d.baseline){
-      html+='<div class="cline"><span class="k">Initial investment per mink</span><span class="v base">baseline (existing)</span></div>';
-      html+='<div class="cline"><span class="k">Capital cost per pelt</span><span class="v base">0</span></div>';
+      html+='<div class="cline"><span class="k">Initial investment per mink (one-time)</span><span class="v base">baseline (existing)</span></div>';
+      html+='<div class="cline"><span class="k">Additional capital cost per pelt</span><span class="v base">0</span></div>';
+      html+='<div class="cline"><span class="k">Current production cost per pelt</span><span class="v base">EUR 39</span></div>';
       html+='<div class="cline"><span class="k">Total cost per pelt</span><span class="v base">EUR 39</span></div>';
       html+='<div class="cline"><span class="k oc">Pelt price (2024 average)</span><span class="v oc">EUR 29</span></div>';
     } else {
       var c=d.cost;
-      html+='<div class="cline"><span class="k">Initial investment per mink</span><span class="v">'+c.inv+'</span></div>';
-      html+='<div class="cline"><span class="k">Capital cost per pelt</span><span class="v">'+c.cap+'</span></div>';
-      html+='<div class="cline"><span class="k">Total cost per pelt</span><span class="v">'+c.tot+'</span></div>';
+      html+='<div class="cline"><span class="k">Initial investment per mink (one-time)</span><span class="v">'+c.inv+'</span></div>';
+      html+='<div class="cline"><span class="k">Additional capital cost per pelt</span><span class="v">'+c.cap+'</span></div>';
+      html+='<div class="cline"><span class="k">Current production cost per pelt</span><span class="v">EUR 39</span></div>';
+      html+='<div class="cline"><span class="k">Total cost per pelt with the new standards</span><span class="v">'+c.tot+'</span></div>';
     }
     html+='</div>';
     info.innerHTML=html;
