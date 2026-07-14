@@ -142,8 +142,15 @@
     <span class="disabled" aria-disabled="true" title="Under review, not yet published">Chinchilla</span>
   </nav>
 
-  <h1>Mink fur farming: enclosure space and the cost of raising the standard</h1>
-  <p class="sub">A schematic of what a single mink is allowed under each fur-farming standard (green&nbsp;=&nbsp;floor area, blue&nbsp;=&nbsp;open-water pool), with the one-time and per-pelt cost of moving the Finnish industry to that standard. <strong>Every reform standard that has been costed is well above the latest annual pelt price of about EUR&nbsp;29 (the 2024 average, in 2025 prices): the current cages already run at a loss.</strong></p>
+  <h1>Mink fur farming</h1>
+
+  <div class="quote">
+    <p style="margin:0 0 10px;font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;color:var(--ink-3);font-weight:640">EFSA quotes</p>
+    <p>&ldquo;The majority of the welfare consequences (WCs) listed cannot be prevented or substantially mitigated within the current husbandry systems.&rdquo;</p>
+    <p>&ldquo;&hellip; substantial mitigation would require enclosures that provide sufficient three-dimensional space to incorporate structures and resources that enhance environmental complexity, to allow the quantitative and qualitative expression of fundamental behaviours (e.g. sustained locomotory activity, exploration, foraging and vigilance).&rdquo;</p>
+    <p>For mink specifically, EFSA's five most relevant welfare consequences are restriction of movement, inability to perform exploratory or foraging behaviour, sensorial under- and overstimulation, soft tissue lesions and integument damage, and handling stress. A lack of open water may be relevant to restriction of movement, exploratory or foraging behaviour and sensorial understimulation, together with the linked consequence of inability to perform play behaviour, but not to soft tissue lesions and integument damage or to handling stress.</p>
+    <cite>EFSA Panel on Animal Health and Welfare (2025). Welfare of American mink, red and Arctic foxes, raccoon dog and chinchilla kept for fur production (Scientific Opinion 9519). <em>EFSA Journal</em>, 23(7).</cite>
+  </div>
 
   <!-- ============ banned-countries header ============ -->
   <div class="banned">
@@ -151,7 +158,7 @@
       <path d="M8 8 L32 32 M32 8 L8 32" stroke="var(--red)" stroke-width="7" stroke-linecap="round"/>
     </svg>
     <div class="body">
-      <h4>Fur farming already banned or being phased out across the EU</h4>
+      <h4>Fur farming already banned or being phased out across the EU<span class="ast">*</span></h4>
       <p><span class="tag">Full national ban in force:</span> Austria, Belgium, Bulgaria (mink), Croatia, Czechia, France, Ireland, Italy, Luxembourg, Malta, Netherlands, Slovakia, Slovenia.</p>
       <p><span class="tag">Phase-out under way:</span> Estonia (2026), Lithuania (2027), Romania (2027), Latvia (2028), Poland (2033).</p>
       <p><span class="tag">De facto via welfare standards:</span> Germany (last farm closed 2019); Sweden (fox farming ended 2005, chinchilla 2014, and mink in 2025 under a government buy-out, so no fur farms remain).</p>
@@ -159,10 +166,12 @@
     </div>
   </div>
 
+  <p class="sub">A schematic of what a single mink is allowed under each fur-farming standard (green&nbsp;=&nbsp;floor area, blue&nbsp;=&nbsp;open-water pool), with the one-time and per-pelt cost of moving the Finnish industry to that standard. <strong>Every reform standard that has been costed is well above the latest annual pelt price of about EUR&nbsp;29 (the 2024 average, in 2025 prices): the current cages already run at a loss.</strong></p>
+
   <!-- ============ schematic figure ============ -->
   <div id="schematic"></div>
 
-  <p class="efsanote" style="margin:6px 0 0"><span class="ast">*</span>Austria and Germany are the two standards closest to the EFSA recommendation of much more space and open-water access.</p>
+  <p class="efsanote" style="margin:6px 0 0"><span class="ast">*</span> A ban on production is effectively EFSA-compliant. Austria and Germany are the two standards closest to the EFSA recommendation of much more space and open-water access (see EFSA quotes above).</p>
 
   <div class="legend">
     <div>
@@ -195,16 +204,7 @@
 
   <!-- ============ existing enclosure-space bar chart (kept) ============ -->
   <h2>Enclosure space and water pool per adult mink, by standard (full comparison)</h2>
-  <p class="sub">The same comparison as a stacked bar, extended to captive-animal and zoo standards (green&nbsp;=&nbsp;land/floor area, blue&nbsp;=&nbsp;open water). <strong>Captive-animal and zoo standards give an adult mink roughly 20 to 50 times the floor area of the current EU fur-farm cage, and all require open water. Only Germany's fur-farming statute, the one EU fur law that mandates open water, rises above the proposed reform cages.</strong>Figures are per mink at each standard's stated enclosure capacity (see Notes).</p>
-
-  <p class="efsanote"><span class="ast">*</span>Direction consistent with the EFSA recommendation: much more space and open-water access.</p>
-
-  <div class="quote">
-    <p>&ldquo;The majority of the welfare consequences (WCs) listed cannot be prevented or substantially mitigated within the current husbandry systems.&rdquo;</p>
-    <p>&ldquo;&hellip; substantial mitigation would require enclosures that provide sufficient three-dimensional space to incorporate structures and resources that enhance environmental complexity, to allow the quantitative and qualitative expression of fundamental behaviours (e.g. sustained locomotory activity, exploration, foraging and vigilance).&rdquo;</p>
-    <p>For mink specifically, EFSA finds that a lack of open water may be relevant to four of the five most relevant welfare consequences.</p>
-    <cite>EFSA Panel on Animal Health and Welfare (2025). Welfare of American mink, red and Arctic foxes, raccoon dog and chinchilla kept for fur production (Scientific Opinion 9519). <em>EFSA Journal</em>, 23(7).</cite>
-  </div>
+  <p class="sub">The same comparison as a stacked bar, extended to captive-animal and zoo standards (green&nbsp;=&nbsp;land/floor area, blue&nbsp;=&nbsp;open water). <strong>Captive-animal and zoo standards give an adult mink roughly 20 to 50 times the floor area of the current EU fur-farm cage, and all require open water.</strong> Figures are per mink at each standard's stated enclosure capacity (see Notes).</p>
 
   <div class="legend">
     <div>
@@ -630,7 +630,6 @@
       html+='<div class="cline"><span class="k">Additional capital cost per pelt, annualized (15 y, 3%)</span><span class="v base">EUR 0 per year</span></div>';
       html+='<div class="cline"><span class="k">Current production cost per pelt</span><span class="v base">EUR 39 per year</span></div>';
       html+='<div class="cline"><span class="k">Total cost per pelt</span><span class="v base">EUR 39 per year</span></div>';
-      html+='<div class="cline"><span class="k oc">Pelt price (2024 average)</span><span class="v oc">EUR 29</span></div>';
     } else {
       var c=d.cost;
       html+='<div class="cline"><span class="k">Initial investment per mink (one-time)</span><span class="v">'+c.inv+'</span></div>';
