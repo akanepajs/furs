@@ -68,6 +68,16 @@
   .callout p{margin:0;color:var(--ink-2)}
   .callout p+p{margin-top:8px}
 
+  /* ---- banned / phase-out box ---- */
+  .banned{display:flex;gap:14px;align-items:flex-start;background:var(--surface-2);
+    border:1px solid var(--hair);border-radius:10px;padding:14px 16px;margin:0 0 22px}
+  .cross{flex:none;width:34px;height:34px;margin-top:2px}
+  .banned .body{font-size:.9rem}
+  .banned .body h4{margin:0 0 3px;font-size:.96rem;font-weight:680;color:var(--ink)}
+  .banned .body p{margin:2px 0}
+  .banned .tag{color:var(--ink-3);font-weight:600}
+  .banned .src{color:var(--ink-3);font-size:.78rem;margin-top:5px}
+
   .quote{border-left:3px solid var(--accent);background:var(--surface-2);
     padding:14px 18px;border-radius:0 10px 10px 0;margin:24px 0 8px;font-size:.94rem}
   .quote p{margin:0 0 8px}
@@ -143,7 +153,7 @@
     <a href="./">Mink</a>
     <span class="disabled" aria-disabled="true" title="Under review, not yet published">Fox</span>
     <span class="disabled" aria-disabled="true" title="Under review, not yet published">Raccoon dog</span>
-    <span class="disabled" aria-disabled="true" title="Under review, not yet published">Chinchilla</span>
+    <a href="./chinchilla.html" class="active" aria-current="page">Chinchilla</a>
   </nav>
 
   <h1>Chinchilla fur farming: the cost of raising the welfare standard</h1>
@@ -151,7 +161,7 @@
 
   <div class="callout warn">
     <h4>Read every chinchilla figure as an order of magnitude</h4>
-    <p>Chinchilla is <b>not in the Finnish draft decree and is not farmed in Finland</b>, so there is no Finnish construction-cost study to calibrate against and no Finland column. Its costs are built by analogy: the mink new-build cage rate (about EUR 342 per square metre) applied to the extra floor area above current practice. Three unsourced assumptions drive every number: current practice of about 0.10 m&sup2; per animal (the subtraction baseline); about 1.5 animals per pelt; and the mink build rate applied to a much smaller animal, which likely <b>overstates</b> a chinchilla cage's cost. The pelt price (about EUR 53) is an EU auction figure carried forward from 2022, and the production cost (about EUR 25) is the operating cost of a single Polish farm on 2011-2012 data, both via Carpenter (2025); neither is a Finnish or EU-wide chinchilla cost study. Treat the whole page as a rough order of magnitude, among the heaviest caveats of any species in this study.</p>
+    <p>Chinchilla is <b>not in the Finnish draft decree and is not farmed in Finland</b>, so there is no Finnish construction-cost study to calibrate against and no Finland column. Its costs are built by analogy: the mink new-build cage rate (about EUR 342 per square metre) applied to the extra floor area above current practice. Three unsourced assumptions drive every number: current practice of about 0.10 m&sup2; per animal (the subtraction baseline); about 1.5 animals per pelt; and the mink build rate applied to a much smaller animal, which likely <b>overstates</b> a chinchilla cage's cost. The pelt price of about EUR 53 is an EU auction figure carried forward from 2022, and the production cost of about EUR 25 is the operating cost of a single Polish farm on 2011-2012 data (both via Carpenter, 2025). Neither is a Finnish or EU-wide chinchilla cost study. Treat the whole page as a rough order of magnitude, among the heaviest caveats of any species in this study.</p>
   </div>
 
   <div class="quote">
@@ -159,6 +169,20 @@
     <p>&ldquo;&hellip; substantial mitigation would require enclosures that provide sufficient three-dimensional space to incorporate structures and resources that enhance environmental complexity, to allow the quantitative and qualitative expression of fundamental behaviours (e.g. sustained locomotory activity, exploration, foraging and vigilance).&rdquo;</p>
     <p>For chinchillas, EFSA identifies six most relevant welfare consequences: restriction of movement, predation stress, the inability to perform exploratory or foraging behaviour, sensorial under- and overstimulation, the inability to perform comfort behaviour and resting problems. It finds that restriction of movement and the inability to perform exploratory or foraging behaviour cannot be prevented in the current cage, and reports no scientific information on how large an increase in floor area would substantially mitigate the restriction of movement. Providing a quartz-free sand bath can prevent the one comfort behaviour the cage can readily deliver, sand-bathing.</p>
     <cite>EFSA Panel on Animal Health and Welfare (2025). Welfare of American mink, red and Arctic foxes, raccoon dog and chinchilla kept for fur production (Scientific Opinion 9519). <em>EFSA Journal</em>, 23(7).</cite>
+  </div>
+
+  <!-- ============ banned-countries header ============ -->
+  <div class="banned">
+    <svg class="cross" viewBox="0 0 40 40" aria-label="banned">
+      <path d="M8 8 L32 32 M32 8 L8 32" stroke="var(--red)" stroke-width="7" stroke-linecap="round"/>
+    </svg>
+    <div class="body">
+      <h4>Chinchilla fur farming already banned or being phased out across much of the EU</h4>
+      <p><span class="tag">Full national ban in force:</span> Austria, Belgium, Croatia, Czechia, France, Ireland, Italy, Luxembourg, Malta, Netherlands, Slovakia, Slovenia.</p>
+      <p><span class="tag">Phase-out under way:</span> Estonia (2026), Lithuania (2027), Romania (2027), Latvia (2028), Poland (2033, covering about 64 chinchilla farms).</p>
+      <p><span class="tag">De facto via welfare standards or market exit:</span> Sweden (chinchilla farming ended in 2014, when welfare rules made it uneconomic).</p>
+      <p class="src">Sources: Fur Free Alliance, fur-ban tracker; Eurogroup for Animals (2025).</p>
+    </div>
   </div>
 
   <h2>What a single chinchilla is allowed, and what each standard costs</h2>
@@ -172,6 +196,11 @@
       <div class="swatchrow"><span class="seg" style="background:var(--green-mid);opacity:.5"></span><span>Floor area (transparent green)</span></div>
     </div>
     <div>
+      <h4>Box outline</h4>
+      <div class="swatchrow" style="margin-bottom:6px"><span style="display:inline-block;width:22px;height:14px;border:1.4px solid var(--ink-3);flex:none"></span><span>Solid = fixed cage of the stated dimensions</span></div>
+      <div class="swatchrow"><span style="display:inline-block;width:22px;height:14px;border:1.4px dashed var(--ink-3);flex:none"></span><span>Dashed = area-per-animal allowance in an open enclosure, not a fixed cage</span></div>
+    </div>
+    <div>
       <h4>Green shade = required height</h4>
       <div class="ramp ramp-g"></div>
       <div class="ramplabels"><span>0.5 m (gray)</span><span>1.5 m</span></div>
@@ -182,14 +211,14 @@
     </div>
   </div>
 
-  <p class="astkey"><span class="ast">*</span>&nbsp;marks the German fur-farming statute, which sets more floor, height and a solid floor and sand bath than the current cage, the direction EFSA points to; EFSA sets no numeric chinchilla enclosure size and certifies none of these as adequate. The three cages are drawn to one shared scale, so the chinchilla is the same size across them. Only the German statute sets a cage height (1&nbsp;m); the Ecorys and current-practice cages have no stated height and are drawn at an assumed 0.5&nbsp;m (marked "~" here and shown as unspecified in the enclosure chart below). The chinchilla is drawn to about 0.30&nbsp;m nose to tail: EFSA (2025) gives a farmed-chinchilla body length of 23 to 50&nbsp;cm, and the bushy tail adds more. Chinchilla silhouette by Margot Michaud (PhyloPic, public domain). Cost figures are the study's analogue model in 2025 EUR, per pelt of annual output; there is no engineering-versus-proportional range because there is no Finnish cage stock to convert. Ecorys and the German statute state their floor per animal; the current-practice figure is an assumption. Full references below.</p>
+  <p class="astkey"><span class="ast">*</span>&nbsp;marks the German fur-farming statute, which sets more floor, height and a solid floor and sand bath than the current cage, the direction EFSA points to; EFSA sets no numeric chinchilla enclosure size and certifies none of these as adequate. The three cages are drawn to one shared scale, so the chinchilla is the same size across them. The German statute sets a height of 1&nbsp;m and the Ecorys cage 0.5&nbsp;m, from its stated 65 &times; 40 &times; 50&nbsp;cm cage size. Only the current-practice cage's height is an assumption, drawn at about 0.5&nbsp;m and marked '~' here. The chinchilla is drawn to about 0.30&nbsp;m nose to tail: EFSA (2025) gives a farmed-chinchilla body length of 23 to 50&nbsp;cm, and the bushy tail adds more. Chinchilla silhouette by Margot Michaud (PhyloPic, public domain). Cost figures are the study's analogue model in 2025 EUR, per pelt of annual output; there is no engineering-versus-proportional range because there is no Finnish cage stock to convert. Ecorys and the German statute state their floor per animal; the current-practice figure is an assumption. Full references below.</p>
 
   <h2>Chinchilla enclosure space: the fur cage against pet-keeping and captive standards</h2>
   <p class="sub">Minimum floor area allowed per chinchilla under each standard, on a single linear scale. <strong>Even pet-keeping law asks for more room than the fur cage: Switzerland and Austria require about 0.25 to 0.5 m&sup2; per animal for a pet chinchilla, against an assumed 0.10 m&sup2; on the farm. Keeping chinchillas as a wild species (Austria) requires about 4 m&sup2; per animal, roughly forty times the farm cage.</strong></p>
 
   <div class="chart-scroll"><svg id="chencl" role="img" aria-label="Horizontal bar chart of minimum floor area per chinchilla for seven standards, ordered largest first: Austria's wild-species rule at 4 square metres, shown off the 1 square metre scale, then pet-keeping and fur-reform standards of 0.25 to 0.5 square metres, down to an assumed 0.10 square metres on the fur farm."></svg></div>
 
-  <p class="caption">Green bars are floor area per animal; a hatched bar means the standard sets no enclosure-height figure. The asterisk marks standards that set substantially more space and structural complexity than the current cage, the direction EFSA points to (EFSA sets no numeric chinchilla enclosure size and certifies none of these as adequate). Captive and pet figures are per animal at the standard's stated pair or group capacity, a conservative reading. Chinchillas are legally kept as pets, so the Swiss and Austrian pet-keeping minima are genuine per-animal floors, not zoo figures. Austria's 4 m&sup2; is its "kept as a wild species" rule (8 m&sup2; per pair, indoor plus outdoor, 2 m height), an upper bound. The German zoo-husbandry guidance (BMEL, 2014) sets the same 0.5 m&sup2; floor as the German fur statute but with 1.5 m height and climbing structures. The German fur statute also requires a sand bath, a 50% solid floor and group housing that the bar cannot show. Most of these standards require a sand bath (the fur statute, the German zoo guidance and the Austrian and Swiss pet-keeping rules); Austria's wild-species enclosure requires climbing structures and gnawing wood instead, and the current fur cage is the pre-reform baseline. No standard requires open water. Sources: Austria 2. Tierhaltungsverordnung (2004); Switzerland TSchV Anhang 2 (2008); Germany S&auml;ugetiergutachten (BMEL, 2014); German fur statute TierErzHaVerbG (2017a); Ecorys EC survey (2025); current-cage practice (assumption).</p>
+  <p class="caption">Green bars are floor area per animal; a hatched bar means the standard sets no enclosure-height figure. The asterisk marks the wild-species-keeping, zoo-husbandry and fur-statute standards, which set far more space and structural complexity than the pet-keeping minima or the current cage, the direction EFSA points to (EFSA sets no numeric chinchilla enclosure size and certifies none of these as adequate). Captive and pet figures are per animal at the standard's stated pair or group capacity, a conservative reading. Chinchillas are legally kept as pets, so the Swiss and Austrian pet-keeping minima are genuine per-animal floors, not zoo figures. Austria's 4 m&sup2; is its 'kept as a wild species' rule (8 m&sup2; per pair, indoor plus outdoor, 2 m height), an upper bound. The German zoo-husbandry guidance (BMEL, 2014) sets the same 0.5 m&sup2; floor as the German fur statute but with 1.5 m height and climbing structures. The German fur statute also requires a sand bath, a 50% solid floor and group housing that the bar cannot show. Most of these standards require a sand bath (the fur statute, the German zoo guidance and the Austrian and Swiss pet-keeping rules); Austria's wild-species enclosure requires climbing structures and gnawing wood instead, and the current fur cage is the pre-reform baseline. No standard requires open water. Sources: Austria 2. Tierhaltungsverordnung (2004); Switzerland TSchV Anhang 2 (2008); Germany S&auml;ugetiergutachten (BMEL, 2014); German fur statute TierErzHaVerbG (2017a); Ecorys EC survey (2025); current-cage practice (assumption).</p>
 
   <details>
     <summary>Show data table (enclosure space)</summary>
@@ -206,11 +235,11 @@
   <div class="method">
   <p>Chinchilla has <b>no Finnish construction-cost study and is not in the Finnish decree</b>, so unlike the other species there is no directly-measured anchor and no engineering-versus-proportional range. The cost of each standard is built by analogy: the <b>one-time capital</b> is the extra cage floor a standard requires, above current practice, priced at the mink all-in new-build rate of about EUR 342 per square metre, plus the yearly cost of financing that capital. Because a chinchilla enclosure is a lighter structure than a mink shade-house cage, using the mink rate likely overstates the cost, so the figures are a conservative (high) order of magnitude.</p>
 
-  <p><b>Ecorys: the EC survey cage.</b> The Commission's survey (processed by Ecorys) sets a 65&nbsp;&times;&nbsp;40&nbsp;cm cage (about 0.26 m&sup2;) with juveniles paired. Above the 0.15 m&sup2; per-pelt current-practice baseline (0.10 m&sup2; per animal over about 1.5 animals per pelt) this adds only a little floor, so the one-time capital is about <b>EUR 43</b> per pelt and the break-even pelt price is about EUR 29, still well below the EUR 53 price.</p>
+  <p><b>Ecorys: the EC survey cage.</b> The Commission's survey sets a 65&nbsp;&times;&nbsp;40&nbsp;&times;&nbsp;50&nbsp;cm cage (about 0.26 m&sup2; of floor, 0.5&nbsp;m high) with juveniles paired. Above the 0.15 m&sup2; per-pelt current-practice baseline (0.10 m&sup2; per animal over about 1.5 animals per pelt), this adds only a little floor. So the one-time capital is about <b>EUR 43</b> per pelt and the break-even pelt price is about EUR 29, still well below the EUR 53 price.</p>
 
-  <p><b>German: the fur-farming statute.</b> The German statute requires at least 0.5 m&sup2; of floor per adult (0.3 m&sup2; per weaned juvenile) and at least 1 m&sup2; per enclosure, a height of 1 m, a floor solid over at least half its area, a platform and a quartz-free sand bath per animal, and group housing. Pricing that extra floor and the solid-floor insert gives about <b>EUR 153</b> per pelt of one-time capital and a break-even of about EUR 38, still below the price.</p>
+  <p><b>German: the fur-farming statute.</b> The German statute requires at least 0.5 m&sup2; of floor per adult (0.3 m&sup2; per weaned juvenile) and at least 1 m&sup2; per enclosure. It also requires a height of 1 m, a floor solid over at least half its area, a platform, a quartz-free sand bath per animal, and group housing. Pricing that extra floor and the solid-floor insert gives about <b>EUR 153</b> per pelt of one-time capital and a break-even of about EUR 38, still below the price.</p>
 
-  <p><b>EFSA-level: illustrative only.</b> EFSA sets no numeric chinchilla enclosure size, so there is no EFSA-level figure to cost. To show the order of magnitude, the table below carries three <b>illustrative</b> enclosures at two, three and five times the German floor area; these are not a reported EFSA-level standard. The margin narrows to roughly zero at about twice the German floor (break-even about EUR 53, level with the price) and turns clearly negative from about three times (break-even about EUR 69).</p>
+  <p><b>EFSA-level: illustrative only.</b> EFSA sets no numeric chinchilla enclosure size, so there is no EFSA-level figure to cost. To show the order of magnitude, the table below carries three <b>illustrative</b> enclosures at two, three and five times the German floor area; these are not a reported EFSA-level standard. The margin narrows to roughly zero at about twice the German floor, where the break-even of about EUR 53 is level with the price. It turns clearly negative from about three times, where the break-even is about EUR 69.</p>
 
   <h3 style="font-size:1rem;margin:22px 0 4px;font-weight:660">Fixed (one-time) capital per pelt</h3>
   <p style="font-size:.86rem;color:var(--ink-2);margin:0 0 6px;max-width:74ch">All figures in 2025 EUR, per pelt of annual output. There is a single costing route (extra floor &times; the analogue build rate), not the engineering-versus-proportional range used for the Finnish-anchored species.</p>
@@ -230,7 +259,7 @@
     </tbody>
   </table>
   </div>
-  <p class="caption">The EFSA-level column is the three-times-German illustrative enclosure; the full illustrative band is about EUR 330 (twice German) to EUR 895 (five times German). Column C blends the standard's per-animal floor over about 1.5 animals per pelt (one weaned juvenile plus about half an adult place); Ecorys states a per-cage 65&nbsp;&times;&nbsp;40&nbsp;cm allowance with juveniles paired, the same per-cage-versus-per-animal reading the mink page carries. Row E is an order-of-magnitude assumption: for the German cage the 50% solid floor is priced at EUR 30 per square metre over the adult footprint (about 0.75 m&sup2; per pelt), about EUR 11, plus about EUR 5 for the sand bath and boxes; the Ecorys and EFSA-level columns carry only the EUR 5 sand-bath-and-boxes figure, so the added-features cost does not scale with the illustrative EFSA-level area (a small downward bias against the otherwise conservative framing). Intermediate factors are rounded for display.</p>
+  <p class="caption">The EFSA-level column is the three-times-German illustrative enclosure; the full illustrative band is about EUR 330 to EUR 895, two to five times the German figure. Column C blends the standard's per-animal floor over about 1.5 animals per pelt (one weaned juvenile plus about half an adult place); Ecorys states a per-cage 65&nbsp;&times;&nbsp;40&nbsp;cm allowance with juveniles paired, the same per-cage-versus-per-animal reading the mink page carries. Row E is an order-of-magnitude assumption: for the German cage the 50% solid floor is priced at EUR 30 per square metre over half the 0.75 m&sup2; adult footprint per pelt (about 0.375 m&sup2;), about EUR 11, plus about EUR 5 for the sand bath and boxes. The Ecorys and EFSA-level columns carry only the EUR 5 sand-bath-and-boxes figure, so the added-features cost does not scale with the illustrative EFSA-level area (a small downward bias against the otherwise conservative framing). Intermediate factors are rounded for display.</p>
 
   <h3 style="font-size:1rem;margin:22px 0 4px;font-weight:660">Annualised cost per pelt</h3>
   <p style="font-size:.86rem;color:var(--ink-2);margin:0 0 6px;max-width:74ch">The one-time capital is spread over the cage's life as an equal yearly charge (a capital-recovery-factor annuity), then added to the yearly production cost to give the break-even pelt price.</p>
@@ -267,19 +296,19 @@
   </div>
 
   <h2>Chinchilla is the one profitable fur species: price against the reform break-evens</h2>
-  <p class="sub">The chinchilla pelt price and current production cost against the break-even pelt price each standard would require. <strong>There is no price-history chart for chinchilla, because no annual auction price series is published for it. The single price (about EUR 53) sits above the current cost and above the Ecorys and German break-evens, and only the illustrative EFSA-level enclosures lift the break-even past it.</strong></p>
+  <p class="sub">The chinchilla pelt price and current production cost against the break-even pelt price each standard would require. <strong>There is no price-history chart for chinchilla, because no annual auction price series is published for it. The single price (about EUR 53) is above the current cost and above the Ecorys and German break-evens, and only the illustrative EFSA-level enclosures lift the break-even past it.</strong></p>
 
   <div class="chart-scroll"><svg id="threshold" role="img" aria-label="Horizontal bar chart of the break-even pelt price for six chinchilla standards against the current pelt price of about 53 euros: the current cage, Ecorys and German break-evens (25, 29 and 38 euros) fall below the price, while the illustrative EFSA-level enclosures at three and five times the German floor (69 and 100 euros) rise above it."></svg></div>
 
-  <p class="caption">Each bar is the break-even pelt price a standard would require (production cost plus the annualised cost of the extra cage), coloured by how much space the standard adds: green for the most stringent (illustrative EFSA-level), amber for the German statute, red for the Ecorys cage, grey for the current baseline. The solid line is the current pelt price of about EUR 53; the dotted line is the current production cost of about EUR 25. Bars ending left of the price line leave a positive margin; the 2x-German illustrative bar sits essentially on the price line (break-even about EUR 53), and the two tallest illustrative bars cross it. The EFSA-level bars are illustrative multiples of the German floor area, not a reported EFSA standard. Price and cost are Carpenter's (2025) figures, the cost on 2011-2012 Polish data and the price carried forward from a 2022 EU auction.</p>
+  <p class="caption">Each bar is the break-even pelt price a standard would require: production cost plus the annualised cost of the extra cage. Bars are coloured by how much space the standard adds, from green for the most stringent illustrative EFSA-level standard, to amber for the German statute, red for the Ecorys cage, and grey for the current baseline. The solid line is the current pelt price of about EUR 53; the dotted line is the current production cost of about EUR 25. Bars ending left of the price line leave a positive margin; the 2x-German illustrative bar lies essentially on the price line (break-even about EUR 53), and the two tallest illustrative bars cross it. The EFSA-level bars are illustrative multiples of the German floor area, not a reported EFSA standard. Price and cost are Carpenter's (2025) figures, the cost on 2011-2012 Polish data and the price carried forward from a 2022 EU auction.</p>
 
   <h2>Notes</h2>
   <div class="foot">
     <ol>
       <li><b>What the cost figures are.</b> One-time capital and the derived per-pelt cost of raising a chinchilla farm from the current cage to each standard, in 2025 EUR, per pelt of annual output. There is a single costing route (extra floor area above current practice, priced at the mink new-build rate), because chinchilla has no Finnish cage stock to convert. The break-even pelt price adds the production cost of about EUR 25 to the annualised capital; the current pelt price is about EUR 53.</li>
       <li><b>Chinchilla still makes money.</b> Unlike mink, fox and raccoon dog, the chinchilla pelt price covers the production cost, so the activity is profitable before any reform. On Carpenter's (2025) account, EU chinchilla farming earned a positive aggregate profit of about EUR 3.8 million in 2024, the only one of the four species estimated as profitable, while mink, fox and raccoon dog ran at a loss. The reform standards add cost, but the Ecorys and German cages leave the price above break-even; only illustrative EFSA-level enclosures would erase the margin. Chinchilla is not farmed in Finland and is not covered by the Finnish draft decree.</li>
-      <li><b>Three bare assumptions.</b> Every chinchilla capital figure depends on three unsourced assumptions with no chinchilla-specific source: current practice of about 0.10 m&sup2; per animal (an error here scales every figure), about 1.5 animals per pelt, and the mink per-square-metre build rate applied to a smaller animal, which likely overstates the cost. The figures are an order of magnitude only, among the heaviest caveats of any species in this study.</li>
-      <li><b>Ecorys (EC survey, Scenarios 4 and 5).</b> A 65&nbsp;&times;&nbsp;40&nbsp;cm cage (about 0.26 m&sup2;) at all production stages, with juveniles housed in pairs. The area is stated per cage with juveniles paired, so it is read here as about 0.13 m&sup2; per juvenile and 0.26 m&sup2; per adult, the same per-cage-versus-per-animal treatment as the mink page.</li>
+      <li><b>Three bare assumptions.</b> Every chinchilla capital figure depends on three unsourced assumptions with no chinchilla-specific source: current practice of about 0.10 m&sup2; per animal, where an error would scale every figure, and about 1.5 animals per pelt. The third assumption is the mink per-square-metre build rate applied to a smaller animal, which likely overstates the cost. The figures are an order of magnitude only, among the heaviest caveats of any species in this study.</li>
+      <li><b>Ecorys (EC survey, Scenarios 4 and 5).</b> A 65&nbsp;&times;&nbsp;40&nbsp;&times;&nbsp;50&nbsp;cm cage (about 0.26 m&sup2; of floor, 0.5&nbsp;m high) at all production stages, with juveniles housed in pairs. The area is stated per cage with juveniles paired, so it is read here as about 0.13 m&sup2; per juvenile and 0.26 m&sup2; per adult, the same per-cage-versus-per-animal treatment as the mink page.</li>
       <li><b>Germany, fur-farming statute (TierErzHaVerbG).</b> At least 0.5 m&sup2; of floor per adult and 0.3 m&sup2; per weaned juvenile, at least 1 m&sup2; per enclosure, height at least 1 m, a floor solid over at least half its area, at least one platform per animal, a quartz-free sand bath of at least 250 cm&sup2; per animal, additional boxes, and group housing. German zoo-husbandry guidance (BMEL, 2014) sets the same 0.5 m&sup2; floor for the true chinchilla but with 1.5 m height and climbing structures.</li>
       <li><b>EFSA-level is illustrative.</b> EFSA sets no numeric chinchilla enclosure size, and reports no scientific information on how large an increase in floor area would substantially mitigate the restriction of movement. The EFSA-level rows in the tables are illustrative enclosures at two, three and five times the German floor area, shown only to give the order of magnitude; they are not a reported EFSA-level standard.</li>
       <li><b>Production cost and price.</b> About EUR 25 production cost and about EUR 53 pelt price, both from Carpenter (2025), the cost from a single Polish farm's 2011-2012 data and the price carried forward from a 2022 EU auction, not uprated to 2025, so the margin is indicative rather than a current-year figure.</li>
@@ -288,15 +317,17 @@
 
   <h2>Sources</h2>
   <ol class="refs" id="refs">
-    <li>Austrian Government. (2004). <em>2. Tierhaltungsverordnung</em> (BGBl. II Nr. 486/2004), Anlage 1, points 3.2 (Chinchillas) and 7.5.8 (Chinchillaartige als Wildarten) [minimum keeping and enclosure sizes]. <a href="https://www.ris.bka.gv.at/eli/bgbl/II/2004/486">https://www.ris.bka.gv.at/eli/bgbl/II/2004/486</a></li>
+    <li>Republik Österreich. (2004). <em>2. Tierhaltungsverordnung</em> (BGBl. II Nr. 486/2004), Anlage 1, points 3.2 (Chinchillas) and 7.5.8 (Chinchillaartige als Wildarten) [minimum keeping and enclosure sizes]. <a href="https://www.ris.bka.gv.at/eli/bgbl/II/2004/486">https://www.ris.bka.gv.at/eli/bgbl/II/2004/486</a></li>
     <li>BMEL (German Federal Ministry of Food and Agriculture). (2014). <em>Gutachten &uuml;ber Mindestanforderungen an die Haltung von S&auml;ugetieren</em> [Report on minimum requirements for keeping mammals], Ch. 15.10 (Chinchillidae), p. 149. <a href="https://www.bmleh.de/SharedDocs/Downloads/DE/_Tiere/Tierschutz/HaltungSaeugetiere.pdf">https://www.bmleh.de/SharedDocs/Downloads/DE/_Tiere/Tierschutz/HaltungSaeugetiere.pdf</a></li>
     <li>Bundesrepublik Deutschland. (2017a). <em>Anforderungen an die Haltung von Pelztieren</em> [Anlage to the Tiererzeugnisse-Handels-Verbotsgesetz (TierErzHaVerbG); German-English extract, chinchilla requirements]. Bundesministerium der Justiz. <a href="https://www.gesetze-im-internet.de/khfeverbg/anlage.html">https://www.gesetze-im-internet.de/khfeverbg/anlage.html</a></li>
     <li>Carpenter, G. (2025). <em>A full-cost account of the EU fur industry</em> [Report]. Eurogroup for Animals, Fur Free Alliance, FOUR PAWS International and Humane World for Animals. <a href="https://www.eurogroupforanimals.org/resources">https://www.eurogroupforanimals.org/resources</a></li>
     <li>Ecorys. (2025). <em>Study supporting the European Commission's assessment to follow up on the European Citizens' Initiative "Fur Free Europe": Survey of civil society organisations</em> [Survey questionnaire]. European Commission. Copy on file; survey background at <a href="https://food.ec.europa.eu/animals/animal-welfare/eci/eci-fur-free-europe_en">https://food.ec.europa.eu/animals/animal-welfare/eci/eci-fur-free-europe_en</a></li>
     <li>EFSA Panel on Animal Health and Welfare (AHAW). (2025). Welfare of American mink, red and Arctic foxes, raccoon dog and chinchilla kept for fur production. <em>EFSA Journal</em>, <em>23</em>(7), Article e9519. <a href="https://doi.org/10.2903/j.efsa.2025.9519">https://doi.org/10.2903/j.efsa.2025.9519</a></li>
+    <li>Eurogroup for Animals. (2025). <em>Europe's largest producer Poland bans fur farming</em>. <a href="https://www.eurogroupforanimals.org/news/europes-largest-producer-poland-bans-fur-farming">https://www.eurogroupforanimals.org/news/europes-largest-producer-poland-bans-fur-farming</a></li>
     <li>European Commission. (2025). <em>'Better regulation' toolbox, Tool #64: Discount factors</em> (December 2025 edition). <a href="https://commission.europa.eu/document/download/9c8d2189-8abd-4f29-84e9-abc843cc68e0_en?filename=BR+toolbox+-+December+2025.pdf">https://commission.europa.eu/document/download/9c8d2189-8abd-4f29-84e9-abc843cc68e0_en</a></li>
+    <li>Fur Free Alliance. (n.d.). <em>Fur bans</em>. Retrieved 12 July 2026, from <a href="https://www.furfreealliance.com/fur-bans/">https://www.furfreealliance.com/fur-bans/</a></li>
     <li>Luke (Natural Resources Institute Finland). (2025). <em>Cost assessment of the draft Government Decree on the Welfare of Fur Animals</em> (VN/14432/2025). <a href="https://mmm.fi/-/luonnos-uudeksi-turkiselainasetukseksi-lausunnolle">https://mmm.fi/-/luonnos-uudeksi-turkiselainasetukseksi-lausunnolle</a></li>
-    <li>Swiss Government. (2008). <em>Tierschutzverordnung</em> (TSchV, SR 455.1), Anhang 2, Tabelle 1 (Gehege f&uuml;r S&auml;ugetiere), row 46 (Chinchilla) [Animal Welfare Ordinance, enclosure minimums for mammals]. <a href="https://www.fedlex.admin.ch/eli/cc/2008/416/de">https://www.fedlex.admin.ch/eli/cc/2008/416/de</a></li>
+    <li>Schweizerischer Bundesrat. (2008). <em>Tierschutzverordnung</em> (TSchV, SR 455.1), Anhang 2, Tabelle 1 (Gehege f&uuml;r S&auml;ugetiere), row 46 (Chinchilla) [Animal Welfare Ordinance, enclosure minimums for mammals]. <a href="https://www.fedlex.admin.ch/eli/cc/2008/416/de">https://www.fedlex.admin.ch/eli/cc/2008/416/de</a></li>
   </ol>
 
   <p class="caption">Compiled for the fur-standards study (EU fur phase-out and transition costs). Chinchilla is not in the Finnish decree; its costs are the study's own analogue model, calibrated on the mink cage rate, with no chinchilla-specific external anchor, and are an order of magnitude only. Values verified against primary sources. Costs are benchmark estimates pending final review. Claude Code used for drafting.</p>
@@ -339,10 +370,10 @@
 
   var SCHEM=[
     {name:'Germany', role:'fur-farming statute (TierErzHaVerbG)', enc:'&ge; 0.5 m&sup2;/animal, &ge; 1 m&sup2;/enclosure',
-     area:0.5, h:1.0, areaLabel:'0.5 m²', line2:'per adult; height 1 m; sand bath, 50% solid floor', ast:true,
+     area:0.5, h:1.0, areaLabel:'0.5 m²', line2:'per adult; height 1 m; sand bath, 50% solid floor', ast:true, enclosure:true,
      cost:{inv:'153', cap:'13', tot:'38'}},
     {name:'Ecorys', role:'EC survey proposed cage (Scenarios 4 / 5)',
-     area:0.26, h:0.5, hAssumed:true, areaLabel:'0.26 m²', line2:'65 &times; 40 cm cage; juveniles paired',
+     area:0.26, h:0.5, areaLabel:'0.26 m²', line2:'65 &times; 40 &times; 50 cm cage; juveniles paired',
      cost:{inv:'43', cap:'4', tot:'29'}},
     {name:'Current cage', role:'current practice and cost baseline',
      area:0.10, h:0.5, hAssumed:true, areaLabel:'0.10 m²', line2:'assumption; about 0.10 m&sup2;/animal',
@@ -362,13 +393,16 @@
     var x0=padX, y0=padTop+ht+(-dvy);
     var g=el('svg',{width:svgW,height:svgH,viewBox:'0 0 '+svgW+' '+svgH,role:'img','aria-label':d.name+' cage, '+d.areaLabel+' floor area, height '+(d.hAssumed?'assumed ':'')+d.h+' m'});
     var hf=ramp(d.h,S_HDOM,SGRAYh,SGMh);
+    var estroke=d.enclosure?'none':hf;   // enclosure specs (area per animal): edges come only from the dashed wireframe
     var fbl=[x0,y0],fbr=[x0+w,y0],ftl=[x0,y0-ht],ftr=[x0+w,y0-ht];
     var bbl=[x0+dvx,y0+dvy],bbr=[x0+w+dvx,y0+dvy],btl=[x0+dvx,y0-ht+dvy],btr=[x0+w+dvx,y0-ht+dvy];
-    g.appendChild(el('polygon',{points:fbl+' '+fbr+' '+bbr+' '+bbl,fill:hf,'fill-opacity':0.38,stroke:hf,'stroke-width':1}));
-    g.appendChild(el('polygon',{points:ftl+' '+ftr+' '+btr+' '+btl,fill:hf,'fill-opacity':0.16,stroke:hf,'stroke-width':1}));
-    g.appendChild(el('polygon',{points:fbr+' '+bbr+' '+btr+' '+ftr,fill:hf,'fill-opacity':0.26,stroke:hf,'stroke-width':1}));
+    g.appendChild(el('polygon',{points:fbl+' '+fbr+' '+bbr+' '+bbl,fill:hf,'fill-opacity':0.38,stroke:estroke,'stroke-width':1}));
+    g.appendChild(el('polygon',{points:ftl+' '+ftr+' '+btr+' '+btl,fill:hf,'fill-opacity':0.16,stroke:estroke,'stroke-width':1}));
+    g.appendChild(el('polygon',{points:fbr+' '+bbr+' '+btr+' '+ftr,fill:hf,'fill-opacity':0.26,stroke:estroke,'stroke-width':1}));
     [[fbl,fbr],[fbl,ftl],[fbr,ftr],[ftl,ftr],[fbl,bbl],[fbr,bbr],[ftl,btl],[ftr,btr],[bbl,bbr],[btl,btr],[bbl,btl],[bbr,btr]].forEach(function(e){
-      g.appendChild(el('line',{x1:e[0][0],y1:e[0][1],x2:e[1][0],y2:e[1][1],stroke:INK3,'stroke-width':0.9,'stroke-opacity':0.55}));});
+      var la={x1:e[0][0],y1:e[0][1],x2:e[1][0],y2:e[1][1],stroke:INK3,'stroke-width':0.9,'stroke-opacity':0.55};
+      if(d.enclosure){la['stroke-dasharray']='5 3';la['stroke-opacity']=0.7;}
+      g.appendChild(el('line',la));});
     var clx=CH_M*sc, k=clx/CH_VB_W, ch=CH_VB_H*k, fx=x0+(w-clx)/2;
     var gm=el('g',{transform:'translate('+fx+','+(y0-ch)+') scale('+k+')'});
     gm.appendChild(chinchillaInner(BROWN)); g.appendChild(gm);
@@ -406,12 +440,12 @@
   // stated pair/group capacity. Sources + verbatim figures in the study provenance note.
   var GM='var(--green-mid)';
   var ENC=[
-    {name:"Austria: kept as a wild species",       ref:"Austrian Government, 2004", land:4.0,  height:2.0, efsa:true,  note:"8 m²/pair, indoor + outdoor, height 2 m; an upper bound"},
+    {name:"Austria: kept as a wild species",       ref:"Republik Österreich, 2004", land:4.0,  height:2.0, efsa:true,  note:"8 m²/pair, indoor + outdoor, height 2 m; an upper bound"},
     {name:"Germany: fur-farming statute",          ref:"Bundesrepublik Deutschland, 2017a", land:0.5, height:1.0, efsa:true, note:"≥ 0.5 m²/adult (0.3 juvenile), ≥ 1 m²/enclosure; sand bath; 50% solid floor; group"},
     {name:"Germany: zoo-husbandry guidance",       ref:"BMEL, 2014",               land:0.5,  height:1.5, efsa:true,  note:"1 m²/pair for the true chinchilla; height 1.5 m; climbing structures, sand bath"},
-    {name:"Austria: pet-keeping minimum",          ref:"Austrian Government, 2004", land:0.48, height:1.0, efsa:false, note:"120 × 80 cm cage = 0.96 m²/pair; kept in pairs; sand bath"},
-    {name:"Ecorys / EC proposed (S4/S5)",          ref:"Ecorys, 2025",             land:0.26, height:null, efsa:false, note:"65 × 40 cm cage; juveniles paired; the reform standard costed here"},
-    {name:"Switzerland: pet-keeping minimum",      ref:"Swiss Government, 2008",    land:0.25, height:null, efsa:false, note:"0.5 m²/pair floor + 0.75 m³ indoor volume (no cage height stated); sand bath; group of ≥ 2"},
+    {name:"Austria: pet-keeping minimum",          ref:"Republik Österreich, 2004", land:0.48, height:1.0, efsa:false, note:"120 × 80 cm cage = 0.96 m²/pair; kept in pairs; sand bath"},
+    {name:"Ecorys / EC proposed (S4/S5)",          ref:"Ecorys, 2025",             land:0.26, height:0.5, efsa:false, note:"65 × 40 × 50 cm cage (height 0.5 m stated); juveniles paired; the reform standard costed here"},
+    {name:"Switzerland: pet-keeping minimum",      ref:"Schweizerischer Bundesrat, 2008",    land:0.25, height:1.2, efsa:false, note:"0.5 m²/pair floor + 0.75 m³ indoor volume; height not tabulated but ≥ 1.2 m derived via TSchV Anmerkung (a); sand bath; group of ≥ 2"},
     {name:"Current cage (assumption)",             ref:"study assumption",         land:0.10, height:null, efsa:false, note:"about 0.10 m²/animal; the cost baseline"}
   ];
 
