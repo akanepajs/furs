@@ -108,11 +108,15 @@
   .calc td:not(.row):not(.lbl):not(.shared):not(.rk){font-variant-numeric:tabular-nums}
 
   /* ---- cage schematic (visual 3) ---- */
-  .schem-row{display:grid;grid-template-columns:minmax(260px,1fr) 1.15fr;gap:8px 24px;
-    align-items:center;padding:14px 0;border-top:1px solid var(--hair)}
+  .schem-row{display:grid;grid-template-columns:minmax(190px,1.1fr) 122px minmax(200px,1fr);gap:10px 18px;
+    align-items:center;padding:16px 0;border-top:1px solid var(--hair)}
   .schem-row:first-of-type{border-top:1px solid var(--hair-2)}
+  @media(max-width:720px){.schem-row{grid-template-columns:1fr;justify-items:start;gap:6px}}
   .cage-cell{overflow-x:auto}
   .cage-cell svg{display:block;height:auto;max-width:none}
+  .ppbar-cell{display:flex;justify-content:center}
+  .ppbar-cell svg{display:block;height:auto}
+  @media(max-width:720px){.ppbar-cell{justify-content:flex-start}}
   .info h3{margin:0 0 2px;font-size:1.02rem;font-weight:680}
   .info .role{color:var(--ink-3);font-size:.82rem;margin:0 0 8px;font-weight:500}
   .costs{font-size:.86rem;line-height:1.5}
@@ -180,8 +184,8 @@
     </div>
   </div>
 
-  <h2>What a single fox is allowed, and what each standard costs</h2>
-  <p class="sub">A schematic of the floor area one fox is allowed under each fur-farming standard, drawn to one shared scale (green&nbsp;=&nbsp;floor area), with the one-time and per-pelt cost of moving Finland's fox industry to that standard. <strong>The current cage is the cost baseline; each reform standard adds one-time capital on top of it.</strong></p>
+  <h2>The grow-out cage each standard requires, and what it costs</h2>
+  <p class="sub">The minimum grow-out cage or enclosure each welfare standard requires for the foxes raised for pelting, drawn to one shared scale (green&nbsp;=&nbsp;floor area) with the number of foxes the minimum cage holds. Each row also shows the floor area that works out per pelt as a bar, and the one-time and per-pelt cost of moving Finland's fox industry to that standard. <strong>The current cage is the cost baseline; each reform standard adds one-time capital on top of it. The cost is anchored to construction data, not to the drawn cage areas.</strong></p>
 
   <div id="schematic"></div>
 
@@ -193,7 +197,7 @@
     <div>
       <h4>Box outline</h4>
       <div class="swatchrow" style="margin-bottom:6px"><span style="display:inline-block;width:22px;height:14px;border:1.4px solid var(--ink-3);flex:none"></span><span>Solid = fixed cage of the stated dimensions</span></div>
-      <div class="swatchrow" style="margin-bottom:6px"><span style="display:inline-block;width:22px;height:14px;border:1.4px dashed var(--ink-3);flex:none"></span><span>Dashed = area-per-animal allowance in an open enclosure, not a fixed cage</span></div>
+      <div class="swatchrow" style="margin-bottom:6px"><span style="display:inline-block;width:22px;height:14px;border:1.4px dashed var(--ink-3);flex:none"></span><span>Dashed = an enclosure area specification holding several animals, not a fixed per-animal cage</span></div>
       <div class="swatchrow"><span style="display:inline-block;width:22px;height:14px;border:1.4px dashed var(--ink-3);border-top:none;flex:none"></span><span>Open top = the standard sets a floor area but no height limit</span></div>
     </div>
     <div>
@@ -203,11 +207,20 @@
     </div>
     <div>
       <h4>Occupant</h4>
-      <div class="swatchrow"><svg class="foxkey" viewBox="0 0 205.47 94.62" preserveAspectRatio="xMidYMid meet"><g id="foxkeyg" fill="var(--brown)"></g></svg><span>one adult blue (Arctic) fox, about 0.9&nbsp;m nose to tail, drawn to scale in each cage (see note)</span></div>
+      <div class="swatchrow"><svg class="foxkey" viewBox="0 0 205.47 94.62" preserveAspectRatio="xMidYMid meet"><g id="foxkeyg" fill="var(--brown)"></g></svg><span>one blue (Arctic) fox, about 0.9&nbsp;m nose to tail, drawn to scale, one silhouette per animal the minimum cage holds (see note)</span></div>
+    </div>
+    <div>
+      <h4>Area per pelt (bar)</h4>
+      <div class="swatchrow" style="margin-bottom:5px"><span class="seg" style="background:var(--green-mid);opacity:.85"></span><span>grow-out place</span></div>
+      <div class="swatchrow" style="margin-bottom:5px"><span class="seg" style="background:var(--green-mid);opacity:.5"></span><span>breeding female share</span></div>
+      <div class="swatchrow"><span class="seg" style="background:var(--green-mid);opacity:.28"></span><span>breeding male share</span></div>
     </div>
   </div>
 
-  <p class="astkey"><span class="ast">*</span>&nbsp;marks the captive enclosure and the German statute, which set far more space than the current cage or the Finnish reform decree, the direction EFSA points to; EFSA sets no numeric fox enclosure size and certifies none of these as adequate. The current cage can be smaller than the fox itself. For a red fox it is sometimes shorter than the animal's total length nose to tail; for an Arctic fox it is usually narrower than that length (EFSA, 2025, p.&nbsp;66-67). The German statute gives roughly four times the current floor area (3&nbsp;m&sup2; per animal against about 0.8&nbsp;m&sup2;). The three fur-farming cages are drawn to one shared scale, so the fox is the same size across them. Switzerland's captive enclosure is an open-top box (dashed sides, no top edge), because its source sets a floor area but no enclosure height; it is drawn at a slightly reduced scale to fit, with its fox scaled to match. The fox is drawn to about 0.9&nbsp;m from nose to tail: an adult Arctic fox reaches about 65&nbsp;cm in body length plus a tail of up to about 33&nbsp;cm (EFSA, 2025, citing Østbye et&nbsp;al., 1976), and the blue fox farmed in Finland is a large Arctic morph. Fox silhouette by Ferran Sayol (PhyloPic, public domain). Costs are the area-only construction floor, in 2025 EUR at Finnish construction prices, per pelt of annual output; the larger German cage is reported as 'at least' its floor, open-ended above. Germany's cost prices the statute's 3&nbsp;m&sup2; per-animal floor at farm stocking density, the per-animal rate drawn here; at a pair the 12&nbsp;m&sup2; per-enclosure minimum would instead give 6&nbsp;m&sup2; per animal, a higher figure not used for the cost. The German figure has no external cost anchor. Ecorys sets the same fox space as the Finnish decree, so it is shown only in the cost table, not drawn separately. Full references below.</p>
+  <p class="astkey"><b>The figure shows three different areas.</b> Each row shows the minimum grow-out cage or enclosure a standard requires, drawn to one shared scale on the left and holding the number of foxes the minimum cage is specified for. The middle bar is the floor area that works out per pelt produced. The caption gives the area per animal, the total cage divided by the number of foxes. For the Finnish decree these are a 2.4&nbsp;m&sup2; cage, 1.18&nbsp;m&sup2; per pelt and 0.8&nbsp;m&sup2; per animal.<br><br>
+  <b>How the per-pelt bar is built.</b> One pelt needs one grow-out place plus a share of the breeding animals that produced it. Luke (2025) reports about 225,000 breeding females producing about 1,000,000 fox pelts a year, a litter of about 4.5, so one pelt carries 0.225 of a female place. One breeding male per five females is assumed, adding 0.045 of a male place; Luke's shade-house metres include male space but state no separate count, so this ratio is an assumption. The breeding female is counted at her 1.2&nbsp;m&sup2; off-season minimum. Under the Finnish decree one pelt's 1.18&nbsp;m&sup2; is three shares: 0.80&nbsp;m&sup2; for the weaned juvenile's own place, 0.27&nbsp;m&sup2; for its share of the 1.2&nbsp;m&sup2; female place, and 0.11&nbsp;m&sup2; for its share of the 2.4&nbsp;m&sup2; male place.<br><br>
+  <span class="ast">*</span>&nbsp;The German statute and an EFSA-level standard set far more space than the current cage or the Finnish decree, the direction EFSA points to; EFSA sets no numeric fox enclosure size and certifies none of these as adequate. The German statute gives 3&nbsp;m&sup2; per animal, several times the current cage (0.6&nbsp;m&sup2; per weaned fox in the grow-out cage, about 0.8&nbsp;m&sup2; per adult), priced at the 3&nbsp;m&sup2; per-animal rate; its 12&nbsp;m&sup2;-per-enclosure minimum is drawn as a four-fox enclosure. Ecorys sets the same fox space as the Finnish decree, so it is shown only in the cost table, not drawn separately. Captive and zoo standards, which set still more space, are compared in the next chart. The current cage can be smaller than the fox itself: for a red fox it is sometimes shorter than the animal's total length nose to tail, for an Arctic fox usually narrower (EFSA, 2025, p.&nbsp;66-67).<br><br>
+  <b>Cost does not track the drawn areas.</b> The one-time cost is anchored to Luke's construction metres (converting the existing shade houses, then new-building the extra cage area), not to the areas drawn here, so redrawing the cages does not move any euro figure. Costs are the area-only construction floor, in 2025 EUR at Finnish construction prices, per pelt of standard annual output; the larger German cage is reported as 'at least' its floor, open-ended above, and has no external cost anchor. The fox is drawn to about 0.9&nbsp;m nose to tail, toward the lower end of the wild Arctic fox range (body up to about 65&nbsp;cm, tail up to about 33&nbsp;cm; EFSA, 2025, citing Østbye et&nbsp;al., 1976); the blue fox farmed in Finland is a large Arctic morph. Fox silhouette by Ferran Sayol (PhyloPic, public domain). Full references below.</p>
 
   <h2>Fox enclosure space: the fur cage against captive and zoo standards</h2>
   <p class="sub">Minimum floor area allowed per fox under each standard, on a single linear scale. <strong>Captive and zoo rules give a fox 15 to 150 m&sup2; per animal (the fox-specific Swiss and German zoo minima are 15 to 20 m&sup2;; Austria's 150 m&sup2; is a generic canid figure), against 0.8 to 3 m&sup2; under the fur-farming standards. The reform standards close only a small part of that gap.</strong></p>
@@ -380,108 +393,118 @@
 
   var SGRAYh=toHex(css('--shade-min')), SGMh=toHex(css('--green-mid'));
   var BROWN='var(--brown)', S_HDOM=[0.7,1.5];
-  var S_S=68, FOX_M=0.9, S_DEPF=0.42, S_CA=Math.cos(Math.PI/6), S_SA=Math.sin(Math.PI/6);
+  var S_S=64, FOX_M=0.9, S_DEPF=0.42, S_CA=Math.cos(Math.PI/6), S_SA=Math.sin(Math.PI/6);
 
+  // Grow-out ladder: each standard's MINIMUM grow-out cage/enclosure (where the pelt
+  // animals live), drawn to ONE shared scale (green floor area), holding the number of
+  // foxes the minimum cage is specified for. Per-animal area = total / N. Cost is
+  // Luke-metre-anchored and does NOT track these drawn areas (see note). The per-pelt
+  // areas (pp) reconcile to species_cost_model.py blended(): 1 juvenile place +
+  // 0.225 female place + 0.045 male place (225,000 females / 1,000,000 pelts; 1 male : 5).
+  //   current 0.60 + 0.18 + 0.036 = 0.816 ; FI/Ecorys 0.80 + 0.27 + 0.108 = 1.178 ;
+  //   German 3.00 + 0.675 + 0.135 = 3.81  (= Table 1 row D).
   var SCHEM=[
-    {name:'Switzerland', role:'captive Arctic-fox enclosure (fur farming banned)',
-     area:20, h:null, sc:60, openTop:true, areaLabel:'20 m²', line2:'open pen, no set height',
-     banned:true, ast:true},
-    {name:'Germany', role:'fur-farming statute (TierErzHaVerbG)', enc:'≥ 3 m²/animal, ≥ 12 m²/enclosure',
-     area:3, h:1.5, areaLabel:'3 m²', line2:'per-animal rate at farm density; height 1.5 m', ast:true, enclosure:true,
-     cost:{inv:'at least EUR 1,046', cap:'at least EUR 88 per year', tot:'at least EUR 181 per year'}},
+    {name:'Current cage', role:'current EU legal minimum and cost baseline',
+     totalArea:1.2, nAnimals:2, h:0.7,
+     boxLabel:'1.2 m² grow-out cage', boxSub:'2 weaned foxes, 0.6 m² each; height 0.7 m',
+     pp:{grow:0.60, vixen:0.18, stud:0.036, total:0.816}, baseline:true},
     {name:'Finland', role:'draft fur decree (VN/14432/2025)',
-     area:1.2, h:0.7, areaLabel:'1.2 m²', line2:'adult female place; the male is 2.4 m²',
+     totalArea:2.4, nAnimals:3, h:0.7,
+     boxLabel:'2.4 m² grow-out cage', boxSub:'3 young foxes, 0.8 m² each; height 0.7 m',
+     pp:{grow:0.80, vixen:0.27, stud:0.108, total:1.178},
      cost:{inv:'EUR 254', cap:'EUR 21 per year', tot:'EUR 115 per year'}},
-    {name:'Current cage', role:'current EU practice and cost baseline',
-     area:0.8, h:0.7, areaLabel:'0.8 m²', line2:'typical about 0.8 m²/adult, all-wire',
-     baseline:true}
+    {name:'German', role:'fur-farming statute (TierErzHaVerbG)', enc:'≥ 3 m²/animal, ≥ 12 m²/enclosure',
+     totalArea:12, nAnimals:4, h:1.5, enclosure:true, ast:true,
+     boxLabel:'12 m² enclosure', boxSub:'4 foxes, 3 m² each; height 1.5 m',
+     pp:{grow:3.00, vixen:0.675, stud:0.135, total:3.81},
+     cost:{inv:'at least EUR 1,046', cap:'at least EUR 88 per year', tot:'at least EUR 181 per year'}},
+    {name:'EFSA-level', role:'the direction EFSA points to (no numeric size set)',
+     totalArea:12, nAnimals:4, h:1.5, openTop:true, ast:true,
+     boxLabel:'at least 12 m², open', boxSub:'at least the German enclosure, unbounded above',
+     pp:{grow:3.00, vixen:0.675, stud:0.135, total:3.81, open:true},
+     cost:{inv:'at least EUR 1,046', cap:'at least EUR 88 per year', tot:'at least EUR 181 per year'}}
   ];
 
+  // ---- fox silhouette placement on a floor parallelogram (back-to-front) ----
+  // The minimum grow-out cage holds N foxes; each is drawn to the same real size, so a
+  // bigger cage shows more space per animal. Positions are (u along width, v along depth).
+  var FOXPOS={1:[[0.50,0.45]], 2:[[0.30,0.24],[0.66,0.76]],
+              3:[[0.24,0.20],[0.70,0.36],[0.46,0.82]],
+              4:[[0.28,0.26],[0.72,0.26],[0.28,0.76],[0.72,0.76]]};
+  function placeFoxes(g,x0,y0,w,dvx,dvy,n,sc){
+    var pos=(FOXPOS[n]||FOXPOS[4]).slice().sort(function(a,b){return b[1]-a[1];}); // back (high v) first
+    var flx=FOX_M*sc, k=flx/FOX_VB_W, fh=FOX_VB_H*k;
+    pos.forEach(function(p){
+      var px=x0+p[0]*w+p[1]*dvx, py=y0+p[1]*dvy;
+      var gm=el('g',{transform:'translate('+(px-flx/2)+','+(py-fh)+') scale('+k+')'});
+      // background-coloured halo so overlapping foxes in the small cages stay countable
+      gm.appendChild(el('path',{d:FOX_D,transform:'translate('+(-FOX_BX)+','+(-FOX_BY)+')',
+        fill:BROWN,stroke:'var(--surface)','stroke-width':(2.4/k),'stroke-linejoin':'round','paint-order':'stroke'}));
+      g.appendChild(gm);
+    });
+  }
+
+  // Each grow-out cage as a floor plan (footprint to shared scale, green shade = required
+  // height), holding N foxes. Solid edges = fixed cage; dashed = enclosure area spec;
+  // dashed + upward arrow = open-top (a floor area but no height limit).
   function drawCage(d){
-    var sc=d.sc||S_S;
-    var aBelow=(d.areaLabel)+' floor area', line2=d.line2||'';
-    var padX=42, padTop=16, padBot=(line2?46:32), rightReserve=20;
-    var minW=padX+Math.max(aBelow.length,line2.length)*5.3+12;
-
-    if(d.floorOnly){
-      var fw=Math.sqrt(d.area)*sc, fdep=Math.sqrt(d.area)*sc*S_DEPF;
-      var fdvx=fdep*S_CA, fdvy=-fdep*S_SA;
-      var totW=fw+fdvx, totH=(-fdvy);
-      var svgW=Math.max(padX+totW+rightReserve, minW), svgH=padTop+totH+padBot+8;
-      var x0=padX, y0=padTop+(-fdvy)+8;
-      var g=el('svg',{width:svgW,height:svgH,viewBox:'0 0 '+svgW+' '+svgH,role:'img','aria-label':d.name+' enclosure, '+d.areaLabel+' floor area, open pen'});
-      var fbl=[x0,y0],fbr=[x0+fw,y0],bbr=[x0+fw+fdvx,y0+fdvy],bbl=[x0+fdvx,y0+fdvy];
-      g.appendChild(el('polygon',{points:fbl+' '+fbr+' '+bbr+' '+bbl,fill:SGMh,'fill-opacity':0.30,stroke:SGMh,'stroke-width':1}));
-      [[fbl,fbr],[fbr,bbr],[bbr,bbl],[bbl,fbl]].forEach(function(e){g.appendChild(el('line',{x1:e[0][0],y1:e[0][1],x2:e[1][0],y2:e[1][1],stroke:INK3,'stroke-width':0.9,'stroke-opacity':0.55}));});
-      var flx=FOX_M*sc, k=flx/FOX_VB_W, fh=FOX_VB_H*k, fx=x0+(fw-flx)/2+fdvx*0.3, fy=y0+fdvy*0.3;
-      var gm=el('g',{transform:'translate('+fx+','+(fy-fh)+') scale('+k+')'});
-      gm.appendChild(foxInner(BROWN)); g.appendChild(gm);
-      g.appendChild(mkText(x0,y0+18,11,700,INK,'start',aBelow));
-      if(line2) g.appendChild(mkText(x0,y0+33,10,500,INK3,'start',line2));
-      return {svg:g,w:svgW,h:svgH};
-    }
-
-    if(d.openTop){
-      // area specified but no height limit: dashed box, open at the top, drawn to
-      // about twice the animal silhouette; vertical edges fade upward = unlimited.
-      var ow=Math.sqrt(d.area)*sc, odep=Math.sqrt(d.area)*sc*S_DEPF;
-      var odvx=odep*S_CA, odvy=-odep*S_SA;
-      var oflx=FOX_M*sc, ok=oflx/FOX_VB_W, ofh=FOX_VB_H*ok;
-      var oht=2*ofh;
-      var totW=ow+odvx, totH=oht+(-odvy);
-      var svgW=Math.max(padX+totW+rightReserve, minW), svgH=padTop+totH+padBot+8;
-      var x0=padX, y0=padTop+oht+(-odvy)+8;
-      var gid='ot'+d.name.replace(/[^A-Za-z]/g,'');
-      var g=el('svg',{width:svgW,height:svgH,viewBox:'0 0 '+svgW+' '+svgH,role:'img','aria-label':d.name+' enclosure, '+d.areaLabel+' floor area, no set height limit'});
-      var fbl=[x0,y0],fbr=[x0+ow,y0],bbr=[x0+ow+odvx,y0+odvy],bbl=[x0+odvx,y0+odvy];
-      var ftl=[x0,y0-oht],ftr=[x0+ow,y0-oht],btr=[x0+ow+odvx,y0-oht+odvy],btl=[x0+odvx,y0-oht+odvy];
-      var defs=el('defs',{});
-      var lg=el('linearGradient',{id:gid,x1:0,y1:y0,x2:0,y2:y0-oht,gradientUnits:'userSpaceOnUse'});
-      lg.appendChild(el('stop',{offset:'0%','stop-color':INK3,'stop-opacity':0.7}));
-      lg.appendChild(el('stop',{offset:'55%','stop-color':INK3,'stop-opacity':0.62}));
-      lg.appendChild(el('stop',{offset:'100%','stop-color':INK3,'stop-opacity':0}));
-      var hpid='h'+gid;
-      var hp=el('pattern',{id:hpid,width:7,height:7,patternUnits:'userSpaceOnUse',patternTransform:'rotate(45)'});
-      hp.appendChild(el('rect',{width:7,height:7,fill:'var(--surface)'}));
-      hp.appendChild(el('rect',{width:3,height:7,fill:SGMh,'fill-opacity':0.55}));
-      defs.appendChild(lg); defs.appendChild(hp); g.appendChild(defs);
-      g.appendChild(el('polygon',{points:fbl+' '+fbr+' '+bbr+' '+bbl,fill:'url(#'+hpid+')',stroke:'none'}));
-      [[fbl,fbr],[fbr,bbr],[bbr,bbl],[bbl,fbl]].forEach(function(e){g.appendChild(el('line',{x1:e[0][0],y1:e[0][1],x2:e[1][0],y2:e[1][1],stroke:INK3,'stroke-width':0.9,'stroke-opacity':0.6,'stroke-dasharray':'5 3'}));});
-      [[fbl,ftl],[fbr,ftr],[bbr,btr],[bbl,btl]].forEach(function(e){g.appendChild(el('line',{x1:e[0][0],y1:e[0][1],x2:e[1][0],y2:e[1][1],stroke:'url(#'+gid+')','stroke-width':0.9,'stroke-dasharray':'5 3'}));});
-      var fx=x0+(ow-oflx)/2, fy=y0;
-      var gm=el('g',{transform:'translate('+fx+','+(fy-ofh)+') scale('+ok+')'});
-      gm.appendChild(foxInner(BROWN)); g.appendChild(gm);
-      g.appendChild(mkText(x0,y0+18,11,700,INK,'start',aBelow));
-      if(line2) g.appendChild(mkText(x0,y0+33,10,500,INK3,'start',line2));
-      g.appendChild(mkText(x0-6,y0-oht+4,9.5,600,INK3,'end','open'));
-      return {svg:g,w:svgW,h:svgH};
-    }
-
-    var wm=Math.sqrt(d.area), dm=Math.sqrt(d.area), hm=d.h;
-    var w=wm*sc, dep=dm*sc*S_DEPF, ht=hm*sc, dvx=dep*S_CA, dvy=-dep*S_SA;
-    var totW=w+dvx, totH=ht+(-dvy);
-    var svgW=Math.max(padX+totW+rightReserve, minW), svgH=padTop+totH+padBot;
-    var x0=padX, y0=padTop+ht+(-dvy);
-    var g=el('svg',{width:svgW,height:svgH,viewBox:'0 0 '+svgW+' '+svgH,role:'img','aria-label':d.name+' enclosure, '+d.areaLabel+' floor area, height '+d.h+' m'});
-    var hf=ramp(d.h,S_HDOM,SGRAYh,SGMh);
-    var estroke=d.enclosure?'none':hf;   // enclosure specs (area per animal): edges come only from the dashed wireframe
-    var fbl=[x0,y0],fbr=[x0+w,y0],ftl=[x0,y0-ht],ftr=[x0+w,y0-ht];
-    var bbl=[x0+dvx,y0+dvy],bbr=[x0+w+dvx,y0+dvy],btl=[x0+dvx,y0-ht+dvy],btr=[x0+w+dvx,y0-ht+dvy];
-    g.appendChild(el('polygon',{points:fbl+' '+fbr+' '+bbr+' '+bbl,fill:hf,'fill-opacity':0.38,stroke:estroke,'stroke-width':1}));
-    g.appendChild(el('polygon',{points:ftl+' '+ftr+' '+btr+' '+btl,fill:hf,'fill-opacity':0.16,stroke:estroke,'stroke-width':1}));
-    g.appendChild(el('polygon',{points:fbr+' '+bbr+' '+btr+' '+ftr,fill:hf,'fill-opacity':0.26,stroke:estroke,'stroke-width':1}));
-    [[fbl,fbr],[fbl,ftl],[fbr,ftr],[ftl,ftr],[fbl,bbl],[fbr,bbr],[ftl,btl],[ftr,btr],[bbl,bbr],[btl,btr],[bbl,btl],[bbr,btr]].forEach(function(e){
-      var la={x1:e[0][0],y1:e[0][1],x2:e[1][0],y2:e[1][1],stroke:INK3,'stroke-width':0.9,'stroke-opacity':0.55};
-      if(d.enclosure){la['stroke-dasharray']='5 3';la['stroke-opacity']=0.7;}
+    var sc=d.sc||S_S, n=d.nAnimals||1;
+    var side=Math.sqrt(d.totalArea), w=side*sc, dep=side*sc*S_DEPF, dvx=dep*S_CA, dvy=-dep*S_SA;
+    var box=d.boxLabel||'', sub=d.boxSub||'';
+    var padX=44, padTop=(d.openTop?26:14), padBot=(sub?44:30), rightReserve=16;
+    var minW=padX+Math.max(box.length,sub.length)*5.2+12;
+    var totW=w+dvx, totH=(-dvy);
+    var svgW=Math.max(padX+totW+rightReserve, minW), svgH=padTop+totH+padBot+8;
+    var x0=padX, y0=padTop+(-dvy)+8;
+    var g=el('svg',{width:svgW,height:svgH,viewBox:'0 0 '+svgW+' '+svgH,role:'img',
+      'aria-label':d.name+' grow-out cage, '+box+', holding '+n+' foxes'});
+    var fbl=[x0,y0],fbr=[x0+w,y0],bbr=[x0+w+dvx,y0+dvy],bbl=[x0+dvx,y0+dvy];
+    var dashed=d.enclosure||d.openTop;
+    var hf=ramp(d.openTop?1.5:(d.h||0.7),S_HDOM,SGRAYh,SGMh);
+    g.appendChild(el('polygon',{points:fbl+' '+fbr+' '+bbr+' '+bbl,fill:hf,'fill-opacity':0.30,
+      stroke:dashed?'none':hf,'stroke-width':1}));
+    [[fbl,fbr],[fbr,bbr],[bbr,bbl],[bbl,fbl]].forEach(function(e){
+      var la={x1:e[0][0],y1:e[0][1],x2:e[1][0],y2:e[1][1],stroke:INK3,'stroke-width':0.9,'stroke-opacity':dashed?0.7:0.55};
+      if(dashed) la['stroke-dasharray']='5 3';
       g.appendChild(el('line',la));});
-    var flx=FOX_M*sc, k=flx/FOX_VB_W, fh=FOX_VB_H*k, fx=x0+(w-flx)/2;
-    var gm=el('g',{transform:'translate('+fx+','+(y0-fh)+') scale('+k+')'});
-    gm.appendChild(foxInner(BROWN)); g.appendChild(gm);
-    g.appendChild(mkText(x0,y0+18,11,700,INK,'start',aBelow));
-    if(line2) g.appendChild(mkText(x0,y0+33,10,500,INK3,'start',line2));
-    var hLab=(hm%1?hm.toFixed(1):hm)+' m';
-    g.appendChild(mkText(x0-6,y0-ht/2,10.5,600,INK2,'end',hLab));
+    if(d.openTop){
+      // upward open marker: a short dashed riser + arrowhead + "open" (no height limit)
+      var mx=x0+dvx+w*0.5, my=y0+dvy;
+      g.appendChild(el('path',{d:'M'+mx+' '+(my-4)+' l0 -16 m-4 6 l4 -6 l4 6',stroke:INK3,'stroke-width':1.1,fill:'none','stroke-opacity':0.75}));
+      g.appendChild(mkText(mx+9,my-13,9.5,600,INK3,'start','open'));
+    }
+    placeFoxes(g,x0,y0,w,dvx,dvy,n,sc);
+    g.appendChild(mkText(x0,y0+18,11,700,INK,'start',box));
+    if(sub) g.appendChild(mkText(x0,y0+33,10,500,INK3,'start',sub));
     return {svg:g,w:svgW,h:svgH};
+  }
+
+  // ---- per-pelt stacked bar (area per pelt = grow-out place + female share + male share) ----
+  // Shared vertical scale across standards (max = German 3.81 m2/pelt). Reconciles to
+  // Table 1 row D and species_cost_model.py blended(): 1 juvenile + 0.225 female + 0.045 male.
+  var PPMAX=3.81, PPH=132, PPtop=34, PPbot=24, PPbarW=40, PPx=54, PPW=118;
+  function pph(v){return PPH*(v/PPMAX);}
+  function drawPerPelt(d){
+    var H=PPtop+PPH+PPbot, baseY=PPtop+PPH;
+    var svg=el('svg',{width:PPW,height:H,viewBox:'0 0 '+PPW+' '+H,role:'img',
+      'aria-label':d.name+' floor area per pelt '+(d.pp.total?(d.pp.open?'at least ':'')+d.pp.total.toFixed(2)+' square metres':'')});
+    var segs=[[d.pp.grow,0.85],[d.pp.vixen,0.5],[d.pp.stud,0.28]];
+    var yy=baseY;
+    segs.forEach(function(s){
+      var hh=pph(s[0]); yy-=hh;
+      svg.appendChild(el('rect',{x:PPx,y:yy,width:PPbarW,height:hh,fill:SGMh,'fill-opacity':s[1],
+        stroke:'var(--surface)','stroke-width':0.7}));
+    });
+    if(d.pp.open){
+      // dashed cap + a short upward arrow just above it; "at least" label sits above the arrow
+      svg.appendChild(el('line',{x1:PPx,y1:yy,x2:PPx+PPbarW,y2:yy,stroke:SGMh,'stroke-width':1.3,'stroke-dasharray':'4 3'}));
+      svg.appendChild(el('path',{d:'M'+(PPx+PPbarW/2)+' '+(yy-3)+' l0 -11 m-3.5 4.5 l3.5 -4.5 l3.5 4.5',stroke:SGMh,'stroke-width':1.5,fill:'none'}));
+    }
+    svg.appendChild(el('line',{x1:PPx-5,y1:baseY,x2:PPx+PPbarW+5,y2:baseY,stroke:INK3,'stroke-width':1}));
+    var totTxt=(d.pp.open?'at least ':'')+d.pp.total.toFixed(2);
+    svg.appendChild(mkText(PPx+PPbarW/2, yy-(d.pp.open?24:9), 11.5,700,INK,'middle',totTxt));
+    svg.appendChild(mkText(PPx+PPbarW/2, baseY+15, 9.5,500,INK3,'middle','m²/pelt'));
+    return svg;
   }
 
   var schemHost=document.getElementById('schematic');
@@ -489,24 +512,26 @@
     var row=document.createElement('div'); row.className='schem-row';
     var cage=document.createElement('div'); cage.className='cage-cell';
     cage.appendChild(drawCage(d).svg);
+    var barcell=document.createElement('div'); barcell.className='ppbar-cell';
+    barcell.appendChild(drawPerPelt(d));
     var info=document.createElement('div'); info.className='info';
     var html='<h3>'+d.name+(d.ast?'<sup class="ast">*</sup>':'')+'</h3><p class="role">'+d.role+(d.enc?' &middot; '+d.enc:'')+'</p><div class="costs">';
     if(d.banned){
       html+='<div class="cline"><span class="k none">Not costed: fur farming banned; enclosure shown for scale</span></div>';
     } else if(d.baseline){
-      html+='<div class="cline"><span class="k">Initial investment per fox (one-time)</span><span class="v base">baseline (existing)</span></div>';
+      html+='<div class="cline"><span class="k">Initial investment per pelt (one-time)</span><span class="v base">baseline (existing)</span></div>';
       html+='<div class="cline"><span class="k">Additional capital cost per pelt, annualized (15 y, 3%)</span><span class="v base">EUR 0 per year</span></div>';
       html+='<div class="cline"><span class="k">Current production cost per pelt</span><span class="v base">EUR 94 per year</span></div>';
       html+='<div class="cline"><span class="k">Total cost per pelt</span><span class="v base">EUR 94 per year</span></div>';
     } else {
       var c=d.cost;
-      html+='<div class="cline"><span class="k">Initial investment per fox (one-time)</span><span class="v">'+c.inv+'</span></div>';
+      html+='<div class="cline"><span class="k">Initial investment per pelt (one-time)</span><span class="v">'+c.inv+'</span></div>';
       html+='<div class="cline"><span class="k">Additional capital cost per pelt, annualized (15 y, 3%)</span><span class="v">'+c.cap+'</span></div>';
       html+='<div class="cline"><span class="k">Current production cost per pelt</span><span class="v">EUR 94 per year</span></div>';
       html+='<div class="cline"><span class="k">Total cost per pelt with the new standards</span><span class="v">'+c.tot+'</span></div>';
     }
     html+='</div>'; info.innerHTML=html;
-    row.appendChild(cage); row.appendChild(info); schemHost.appendChild(row);
+    row.appendChild(cage); row.appendChild(barcell); row.appendChild(info); schemHost.appendChild(row);
   });
 
 
