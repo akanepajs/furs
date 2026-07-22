@@ -66,11 +66,13 @@
   .banned .src{color:var(--ink-3);font-size:.78rem;margin-top:5px}
 
   /* ---- schematic rows ---- */
-  .schem-row{display:grid;grid-template-columns:minmax(300px,1fr) 1.25fr;gap:8px 24px;
-    align-items:center;padding:14px 0;border-top:1px solid var(--hair)}
+  .schem-row{display:grid;grid-template-columns:minmax(210px,1.1fr) 122px minmax(200px,1fr);gap:10px 18px;
+    align-items:center;padding:16px 0;border-top:1px solid var(--hair)}
   .schem-row:first-of-type{border-top:1px solid var(--hair-2)}
   .cage-cell{overflow-x:auto}
   .cage-cell svg{display:block;height:auto;max-width:none}
+  .ppbar-cell{display:flex;justify-content:center}
+  .ppbar-cell svg{display:block;height:auto}
   .info h3{margin:0 0 2px;font-size:1.02rem;font-weight:680}
   .info .role{color:var(--ink-3);font-size:.82rem;margin:0 0 8px;font-weight:500}
   .costs{font-size:.86rem;line-height:1.5}
@@ -166,12 +168,12 @@
     </div>
   </div>
 
-  <p class="sub">A schematic of what a single mink is allowed under each fur-farming standard (green&nbsp;=&nbsp;floor area, blue&nbsp;=&nbsp;open-water pool), with the one-time and per-pelt cost of moving the Finnish industry to that standard. <strong>Every reform standard that has been costed is well above the latest annual pelt price of about EUR&nbsp;29 (the 2024 average, in 2025 prices): the current cages already run at a loss.</strong></p>
+  <p class="sub">The minimum grow-out cage or enclosure each welfare standard requires for the mink raised for pelting, drawn to one shared scale (green&nbsp;=&nbsp;floor area, blue&nbsp;=&nbsp;open-water pool) with the number of mink the minimum cage holds. Each row also shows the floor area that works out per pelt as a bar, and the one-time and per-pelt cost of moving the Finnish industry to that standard. <strong>Every reform standard that has been costed is well above the latest annual pelt price of about EUR&nbsp;29 (the 2024 average, in 2025 prices): the current cages already run at a loss. The cost is anchored to construction data, not to the drawn cage areas.</strong></p>
 
   <!-- ============ schematic figure ============ -->
   <div id="schematic"></div>
 
-  <p class="efsanote" style="margin:6px 0 0"><span class="ast">*</span> A ban on production is effectively EFSA-compliant. Austria and Germany are the two standards closest to the EFSA recommendation of much more space and open-water access (see EFSA quotes above).</p>
+  <p class="efsanote" style="margin:6px 0 0"><span class="ast">*</span> The German statute and an EFSA-level standard set far more space and require open water, the direction EFSA points to (see EFSA quotes above); EFSA sets no numeric mink enclosure size and certifies none of these as adequate. A ban on production is effectively EFSA-compliant. Captive-animal and zoo standards, which set still more space, are compared in the next chart.</p>
 
   <div class="legend">
     <div>
@@ -181,8 +183,9 @@
     </div>
     <div>
       <h4>Box outline</h4>
-      <div class="swatchrow" style="margin-bottom:6px"><span style="display:inline-block;width:22px;height:14px;border:1.4px dashed var(--ink-3);flex:none"></span><span>Dashed = area-per-mink allowance in an open enclosure (any footprint), not a fixed cage</span></div>
-      <div class="swatchrow"><span style="display:inline-block;width:22px;height:14px;border:1.4px solid var(--ink-3);flex:none"></span><span>Solid = fixed cage of the stated dimensions</span></div>
+      <div class="swatchrow" style="margin-bottom:6px"><span style="display:inline-block;width:22px;height:14px;border:1.4px solid var(--ink-3);flex:none"></span><span>Solid = fixed cage of the stated dimensions</span></div>
+      <div class="swatchrow" style="margin-bottom:6px"><span style="display:inline-block;width:22px;height:14px;border:1.4px dashed var(--ink-3);flex:none"></span><span>Dashed = an enclosure area specification holding several animals, not a fixed per-animal cage</span></div>
+      <div class="swatchrow"><span style="display:inline-block;width:22px;height:14px;border:1.4px dashed var(--ink-3);border-top:none;flex:none"></span><span>Open top = the standard sets a floor area but no height limit</span></div>
     </div>
     <div>
       <h4>Green shade = required height</h4>
@@ -196,11 +199,20 @@
     </div>
     <div>
       <h4>Occupant</h4>
-      <div class="swatchrow"><svg class="minkkey" viewBox="0 0 1536 806" preserveAspectRatio="xMidYMid meet"><g id="minkkeyg" fill="var(--brown)"></g></svg><span>one adult mink, about 60&nbsp;cm nose to tail, drawn to scale in every cage (see note)</span></div>
+      <div class="swatchrow"><svg class="minkkey" viewBox="0 0 1536 806" preserveAspectRatio="xMidYMid meet"><g id="minkkeyg" fill="var(--brown)"></g></svg><span>one mink, about 60&nbsp;cm nose to tail, drawn to scale, one silhouette per animal the minimum cage holds (see note)</span></div>
+    </div>
+    <div>
+      <h4>Area per pelt (bar)</h4>
+      <div class="swatchrow" style="margin-bottom:5px"><span class="seg" style="background:var(--green-mid);opacity:.85"></span><span>grow-out place</span></div>
+      <div class="swatchrow" style="margin-bottom:5px"><span class="seg" style="background:var(--green-mid);opacity:.5"></span><span>breeding female share</span></div>
+      <div class="swatchrow"><span class="seg" style="background:var(--green-mid);opacity:.28"></span><span>breeding male share</span></div>
     </div>
   </div>
 
-  <p class="astkey">The mink is drawn to about 60&nbsp;cm from nose to tail tip, to the same scale as each cage: an adult American mink measures 41 to 49&nbsp;cm in head and body length (EFSA, 2025, citing Villumsen et&nbsp;al., 2019) plus a tail of roughly 15 to 25&nbsp;cm. Mink silhouette by Ferran Sayol (PhyloPic, public domain). Cost figures are the study's area-only engineering floor: the Finnish decree is costed in full, and the larger cages are conservative lower bounds (construction and cage cost only), reported as 'at least' each value with an open-ended top, in 2025 EUR at Finnish construction prices, per pelt of annual output. Costs are shown only where a compliance calculation exists. The estimates are the study's own calculations, built on Luke (2025) construction costs, with the German standard externally anchored to TG-International (2014). The current-system production cost and pelt price come from Carpenter (2025), in turn drawing on Hernesniemi (2023) and FIFUR (2025). Full references below.</p>
+  <p class="astkey"><b>The figure shows three different areas.</b> Each row shows the minimum grow-out cage or enclosure a standard requires, drawn to one shared scale on the left and holding the number of mink the minimum cage is specified for. The middle bar is the floor area that works out per pelt produced. The area per animal is the total cage divided by the number of mink. For the current cage these are a 2,550&nbsp;cm&sup2; cage, 0.20&nbsp;m&sup2; per pelt and 1,275&nbsp;cm&sup2; per mink.<br><br>
+  <b>How the per-pelt bar is built.</b> One pelt needs one grow-out place plus a share of the breeding animals that produced it. Luke (2025) reports about 250,000 breeding females, each with a litter of about four, producing about 1,000,000 mink pelts a year, so one pelt carries 0.25 of a female place. One breeding male per five females is assumed, adding 0.05 of a male place. Under the current and Finnish rules two weaned mink share a cage, so a pelt's grow-out place is half the cage; under the Ecorys and German standards each mink has its own place. For the current cage a pelt's 0.20&nbsp;m&sup2; is three shares: 0.13&nbsp;m&sup2; for the grow-out place (half the 2,550&nbsp;cm&sup2; cage), 0.06&nbsp;m&sup2; as its share of the female place, and 0.01&nbsp;m&sup2; as its share of the male place.<br><br>
+  <span class="ast">*</span>&nbsp;The German statute and an EFSA-level standard set far more space than the current cage or the Finnish decree, the direction EFSA points to; EFSA sets no numeric mink enclosure size and certifies none of these as adequate. The German basin is a single 1&nbsp;m&sup2; minimum per enclosure with no cap on the number of mink, so its cost per mink falls as the enclosure is stocked. Captive and zoo standards, which set still more space, are compared in the next chart.<br><br>
+  <b>Cost does not track the drawn areas.</b> The one-time cost is anchored to Luke's construction metres, not to the areas drawn here, so redrawing the cages does not move any euro figure. Cost figures are the study's area-only engineering floor. The Finnish decree is costed in full; the larger cages are conservative lower bounds (construction and cage cost only), reported as 'at least' each value with an open-ended top. All are in 2025 EUR at Finnish construction prices, per pelt of annual output. The estimates are the study's own calculations, built on Luke's (2025) construction costs. The German standard is externally anchored to TG-International (2014). The current-system production cost and pelt price come from Carpenter (2025), in turn drawing on Hernesniemi (2023) and FIFUR (2025). The mink is drawn to about 60&nbsp;cm nose to tail (head and body 41 to 49&nbsp;cm per EFSA, 2025, citing Villumsen et&nbsp;al., 2019, plus a tail of 15 to 25&nbsp;cm). Mink silhouette by Ferran Sayol (PhyloPic, public domain). Full references below.</p>
 
   <!-- ============ existing enclosure-space bar chart (kept) ============ -->
   <h2>Enclosure space and water pool per adult mink, by standard (full comparison)</h2>
@@ -333,11 +345,11 @@
     <ol>
       <li><b>What the cost figures on each cage mean.</b> 'Initial investment per mink' is a <em>one-time</em> outlay: the capital to rebuild the <em>Finnish</em> mink industry from the current legal cage to that standard. The three 'per pelt' lines below it are <em>annual</em> unit costs. 'Additional capital cost per pelt' is that one-time investment spread over the cage's 15-year life as an equal yearly charge (a capital-recovery annuity at a 3% real discount rate); 'Current production cost per pelt' is the yearly cost of producing a pelt (feed, labour and the rest, about EUR 39), unchanged by the standard; and 'Total cost per pelt with the new standards' is the two added together, that is, the break-even pelt price at that standard. All in 2025 EUR at Finnish construction prices, per pelt of standard annual output, and derived in the section above. The current legal cage is the cost baseline, so its additional capital is zero and its total is the production cost alone. Figures are rounded to whole euros, so the additional capital and production cost may differ from the total shown by about one euro.</li>
       <li><b>How row E's per-pelt areas are computed (the 0.8 and 1.3 coefficients).</b> Each pelt of annual output carries three shares of cage space: the pelted juvenile's own place, a quarter of a female place, and a twentieth of a male place. The quarter comes from Luke's herd structure, where 250,000 breeding females produce the standard 1,000,000 pelts at four pelts per female per year, so each pelt carries a quarter of a female place. The twentieth is that quarter divided by five, on the assumption of one breeding male per five females (Luke's totals include males without giving a count). No time or day weighting is involved; the shares are herd composition. The juvenile term is where the standards differ. The Finnish rules state cage sizes per adult and house weaned juveniles in pairs, so a juvenile's allowance is half a cage, and the three shares (a half, a quarter and a twentieth) give a coefficient of <b>0.8</b>: the current 2,550 cm&sup2; cage then gives 2,040 cm&sup2; (0.204 m&sup2;) per pelt, and the 3,600 cm&sup2; decree cage 0.288 m&sup2;. The Ecorys survey and the German statute state their allowances per animal, each juvenile with its own unit, so the juvenile term is a full allowance and the shares give <b>1.3</b>: the two-level 4,380 cm&sup2; cage then gives 5,694 cm&sup2; (0.57 m&sup2;) per pelt, the single-level 5,400 cm&sup2; gives 7,020 cm&sup2; (0.70 m&sup2;), and the German 1 m&sup2; per animal gives 1.30 m&sup2;.</li>
-      <li><b>Austria.</b> The ordinance (2. Tierhaltungsverordnung, Anlage 1, point 7.10.1) sets a minimum enclosure of 20 m&sup2; per adult pair, of which half must be open water at least 0.5 m deep, at 2.5 m height. Critically, the same provision requires mink to be kept singly outside the mating season ('außerhalb der Paarungszeit einzeln zu halten'), so for most of the year a single mink occupies the whole 20 m&sup2; enclosure: 10 m&sup2; floor plus 10 m&sup2; water. The per-mink figure shown is therefore the full enclosure, not the pair minimum halved. Like the German statute this is an area-per-animal enclosure specification rather than a fixed cage (both drawn with a dashed outline). Fur farming is separately banned in Austria (2005), so no compliance cost is calculated; the enclosure is shown for scale.</li>
+      <li><b>Austria.</b> The ordinance (2. Tierhaltungsverordnung, Anlage 1, point 7.10.1) sets a minimum enclosure of 20 m&sup2; per adult pair, of which half must be open water at least 0.5 m deep, at 2.5 m height. Critically, the same provision requires mink to be kept singly outside the mating season ('außerhalb der Paarungszeit einzeln zu halten'), so for most of the year a single mink occupies the whole 20 m&sup2; enclosure: 10 m&sup2; floor plus 10 m&sup2; water. The per-mink figure shown is therefore the full enclosure, not the pair minimum halved. Like the German statute this is an area-per-animal enclosure specification rather than a fixed cage. Fur farming is separately banned in Austria (2005), so no compliance cost is calculated; the figures appear only in the bar chart below.</li>
       <li><b>Germany, fur-farming statute.</b> Floor &ge;1 m&sup2; per animal (and &ge;3 m&sup2; per enclosure), plus an additive swimming basin &ge;1 m&sup2; at &ge;0.3 m depth, height &ge;1 m. The statute is an area-per-animal specification, not a fixed cage: the floor scales with the number of animals (1 m&sup2; each, above the 3 m&sup2; enclosure minimum), but the basin is a single per-enclosure minimum of 1 m&sup2; total, whatever the number of mink, so its per-animal share falls as the enclosure is stocked. Both the schematic and the bar chart read the statute per mink as 1 m&sup2; floor plus the full 1 m&sup2; basin: the floor is the per-animal minimum, and the basin is shown at its per-enclosure total.</li>
       <li><b>Ecorys 1 and 2 (EC survey, Scenarios 4 and 5).</b> Two-level cage of 4,380 cm&sup2; per animal (base 90&times;30 cm plus an upper 56&times;30 cm shelf, 45 cm per level); or a single-level alternative of 5,400 cm&sup2; per animal. No open water.</li>
       <li><b>Finland, draft fur decree.</b> 3,600 cm&sup2; per adult, at least 30 cm wide and 70 cm long (excluding the nest box), height &ge;45 cm, no water (the explanatory memorandum declines swimming water, citing disease risk). At the 30 cm minimum width the cage is about 120 cm long to reach 3,600 cm&sup2;, as shown.</li>
-      <li><b>Sweden, mink cage law.</b> Since 2013 Sweden has required mink to be kept in a two-level ('etage') cage: a lower level of at least 2,550 cm&sup2; (minimum 30 cm wide, 80 cm long, 45 cm high) plus an upper level of at least 900 cm&sup2; (30 &times; 30 cm), 3,450 cm&sup2; in total, with a nest box and a lying shelf that are not counted in the area (SJVFS 2019:16, 2 kap. 13 &sect;). The lower level is drawn at 30 &times; 85 cm, the size needed to reach 2,550 cm&sup2; at the 30 cm minimum width. This standard is close to Finland's proposed 3,600 cm&sup2;, but Swedish fur farming has since ended: fox farming ceased in 2005 and chinchilla in 2014 after welfare rules made them uneconomic, and the last mink farms were emptied by June 2025 under a government buy-out (there is no formal legislative ban yet). Shown as a comparator, not costed for Finland.</li>
+      <li><b>Sweden, mink cage law.</b> Since 2013 Sweden has required mink to be kept in a two-level ('etage') cage: a lower level of at least 2,550 cm&sup2; (minimum 30 cm wide, 80 cm long, 45 cm high) plus an upper level of at least 900 cm&sup2; (30 &times; 30 cm), 3,450 cm&sup2; in total, with a nest box and a lying shelf that are not counted in the area (SJVFS 2019:16, 2 kap. 13 &sect;). At the 30 cm minimum width the lower level is about 85 cm long to reach 2,550 cm&sup2;. This standard is close to Finland's proposed 3,600 cm&sup2;, but Swedish fur farming has since ended: fox farming ceased in 2005 and chinchilla in 2014 after welfare rules made them uneconomic, and the last mink farms were emptied by June 2025 under a government buy-out (there is no formal legislative ban yet). Shown as a comparator in the bar chart below, not costed for Finland.</li>
       <li><b>EU current legal minimum / WelFur.</b> 2,550 cm&sup2; per adult, at least 30 cm wide and 70 cm long (excluding the nest box), height 45 cm, no open water access. At the 30 cm minimum width the cage is about 85 cm long to reach 2,550 cm&sup2;, as shown. This is the current standard and the cost baseline. WelFur's best score equals the legal cage and adds only scored, substitutable enrichment.</li>
       <li><b>Occupancy basis (bar chart).</b> The fur-farm, Ecorys and German zoo-guidance figures are stated per animal. The AZA and Swiss minima are stated per enclosure or per pair and shown per mink at the standard's stated capacity of two animals, a conservative reading: a singly-housed mink would have up to about twice the land and water shown. Austria is shown per single mink at its full 20 m&sup2; enclosure (10 m&sup2; land plus 10 m&sup2; water), because its ordinance requires mink to be housed singly outside the mating season (Note 3). The German fur statute is shown per mink as its 1 m&sup2; floor plus the full 1 m&sup2; basin (Note 4); unlike the other rows, its basin does not scale per mink.</li>    </ol>
   </div>
@@ -404,10 +416,24 @@
   // transform translate(0,806) scale(0.1,-0.1); nose at right, feet at the bottom.
   var MINK_D='M14287 8034 c-21 -14 -59 -36 -86 -50 -48 -24 -53 -24 -316 -24 -670 0 -1106 -73 -1433 -239 -156 -80 -209 -130 -430 -400 -97 -119 -237 -290 -312 -381 -75 -91 -197 -241 -270 -335 -195 -248 -271 -337 -395 -460 -256 -254 -528 -391 -999 -505 -225 -54 -255 -58 -579 -70 -400 -15 -388 -16 -942 140 -900 255 -1279 324 -1770 323 -327 0 -551 -32 -726 -102 -93 -37 -690 -329 -864 -422 -138 -74 -152 -84 -520 -394 -482 -404 -617 -538 -735 -730 -55 -89 -248 -484 -288 -590 -46 -122 -76 -242 -141 -570 -98 -491 -197 -892 -250 -1009 -35 -77 -91 -161 -187 -282 -78 -97 -140 -150 -244 -209 -134 -77 -484 -247 -720 -350 -510 -223 -543 -230 -1185 -245 -394 -9 -447 -15 -566 -59 -144 -55 -279 -178 -317 -290 -50 -147 57 -366 236 -485 183 -120 263 -142 592 -161 453 -27 1827 -9 1996 25 57 12 122 50 199 115 28 24 91 66 140 95 55 32 119 79 165 124 42 41 114 96 164 126 48 29 113 74 145 99 92 76 117 91 175 103 71 14 106 0 130 -48 9 -20 36 -111 61 -203 98 -375 152 -447 386 -515 148 -42 237 -48 929 -53 874 -7 1071 5 1173 74 90 61 122 73 229 85 166 19 775 15 936 -5 74 -9 143 -17 153 -17 28 0 101 71 134 131 22 42 28 65 28 118 1 82 -12 107 -71 134 -42 19 -66 21 -217 22 -93 0 -271 -4 -395 -9 -208 -8 -232 -7 -324 12 -106 23 -132 37 -122 70 11 34 118 125 194 165 92 49 121 59 347 118 225 59 307 91 425 162 48 30 121 65 161 79 41 14 122 43 181 63 130 45 183 76 322 188 130 106 202 143 366 191 203 58 288 70 525 70 168 1 222 -2 271 -16 81 -22 270 -113 367 -177 95 -62 210 -176 255 -252 36 -62 211 -479 274 -654 21 -60 48 -124 60 -142 26 -44 85 -77 183 -104 140 -38 177 -66 236 -178 45 -87 81 -103 239 -109 93 -3 150 1 295 24 160 26 206 29 415 29 129 0 349 -6 488 -13 239 -12 255 -12 290 5 29 15 40 28 54 71 28 82 34 192 14 245 -19 51 -57 90 -106 111 -20 8 -117 31 -215 52 -164 35 -193 38 -332 37 l-151 0 -8 106 c-12 161 -9 527 5 596 17 84 45 167 111 335 32 80 92 252 134 382 112 349 151 417 401 715 103 123 415 517 521 658 163 216 336 511 529 900 139 281 197 416 237 554 39 137 60 178 102 198 32 15 43 14 207 -17 175 -32 337 -48 382 -37 24 7 234 173 316 250 24 23 70 75 103 116 66 83 73 90 172 146 86 50 111 84 126 177 22 130 10 192 -79 406 -17 40 -42 130 -57 200 -45 221 -63 257 -263 522 -109 145 -135 188 -217 355 -57 118 -113 218 -148 263 -31 41 -56 83 -57 95 -1 12 -2 90 -3 172 -2 169 -14 218 -72 298 -35 48 -86 87 -114 87 -9 0 -32 -12 -53 -26z';
   var MINK_VB_W=1536, MINK_VB_H=806;
-  function minkInner(fill){
+  function minkInner(fill,haloW){
     var inner=el('g',{transform:'translate(0,806) scale(0.1,-0.1)',fill:fill});
-    inner.appendChild(el('path',{d:MINK_D}));
+    var at={d:MINK_D};
+    if(haloW){at.stroke='var(--surface)';at['stroke-width']=haloW;at['stroke-linejoin']='round';at['paint-order']='stroke';}
+    inner.appendChild(el('path',at));
     return inner;
+  }
+  // place N mink on a footprint (back-to-front), each to scale with a surface halo so
+  // overlapping animals in the cramped cages stay countable. (u along width, v along depth)
+  var MINKPOS={1:[[0.5,0.5]], 2:[[0.30,0.42],[0.70,0.58]], 3:[[0.22,0.34],[0.54,0.5],[0.82,0.66]]};
+  function placeMinks(g,x0,y0,bw0,dvx0,dvy0,n,sc){
+    var pos=(MINKPOS[n]||MINKPOS[3]).slice().sort(function(a,b){return b[1]-a[1];});
+    var ml=MINK_M*sc, k=ml/MINK_VB_W, mh=MINK_VB_H*k, sw=2.4/(0.1*k);
+    pos.forEach(function(p){
+      var px=x0+p[0]*bw0+p[1]*dvx0, py=y0+p[1]*dvy0;
+      var gm=el('g',{transform:'translate('+(px-ml/2)+','+(py-mh)+') scale('+k+')'});
+      gm.appendChild(minkInner(BROWN,sw)); g.appendChild(gm);
+    });
   }
   var mkg=document.getElementById('minkkeyg'); if(mkg) mkg.appendChild(minkInner('var(--brown)'));
 
@@ -437,37 +463,44 @@
   var DEPF = 0.42;     // cavalier depth foreshortening
   var CA = Math.cos(Math.PI/6), SA = Math.sin(Math.PI/6);
 
+  // Grow-out ladder: each standard's MINIMUM grow-out cage/enclosure (where the pelt
+  // mink live), holding the number of mink the minimum cage is specified for. Cages keep
+  // their real long-narrow dimensions (30 cm wide). Per-pelt areas (pp) reconcile to
+  // standards_cost_model.py blended_area_per_pelt(): 1 juvenile + 0.25 female + 0.05 male
+  // cage per pelt; juveniles PAIR-HOUSED under current/Finnish rules (grow-out place =
+  // half the cage), PER-ANIMAL under Ecorys/German. Cost cards unchanged. PPMAX = 1.3.
   var SCHEM=[
-    {name:'Austria', role:'captive-wildlife ordinance (fur farming banned 2005)',
-      area:10, h:2.5, water:10, depth:0.5, sc:40, scaleTag:'enclosure at reduced scale',
-      areaSub:'per mink', waterSub:'per mink',
-      cost:null, banned:true, ast:true, enclosure:true},
-    {name:'Germany', role:'Minimum 3 m² floor area for up to 3 mink, +1 m² for each additional mink',
-      area:1.0, h:1.0, water:1.0, depth:0.3, twolevel:false, ast:true, enclosure:true,
-      areaLabel:'≥1 m²', areaSub:'per mink', waterSub:'per enclosure',
-      cost:{inv:'at least EUR 422', cap:'at least EUR 35 per year', tot:'at least EUR 75 per year'}},
-    {name:'Ecorys 2', role:'EC survey, single-level cage',
-      area:0.54, h:0.45, water:0, depth:null, areaLabel:'5,400 cm²',
-      fpW:0.9, fpD:0.6, seamDepth:true, dims:'two 90 × 30 cm cages joined (dashed line marks the join)',
-      cost:{inv:'at least EUR 218', cap:'at least EUR 18 per year', tot:'at least EUR 57 per year'}},
-    {name:'Ecorys 1', role:'EC survey, two-level cage',
-      area:0.27, harea:0.438, h:0.9, water:0, depth:null, areaLabel:'4,380 cm² (two levels)',
-      levels:[{w:0.9,d:0.3,h:0.45},{w:0.56,d:0.3,h:0.45}],
-      dims:'base 90 × 30 × 45 cm + upper 56 × 30 × 45 cm',
-      cost:{inv:'at least EUR 150', cap:'at least EUR 13 per year', tot:'at least EUR 52 per year'}},
+    {name:'Current cage', role:'current EU legal minimum and cost baseline',
+      area:0.255, h:0.45, water:0, depth:null, fpW:0.85, fpD:0.30, nAnimals:2,
+      areaLabel:'2,550 cm² grow-out cage', dims:'2 weaned mink, 30 × 85 cm; height 45 cm',
+      pp:{grow:0.1275, fem:0.06375, male:0.01275, total:0.204},
+      baseline:true, cost:'base'},
     {name:'Finland', role:'draft fur decree (VN/14432/2025)',
-      area:0.36, h:0.45, water:0, depth:null, twolevel:false, areaLabel:'3,600 cm²',
-      fpW:1.20, fpD:0.30, dims:'width ≥ 30 cm, length ≥ 70 cm; shown as 30 × 120 cm',
+      area:0.36, h:0.45, water:0, depth:null, fpW:1.20, fpD:0.30, nAnimals:2,
+      areaLabel:'3,600 cm² grow-out cage', dims:'2 young mink, 30 × 120 cm; height 45 cm',
+      pp:{grow:0.18, fem:0.09, male:0.018, total:0.288},
       cost:{inv:'EUR 76', cap:'EUR 6 per year', tot:'EUR 46 per year'}},
-    {name:'Sweden', role:'fur-farming cage law (SJVFS 2019:16)',
-      area:0.255, harea:0.345, h:0.9, water:0, depth:null, areaLabel:'3,450 cm² (two levels)',
-      levels:[{w:0.85,d:0.30,h:0.45},{w:0.30,d:0.30,h:0.45}],
-      dims:'lower 30 × 85 cm + upper 30 × 30 cm; two levels, 45 cm high each',
-      comparator:'Not costed: comparator; Swedish mink farming ended in 2025'},
-    {name:'EU current legal minimum / WelFur', role:'current standard and cost baseline',
-      area:0.255, h:0.45, water:0, depth:null, twolevel:false, areaLabel:'2,550 cm²',
-      fpW:0.85, fpD:0.30, dims:'width ≥ 30 cm, length ≥ 70 cm; shown as 30 × 85 cm',
-      baseline:true, cost:'base'}
+    {name:'Ecorys 1', role:'EC survey, two-level cage', enc:'per mink',
+      area:0.27, harea:0.438, h:0.9, water:0, depth:null, nAnimals:1,
+      levels:[{w:0.9,d:0.3,h:0.45},{w:0.56,d:0.3,h:0.45}],
+      areaLabel:'4,380 cm² per mink (two levels)', dims:'1 mink; base 90 × 30 + upper 56 × 30 cm',
+      pp:{grow:0.438, fem:0.1095, male:0.0219, total:0.5694},
+      cost:{inv:'at least EUR 150', cap:'at least EUR 13 per year', tot:'at least EUR 52 per year'}},
+    {name:'Ecorys 2', role:'EC survey, single-level cage', enc:'per mink',
+      area:0.54, h:0.45, water:0, depth:null, fpW:0.9, fpD:0.6, seamDepth:true, nAnimals:1,
+      areaLabel:'5,400 cm² per mink', dims:'1 mink; two 90 × 30 cm cages joined',
+      pp:{grow:0.54, fem:0.135, male:0.027, total:0.702},
+      cost:{inv:'at least EUR 218', cap:'at least EUR 18 per year', tot:'at least EUR 57 per year'}},
+    {name:'German', role:'fur-farming statute (TierErzHaVerbG)', enc:'≥ 1 m²/animal, ≥ 3 m²/enclosure',
+      area:3, h:1.0, water:1.0, depth:0.3, enclosure:true, ast:true, nAnimals:3,
+      areaLabel:'3 m² enclosure', dims:'3 mink, 1 m² each; height 1 m',
+      pp:{grow:1.0, fem:0.25, male:0.05, total:1.3},
+      cost:{inv:'at least EUR 422', cap:'at least EUR 35 per year', tot:'at least EUR 75 per year'}},
+    {name:'EFSA-level', role:'the direction EFSA points to (no numeric size set)',
+      area:3, h:1.0, water:1.0, depth:0.3, openTop:true, ast:true, nAnimals:3,
+      areaLabel:'at least 3 m², open', dims:'at least the German enclosure, open above',
+      pp:{grow:1.0, fem:0.25, male:0.05, total:1.3, open:true},
+      cost:{inv:'at least EUR 422', cap:'at least EUR 35 per year', tot:'at least EUR 75 per year'}}
   ];
 
   function fmtArea(a){ // m2 -> label
@@ -485,7 +518,7 @@
     var w=maxWm*sc, dep=depMax*sc*DEPF, ht=totHm*sc;
     var dvx=dep*CA, dvy=-dep*SA;           // receding up-right
     var aLab0 = d.areaLabel || fmtArea(d.harea||d.area);
-    var aBelow = (aLab0.indexOf('level')>=0) ? aLab0 : (aLab0 + ' floor area');
+    var aBelow = aLab0;   // grow-out labels carry their own descriptor (cage / enclosure / per mink)
     var line2 = d.dims || d.scaleTag || '';
     var subLines=[];
     if(d.areaSub) subLines.push({t:d.areaSub,sz:10,w:600,c:INK2});
@@ -499,7 +532,7 @@
     if(d.water>0){
       var ps=Math.sqrt(d.water)*sc, pdep=ps*DEPF, pdvx=pdep*CA, pdvy=-pdep*SA, pht=d.depth*sc;
       var floorW=aBelow.length*6.0;                            // cage floor-area label width
-      var pAreaTxt=fmtArea(d.water)+' pool water', pAreaW=pAreaTxt.length*5.6;
+      var pAreaTxt=(d.openTop?'≥ ':'')+fmtArea(d.water)+' pool water', pAreaW=pAreaTxt.length*5.6;
       var pLabelDX=Math.max(w, floorW+8);                      // push pool label past the cage label
       pool={ps:ps,pdvx:pdvx,pdvy:pdvy,pht:pht,labelDX:pLabelDX,areaTxt:pAreaTxt};
       poolW = Math.max(ps+pdvx, (pLabelDX-w)+pAreaW) + 12;     // depth label now sits inside the pool
@@ -519,13 +552,14 @@
     levels.forEach(function(l){
       var lw=l.w*sc, ld=l.d*sc*DEPF, lh=l.h*sc, ldvx=ld*CA, ldvy=-ld*SA;
       var hf=ramp(l.h,H_DOM,GRAYh,GMh);
-      var estroke=d.enclosure?'none':hf;     // enclosures: edges come only from the dashed wireframe
+      var estroke=(d.enclosure||d.openTop)?'none':hf;   // enclosure/open specs: edges from the dashed wireframe only
       var fbl=[x0,by],fbr=[x0+lw,by],ftl=[x0,by-lh],ftr=[x0+lw,by-lh];
       var bbl=[x0+ldvx,by+ldvy],bbr=[x0+lw+ldvx,by+ldvy],btl=[x0+ldvx,by-lh+ldvy],btr=[x0+lw+ldvx,by-lh+ldvy];
       g.appendChild(el('polygon',{points:[P.apply(0,fbl),P.apply(0,fbr),P.apply(0,bbr),P.apply(0,bbl)].join(' '),fill:hf,'fill-opacity':0.38,stroke:estroke,'stroke-width':1}));
-      g.appendChild(el('polygon',{points:[P.apply(0,ftl),P.apply(0,ftr),P.apply(0,btr),P.apply(0,btl)].join(' '),fill:hf,'fill-opacity':0.16,stroke:estroke,'stroke-width':1}));
+      if(!d.openTop) g.appendChild(el('polygon',{points:[P.apply(0,ftl),P.apply(0,ftr),P.apply(0,btr),P.apply(0,btl)].join(' '),fill:hf,'fill-opacity':0.16,stroke:estroke,'stroke-width':1}));
       g.appendChild(el('polygon',{points:[P.apply(0,fbr),P.apply(0,bbr),P.apply(0,btr),P.apply(0,ftr)].join(' '),fill:hf,'fill-opacity':0.26,stroke:estroke,'stroke-width':1}));
-      allEdges.push([fbl,fbr],[fbl,ftl],[fbr,ftr],[ftl,ftr],[fbl,bbl],[fbr,bbr],[ftl,btl],[ftr,btr],[bbl,bbr],[btl,btr],[bbl,btl],[bbr,btr]);
+      allEdges.push([fbl,fbr],[fbl,ftl],[fbr,ftr],[fbl,bbl],[fbr,bbr],[bbl,bbr],[bbl,btl],[bbr,btr]);
+      if(!d.openTop) allEdges.push([ftl,ftr],[ftl,btl],[ftr,btr],[btl,btr]);
       by-=lh;
     });
     // base-floor width (widest level at ground); used to centre the mink and the seam
@@ -552,21 +586,21 @@
     // outline to signal the footprint is a per-animal allowance, not a rigid box.
     allEdges.forEach(function(e){
       var la={x1:e[0][0],y1:e[0][1],x2:e[1][0],y2:e[1][1],stroke:INK3,'stroke-width':0.9,'stroke-opacity':0.55};
-      if(d.enclosure){la['stroke-dasharray']='5 3';la['stroke-opacity']=0.7;}
+      if(d.enclosure||d.openTop){la['stroke-dasharray']='5 3';la['stroke-opacity']=0.7;}
       g.appendChild(el('line',la));
     });
 
-    // mink on the base floor, centered, drawn to THIS cage's scale so the
-    // mink-to-enclosure ratio is correct (nose-to-tail length = MINK_M metres);
-    // scaled down in Austria, which uses a reduced cage scale. Drawn LAST of the
-    // cage elements so it sits over the wireframe lines.
-    var ml=MINK_M*sc;                 // drawn nose-to-tail length, px
-    var k=ml/MINK_VB_W;               // scale the silhouette viewBox to ml wide
-    var mh=MINK_VB_H*k;               // drawn height, px
-    var mx=x0 + (bw0-ml)/2;           // centre on the base floor
-    var gm=el('g',{transform:'translate('+mx+','+(y0-mh)+') scale('+k+')'});
-    gm.appendChild(minkInner(BROWN));
-    g.appendChild(gm);
+    // N mink on the base floor, to THIS cage's scale (nose-to-tail = MINK_M metres),
+    // spread across the footprint, each with a surface halo so overlapping animals in
+    // the cramped cages stay countable. Drawn LAST so they sit over the wireframe lines.
+    var dep0=levels[0].d*sc*DEPF, dvx0=dep0*CA, dvy0=-dep0*SA;
+    placeMinks(g, x0, y0, bw0, dvx0, dvy0, d.nAnimals||1, sc);
+    // open-top marker (EFSA-level): an upward arrow + "open" above the back edge
+    if(d.openTop){
+      var mox=x0+dvx0+bw0*0.5, moy=y0-ht+dvy0;
+      g.appendChild(el('path',{d:'M'+mox+' '+(moy-2)+' l0 -15 m-4 6 l4 -6 l4 6',stroke:INK3,'stroke-width':1.1,fill:'none','stroke-opacity':0.75}));
+      g.appendChild(mkText(mox+9,moy-11,9.5,600,INK3,'start','open',false));
+    }
 
     // area BELOW the figure, so it reads as floor area (not the 3D volume);
     // left-anchored to the box edge. Sub-lines: per-mink/per-enclosure basis,
@@ -578,6 +612,7 @@
     var cmRegime=(d.harea||d.area)<1;
     var hLab=cmRegime ? Math.round(totHm*100)+' cm'
                       : (totHm%1?totHm.toFixed(1):totHm)+' m';
+    if(d.openTop) hLab='≥ '+hLab;
     g.appendChild(mkText(x0-6,y0-ht/2,10.5,600,INK2,'end',hLab,false));
 
     // pool: joined to the cage's front-right corner (no gap), to save width
@@ -603,7 +638,7 @@
       g.appendChild(el('text',{x:px0+5,y:py0-pool.pht/2,'font-size':10.5,'font-weight':600,
         fill:'var(--ink-2)','text-anchor':'start','dominant-baseline':'middle',
         'paint-order':'stroke',stroke:'var(--surface)','stroke-width':2.6,'stroke-linejoin':'round'},
-        d.depth+' m deep'));
+        (d.openTop?'≥ ':'')+d.depth+' m deep'));
     }
     return {svg:g,w:svgW,h:svgH};
   }
@@ -613,19 +648,44 @@
     return el('text',at,txt);
   }
 
+  // ---- per-pelt stacked bar (floor area per pelt = grow-out place + female + male share) ----
+  // Shared vertical scale across standards (max = German 1.3 m2/pelt). Reconciles to
+  // standards_cost_model.py blended_area_per_pelt(): 1 juvenile + 0.25 female + 0.05 male;
+  // juveniles pair-housed under current/Finnish rules (grow-out place = half the cage).
+  var PPMAX=1.3, PPH=132, PPtop=34, PPbot=24, PPbarW=40, PPx=54, PPW=118;
+  function pph(v){return PPH*(v/PPMAX);}
+  function drawPerPelt(d){
+    var Hh=PPtop+PPH+PPbot, baseY=PPtop+PPH;
+    var svg=el('svg',{width:PPW,height:Hh,viewBox:'0 0 '+PPW+' '+Hh,role:'img',
+      'aria-label':d.name+' floor area per pelt '+(d.pp.total?(d.pp.open?'at least ':'')+d.pp.total.toFixed(2)+' square metres':'')});
+    var segs=[[d.pp.grow,0.85],[d.pp.fem,0.5],[d.pp.male,0.28]];
+    var yy=baseY;
+    segs.forEach(function(s){
+      var hh=pph(s[0]); yy-=hh;
+      svg.appendChild(el('rect',{x:PPx,y:yy,width:PPbarW,height:hh,fill:GMh,'fill-opacity':s[1],stroke:'var(--surface)','stroke-width':0.7}));
+    });
+    if(d.pp.open){
+      svg.appendChild(el('line',{x1:PPx,y1:yy,x2:PPx+PPbarW,y2:yy,stroke:GMh,'stroke-width':1.3,'stroke-dasharray':'4 3'}));
+      svg.appendChild(el('path',{d:'M'+(PPx+PPbarW/2)+' '+(yy-3)+' l0 -11 m-3.5 4.5 l3.5 -4.5 l3.5 4.5',stroke:GMh,'stroke-width':1.5,fill:'none'}));
+    }
+    svg.appendChild(el('line',{x1:PPx-5,y1:baseY,x2:PPx+PPbarW+5,y2:baseY,stroke:INK3,'stroke-width':1}));
+    var totTxt=(d.pp.open?'at least ':'')+d.pp.total.toFixed(2);
+    svg.appendChild(mkText(PPx+PPbarW/2, yy-(d.pp.open?24:9), 11.5,700,INK,'middle',totTxt,false));
+    svg.appendChild(mkText(PPx+PPbarW/2, baseY+15, 9.5,500,INK3,'middle','m²/pelt',false));
+    return svg;
+  }
+
   var host=document.getElementById('schematic');
   SCHEM.forEach(function(d){
     var row=document.createElement('div'); row.className='schem-row';
     var cage=document.createElement('div'); cage.className='cage-cell';
     var drawn=drawCage(d); cage.appendChild(drawn.svg);
+    var barcell=document.createElement('div'); barcell.className='ppbar-cell';
+    barcell.appendChild(drawPerPelt(d));
     var info=document.createElement('div'); info.className='info';
     var html='<h3>'+d.name+(d.ast?'<sup class="ast">*</sup>':'')+'</h3><p class="role">'+d.role+(d.enc?' &middot; '+d.enc:'')+'</p>';
     html+='<div class="costs">';
-    if(d.banned){
-      html+='<div class="cline"><span class="k none">Not costed: fur farming banned; enclosure shown for scale</span></div>';
-    } else if(d.comparator){
-      html+='<div class="cline"><span class="k none">'+d.comparator+'</span></div>';
-    } else if(d.baseline){
+    if(d.baseline){
       html+='<div class="cline"><span class="k">Initial investment per mink (one-time)</span><span class="v base">baseline (existing)</span></div>';
       html+='<div class="cline"><span class="k">Additional capital cost per pelt, annualized (15 y, 3%)</span><span class="v base">EUR 0 per year</span></div>';
       html+='<div class="cline"><span class="k">Current production cost per pelt</span><span class="v base">EUR 39 per year</span></div>';
@@ -639,7 +699,7 @@
     }
     html+='</div>';
     info.innerHTML=html;
-    row.appendChild(cage); row.appendChild(info);
+    row.appendChild(cage); row.appendChild(barcell); row.appendChild(info);
     host.appendChild(row);
   });
 
