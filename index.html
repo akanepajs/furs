@@ -69,7 +69,7 @@
   .schem-row{display:grid;grid-template-columns:minmax(210px,1.1fr) 122px minmax(200px,1fr);gap:10px 18px;
     align-items:center;padding:16px 0;border-top:1px solid var(--hair)}
   .schem-row:first-of-type{border-top:1px solid var(--hair-2)}
-  .cage-cell{overflow-x:auto}
+  .cage-cell{overflow-x:auto;min-width:0}
   .cage-cell svg{display:block;height:auto;max-width:none}
   .ppbar-cell{display:flex;justify-content:center}
   .ppbar-cell svg{display:block;height:auto}
@@ -160,7 +160,7 @@
       <path d="M8 8 L32 32 M32 8 L8 32" stroke="var(--red)" stroke-width="7" stroke-linecap="round"/>
     </svg>
     <div class="body">
-      <h4>Fur farming already banned or being phased out across the EU<span class="ast">*</span></h4>
+      <h4>Fur farming already banned or being phased out across the EU</h4>
       <p><span class="tag">Full national ban in force:</span> Austria, Belgium, Bulgaria (mink), Croatia, Czechia, France, Ireland, Italy, Luxembourg, Malta, Netherlands, Slovakia, Slovenia.</p>
       <p><span class="tag">Phase-out under way:</span> Estonia (2026), Lithuania (2027), Romania (2027), Latvia (2028), Poland (2033).</p>
       <p><span class="tag">De facto via welfare standards:</span> Germany (last farm closed 2019); Sweden (fox farming ended 2005, chinchilla 2014, and mink in 2025 under a government buy-out, so no fur farms remain).</p>
@@ -184,8 +184,7 @@
     <div>
       <h4>Box outline</h4>
       <div class="swatchrow" style="margin-bottom:6px"><span style="display:inline-block;width:22px;height:14px;border:1.4px solid var(--ink-3);flex:none"></span><span>Solid = fixed cage of the stated dimensions</span></div>
-      <div class="swatchrow" style="margin-bottom:6px"><span style="display:inline-block;width:22px;height:14px;border:1.4px dashed var(--ink-3);flex:none"></span><span>Dashed = an enclosure area specification holding several animals, not a fixed per-animal cage</span></div>
-      <div class="swatchrow"><span style="display:inline-block;width:22px;height:14px;border:1.4px dashed var(--ink-3);border-top:none;flex:none"></span><span>Open top = the standard sets a floor area but no height limit</span></div>
+      <div class="swatchrow"><span style="display:inline-block;width:22px;height:14px;border:1.4px dashed var(--ink-3);flex:none"></span><span>Dashed = an enclosure area specification holding several animals, not a fixed per-animal cage</span></div>
     </div>
     <div>
       <h4>Green shade = required height</h4>
@@ -210,8 +209,8 @@
   </div>
 
   <p class="astkey"><b>The figure shows three different areas.</b> Each row shows the minimum grow-out cage or enclosure a standard requires, drawn to one shared scale on the left and holding the number of mink the minimum cage is specified for. The middle bar is the floor area that works out per pelt produced. The area per animal is the total cage divided by the number of mink. For the current cage these are a 2,550&nbsp;cm&sup2; cage, 0.20&nbsp;m&sup2; per pelt and 1,275&nbsp;cm&sup2; per mink.<br><br>
-  <b>How the per-pelt bar is built.</b> One pelt needs one grow-out place plus a share of the breeding animals that produced it. Luke (2025) reports about 250,000 breeding females, each with a litter of about four, producing about 1,000,000 mink pelts a year, so one pelt carries 0.25 of a female place. One breeding male per five females is assumed, adding 0.05 of a male place. Under the current and Finnish rules two weaned mink share a cage, so a pelt's grow-out place is half the cage; under the Ecorys and German standards each mink has its own place. For the current cage a pelt's 0.20&nbsp;m&sup2; is three shares: 0.13&nbsp;m&sup2; for the grow-out place (half the 2,550&nbsp;cm&sup2; cage), 0.06&nbsp;m&sup2; as its share of the female place, and 0.01&nbsp;m&sup2; as its share of the male place.<br><br>
-  <span class="ast">*</span>&nbsp;The German statute and an EFSA-level standard set far more space than the current cage or the Finnish decree, the direction EFSA points to; EFSA sets no numeric mink enclosure size and certifies none of these as adequate. The German basin is a single 1&nbsp;m&sup2; minimum per enclosure with no cap on the number of mink, so its cost per mink falls as the enclosure is stocked. Captive and zoo standards, which set still more space, are compared in the next chart.<br><br>
+  <b>How the per-pelt bar is built.</b> One pelt needs one grow-out place plus a share of the breeding animals that produced it. Luke (2025) reports about 250,000 breeding females, each with a litter of about four, producing about 1,000,000 mink pelts a year, so one pelt carries 0.25 of a female place. One breeding male per five females is assumed, adding 0.05 of a male place. Under the current and Finnish rules two weaned mink share a cage, so a pelt's grow-out place is half the cage; under the Ecorys and German standards each mink is allotted its own floor space. The Ecorys rows show a single mink because the allowance is a per-animal cage unit, not solitary housing: Ecorys still keeps juveniles in mixed-sex groups of two or three, each with its own unit. The German row instead draws the full 3&nbsp;m&sup2; enclosure with the three mink its minimum size holds. For the current cage a pelt's 0.20&nbsp;m&sup2; is three shares: 0.13&nbsp;m&sup2; for the grow-out place (half the 2,550&nbsp;cm&sup2; cage), 0.06&nbsp;m&sup2; as its share of the female place, and 0.01&nbsp;m&sup2; as its share of the male place.<br><br>
+  The German basin is a single 1&nbsp;m&sup2; minimum per enclosure with no cap on the number of mink, so its cost per mink falls as the enclosure is stocked.<br><br>
   <b>Cost does not track the drawn areas.</b> The one-time cost is anchored to Luke's construction metres, not to the areas drawn here, so redrawing the cages does not move any euro figure. Cost figures are the study's area-only engineering floor. The Finnish decree is costed in full; the larger cages are conservative lower bounds (construction and cage cost only), reported as 'at least' each value with an open-ended top. All are in 2025 EUR at Finnish construction prices, per pelt of annual output. The estimates are the study's own calculations, built on Luke's (2025) construction costs. The German standard is externally anchored to TG-International (2014). The current-system production cost and pelt price come from Carpenter (2025), in turn drawing on Hernesniemi (2023) and FIFUR (2025). The mink is drawn to about 60&nbsp;cm nose to tail (head and body 41 to 49&nbsp;cm per EFSA, 2025, citing Villumsen et&nbsp;al., 2019, plus a tail of 15 to 25&nbsp;cm). Mink silhouette by Ferran Sayol (PhyloPic, public domain). Full references below.</p>
 
   <!-- ============ existing enclosure-space bar chart (kept) ============ -->
@@ -265,7 +264,7 @@
 
   <p><b>Ecorys: extrapolated from Luke.</b> The Commission's survey (processed by Ecorys) sets larger cages under its reform scenarios: a two-level cage of 4,380 cm&sup2; per animal, or a single-level 5,400 cm&sup2;. We price the extra floor area beyond the current cage at the same Luke rates, with the two-level cage's upper shelf added as hardware (see the table note). The area-only floor is <b>at least EUR 150</b> per pelt of annual output for the two-level cage and <b>at least EUR 218</b> for the single-level one. The two floors are closer than the extra cage area each needs (134,000 versus 485,000 m&sup2;) would suggest, because both carry the same shade-house conversion cost and the two-level cage's smaller footprint is partly offset by building its upper shelf. A partly-solid floor and enrichment (about EUR 9 to 12) are excluded from the floor. The enrichment is a basket of basic toys, priced from the only published mink cage-enrichment cost (Meagher et al., 2014), so it is a lower bound. There is no open water requirement.</p>
 
-  <p><b>German: anchored to an independent valuation.</b> The German fur-farming statute requires at least 1 m&sup2; of floor per animal, roughly four times the current area, plus a solid floor, climbing structures and a swimming basin. The area-only construction floor is <b>at least EUR 422</b> per pelt of annual output. The required swimming basin, solid floor and climbing structures are not included in this calculation, so the true figure is higher. As an independent check, the 2014 expert report valued a real German mink farm at about EUR 777 per pelt of annual output in 2025 prices, or about EUR 614 for the cages alone, well above the floor. The floor is a conservative lower bound, and the real-farm figures (over decade old but inflation adjusted) show the cost the German standard actually implies, which is why German is treated as the empirically-anchored high standard rather than a pure extrapolation.</p>
+  <p><b>German: anchored to an independent valuation.</b> The German fur-farming statute requires at least 1 m&sup2; of floor per animal, roughly four times the current area, plus a solid floor, climbing structures and a swimming basin. The area-only construction floor is <b>at least EUR 422</b> per pelt of annual output. The required swimming basin, solid floor and climbing structures are not included in this calculation, so the true figure is higher. As an independent check, the 2014 expert report valued a real German mink farm at about EUR 777 per pelt of annual output in 2025 prices, or about EUR 614 for the cages alone, well above the floor. The floor is a conservative lower bound, and the real-farm figures (over a decade old but inflation adjusted) show the cost the German standard actually implies, which is why German is treated as the empirically-anchored high standard rather than a pure extrapolation.</p>
 
   <p><b>Swimming pool cost: not measured.</b> No published price exists for a farm swimming basin meeting the German requirement (1 m&sup2; of water, kept from freezing). <span class="flag">The basin, the solid floor and the climbing structures that the German enclosure standard also requires are not included in the cost calculation</span>. All three are therefore excluded from the reported floor and form part of its open-ended top. The German basin is a single 1 m&sup2; minimum per enclosure, with no cap on the number of mink kept in it, so its cost per mink depends on the build and falls as the enclosure is stocked more densely. In practice no German fur farm operates under this statute today. The Finnish and Ecorys standards require no water and carry no such cost.</p>
 
@@ -275,16 +274,16 @@
   <div class="calc">
   <table>
     <thead>
-      <tr><th class="rk"></th><th class="lbl">Item</th><th class="lbl">How it is computed</th><th>Finland<br>(draft decree)</th><th>Ecorys 1<br>(two-level)</th><th>Ecorys 2<br>(single-level)</th><th>German<br>(statute)</th></tr>
+      <tr><th class="rk"></th><th class="lbl">Item</th><th class="lbl">How it is computed</th><th>German<br>(statute)</th><th>Ecorys 2<br>(single-level)</th><th>Ecorys 1<br>(two-level)</th><th>Finland<br>(draft decree)</th></tr>
     </thead>
     <tbody>
       <tr><td class="rk">A</td><td class="row">Convert the existing shade houses</td><td class="lbl">137,500 m &times; EUR 377.8/m</td><td class="shared" colspan="4">EUR 51.9 million (same for every standard)</td></tr>
       <tr><td class="rk">B</td><td class="row">Cage area the converted stock provides</td><td class="lbl">137,500 m &times; 1.578 m&sup2;/m</td><td class="shared" colspan="4">217,000 m&sup2; (same for every standard)</td></tr>
       <tr><td class="rk">C</td><td class="row">New-build cost per m&sup2; of cage area</td><td class="lbl">EUR 540/m &divide; 1.578 m&sup2;/m</td><td class="shared" colspan="4">EUR 342/m&sup2; (same for every standard)</td></tr>
-      <tr><td class="rk">D</td><td class="row">Cage area required per pelt</td><td class="lbl">each standard's cage size, summed per pelt over 1 juvenile place, 0.25 of a female place and 0.05 of a male place &Dagger;</td><td>0.29 m&sup2;</td><td>0.57 m&sup2; total<br>(floor 0.35) &dagger;</td><td>0.70 m&sup2;</td><td>1.30 m&sup2;</td></tr>
-      <tr><td class="rk">E</td><td class="row">New cage area still to build</td><td class="lbl">required area (D &times; 1,000,000) minus what the converted stock already provides (row B, about 217,000 m&sup2;)</td><td>71,000 m&sup2;</td><td>134,000 m&sup2; &dagger;</td><td>485,000 m&sup2;</td><td>1,083,000 m&sup2;</td></tr>
-      <tr class="res"><td class="rk"></td><td class="row">Area-only floor: one-time capital per pelt (EUR)</td><td class="lbl">(A + E &times; C) &divide; 1,000,000 pelts (Ecorys 1 also adds its upper shelf as hardware &dagger;); Finland is the exact Luke figure, the larger cages are lower bounds with an open-ended top</td><td>76</td><td>at least 150</td><td>at least 218</td><td>at least 422</td></tr>
-      <tr><td class="rk">+</td><td class="row">Required added features, not in the floor</td><td class="lbl">solid or partly-solid floor and enrichment; for the German enclosure also a swimming basin and climbing structures. Required by the standard, but the unit cost is a very rough estimate, so they are excluded from the floor (see note)</td><td>0</td><td>9</td><td>12</td><td>130</td></tr>
+      <tr><td class="rk">D</td><td class="row">Cage area required per pelt</td><td class="lbl">each standard's cage size, summed per pelt over 1 juvenile place, 0.25 of a female place and 0.05 of a male place &Dagger;</td><td>1.30 m&sup2;</td><td>0.70 m&sup2;</td><td>0.57 m&sup2; total<br>(floor 0.35) &dagger;</td><td>0.29 m&sup2;</td></tr>
+      <tr><td class="rk">E</td><td class="row">New cage area still to build</td><td class="lbl">required area (D &times; 1,000,000) minus what the converted stock already provides (row B, about 217,000 m&sup2;)</td><td>1,083,000 m&sup2;</td><td>485,000 m&sup2;</td><td>134,000 m&sup2; &dagger;</td><td>71,000 m&sup2;</td></tr>
+      <tr class="res"><td class="rk"></td><td class="row">Area-only floor: one-time capital per pelt (EUR)</td><td class="lbl">(A + E &times; C) &divide; 1,000,000 pelts (Ecorys 1 also adds its upper shelf as hardware &dagger;); Finland is the exact Luke figure, the larger cages are lower bounds with an open-ended top</td><td>at least 422</td><td>at least 218</td><td>at least 150</td><td>76</td></tr>
+      <tr><td class="rk">+</td><td class="row">Required added features, not in the floor</td><td class="lbl">solid or partly-solid floor and enrichment; for the German enclosure also a swimming basin and climbing structures. Required by the standard, but the unit cost is a very rough estimate, so they are excluded from the floor (see note)</td><td>130</td><td>12</td><td>9</td><td>0</td></tr>
     </tbody>
   </table>
   </div>
@@ -310,11 +309,11 @@
       <tr><th class="lbl">Standard</th><th>One-time capital floor<br>(from the table above)</th><th>&times; 0.0838 =<br>annualised capital<br>(EUR/pelt/year)</th><th>+ EUR 39 production cost =<br>break-even pelt price floor<br>(EUR/pelt)</th></tr>
     </thead>
     <tbody>
-      <tr><td class="lbl">Current cage (baseline)</td><td>0 (already sunk)</td><td>0</td><td>39</td></tr>
-      <tr><td class="lbl">Finland (draft decree)</td><td>76</td><td>6</td><td>46</td></tr>
-      <tr><td class="lbl">Ecorys 1 (two-level)</td><td>at least 150</td><td>at least 13</td><td>at least 52</td></tr>
-      <tr><td class="lbl">Ecorys 2 (single-level)</td><td>at least 218</td><td>at least 18</td><td>at least 57</td></tr>
       <tr><td class="lbl">German (statute)</td><td>at least 422</td><td>at least 35</td><td>at least 75</td></tr>
+      <tr><td class="lbl">Ecorys 2 (single-level)</td><td>at least 218</td><td>at least 18</td><td>at least 57</td></tr>
+      <tr><td class="lbl">Ecorys 1 (two-level)</td><td>at least 150</td><td>at least 13</td><td>at least 52</td></tr>
+      <tr><td class="lbl">Finland (draft decree)</td><td>76</td><td>6</td><td>46</td></tr>
+      <tr><td class="lbl">Current cage (baseline)</td><td>0 (already sunk)</td><td>0</td><td>39</td></tr>
     </tbody>
   </table>
   </div>
@@ -345,11 +344,11 @@
     <ol>
       <li><b>What the cost figures on each cage mean.</b> 'Initial investment per mink' is a <em>one-time</em> outlay: the capital to rebuild the <em>Finnish</em> mink industry from the current legal cage to that standard. The three 'per pelt' lines below it are <em>annual</em> unit costs. 'Additional capital cost per pelt' is that one-time investment spread over the cage's 15-year life as an equal yearly charge (a capital-recovery annuity at a 3% real discount rate); 'Current production cost per pelt' is the yearly cost of producing a pelt (feed, labour and the rest, about EUR 39), unchanged by the standard; and 'Total cost per pelt with the new standards' is the two added together, that is, the break-even pelt price at that standard. All in 2025 EUR at Finnish construction prices, per pelt of standard annual output, and derived in the section above. The current legal cage is the cost baseline, so its additional capital is zero and its total is the production cost alone. Figures are rounded to whole euros, so the additional capital and production cost may differ from the total shown by about one euro.</li>
       <li><b>How row E's per-pelt areas are computed (the 0.8 and 1.3 coefficients).</b> Each pelt of annual output carries three shares of cage space: the pelted juvenile's own place, a quarter of a female place, and a twentieth of a male place. The quarter comes from Luke's herd structure, where 250,000 breeding females produce the standard 1,000,000 pelts at four pelts per female per year, so each pelt carries a quarter of a female place. The twentieth is that quarter divided by five, on the assumption of one breeding male per five females (Luke's totals include males without giving a count). No time or day weighting is involved; the shares are herd composition. The juvenile term is where the standards differ. The Finnish rules state cage sizes per adult and house weaned juveniles in pairs, so a juvenile's allowance is half a cage, and the three shares (a half, a quarter and a twentieth) give a coefficient of <b>0.8</b>: the current 2,550 cm&sup2; cage then gives 2,040 cm&sup2; (0.204 m&sup2;) per pelt, and the 3,600 cm&sup2; decree cage 0.288 m&sup2;. The Ecorys survey and the German statute state their allowances per animal, each juvenile with its own unit, so the juvenile term is a full allowance and the shares give <b>1.3</b>: the two-level 4,380 cm&sup2; cage then gives 5,694 cm&sup2; (0.57 m&sup2;) per pelt, the single-level 5,400 cm&sup2; gives 7,020 cm&sup2; (0.70 m&sup2;), and the German 1 m&sup2; per animal gives 1.30 m&sup2;.</li>
-      <li><b>Austria.</b> The ordinance (2. Tierhaltungsverordnung, Anlage 1, point 7.10.1) sets a minimum enclosure of 20 m&sup2; per adult pair, of which half must be open water at least 0.5 m deep, at 2.5 m height. Critically, the same provision requires mink to be kept singly outside the mating season ('außerhalb der Paarungszeit einzeln zu halten'), so for most of the year a single mink occupies the whole 20 m&sup2; enclosure: 10 m&sup2; floor plus 10 m&sup2; water. The per-mink figure shown is therefore the full enclosure, not the pair minimum halved. Like the German statute this is an area-per-animal enclosure specification rather than a fixed cage. Fur farming is separately banned in Austria (2005), so no compliance cost is calculated; the figures appear only in the bar chart below.</li>
+      <li><b>Austria.</b> The ordinance (2. Tierhaltungsverordnung, Anlage 1, point 7.10.1) sets a minimum enclosure of 20 m&sup2; per adult pair, of which half must be open water at least 0.5 m deep, at 2.5 m height. The same provision also requires mink to be kept singly outside the mating season ('außerhalb der Paarungszeit einzeln zu halten'), so for most of the year a single mink occupies the whole 20 m&sup2; enclosure: 10 m&sup2; floor plus 10 m&sup2; water. The per-mink figure shown is therefore the full enclosure, not the pair minimum halved. Like the German statute this is an area-per-animal enclosure specification rather than a fixed cage. Fur farming is separately banned in Austria (2005), so no compliance cost is calculated; the figures appear only in the bar chart below.</li>
       <li><b>Germany, fur-farming statute.</b> Floor &ge;1 m&sup2; per animal (and &ge;3 m&sup2; per enclosure), plus an additive swimming basin &ge;1 m&sup2; at &ge;0.3 m depth, height &ge;1 m. The statute is an area-per-animal specification, not a fixed cage: the floor scales with the number of animals (1 m&sup2; each, above the 3 m&sup2; enclosure minimum), but the basin is a single per-enclosure minimum of 1 m&sup2; total, whatever the number of mink, so its per-animal share falls as the enclosure is stocked. Both the schematic and the bar chart read the statute per mink as 1 m&sup2; floor plus the full 1 m&sup2; basin: the floor is the per-animal minimum, and the basin is shown at its per-enclosure total.</li>
       <li><b>Ecorys 1 and 2 (EC survey, Scenarios 4 and 5).</b> Two-level cage of 4,380 cm&sup2; per animal (base 90&times;30 cm plus an upper 56&times;30 cm shelf, 45 cm per level); or a single-level alternative of 5,400 cm&sup2; per animal. No open water.</li>
-      <li><b>Finland, draft fur decree.</b> 3,600 cm&sup2; per adult, at least 30 cm wide and 70 cm long (excluding the nest box), height &ge;45 cm, no water (the explanatory memorandum declines swimming water, citing disease risk). At the 30 cm minimum width the cage is about 120 cm long to reach 3,600 cm&sup2;, as shown.</li>
-      <li><b>Sweden, mink cage law.</b> Since 2013 Sweden has required mink to be kept in a two-level ('etage') cage: a lower level of at least 2,550 cm&sup2; (minimum 30 cm wide, 80 cm long, 45 cm high) plus an upper level of at least 900 cm&sup2; (30 &times; 30 cm), 3,450 cm&sup2; in total, with a nest box and a lying shelf that are not counted in the area (SJVFS 2019:16, 2 kap. 13 &sect;). At the 30 cm minimum width the lower level is about 85 cm long to reach 2,550 cm&sup2;. This standard is close to Finland's proposed 3,600 cm&sup2;, but Swedish fur farming has since ended: fox farming ceased in 2005 and chinchilla in 2014 after welfare rules made them uneconomic, and the last mink farms were emptied by June 2025 under a government buy-out (there is no formal legislative ban yet). Shown as a comparator in the bar chart below, not costed for Finland.</li>
+      <li><b>Finland, draft fur decree.</b> 3,600 cm&sup2; per adult, at least 30 cm wide and 70 cm long (excluding the nest box), height &ge;45 cm, with no water requirement; the explanatory memorandum declines swimming water, citing disease risk. At the 30 cm minimum width the cage is about 120 cm long to reach 3,600 cm&sup2;, as shown.</li>
+      <li><b>Sweden, mink cage law.</b> Since 2013 Sweden has required mink to be kept in a two-level 'etage' cage (SJVFS 2019:16, 2 kap. 13 &sect;). The lower level must be at least 2,550 cm&sup2;, minimum 30 cm wide, 80 cm long and 45 cm high; the upper level at least 900 cm&sup2; of 30 &times; 30 cm, giving 3,450 cm&sup2; in total, with a nest box and a lying shelf that are not counted in the area. At the 30 cm minimum width the lower level is about 85 cm long to reach 2,550 cm&sup2;. This standard is close to Finland's proposed 3,600 cm&sup2;, but Swedish fur farming has since ended: fox farming ceased in 2005 and chinchilla in 2014 after welfare rules made them uneconomic, and the last mink farms were emptied by June 2025 under a government buy-out, with no formal legislative ban yet (Fur Free Alliance, 2025). Shown as a comparator in the bar chart below, not costed for Finland.</li>
       <li><b>EU current legal minimum / WelFur.</b> 2,550 cm&sup2; per adult, at least 30 cm wide and 70 cm long (excluding the nest box), height 45 cm, no open water access. At the 30 cm minimum width the cage is about 85 cm long to reach 2,550 cm&sup2;, as shown. This is the current standard and the cost baseline. WelFur's best score equals the legal cage and adds only scored, substitutable enrichment.</li>
       <li><b>Occupancy basis (bar chart).</b> The fur-farm, Ecorys and German zoo-guidance figures are stated per animal. The AZA and Swiss minima are stated per enclosure or per pair and shown per mink at the standard's stated capacity of two animals, a conservative reading: a singly-housed mink would have up to about twice the land and water shown. Austria is shown per single mink at its full 20 m&sup2; enclosure (10 m&sup2; land plus 10 m&sup2; water), because its ordinance requires mink to be housed singly outside the mating season (Note 3). The German fur statute is shown per mink as its 1 m&sup2; floor plus the full 1 m&sup2; basin (Note 4); unlike the other rows, its basin does not scale per mink.</li>    </ol>
   </div>
@@ -457,7 +456,7 @@
 
   // ---- SCHEMATIC ----------------------------------------------------------
   // area m2 per animal (footprint), height m, water m2 + depth m, cost strings
-  var S = 68;          // px per metre: shared scale for the six fur-farm cages
+  var S = 68;          // px per metre: shared scale for the five fur-farm cages
   var MINK_M = 0.60;   // drawn mink length nose to tail, metres = ~60 cm
                        // (head-body 41-49 cm per EFSA + tail ~15-25 cm); to scale in every cage
   var DEPF = 0.42;     // cavalier depth foreshortening
@@ -469,38 +468,36 @@
   // standards_cost_model.py blended_area_per_pelt(): 1 juvenile + 0.25 female + 0.05 male
   // cage per pelt; juveniles PAIR-HOUSED under current/Finnish rules (grow-out place =
   // half the cage), PER-ANIMAL under Ecorys/German. Cost cards unchanged. PPMAX = 1.3.
+  // Ordered by space per mink, largest first (German enclosure at the top, current cage at
+  // the bottom). The EFSA-level row is not drawn: it would be an open-topped copy of the
+  // German enclosure with identical cost, so it is left to the price chart and prose.
   var SCHEM=[
-    {name:'Current cage', role:'current EU legal minimum and cost baseline',
-      area:0.255, h:0.45, water:0, depth:null, fpW:0.85, fpD:0.30, nAnimals:2,
-      areaLabel:'2,550 cm² grow-out cage', dims:'2 weaned mink, 30 × 85 cm; height 45 cm',
-      pp:{grow:0.1275, fem:0.06375, male:0.01275, total:0.204},
-      baseline:true, cost:'base'},
-    {name:'Finland', role:'draft fur decree (VN/14432/2025)',
-      area:0.36, h:0.45, water:0, depth:null, fpW:1.20, fpD:0.30, nAnimals:2,
-      areaLabel:'3,600 cm² grow-out cage', dims:'2 young mink, 30 × 120 cm; height 45 cm',
-      pp:{grow:0.18, fem:0.09, male:0.018, total:0.288},
-      cost:{inv:'EUR 76', cap:'EUR 6 per year', tot:'EUR 46 per year'}},
+    {name:'German', role:'Minimum 3 m² floor area for up to 3 mink, +1 m² for each additional mink',
+      area:3, h:1.0, water:1.0, depth:0.3, enclosure:true, ast:true, nAnimals:3,
+      areaLabel:'3 m² enclosure', dims:'3 mink, 1 m² each; height 1 m',
+      pp:{grow:1.0, fem:0.25, male:0.05, total:1.3},
+      cost:{inv:'at least EUR 422', cap:'at least EUR 35 per year', tot:'at least EUR 75 per year'}},
+    {name:'Ecorys 2', role:'EC survey, single-level cage', enc:'per mink',
+      area:0.54, h:0.45, water:0, depth:null, fpW:0.9, fpD:0.6, seamDepth:true, nAnimals:1,
+      areaLabel:'5,400 cm² per mink', dims:'1 mink; two 90 × 30 cm cages joined',
+      pp:{grow:0.54, fem:0.135, male:0.027, total:0.702},
+      cost:{inv:'at least EUR 218', cap:'at least EUR 18 per year', tot:'at least EUR 57 per year'}},
     {name:'Ecorys 1', role:'EC survey, two-level cage', enc:'per mink',
       area:0.27, harea:0.438, h:0.9, water:0, depth:null, nAnimals:1,
       levels:[{w:0.9,d:0.3,h:0.45},{w:0.56,d:0.3,h:0.45}],
       areaLabel:'4,380 cm² per mink (two levels)', dims:'1 mink; base 90 × 30 + upper 56 × 30 cm',
       pp:{grow:0.438, fem:0.1095, male:0.0219, total:0.5694},
       cost:{inv:'at least EUR 150', cap:'at least EUR 13 per year', tot:'at least EUR 52 per year'}},
-    {name:'Ecorys 2', role:'EC survey, single-level cage', enc:'per mink',
-      area:0.54, h:0.45, water:0, depth:null, fpW:0.9, fpD:0.6, seamDepth:true, nAnimals:1,
-      areaLabel:'5,400 cm² per mink', dims:'1 mink; two 90 × 30 cm cages joined',
-      pp:{grow:0.54, fem:0.135, male:0.027, total:0.702},
-      cost:{inv:'at least EUR 218', cap:'at least EUR 18 per year', tot:'at least EUR 57 per year'}},
-    {name:'German', role:'fur-farming statute (TierErzHaVerbG)', enc:'≥ 1 m²/animal, ≥ 3 m²/enclosure',
-      area:3, h:1.0, water:1.0, depth:0.3, enclosure:true, ast:true, nAnimals:3,
-      areaLabel:'3 m² enclosure', dims:'3 mink, 1 m² each; height 1 m',
-      pp:{grow:1.0, fem:0.25, male:0.05, total:1.3},
-      cost:{inv:'at least EUR 422', cap:'at least EUR 35 per year', tot:'at least EUR 75 per year'}},
-    {name:'EFSA-level', role:'the direction EFSA points to (no numeric size set)',
-      area:3, h:1.0, water:1.0, depth:0.3, openTop:true, ast:true, nAnimals:3,
-      areaLabel:'at least 3 m², open', dims:'at least the German enclosure, open above',
-      pp:{grow:1.0, fem:0.25, male:0.05, total:1.3, open:true},
-      cost:{inv:'at least EUR 422', cap:'at least EUR 35 per year', tot:'at least EUR 75 per year'}}
+    {name:'Finland', role:'draft fur decree (VN/14432/2025)',
+      area:0.36, h:0.45, water:0, depth:null, fpW:1.20, fpD:0.30, nAnimals:2,
+      areaLabel:'3,600 cm² grow-out cage', dims:'2 young mink, 30 × 120 cm; height 45 cm',
+      pp:{grow:0.18, fem:0.09, male:0.018, total:0.288},
+      cost:{inv:'EUR 76', cap:'EUR 6 per year', tot:'EUR 46 per year'}},
+    {name:'Current cage', role:'current EU legal minimum and cost baseline',
+      area:0.255, h:0.45, water:0, depth:null, fpW:0.85, fpD:0.30, nAnimals:2,
+      areaLabel:'2,550 cm² grow-out cage', dims:'2 weaned mink, 30 × 85 cm; height 45 cm',
+      pp:{grow:0.1275, fem:0.06375, male:0.01275, total:0.204},
+      baseline:true, cost:'base'}
   ];
 
   function fmtArea(a){ // m2 -> label
@@ -704,6 +701,8 @@
   });
 
   // ---- BAR CHART (kept; recoloured ramp gray->mid) ------------------------
+  // Each row's efsa: flag is inert (documentation only): the EFSA-direction asterisk it
+  // once drove was removed; it is kept to record which standards point toward EFSA.
   var DATA = [
     {name:"AZA zoo standard (USA)",              ref:"AZA SCTAG, 2010",                 land:12.5, water:3.1, height:null, depth:0.37, efsa:true},
     {name:"Austria: captive-wildlife ordinance", ref:"Republik Österreich, 2004",       land:10.0, water:10.0, height:2.5, depth:0.50, efsa:true},
@@ -711,7 +710,7 @@
     {name:"Germany: zoo/keeping guidance",       ref:"BMEL, 2014",                      land:6.2,  water:1.8, height:2.5,  depth:null, efsa:true},
     {name:"Germany: fur-farming statute",        ref:"Bundesrepublik Deutschland, 2017a", land:1.0, water:1.0, height:1.0, depth:0.30, efsa:true, extLabel:"≥1 m² floor (h = 1 m) per mink and 1 m² water (d = 0.3 m) per enclosure"},
     {name:"Ecorys 2: EC survey, single-level (S4/S5)", ref:"Ecorys, 2025",              land:0.54,  water:0,  height:0.45, depth:null, efsa:false},
-    {name:"Ecorys 1: EC survey, two-level (S4/S5)",    ref:"Ecorys, 2025",              land:0.438, water:0,  height:0.45, depth:null, efsa:false},
+    {name:"Ecorys 1: EC survey, two-level (S4/S5)",    ref:"Ecorys, 2025",              land:0.438, water:0,  height:0.9, depth:null, efsa:false},
     {name:"Finland: draft fur decree",           ref:"MMM, 2025a",                      land:0.36, water:0,   height:0.45, depth:null, efsa:false},
     {name:"Sweden: fur-farming cage law (mink farming ended 2025)", ref:"Swedish Board of Agriculture, 2019", land:0.345, water:0, height:0.45, depth:null, efsa:false},
     {name:"EU current legal minimum / WelFur",   ref:"Fur Europe, 2015; CoE, 1999; Finnish Government, 2011", land:0.255, water:0, height:0.45, depth:null, efsa:false}

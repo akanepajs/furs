@@ -112,7 +112,7 @@
     align-items:center;padding:16px 0;border-top:1px solid var(--hair)}
   .schem-row:first-of-type{border-top:1px solid var(--hair-2)}
   @media(max-width:720px){.schem-row{grid-template-columns:1fr;justify-items:start;gap:6px}}
-  .cage-cell{overflow-x:auto}
+  .cage-cell{overflow-x:auto;min-width:0}
   .cage-cell svg{display:block;height:auto;max-width:none}
   .ppbar-cell{display:flex;justify-content:center}
   .ppbar-cell svg{display:block;height:auto}
@@ -161,12 +161,12 @@
   <h1>Fox fur farming: the cost of raising the welfare standard</h1>
   <p class="sub">What it would cost to move Finland's fox farms from the current cage to each proposed welfare standard, per pelt of annual output. <strong>Fox farming loses money before any reform: the pelt price of about EUR&nbsp;48 covers only about half the production cost of about EUR&nbsp;94. Every standard that has been costed adds capital cost on top, not revenue.</strong></p>
 
-  <p class="sub" style="font-size:.9rem">Fur farming is banned or being phased out across most of the EU; Finland is the largest remaining fox producer. The method below mirrors the mink page: the Finnish draft decree is the one standard costed directly from construction data, and the larger German and EFSA-level standards are extrapolated from the same Finnish cost calibration.</p>
+  <p class="sub" style="font-size:.9rem">Fur farming is banned or being phased out across most of the EU; Finland is the largest remaining fox producer. The method below mirrors the mink page: the Finnish draft decree is the one standard costed directly from construction data, and the larger German standard is extrapolated from the same Finnish cost calibration; an EFSA-level standard, which sets no numeric enclosure size, is treated as at least the German figure.</p>
 
   <div class="quote">
     <p>&ldquo;The majority of the welfare consequences (WCs) listed cannot be prevented or substantially mitigated within the current husbandry systems.&rdquo;</p>
     <p>&ldquo;&hellip; substantial mitigation would require enclosures that provide sufficient three-dimensional space to incorporate structures and resources that enhance environmental complexity, to allow the quantitative and qualitative expression of fundamental behaviours (e.g. sustained locomotory activity, exploration, foraging and vigilance).&rdquo;</p>
-    <p>For foxes, EFSA's most relevant welfare consequences include restriction of movement, the inability to forage or explore, sensorial under- and overstimulation and handling stress, with locomotory disorders such as bent legs in Arctic fox. Of these, restriction of movement and the inability to forage or explore cannot be prevented or substantially mitigated in the current cage system.</p>
+    <p>For foxes, EFSA's most relevant welfare consequences are restriction of movement, the inability to perform exploratory or foraging behaviour, sensorial under- and overstimulation and handling stress, with locomotory disorders such as bent feet in Arctic fox and group stress in red fox. EFSA concludes that restriction of movement, the inability to forage or explore, sensorial under- and overstimulation and handling stress cannot be prevented or substantially mitigated in the current cage system.</p>
     <cite>EFSA Panel on Animal Health and Welfare (2025). Welfare of American mink, red and Arctic foxes, raccoon dog and chinchilla kept for fur production (Scientific Opinion 9519). <em>EFSA Journal</em>, 23(7).</cite>
   </div>
 
@@ -177,8 +177,8 @@
     </svg>
     <div class="body">
       <h4>Fox fur farming already banned or being phased out across most of the EU</h4>
-      <p><span class="tag">Full national ban in force:</span> Austria, Belgium, Croatia, Czechia, Denmark, France, Hungary, Ireland, Italy, Luxembourg, Malta, Netherlands, Slovakia, Slovenia.</p>
-      <p><span class="tag">Phase-out under way:</span> Estonia (2026), Lithuania (2027), Latvia (2028), Poland (2033).</p>
+      <p><span class="tag">Full national ban in force:</span> Austria, Belgium, Croatia, Czechia, Denmark, Estonia, France, Hungary, Ireland, Italy, Luxembourg, Malta, Netherlands, Slovakia, Slovenia.</p>
+      <p><span class="tag">Phase-out under way:</span> Lithuania (2027), Latvia (2028), Poland (2033).</p>
       <p><span class="tag">De facto via welfare standards or market exit:</span> Germany (fox farming ended 2005); Sweden (fox farming ended 2005).</p>
       <p class="src">Sources: Fur Free Alliance, fur-ban tracker; Eurogroup for Animals (2025). Finland is the largest remaining EU fox producer.</p>
     </div>
@@ -197,8 +197,7 @@
     <div>
       <h4>Box outline</h4>
       <div class="swatchrow" style="margin-bottom:6px"><span style="display:inline-block;width:22px;height:14px;border:1.4px solid var(--ink-3);flex:none"></span><span>Solid = fixed cage of the stated dimensions</span></div>
-      <div class="swatchrow" style="margin-bottom:6px"><span style="display:inline-block;width:22px;height:14px;border:1.4px dashed var(--ink-3);flex:none"></span><span>Dashed = an enclosure area specification holding several animals, not a fixed per-animal cage</span></div>
-      <div class="swatchrow"><span style="display:inline-block;width:22px;height:14px;border:1.4px dashed var(--ink-3);border-top:none;flex:none"></span><span>Open top = the standard sets a floor area but no height limit</span></div>
+      <div class="swatchrow"><span style="display:inline-block;width:22px;height:14px;border:1.4px dashed var(--ink-3);flex:none"></span><span>Dashed = an enclosure area specification holding several animals, not a fixed per-animal cage</span></div>
     </div>
     <div>
       <h4>Green shade = required height</h4>
@@ -220,7 +219,7 @@
   <p class="astkey"><b>The figure shows three different areas.</b> Each row shows the minimum grow-out cage or enclosure a standard requires, drawn to one shared scale on the left and holding the number of foxes the minimum cage is specified for. The middle bar is the floor area that works out per pelt produced. The caption gives the area per animal, the total cage divided by the number of foxes. For the Finnish decree these are a 2.4&nbsp;m&sup2; cage, 1.18&nbsp;m&sup2; per pelt and 0.8&nbsp;m&sup2; per animal.<br><br>
   <b>How the per-pelt bar is built.</b> One pelt needs one grow-out place plus a share of the breeding animals that produced it. Luke (2025) reports about 225,000 breeding females producing about 1,000,000 fox pelts a year, a litter of about 4.5, so one pelt carries 0.225 of a female place. One breeding male per five females is assumed, adding 0.045 of a male place; Luke's shade-house metres include male space but state no separate count, so this ratio is an assumption. The breeding female is counted at her 1.2&nbsp;m&sup2; off-season minimum. Under the Finnish decree one pelt's 1.18&nbsp;m&sup2; is three shares: 0.80&nbsp;m&sup2; for the weaned juvenile's own place, 0.27&nbsp;m&sup2; for its share of the 1.2&nbsp;m&sup2; female place, and 0.11&nbsp;m&sup2; for its share of the 2.4&nbsp;m&sup2; male place.<br><br>
   <span class="ast">*</span>&nbsp;The German statute and an EFSA-level standard set far more space than the current cage or the Finnish decree, the direction EFSA points to; EFSA sets no numeric fox enclosure size and certifies none of these as adequate. The German statute gives 3&nbsp;m&sup2; per animal, several times the current cage (0.6&nbsp;m&sup2; per weaned fox in the grow-out cage, about 0.8&nbsp;m&sup2; per adult), priced at the 3&nbsp;m&sup2; per-animal rate; its 12&nbsp;m&sup2;-per-enclosure minimum is drawn as a four-fox enclosure. Ecorys sets the same fox space as the Finnish decree, so it is shown only in the cost table, not drawn separately. Captive and zoo standards, which set still more space, are compared in the next chart. The current cage can be smaller than the fox itself: for a red fox it is sometimes shorter than the animal's total length nose to tail, for an Arctic fox usually narrower (EFSA, 2025, p.&nbsp;66-67).<br><br>
-  <b>Cost does not track the drawn areas.</b> The one-time cost is anchored to Luke's construction metres (converting the existing shade houses, then new-building the extra cage area), not to the areas drawn here, so redrawing the cages does not move any euro figure. Costs are the area-only construction floor, in 2025 EUR at Finnish construction prices, per pelt of standard annual output; the larger German cage is reported as 'at least' its floor, open-ended above, and has no external cost anchor. The fox is drawn to about 0.9&nbsp;m nose to tail, toward the lower end of the wild Arctic fox range (body up to about 65&nbsp;cm, tail up to about 33&nbsp;cm; EFSA, 2025, citing Østbye et&nbsp;al., 1976); the blue fox farmed in Finland is a large Arctic morph. Fox silhouette by Ferran Sayol (PhyloPic, public domain). Full references below.</p>
+  <b>Cost does not track the drawn areas.</b> The one-time cost is anchored to Luke's construction metres (converting the existing shade houses, then new-building the extra cage area), not to the areas drawn here, so redrawing the cages does not move any euro figure. Costs are the area-only construction floor, in 2025 EUR at Finnish construction prices, per pelt of standard annual output; the larger German cage is reported as 'at least' its floor, open-ended above, and has no external cost anchor. The fox is drawn to about 0.9&nbsp;m nose to tail, toward the upper end of the wild Arctic fox range (body up to about 65&nbsp;cm, tail up to about 33&nbsp;cm; EFSA, 2025, citing Østbye et&nbsp;al., 1976); the blue fox farmed in Finland is a large Arctic morph. Fox silhouette by Ferran Sayol (PhyloPic, public domain). Full references below.</p>
 
   <h2>Fox enclosure space: the fur cage against captive and zoo standards</h2>
   <p class="sub">Minimum floor area allowed per fox under each standard, on a single linear scale. <strong>Captive and zoo rules give a fox 15 to 150 m&sup2; per animal (the fox-specific Swiss and German zoo minima are 15 to 20 m&sup2;; Austria's 150 m&sup2; is a generic canid figure), against 0.8 to 3 m&sup2; under the fur-farming standards. The reform standards close only a small part of that gap.</strong></p>
@@ -236,13 +235,13 @@
       <thead><tr><th>Standard</th><th>Area per fox (m&sup2;)</th><th>Height (m)</th><th>EFSA direction</th><th>Basis / note</th></tr></thead>
       <tbody id="enctbody"></tbody>
     </table>
-    <p class="caption">Per animal at the stated pair capacity.</p>
+    <p class="caption">Per animal. Captive and zoo standards are shown at half their stated per-pair minimum; the fur-farm standards, including Germany's statute, are at their per-animal rate.</p>
   </details>
 
   <h2>How the compliance costs are calculated</h2>
 
   <div class="method">
-  <p>The cost of each standard is the <b>one-time capital</b> needed to rebuild Finland's fox cages to that standard, plus the <b>yearly cost of financing that capital</b>. The Finnish draft decree is the one standard costed directly, from the Natural Resources Institute Finland (Luke) construction-cost assessment. The larger Ecorys cages (from the European Commission's consultation survey) and the German statutory cage have no published fox construction-cost study, so they are priced with the same Luke per-metre rates extended to the extra cage area. No external valuation exists to anchor them: Germany's last fox farm closed in 2005. Each reported figure is the <b>area-only floor</b>: the construction and cage cost alone. The Finnish decree needs no assumption-costed features and is costed in full; the larger cages are reported as 'at least' that value, because required structures whose unit cost is only an assumption (a digging box, platform, den or substrate) are excluded from the floor and push the true figure higher.</p>
+  <p>The cost of each standard is the <b>one-time capital</b> needed to rebuild Finland's fox cages to that standard, plus the <b>yearly cost of financing that capital</b>. The Finnish draft decree is the one standard costed directly, from the Natural Resources Institute Finland (Luke) construction-cost assessment. The larger Ecorys cages (from the European Commission's consultation survey) and the German statutory cage have no published fox construction-cost study, so they are priced with the same Luke per-metre rates extended to the extra cage area. No external valuation exists to anchor them. Each reported figure is the <b>area-only floor</b>: the construction and cage cost alone. The Finnish decree needs no assumption-costed features and is costed in full; the larger cages are reported as 'at least' that value, because required structures whose unit cost is only an assumption (a digging box, platform, den or substrate) are excluded from the floor and push the true figure higher.</p>
 
   <p><b>Finland: measured directly.</b> The draft decree raises the cage floor to 1.2 m&sup2; for an adult female and 2.4 m&sup2; for a male, and adds resting shelves and a walled retreat. Luke prices this as shade-house running metres: converting the whole existing stock (560,000 m) and building 224,000 m of new capacity, at about EUR 272 and EUR 453 per metre respectively. This is spread over Finland's fox sector <b>standard annual output of about 1,000,000 pelts</b> (the normal full-capacity figure Luke uses, for the whole national industry, not a single model farm). That gives about <b>EUR 254</b> of one-time capital per pelt, more than three times the mink figure of about EUR 76. Fox carries about 2.5 shade-house metres per breeding female against mink's 0.55. The per-pelt capital multiple is about three, below that space ratio, because fox has more pelts per breeding female and a lower per-metre shade-house cost than mink. This is the one directly-measured anchor; every other figure is calibrated so the method below reproduces this Luke number exactly.</p>
 
@@ -252,31 +251,31 @@
 
   <div class="callout">
     <h4>No external cost anchor for fox</h4>
-    <p>The mink German figure is cross-checked against an independent 2014 valuation of a real German mink farm. No such study exists for fox: Germany's last fox farm closed in 2005, and the German regulator declined to quantify the cost. The fox German and EFSA-level figures therefore come entirely from the Finnish cost calibration extended to a larger cage. They are order-of-magnitude estimates and a lower bound: the required structures, the 12 m&sup2;-per-enclosure minimum and the 1.5 m height are not priced by the area model. Unlike mink, there is no swimming basin, because fox welfare needs are space, foraging and digging, not open water.</p>
+    <p>The mink German figure is cross-checked against an independent 2014 valuation of a real German mink farm; no equivalent fox study exists, so the fox German and EFSA-level figures come entirely from the Finnish cost calibration extended to a larger cage. They are order-of-magnitude estimates and a lower bound: the required structures, the 12 m&sup2;-per-enclosure minimum and the 1.5 m height are not priced by the area model. Unlike mink, there is no swimming basin, because fox welfare needs are space, foraging and digging, not open water.</p>
   </div>
 
   <p><b>EFSA-level: a lower bound.</b> EFSA sets no numeric enclosure size for fox, so an EFSA-level standard is not given a single figure here. It would cost <b>at least</b> the German floor and is open-ended above it.</p>
 
   <h3 style="font-size:1rem;margin:22px 0 4px;font-weight:660">Fixed (one-time) capital per pelt</h3>
-  <p style="font-size:.86rem;color:var(--ink-2);margin:0 0 6px;max-width:74ch">Rows A to C are shared construction inputs; rows D and E differ by standard; the result is the area-only engineering floor (construction and cage cost only). The Finnish decree is costed in full; the larger cages are conservative lower bounds ('at least' each value), because the required added features (final row) are excluded from the floor. All figures in 2025 EUR, per pelt of the standard annual output defined above (about 1,000,000 pelts).</p>
+  <p style="font-size:.86rem;color:var(--ink-2);margin:0 0 6px;max-width:74ch">Rows A to C are shared construction inputs; rows D and E differ by standard; the result is the area-only engineering floor (construction and cage cost only). The Finnish decree is costed in full; the larger cages are conservative lower bounds, reported as 'at least' each value, because the required added features in the final row are excluded from the floor. All figures in 2025 EUR, per pelt of the standard annual output defined above (about 1,000,000 pelts).</p>
   <p style="font-size:.85rem;font-weight:660;margin:12px 0 3px;color:var(--ink)">Table 1. Fixed (one-time) capital per pelt, by standard (fox)</p>
   <div class="calc">
   <table>
     <thead>
-      <tr><th class="rk"></th><th class="lbl">Item</th><th class="lbl">How it is computed</th><th>Finland<br>(draft decree)</th><th>Ecorys<br>(EC survey)</th><th>German<br>(statute)</th></tr>
+      <tr><th class="rk"></th><th class="lbl">Item</th><th class="lbl">How it is computed</th><th>German<br>(statute)</th><th>Ecorys<br>(EC survey)</th><th>Finland<br>(draft decree)</th></tr>
     </thead>
     <tbody>
       <tr><td class="rk">A</td><td class="row">Convert the existing shade houses</td><td class="lbl">560,000 m &times; EUR 272.2/m</td><td class="shared" colspan="3">&asymp; EUR 152.4 million (same for every standard)</td></tr>
       <tr><td class="rk">B</td><td class="row">Cage area the converted stock provides</td><td class="lbl">560,000 m &times; 1.503 m&sup2;/m</td><td class="shared" colspan="3">&asymp; 841,000 m&sup2; (same for every standard)</td></tr>
       <tr><td class="rk">C</td><td class="row">New-build cost per m&sup2; of cage area</td><td class="lbl">EUR 452.5/m &divide; 1.503 m&sup2;/m</td><td class="shared" colspan="3">&asymp; EUR 301/m&sup2; (same for every standard)</td></tr>
-      <tr><td class="rk">D</td><td class="row">Cage area required per pelt</td><td class="lbl">each standard's cage size, blended per pelt over one weaned juvenile, about 0.225 of a female place and 0.045 of a male place &Dagger;</td><td>1.18 m&sup2;</td><td>1.18 m&sup2;</td><td>3.81 m&sup2;</td></tr>
-      <tr><td class="rk">E</td><td class="row">New cage area still to build</td><td class="lbl">required area (D &times; 1,000,000) minus what the converted stock already provides (row B, about 841,000 m&sup2;)</td><td>337,000 m&sup2;</td><td>337,000 m&sup2;</td><td>2,969,000 m&sup2;</td></tr>
-      <tr class="res"><td class="rk"></td><td class="row">Area-only floor: one-time capital per pelt (EUR)</td><td class="lbl">(A + E &times; C) &divide; 1,000,000 pelts; Finland is the exact Luke figure, the larger cages are lower bounds with an open-ended top</td><td>254</td><td>at least 254</td><td>at least 1,046</td></tr>
-      <tr><td class="rk">+</td><td class="row">Required added features, not in the floor</td><td class="lbl">a digging box, platform and hide (Ecorys); a digging substrate and raised den (German). Required by the standard, but no fox unit cost has ever been published, so they are excluded from the floor (see note)</td><td>0</td><td>not costed</td><td>not costed</td></tr>
+      <tr><td class="rk">D</td><td class="row">Cage area required per pelt</td><td class="lbl">each standard's cage size, blended per pelt over one weaned juvenile, about 0.225 of a female place and 0.045 of a male place &Dagger;</td><td>3.81 m&sup2;</td><td>1.18 m&sup2;</td><td>1.18 m&sup2;</td></tr>
+      <tr><td class="rk">E</td><td class="row">New cage area still to build</td><td class="lbl">required area (D &times; 1,000,000) minus what the converted stock already provides (row B, about 841,000 m&sup2;)</td><td>2,969,000 m&sup2;</td><td>337,000 m&sup2;</td><td>337,000 m&sup2;</td></tr>
+      <tr class="res"><td class="rk"></td><td class="row">Area-only floor: one-time capital per pelt (EUR)</td><td class="lbl">(A + E &times; C) &divide; 1,000,000 pelts; Finland is the exact Luke figure, the larger cages are lower bounds with an open-ended top</td><td>at least 1,046</td><td>at least 254</td><td>254</td></tr>
+      <tr><td class="rk">+</td><td class="row">Required added features, not in the floor</td><td class="lbl">a digging box, platform and hide (Ecorys); a digging substrate and raised den (German). Required by the standard, but no fox unit cost has ever been published, so they are excluded from the floor (see note)</td><td>not costed</td><td>not costed</td><td>0</td></tr>
     </tbody>
   </table>
   </div>
-  <p class="caption">The reported figure is the area-only engineering floor: convert the whole existing shade-house stock, then new-build only the cage area the converted stock cannot already deliver (row E), at Luke's unit rates. It reproduces the Luke-costed EUR 254 for the Finnish decree, which needs no assumption-costed features and is therefore exact. The Ecorys survey sets the same fox space, so its area-only floor is also about EUR 254, but Ecorys additionally requires uncosted structures, so it is a lower bound like the German cage. The larger German cage is a conservative lower bound too, reported as 'at least' its value with an open-ended top. The added features in the final row are excluded from the floor because no fox unit cost for them has ever been published; Carpenter (2025) confirms no such cost exists, and being required, they push the true figure higher. Intermediate factors are rounded for display. &Dagger; The per-pelt area is blended across the herd. Luke (2025) gives about 225,000 breeding females producing about 1,000,000 pelts, at a litter of about 4.5, so one pelt maps to one weaned juvenile plus about 0.225 of a female place. One breeding male per five females is assumed, adding about 0.045 of a male place; Luke's shade-house metres include male space but state no separate count. The male ratio leaves the Finland and Ecorys floors unchanged and moves the German floor by at most about 1.5%. The decree areas (female 1.2 m&sup2;, male 2.4 m&sup2;, juvenile 0.8 m&sup2;) blend to about 1.18 m&sup2; per pelt.</p>
+  <p class="caption">The reported figure is the area-only engineering floor: convert the whole existing shade-house stock, then new-build only the cage area the converted stock cannot already deliver (row E), at Luke's unit rates. It reproduces the Luke-costed EUR 254 for the Finnish decree, which needs no assumption-costed features and is therefore exact. The Ecorys survey sets the same fox space, so its area-only floor is also about EUR 254, but Ecorys additionally requires uncosted structures, so it is a lower bound like the German cage. The larger German cage is a conservative lower bound too, reported as 'at least' its value with an open-ended top. The added features in the final row are excluded from the floor because no fox unit cost for them has ever been published; Carpenter (2025) confirms no such cost exists, and being required, they push the true figure higher. Intermediate factors are rounded for display. &Dagger; The per-pelt area is blended across the herd: one weaned juvenile plus about 0.225 of a female place and 0.045 of a male place (see the note above the schematic for the derivation). The male ratio leaves the Finland and Ecorys floors unchanged and moves the German floor by at most about 1.5%. The decree areas (female 1.2 m&sup2;, male 2.4 m&sup2;, juvenile 0.8 m&sup2;) blend to about 1.18 m&sup2; per pelt.</p>
 
   <h3 style="font-size:1rem;margin:22px 0 4px;font-weight:660">Annualised cost per pelt</h3>
   <p style="font-size:.86rem;color:var(--ink-2);margin:0 0 6px;max-width:74ch">The one-time capital is spread over the cage's life as an equal yearly charge (a capital-recovery-factor annuity), then added to the yearly production cost to give the break-even pelt price.</p>
@@ -298,10 +297,10 @@
       <tr><th class="lbl">Standard</th><th>One-time capital floor<br>(from the table above)</th><th>&times; 0.0838 =<br>annualised capital<br>(EUR/pelt/year)</th><th>+ EUR 94 production cost =<br>break-even pelt price floor<br>(EUR/pelt)</th></tr>
     </thead>
     <tbody>
-      <tr><td class="lbl">Current cage (baseline)</td><td>0 (already sunk)</td><td>0</td><td>94</td></tr>
-      <tr><td class="lbl">Finland (draft decree)</td><td>254</td><td>21</td><td>115</td></tr>
-      <tr><td class="lbl">Ecorys (EC survey)</td><td>at least 254</td><td>at least 21</td><td>at least 115</td></tr>
       <tr><td class="lbl">German (statute)</td><td>at least 1,046</td><td>at least 88</td><td>at least 181</td></tr>
+      <tr><td class="lbl">Ecorys (EC survey)</td><td>at least 254</td><td>at least 21</td><td>at least 115</td></tr>
+      <tr><td class="lbl">Finland (draft decree)</td><td>254</td><td>21</td><td>115</td></tr>
+      <tr><td class="lbl">Current cage (baseline)</td><td>0 (already sunk)</td><td>0</td><td>94</td></tr>
     </tbody>
   </table>
   </div>
@@ -335,7 +334,7 @@
       <li><b>Finland, draft fur decree.</b> Adult female 1.2 m&sup2;, male 2.4 m&sup2;, weaned juvenile 0.8 m&sup2;, with resting shelves, chewing material and a whelping nest box; a walled retreat is required from 2031, and the space rules phase in by 2041 (MMM, 2025a).</li>
       <li><b>Ecorys (EC survey, Scenarios 4 and 5).</b> The same per-animal space as the Finnish decree for fox, with a total-space floor of at least 1.6 m&sup2; per enclosure for grouped animals and cage-height rules of 1 m for red fox and 70 cm for Arctic fox. These floor and height rules are not separately priced by the area model, so the Ecorys figure is a lower bound.</li>
       <li><b>Germany, fur-farming statute (TierErzHaVerbG).</b> At least 3 m&sup2; of floor per animal and at least 12 m&sup2; per enclosure, height at least 1.5 m, plus a digging substrate (at least 2 m&sup2;, perforation at most 10%), a platform and a raised two-chamber den. No swimming basin. The 12 m&sup2;-per-enclosure minimum is not modelled, so the German figure is a lower bound.</li>
-      <li><b>No external anchor for fox.</b> Unlike mink, the German and EFSA-level fox figures have no independent cost study to check against (Germany's last fox farm closed in 2005; the German regulator declined to quantify the cost). They come entirely from the Finnish cost calibration extended to a larger cage, and are order of magnitude only.</li>
+      <li><b>No external anchor for fox.</b> Unlike mink, the German and EFSA-level fox figures have no independent cost study to check against. They come entirely from the Finnish cost calibration extended to a larger cage, and are order of magnitude only.</li>
     </ol>
   </div>
 
@@ -369,7 +368,7 @@
 
   // ===================== CAGE SCHEMATIC (visual 3) =====================
   // Cavalier-oblique drawings of what one fox is allowed under each standard,
-  // to one shared scale (Switzerland's captive pen at a reduced scale). Mirrors
+  // to one shared scale. Mirrors
   // the mink page. Fox has no open-water requirement, so there is no pool.
   function css(v){return getComputedStyle(document.documentElement).getPropertyValue(v).trim();}
   function hx2(h){h=h.replace('#','');if(h.length===3)h=h.split('').map(function(c){return c+c;}).join('');return [parseInt(h.slice(0,2),16),parseInt(h.slice(2,4),16),parseInt(h.slice(4,6),16)];}
@@ -403,26 +402,24 @@
   // 0.225 female place + 0.045 male place (225,000 females / 1,000,000 pelts; 1 male : 5).
   //   current 0.60 + 0.18 + 0.036 = 0.816 ; FI/Ecorys 0.80 + 0.27 + 0.108 = 1.178 ;
   //   German 3.00 + 0.675 + 0.135 = 3.81  (= Table 1 row D).
+  // Ordered by space, largest first (German enclosure at the top, current cage at the
+  // bottom). The EFSA-level row is not drawn: it would be an open-topped copy of the
+  // German enclosure with identical cost, so it is left to the price chart and prose.
   var SCHEM=[
-    {name:'Current cage', role:'current EU legal minimum and cost baseline',
-     totalArea:1.2, nAnimals:2, h:0.7,
-     boxLabel:'1.2 m² grow-out cage', boxSub:'2 weaned foxes, 0.6 m² each; height 0.7 m',
-     pp:{grow:0.60, vixen:0.18, stud:0.036, total:0.816}, baseline:true},
+    {name:'German', role:'Minimum 12 m² floor area for up to 4 foxes, +3 m² for each additional fox',
+     totalArea:12, nAnimals:4, h:1.5, enclosure:true, ast:true,
+     boxLabel:'12 m² enclosure', boxSub:'4 foxes, 3 m² each; height 1.5 m',
+     pp:{grow:3.00, vixen:0.675, stud:0.135, total:3.81},
+     cost:{inv:'at least EUR 1,046', cap:'at least EUR 88 per year', tot:'at least EUR 181 per year'}},
     {name:'Finland', role:'draft fur decree (VN/14432/2025)',
      totalArea:2.4, nAnimals:3, h:0.7,
      boxLabel:'2.4 m² grow-out cage', boxSub:'3 young foxes, 0.8 m² each; height 0.7 m',
      pp:{grow:0.80, vixen:0.27, stud:0.108, total:1.178},
      cost:{inv:'EUR 254', cap:'EUR 21 per year', tot:'EUR 115 per year'}},
-    {name:'German', role:'fur-farming statute (TierErzHaVerbG)', enc:'≥ 3 m²/animal, ≥ 12 m²/enclosure',
-     totalArea:12, nAnimals:4, h:1.5, enclosure:true, ast:true,
-     boxLabel:'12 m² enclosure', boxSub:'4 foxes, 3 m² each; height 1.5 m',
-     pp:{grow:3.00, vixen:0.675, stud:0.135, total:3.81},
-     cost:{inv:'at least EUR 1,046', cap:'at least EUR 88 per year', tot:'at least EUR 181 per year'}},
-    {name:'EFSA-level', role:'the direction EFSA points to (no numeric size set)',
-     totalArea:12, nAnimals:4, h:1.5, openTop:true, ast:true,
-     boxLabel:'at least 12 m², open', boxSub:'at least the German enclosure, unbounded above',
-     pp:{grow:3.00, vixen:0.675, stud:0.135, total:3.81, open:true},
-     cost:{inv:'at least EUR 1,046', cap:'at least EUR 88 per year', tot:'at least EUR 181 per year'}}
+    {name:'Current cage', role:'current EU practice and cost baseline',
+     totalArea:1.2, nAnimals:2, h:0.7,
+     boxLabel:'1.2 m² grow-out cage', boxSub:'2 weaned foxes, 0.6 m² each; height 0.7 m',
+     pp:{grow:0.60, vixen:0.18, stud:0.036, total:0.816}, baseline:true}
   ];
 
   // ---- fox silhouette placement on a floor parallelogram (back-to-front) ----
@@ -444,38 +441,50 @@
     });
   }
 
-  // Each grow-out cage as a floor plan (footprint to shared scale, green shade = required
-  // height), holding N foxes. Solid edges = fixed cage; dashed = enclosure area spec;
-  // dashed + upward arrow = open-top (a floor area but no height limit).
+  // Each grow-out cage as a cavalier-oblique 3D box: footprint to the shared scale, height
+  // as the vertical dimension (also shown by the green shade and a left-edge label). The
+  // front face is left open so the foxes inside stay visible. Solid edges = fixed cage;
+  // dashed = an enclosure area spec. Mirrors the mink page's cage drawing.
   function drawCage(d){
     var sc=d.sc||S_S, n=d.nAnimals||1;
-    var side=Math.sqrt(d.totalArea), w=side*sc, dep=side*sc*S_DEPF, dvx=dep*S_CA, dvy=-dep*S_SA;
+    var side=Math.sqrt(d.totalArea), w=side*sc, dep=side*sc*S_DEPF;
+    var hm=d.h||0.7, ht=hm*sc, dvx=dep*S_CA, dvy=-dep*S_SA;
     var box=d.boxLabel||'', sub=d.boxSub||'';
-    var padX=44, padTop=(d.openTop?26:14), padBot=(sub?44:30), rightReserve=16;
+    var padX=46, padTop=(d.openTop?26:14), padBot=(sub?44:30), rightReserve=16;
     var minW=padX+Math.max(box.length,sub.length)*5.2+12;
-    var totW=w+dvx, totH=(-dvy);
+    var totW=w+dvx, totH=ht+(-dvy);
     var svgW=Math.max(padX+totW+rightReserve, minW), svgH=padTop+totH+padBot+8;
-    var x0=padX, y0=padTop+(-dvy)+8;
+    var x0=padX, y0=padTop+ht+(-dvy)+8;                // front-bottom-left (ground line)
     var g=el('svg',{width:svgW,height:svgH,viewBox:'0 0 '+svgW+' '+svgH,role:'img',
-      'aria-label':d.name+' grow-out cage, '+box+', holding '+n+' foxes'});
-    var fbl=[x0,y0],fbr=[x0+w,y0],bbr=[x0+w+dvx,y0+dvy],bbl=[x0+dvx,y0+dvy];
+      'aria-label':d.name+', '+(d.enclosure?'an enclosure of ':'a cage of ')+d.totalArea+' square metres, height '+hm+' metres, holding '+n+' foxes'});
+    // box corners: front face at the ground, back face receding up-right, top at height ht
+    var fbl=[x0,y0], fbr=[x0+w,y0], ftl=[x0,y0-ht], ftr=[x0+w,y0-ht];
+    var bbl=[x0+dvx,y0+dvy], bbr=[x0+w+dvx,y0+dvy], btl=[x0+dvx,y0-ht+dvy], btr=[x0+w+dvx,y0-ht+dvy];
     var dashed=d.enclosure||d.openTop;
-    var hf=ramp(d.openTop?1.5:(d.h||0.7),S_HDOM,SGRAYh,SGMh);
-    g.appendChild(el('polygon',{points:fbl+' '+fbr+' '+bbr+' '+bbl,fill:hf,'fill-opacity':0.30,
-      stroke:dashed?'none':hf,'stroke-width':1}));
-    [[fbl,fbr],[fbr,bbr],[bbr,bbl],[bbl,fbl]].forEach(function(e){
+    var hf=ramp(d.openTop?1.5:hm,S_HDOM,SGRAYh,SGMh), estroke=dashed?'none':hf;
+    function P(p){return p[0]+','+p[1];}
+    // floor, then top (unless open), then right face; front face left open so foxes show
+    g.appendChild(el('polygon',{points:[P(fbl),P(fbr),P(bbr),P(bbl)].join(' '),fill:hf,'fill-opacity':0.34,stroke:estroke,'stroke-width':1}));
+    if(!d.openTop) g.appendChild(el('polygon',{points:[P(ftl),P(ftr),P(btr),P(btl)].join(' '),fill:hf,'fill-opacity':0.14,stroke:estroke,'stroke-width':1}));
+    g.appendChild(el('polygon',{points:[P(fbr),P(bbr),P(btr),P(ftr)].join(' '),fill:hf,'fill-opacity':0.24,stroke:estroke,'stroke-width':1}));
+    var edges=[[fbl,fbr],[fbl,ftl],[fbr,ftr],[fbl,bbl],[fbr,bbr],[bbl,bbr],[bbl,btl],[bbr,btr]];
+    if(!d.openTop) edges=edges.concat([[ftl,ftr],[ftl,btl],[ftr,btr],[btl,btr]]);
+    edges.forEach(function(e){
       var la={x1:e[0][0],y1:e[0][1],x2:e[1][0],y2:e[1][1],stroke:INK3,'stroke-width':0.9,'stroke-opacity':dashed?0.7:0.55};
       if(dashed) la['stroke-dasharray']='5 3';
       g.appendChild(el('line',la));});
     if(d.openTop){
-      // upward open marker: a short dashed riser + arrowhead + "open" (no height limit)
-      var mx=x0+dvx+w*0.5, my=y0+dvy;
-      g.appendChild(el('path',{d:'M'+mx+' '+(my-4)+' l0 -16 m-4 6 l4 -6 l4 6',stroke:INK3,'stroke-width':1.1,fill:'none','stroke-opacity':0.75}));
-      g.appendChild(mkText(mx+9,my-13,9.5,600,INK3,'start','open'));
+      // upward open marker above the back edge: dashed riser + arrowhead + "open"
+      var mx=x0+dvx+w*0.5, my=y0-ht+dvy;
+      g.appendChild(el('path',{d:'M'+mx+' '+(my-2)+' l0 -15 m-4 6 l4 -6 l4 6',stroke:INK3,'stroke-width':1.1,fill:'none','stroke-opacity':0.75}));
+      g.appendChild(mkText(mx+9,my-11,9.5,600,INK3,'start','open'));
     }
-    placeFoxes(g,x0,y0,w,dvx,dvy,n,sc);
+    placeFoxes(g,x0,y0,w,dvx,dvy,n,sc);               // foxes on the base floor, drawn last
     g.appendChild(mkText(x0,y0+18,11,700,INK,'start',box));
     if(sub) g.appendChild(mkText(x0,y0+33,10,500,INK3,'start',sub));
+    // height label on the left vertical edge (metres, matching the m² floor unit)
+    var hLab=(hm%1?hm.toFixed(1):hm)+' m'; if(d.openTop) hLab='≥ '+hLab;
+    g.appendChild(mkText(x0-8,y0-ht/2,10.5,600,INK2,'end',hLab));
     return {svg:g,w:svgW,h:svgH};
   }
 
@@ -496,7 +505,7 @@
         stroke:'var(--surface)','stroke-width':0.7}));
     });
     if(d.pp.open){
-      // dashed cap + a short upward arrow just above it; "at least" label sits above the arrow
+      // dashed cap + a short upward arrow just above it; "at least" label is placed above the arrow
       svg.appendChild(el('line',{x1:PPx,y1:yy,x2:PPx+PPbarW,y2:yy,stroke:SGMh,'stroke-width':1.3,'stroke-dasharray':'4 3'}));
       svg.appendChild(el('path',{d:'M'+(PPx+PPbarW/2)+' '+(yy-3)+' l0 -11 m-3.5 4.5 l3.5 -4.5 l3.5 4.5',stroke:SGMh,'stroke-width':1.5,fill:'none'}));
     }
